@@ -1,7 +1,6 @@
 ﻿
-namespace Dal
+namespace Dal;
+
+public class DalOrderItem
 {
-    public class DalOrderItem
-    {
-    }
 }
