@@ -36,4 +36,8 @@ public struct Order
     /// Delivery date
     /// </summary>
     public DateTime DeliveryDate { get; set; }
+
+
+
+
 }
