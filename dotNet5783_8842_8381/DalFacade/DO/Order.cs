@@ -3,7 +3,7 @@ using static DO.Enums;
 
 namespace DO;
 
-/// <summary>
+/// <summary> 
 /// Strucure for Order
 /// </summary>
 public struct Order
