@@ -7,17 +7,17 @@ namespace DO;
 public struct OrderItem
 {
     /// <summary>
-    /// ID of procuct
+    /// ID of the product
     /// </summary>
-    public int ProductId { get; set; }
+    public int ProductID { get; set; }
 
     /// <summary>
-    /// Name of OrderName
+    /// ID of the order
     /// </summary>
-    public int OrderName { get; set; }
+    public int OrderID { get; set; }
 
     /// <summary>
-    /// Praice of the order
+    /// Price of the order
     /// </summary>
     public double Price { get; set; }
 
@@ -27,8 +27,8 @@ public struct OrderItem
     public int Amount { get; set; }
 
     public override string ToString() => $@"
-        Product ID: {ProductId}, 
-        Order Name: {OrderName}
+        Product ID: {ProductID}, 
+        Order Name: {OrderID}
         Price: {Price}
         Amount: {Amount}
     ";
