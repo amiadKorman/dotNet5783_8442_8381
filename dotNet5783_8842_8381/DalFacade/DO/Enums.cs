@@ -1,7 +1,4 @@
 ﻿
 namespace DO;
 
-internal class Enums
-{
-
-}
+public enum Category { }

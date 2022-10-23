@@ -1,7 +1,4 @@
-﻿using static DO.Enums;
-using System.Diagnostics;
-using System.Xml.Linq;
-
+﻿
 namespace DO;
 
 /// <summary>
@@ -22,7 +19,7 @@ public struct OrderItem
     /// <summary>
     /// Praice of the order
     /// </summary>
-    public double Praice { get; set; }
+    public double Price { get; set; }
 
     /// <summary>
     /// Amount of product in the order
@@ -30,7 +27,10 @@ public struct OrderItem
     public int Amount { get; set; }
 
     public override string ToString() => $@"
-     Product ID={ProductId}: {OrderName}, 
-     Price: {Praice}
-     Amount in order: {Amount}";
+        Product ID: {ProductId}, 
+        Order Name: {OrderName}
+        Price: {Price}
+        Amount: {Amount}
+    ";
+
 }
