@@ -5,4 +5,6 @@
 /// </summary>
 public struct Product
 {
+   
+
 }

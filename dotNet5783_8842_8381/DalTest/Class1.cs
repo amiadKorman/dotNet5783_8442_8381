@@ -1,4 +1,4 @@
-﻿namespace DalTest
+﻿namespace Dal
 {
     public class Class1
     {
