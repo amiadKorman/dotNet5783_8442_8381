@@ -1,7 +1,4 @@
-﻿
-
-namespace DO;
-
+﻿namespace DO;
 
 /// <summary>
 /// Strucure for Product
