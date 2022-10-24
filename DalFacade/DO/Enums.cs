@@ -1,4 +1,4 @@
 ﻿
 namespace DO;
 
-public enum Category { }
+public enum Category { Tech }
