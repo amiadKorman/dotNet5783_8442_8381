@@ -12,15 +12,15 @@ namespace Dal
     {
 
         #region Add Entity
-        
+
+        #region Add New Order
         public static void AddNewOrder()
         {
             Order NewOrder = new Order();
             Console.WriteLine("for add a new Order, please fill in the following data:");
 
 
-            Console.WriteLine("ID: ");
-            NewOrder.ID = Convert.ToInt32(Console.ReadLine());
+            NewOrder.ID = SafeInput.IntegerInput("ID: ");
             Console.WriteLine("Name: ");
             NewOrder.CustomerName = Console.ReadLine();
             Console.WriteLine("Email: ");
@@ -29,28 +29,31 @@ namespace Dal
             NewOrder.CustomerEmail = Console.ReadLine();
             Console.WriteLine("Adress: ");
 
+            NewOrder.OrderDate = null;
+            NewOrder.ShipDate = null;
+            NewOrder.DeliveryDate = null;
+
+
+
             Console.WriteLine("Adding a new Base Station...");
             ///צריך "לשמור את הישות פה"
 
             Console.WriteLine("The new Base Station was successfully added\n");
 
         }
+        #endregion
 
-
+        #region Add New Order Item
         public static void AddNewOrderItem()
         {
             OrderItem NewOrderItem = new OrderItem();
             Console.WriteLine("for add a new Order Item, please fill in the following data:");
 
             
-            Console.WriteLine("ID: ");
-            NewOrderItem.OrderID = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("ProductID: ");
-            NewOrderItem.ProductID = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Price: ");
-            NewOrderItem.Price = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Amount: ");
-            NewOrderItem.Amount = Convert.ToInt32(Console.ReadLine());
+            NewOrderItem.OrderID = SafeInput.IntegerInput("ID: ");
+            NewOrderItem.ProductID = SafeInput.IntegerInput("ProductID: ");
+            NewOrderItem.Price = SafeInput.DoubleInput("Price: ");
+            NewOrderItem.Amount = SafeInput.IntegerInput("Amount: ");
 
             Console.WriteLine("Adding a new Base Station...");
             ///צריך "לשמור את הישות פה"
@@ -59,21 +62,41 @@ namespace Dal
 
 
         }
+        #endregion
 
-
+        #region Add New Product
         public static void AddNewProduct()
         {
+            Product NewProduct = new Product();
+            Console.WriteLine("for add a new Order Item, please fill in the following data:");
+
+            NewProduct.ID = SafeInput.IntegerInput("ID: ");
+            Console.WriteLine("Name: ");
+            NewProduct.Name = Console.ReadLine();            
+            NewProduct.Price = SafeInput.DoubleInput("Price: ");
+            Console.WriteLine("Category: ");
+            NewProduct.Category = (CategoryOfProduct)SafeInput.IntegerInput
+                ("Category Of Product:\n" +
+                "X - press 1\n" +
+                "Y- press 2\n" +
+                "Z - press 3\n");                
+            NewProduct.ID = SafeInput.IntegerInput("InStock: ");
+
+
+            Console.WriteLine("Adding a new Product...");
+            ///צריך "לשמור את הישות פה"
+
+            Console.WriteLine("The new Product was successfully added\n");
 
         }
+        #endregion
 
-
-
-        
-            // <summary>
-            /// Add a new entity for the list.
-            /// </summary>
-            /// <param name="choise"></param>
-            public static void AddEntity()
+        #region main of add Entity
+        // <summary>
+        /// Add a new entity for the list.
+        /// </summary>
+        /// <param name="choise"></param>
+        public static void AddEntity()
             {
                 Add AddChoise = (Add)SafeInput.IntegerInput
                 (
@@ -98,7 +121,8 @@ namespace Dal
                         break;
                 }
             }
-        
+        #endregion
+
 
         #endregion
 
@@ -179,9 +203,7 @@ namespace Dal
                 default:
                     Console.WriteLine("Error. Try again");
                     break;
-            }
-
-            
+            }        
 
         }
         #endregion
