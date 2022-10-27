@@ -12,12 +12,81 @@ namespace Dal
     {
 
         #region Add Entity
-        /// <summary>
-        /// Create a new Entity.
-        /// </summary>
+        
+        public static void AddNewOrder()
+        {
+            Order NewOrder = new Order();
+            Console.WriteLine("for add a new Order, please fill in the following data:");
+
+            NewOrder.ID = SafeInput.IntegerInput("ID: ");
+
+            Console.WriteLine("Name: ");
+            NewOrder.CustomerName = Console.ReadLine();
+            Console.WriteLine("Email: ");
+            NewOrder.CustomerEmail = Console.ReadLine();
+            Console.WriteLine("Adress: ");
+            NewOrder.CustomerEmail = Console.ReadLine();
+            Console.WriteLine("Adress: ");
+
+            Console.WriteLine("Adding a new Base Station...");
+            
+
+            Console.WriteLine("The new Base Station was successfully added\n");
+
+
+
+
+
+
+
+
+        }
+
+
+        public static void AddNewOrderItem()
+        {
+
+        }
+
+
+        public static void AddNewProduct()
+        {
+
+        }
+
+
+
         public static void AddEntity()
         {
-            
+            // <summary>
+            /// Add a new entity for the list.
+            /// </summary>
+            /// <param name="choise"></param>
+            public static void AddEntity()
+            {
+                Add AddChoise = (Add)SafeInput.IntegerInput
+                (
+                    "for add Base station to Stations list - press 1\n" +
+                    "for add Drone to the Drones list - press 2\n" +
+                    "for add Customer to the Customers list - press 3\n" +
+                    "for add new Parcel to Parcels list - press 4\n"
+                );
+                switch (AddChoise)
+                {
+                    case Add.AddOrder:
+                        AddNewOrder();
+                        break;
+                    case Add.AddOrderItems:
+                        AddNewOrderItem();
+                        break;
+                    case Add.Product:
+                        AddNewProduct();
+                        break;                   
+                    default:
+                        Console.WriteLine("This option does not exist, please try again\n");
+                        break;
+                }
+            }
         }
 
         #endregion
@@ -42,12 +111,32 @@ namespace Dal
         {
 
         }
+        #endregion
+
+        #region Update Entity
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void UpdateEntity()
+        {
+
+        }
+        #endregion
+
+
+        #region Delete Entitys
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void DeleteEntitys()
+        {
+
+        }
+        #endregion
 
 
 
-
-
-
+        #region Mainaly Main
         static void Main(string[] args)
             {
                 Dal.Menu MenuChoise = Dal.Menu.AddEntity;
@@ -74,6 +163,7 @@ namespace Dal
                     break;
                 case Dal.Menu.DeleteEntitys:
                     DeleteEntitys();
+                    break;
                 case Dal.Menu.Exit:
                     break;
                 default:
@@ -84,13 +174,13 @@ namespace Dal
             
 
         }
-
-        
-    }
-
-
+        #endregion
 
     }
+
+
+
+}
 }
 
 
