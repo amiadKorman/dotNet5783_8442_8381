@@ -12,15 +12,15 @@ namespace Dal
     public enum Menu
     {
         [Description("Add an entity")]
-        Add = 1,
+        AddEntity = 1,
         [Description("Show by ID an entity")]
         ShowByID = 2,
         [Description("Show list of an entitys")]
-        ShowList = 3,
+        ShowListOfEntity = 3,
         [Description("Update an entitys")]
-        Update = 4,
+        UpdateEntity = 4,
         [Description("Delete an entitys")]
-        Delete = 5,
+        DeleteEntitys = 5,
         [Description("Exit program")]
         Exit = 6
     }
@@ -51,7 +51,7 @@ namespace Dal
 
     #endregion
 
-    #region ShowList of entity
+    #region Show List of entity
     public enum ShowListOfEntity
     {
         [Description("Show an Order List")]
