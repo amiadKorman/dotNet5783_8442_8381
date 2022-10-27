@@ -18,8 +18,9 @@ namespace Dal
             Order NewOrder = new Order();
             Console.WriteLine("for add a new Order, please fill in the following data:");
 
-            NewOrder.ID = SafeInput.IntegerInput("ID: ");
 
+            Console.WriteLine("ID: ");
+            NewOrder.ID = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Name: ");
             NewOrder.CustomerName = Console.ReadLine();
             Console.WriteLine("Email: ");
@@ -29,22 +30,33 @@ namespace Dal
             Console.WriteLine("Adress: ");
 
             Console.WriteLine("Adding a new Base Station...");
-            
+            ///צריך "לשמור את הישות פה"
 
             Console.WriteLine("The new Base Station was successfully added\n");
-
-
-
-
-
-
-
 
         }
 
 
         public static void AddNewOrderItem()
         {
+            OrderItem NewOrderItem = new OrderItem();
+            Console.WriteLine("for add a new Order Item, please fill in the following data:");
+
+            
+            Console.WriteLine("ID: ");
+            NewOrderItem.OrderID = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("ProductID: ");
+            NewOrderItem.ProductID = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Price: ");
+            NewOrderItem.Price = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Amount: ");
+            NewOrderItem.Amount = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Adding a new Base Station...");
+            ///צריך "לשמור את הישות פה"
+
+            Console.WriteLine("The new Base Station was successfully added\n");
+
 
         }
 
@@ -56,8 +68,7 @@ namespace Dal
 
 
 
-        public static void AddEntity()
-        {
+        
             // <summary>
             /// Add a new entity for the list.
             /// </summary>
@@ -87,7 +98,7 @@ namespace Dal
                         break;
                 }
             }
-        }
+        
 
         #endregion
 
@@ -135,7 +146,6 @@ namespace Dal
         #endregion
 
 
-
         #region Mainaly Main
         static void Main(string[] args)
             {
@@ -181,6 +191,6 @@ namespace Dal
 
 
 }
-}
+
 
 
