@@ -24,7 +24,7 @@ public struct Product
     /// <summary>
     /// Product category
     /// </summary>
-    public Category Category { get; set; }
+    public CategoryOfProduct Category { get; set; }
 
     /// <summary>
     /// Amount in stock of the product
