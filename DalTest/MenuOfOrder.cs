@@ -16,22 +16,18 @@ namespace Dal
             Console.WriteLine("for add a new Order, please fill in the following data:");
 
 
-            NewOrder.ID = SafeInput.IntegerInput("ID: ");
-            Console.WriteLine("Name: ");
-            NewOrder.CustomerName = Console.ReadLine();
-            Console.WriteLine("Email: ");
-            NewOrder.CustomerEmail = Console.ReadLine();
-            Console.WriteLine("Adress: ");
-            NewOrder.CustomerEmail = Console.ReadLine();
-            Console.WriteLine("Adress: ");
+            NewOrder.ID = SafeInput.IntegerInput("ID: ");            
+            NewOrder.CustomerName = SafeInput.stringInput("Name: ");            
+            NewOrder.CustomerEmail = SafeInput.stringInput("Email: ");
+            NewOrder.CustomerEmail = SafeInput.stringInput("Adress:");         
 
-            NewOrder.OrderDate = null;
-            NewOrder.ShipDate = null;
-            NewOrder.DeliveryDate = null;
-
-
+            DateTime? NullDateTime = null;
+            NewOrder.OrderDate = Convert.ToDateTime(NullDateTime);
+            NewOrder.ShipDate = Convert.ToDateTime(NullDateTime); ;
+            NewOrder.DeliveryDate = Convert.ToDateTime(NullDateTime);
 
             Console.WriteLine("Adding a new Base Station...");
+            
             ///צריך "לשמור את הישות פה"
 
             Console.WriteLine("The new Base Station was successfully added\n");
@@ -50,6 +46,8 @@ namespace Dal
         #region Show Order
         public static void ShowOrder()
         {
+            int IdOrder = SafeInput.IntegerInput("ID: ");
+            //Console.WriteLine(DalOrder(IdOrder));
 
         }
 
@@ -58,6 +56,7 @@ namespace Dal
         #region Show Order List
         public static void ShowOrderList()
         {
+            
 
         }
         #endregion
