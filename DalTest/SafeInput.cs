@@ -30,6 +30,13 @@ namespace Dal
             return double.TryParse(Console.ReadLine(), out num) ? num : DoubleInput("Invalid input. Please enter only an integer value:\n");
         }
 
+        public static string stringInput(string message = "")
+        {
+            Console.Write(message);
+            string My_str= " ";
+            return string.IsNullOrWhiteSpace(message) ? My_str : stringInput("Invalid input. Please enter value value:\n");
+        }
+
 
     }
 }
