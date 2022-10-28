@@ -40,6 +40,8 @@ namespace Dal
         #region Show Order Item
         public static void ShowOrderItem()
         {
+            int IdOrderItem = SafeInput.IntegerInput("ID: ");
+            //Console.WriteLine(DalOrderItem(IdOrderItem));
 
         }
         #endregion
@@ -58,7 +60,7 @@ namespace Dal
         }
         #endregion
 
-
+        #region Order Item Menu
         public static void OrderItemMenu()
         {
             Dal.OrderItemMenu OrderItemchoise = Dal.OrderItemMenu.AddOrderItems;
@@ -92,6 +94,8 @@ namespace Dal
                     break;
             }
         }
+        #endregion
+
     }
 }
 
