@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    class DalMain
+    class DalMain  
     {
         #region Mainaly Main
         static void Main(string[] args)

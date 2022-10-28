@@ -23,7 +23,7 @@ namespace Dal
     #endregion
 
     #region Order Menu
-    public enum OrderMenu
+    public enum OrderMenu  
     {
         [Description("Add an Order")]
         AddOrder = 1,

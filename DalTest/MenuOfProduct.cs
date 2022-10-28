@@ -9,6 +9,7 @@ namespace Dal
 {
     internal class MenuOfProduct
     {
+        #region #CRUD
 
         #region Add New Product
         public static void AddNewProduct()
@@ -54,6 +55,8 @@ namespace Dal
         #region Show List Product
         public static void ShowListProduct()
         {
+            int IdProduct = SafeInput.IntegerInput("ID: ");
+            //Console.WriteLine(DalProduct(IdProduct));
 
         }
         #endregion
@@ -63,6 +66,8 @@ namespace Dal
         {
 
         }
+        #endregion
+
         #endregion
 
         public static void ProductMenu()
