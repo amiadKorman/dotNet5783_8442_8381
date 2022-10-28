@@ -8,73 +8,71 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    #region Enums Menu
-    public enum Menu
+    #region Entitys's menu
+    public enum EntitysMenu
     {
-        [Description("Add an entity")]
-        AddEntity = 1,
-        [Description("Show by ID an entity")]
-        ShowByID = 2,
-        [Description("Show list of an entitys")]
-        ShowListOfEntity = 3,
-        [Description("Update an entitys")]
-        UpdateEntity = 4,
-        [Description("Delete an entitys")]
-        DeleteEntitys = 5,
-        [Description("Exit program")]
-        Exit = 6
+        [Description("Exit from program")]
+        Exit = 0,
+        [Description("Get to Order's menu")]
+        OrderMenu = 1,
+        [Description("Get to OrderItems's menu")]
+        OrderItemsMenu = 2,
+        [Description("Get to Product's menu")]
+        ProductMenu = 3,
     }
     #endregion
 
-    #region Add entity
-    public enum Add
+    #region Order Menu
+    public enum OrderMenu
     {
         [Description("Add an Order")]
         AddOrder = 1,
-        [Description("Add an Order Items")]
-        AddOrderItems = 2,
-        [Description("Add a Product")]
-        Product = 3,
+        [Description("Update an Order")]
+        UpdateOrder = 2,
+        [Description("Show an Order")]
+        ShowOrder = 3,
+        [Description("Show an Order List")]
+        ShowListOfOrder = 4,
+        [Description("Delete an Order")]
+        DeleteAnOrder = 5,
+        [Description("Return back to the menu")]
+        GoToTheFirstMenu = 9
+
     }
     #endregion
 
-    #region Show entity
-    public enum ShowEntity
+    #region Order Item Menu
+    public enum OrderItemMenu
     {
-        [Description("Show an Order")]
-        ShowOrder = 1,
+        [Description("Add an Order Items")]
+        AddOrderItems = 1,
+        [Description("Update an Order Items")]
+        UpdateOrderItems = 2,
         [Description("Show an Order Items")]
-        ShowOrderItems = 2,
+        ShowOrderItems = 3,
+        [Description("Show an Order Items List")]
+        ShowListOfOrderItems = 4,
+        [Description("Delete an Order Items List")]
+        DeleteAnOrderItems = 5,
+    }
+    #endregion
+
+    #region Order Menu
+    public enum ProductMenu
+    {
+        [Description("Add a Product")]
+        AddProduct = 1,
+        [Description("Update a Product")]
+        UpdateProduct = 2,
         [Description("Show a Product")]
         ShowProduct = 3,
-    }
-
-    #endregion
-
-    #region Show List of entity
-    public enum ShowListOfEntity
-    {
-        [Description("Show an Order List")]
-        ShowListOfOrder = 1,
-        [Description("Show an Order Items List")]
-        ShowListOfOrderItems = 2,
         [Description("Show a Product List")]
-        ShowListOfProduct = 3,
-
-    }
-    #endregion
-
-    #region Delete entity
-    public enum DeleteEntity
-    {
-        [Description("Delete an Order")]
-        DeleteAnOrder = 1,
-        [Description("Delete an Order Items List")]
-        DeleteAnOrderItems = 2,
+        ShowListOfProduct = 4,
         [Description("Delete a Product List")]
-        DeleteAProduct = 3,
+        DeleteAProduct = 5,
     }
-
     #endregion
+
+         
 
 }
