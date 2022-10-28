@@ -13,17 +13,17 @@ internal static class DataSource
     /// <summary>
     /// Array of orders
     /// </summary>
-    internal static Order[] orders = new Order[100];
+    internal static Order[] ordersArry = new Order[100];
 
     /// <summary>
     /// Array of order items
     /// </summary>
-    internal static OrderItem[] orderItems = new OrderItem[200];
+    internal static OrderItem[] orderItemsArry = new OrderItem[200];
 
     /// <summary>
     /// Array of products
     /// </summary>
-    internal static Product[] products = new Product[50];
+    internal static Product[] productsArry = new Product[50];
 
     internal static class Config
     {
@@ -53,7 +53,7 @@ internal static class DataSource
     {
         for (int i = 0; i < 10; i++)
         {
-            products[i] = new Product
+            productsArry[i] = new Product
             {
                 ID = 100000 + i,
                 Name = "something",
@@ -68,7 +68,7 @@ internal static class DataSource
     {
         for (int i = 0; i < 40; i++)
         {
-            orderItems[i] = new OrderItem
+            orderItemsArry[i] = new OrderItem
             {
                 ProductID = i,
                 OrderID = 100,
@@ -82,7 +82,7 @@ internal static class DataSource
     {
         for (int i = 0; i < 20; i++)
         {
-            orders[i] = new Order 
+            ordersArry[i] = new Order 
             { 
                 ID = i,
                 CustomerName = "a",
