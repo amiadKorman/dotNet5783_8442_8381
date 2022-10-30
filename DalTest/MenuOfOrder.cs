@@ -1,9 +1,11 @@
 ﻿using DO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Dal
 {
@@ -16,19 +18,24 @@ namespace Dal
             Console.WriteLine("for add a new Order, please fill in the following data:");
 
 
-            NewOrder.ID = SafeInput.IntegerInput("ID: ");            
-            NewOrder.CustomerName = SafeInput.stringInput("Name: ");            
+            NewOrder.ID = SafeInput.IntegerInput("ID: ");
+            NewOrder.CustomerName = SafeInput.stringInput("Name: ");
             NewOrder.CustomerEmail = SafeInput.stringInput("Email: ");
-            NewOrder.CustomerEmail = SafeInput.stringInput("Adress:");         
+            NewOrder.CustomerEmail = SafeInput.stringInput("Adress:");
 
-            DateTime? NullDateTime = null;
-            NewOrder.OrderDate = Convert.ToDateTime(NullDateTime);
-            NewOrder.ShipDate = Convert.ToDateTime(NullDateTime); ;
-            NewOrder.DeliveryDate = Convert.ToDateTime(NullDateTime);
+            DateTime? MinDateTime = DateTime.MinValue;
+            NewOrder.OrderDate = Convert.ToDateTime(MinDateTime);
+            NewOrder.ShipDate = Convert.ToDateTime(MinDateTime); ;
+            NewOrder.DeliveryDate = Convert.ToDateTime(MinDateTime);
 
-            Console.WriteLine("Adding a new Base Station...");
+            Console.WriteLine("Adding a new Order...");
+
             
-            ///צריך "לשמור את הישות פה"
+            
+               
+
+
+
 
             Console.WriteLine("The new Base Station was successfully added\n");
 
@@ -56,7 +63,7 @@ namespace Dal
         #region Show Order List
         public static void ShowOrderList()
         {
-            
+
 
         }
         #endregion
@@ -71,7 +78,7 @@ namespace Dal
         #region OrderMenu
         public static void OrderMenu()
         {
-            Dal.OrderMenu Orderchoise = Dal.OrderMenu.AddOrder;
+            OrderMenu Orderchoise = Dal.OrderMenu.AddOrder;
             while (!Orderchoise.Equals(Dal.EntitysMenu.Exit))
             {
                 Console.WriteLine("for add Order - press 1\n" +
@@ -79,7 +86,7 @@ namespace Dal
             "for show order - press 3\n" +
             "for show order list - press 4\n" +
             "for delete order - press 5\n");
-            }                          
+            }
             switch (Orderchoise)
             {
                 case Dal.OrderMenu.AddOrder:
@@ -96,7 +103,7 @@ namespace Dal
                     break;
                 case Dal.OrderMenu.DeleteAnOrder:
                     DeleteOrder();
-                    break;                
+                    break;
                 default:
                     Console.WriteLine("This option does not exist, please try again\n");
                     break;

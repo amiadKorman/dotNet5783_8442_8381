@@ -1,4 +1,5 @@
-﻿using Dal;
+﻿using DO;
+using Dal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,7 +58,7 @@ namespace Dal
     }
     #endregion
 
-    #region Order Menu
+    #region Product Menu
     public enum ProductMenu
     {
         [Description("Add a Product")]
@@ -71,8 +72,5 @@ namespace Dal
         [Description("Delete a Product List")]
         DeleteAProduct = 5,
     }
-    #endregion
-
-         
-
+    #endregion       
 }

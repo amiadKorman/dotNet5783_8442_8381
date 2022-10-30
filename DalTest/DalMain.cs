@@ -1,4 +1,5 @@
 ﻿using DO;
+using Dal;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,31 +9,31 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    class DalMain  
+    class DalMain
     {
         #region Mainaly Main
         static void Main(string[] args)
+        {
+            EntitysMenu MenuChoise = EntitysMenu.OrderMenu;
+            while (!MenuChoise.Equals(EntitysMenu.Exit))
             {
-                Dal.EntitysMenu MenuChoise = Dal.EntitysMenu.OrderMenu;
-                while (!MenuChoise.Equals(Dal.EntitysMenu.Exit))
-                {
-                    Console.WriteLine("For Order press 1\n" +
-                    "For OrderItem press 2\n" +
-                    "For product press 3\n" +
-                    "Foe Exit press 4");
-                };
+                Console.WriteLine("For Order press 1\n" +
+                "For OrderItem press 2\n" +
+                "For product press 3\n" +
+                "Foe Exit press 0");
+            };
             switch (MenuChoise)
             {
-                case Dal.EntitysMenu.OrderMenu:
-                    Dal.MenuOfOrder.OrderMenu();
+                case EntitysMenu.OrderMenu:
+                    MenuOfOrder.OrderMenu();
                     break;
-                case Dal.EntitysMenu.OrderItemsMenu:
-                    Dal.MenuOfOrderItems.OrderItemMenu();
+                case EntitysMenu.OrderItemsMenu:
+                    MenuOfOrderItems.OrderItemMenu();
                     break;
-                case Dal.EntitysMenu.ProductMenu:
-                    Dal.MenuOfProduct.ProductMenu();
+                case EntitysMenu.ProductMenu:
+                    MenuOfProduct.ProductMenu();
                     break;
-                case Dal.EntitysMenu.Exit:
+                case EntitysMenu.Exit:
                     break;
                 default:
                     Console.WriteLine("Error. Try again");
@@ -41,9 +42,6 @@ namespace Dal
         }
         #endregion
     }
-
-
-
 }
 
 

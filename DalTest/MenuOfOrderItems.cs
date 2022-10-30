@@ -1,4 +1,5 @@
-﻿using DO;
+﻿using Dal;
+using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace Dal
     internal class MenuOfOrderItems
     {
         #region Add New Order Item
+        /// <summary>
+        /// 
+        /// </summary>
         public static void AddNewOrderItem()
         {
             OrderItem NewOrderItem = new OrderItem();
@@ -22,7 +26,7 @@ namespace Dal
             NewOrderItem.Amount = SafeInput.IntegerInput("Amount: ");
 
             Console.WriteLine("Adding a new Base Station...");
-            ///צריך "לשמור את הישות פה"
+            
 
             Console.WriteLine("The new Base Station was successfully added\n");
 
@@ -38,6 +42,9 @@ namespace Dal
         #endregion
 
         #region Show Order Item
+        /// <summary>
+        /// 
+        /// </summary>
         public static void ShowOrderItem()
         {
             int IdOrderItem = SafeInput.IntegerInput("ID: ");
@@ -47,6 +54,9 @@ namespace Dal
         #endregion
 
         #region Show list Order Item
+        /// <summary>
+        /// 
+        /// </summary>
         public static void ShowListOfOrderItem()
         {
 
@@ -61,10 +71,13 @@ namespace Dal
         #endregion
 
         #region Order Item Menu
+        /// <summary>
+        /// 
+        /// </summary>
         public static void OrderItemMenu()
         {
-            Dal.OrderItemMenu OrderItemchoise = Dal.OrderItemMenu.AddOrderItems;
-            while (!OrderItemchoise.Equals(Dal.EntitysMenu.Exit))
+            OrderItemMenu OrderItemchoise = Dal.OrderItemMenu.AddOrderItems;
+            while (!OrderItemchoise.Equals(EntitysMenu.Exit))
             {
                 Console.WriteLine("for add Order - press 1\n" +
             "for Update Order - press 2\n" +

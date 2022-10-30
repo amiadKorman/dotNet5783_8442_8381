@@ -18,8 +18,7 @@ namespace Dal
             Console.WriteLine("for add a new Order Item, please fill in the following data:");
 
             NewProduct.ID = SafeInput.IntegerInput("ID: ");
-            Console.WriteLine("Name: ");
-            NewProduct.Name = Console.ReadLine();
+            NewProduct.Name = SafeInput.stringInput("Name:" );
             NewProduct.Price = SafeInput.DoubleInput("Price: ");
             Console.WriteLine("Category: ");
             NewProduct.Category = (CategoryOfProduct)SafeInput.IntegerInput
@@ -31,7 +30,7 @@ namespace Dal
 
 
             Console.WriteLine("Adding a new Product...");
-            ///צריך "לשמור את הישות פה"
+            
 
             Console.WriteLine("The new Product was successfully added\n");
 
@@ -72,8 +71,8 @@ namespace Dal
 
         public static void ProductMenu()
         {
-            Dal.ProductMenu ProductChoise = Dal.ProductMenu.AddProduct;
-            while (!ProductChoise.Equals(Dal.EntitysMenu.Exit))
+            ProductMenu ProductChoise = Dal.ProductMenu.AddProduct;
+            while (!ProductChoise.Equals(EntitysMenu.Exit))
             {
                 Console.WriteLine("for add Order - press 1\n" +
             "for Update Order - press 2\n" +
