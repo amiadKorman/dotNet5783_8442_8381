@@ -58,7 +58,7 @@ internal static class DataSource
                 ID = 100000 + i,
                 Name = "something",
                 Price = 100,
-                Category = CategoryOfProduct.Accessories,
+                Category = CategoryOfProduct.Tech,
                 InStock = 10
             };
         }
