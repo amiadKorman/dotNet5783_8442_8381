@@ -11,7 +11,7 @@ namespace DO
         /// <summary>
         /// Customer name
         /// </summary>
-        public string CustomerName { get; set; }
+        public int CustomerName { get; set; }
 
         /// <summary>
         /// Customer email
@@ -24,7 +24,7 @@ namespace DO
         public string CustomerAdress { get; set; }
 
         public override string ToString() => $@"
-        Customer ID: {CustomerId}, 
+        Customer ID: {CustomerID}, 
         Customer Name: {CustomerName},
         Customer Email: {CustomerEmail},
         Customer Adress: {CustomerAdress}";  

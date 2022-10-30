@@ -58,7 +58,7 @@ internal static class DataSource
                 ID = 100000 + i,
                 Name = "something",
                 Price = 100,
-                Category = CategoryOfProduct.Tech,
+                Category = CategoryOfProduct.Accessories,
                 InStock = 10
             };
         }
@@ -85,9 +85,7 @@ internal static class DataSource
             ordersArry[i] = new Order 
             { 
                 ID = i,
-                CustomerName = "a",
-                CustomerEmail =  "harta@gmail.com",
-                CustomerAdress = "Jerus",
+                CustomerID = 212608442,
                 OrderDate = DateTime.MinValue,
                 ShipDate = DateTime.MinValue,
                 DeliveryDate = DateTime.MinValue
