@@ -18,10 +18,8 @@ namespace Dal
             Console.WriteLine("for add a new Order, please fill in the following data:");
 
 
-            NewOrder.ID = SafeInput.IntegerInput("ID: ");
-            NewOrder.CustomerName = SafeInput.stringInput("Name: ");
-            NewOrder.CustomerEmail = SafeInput.stringInput("Email: ");
-            NewOrder.CustomerEmail = SafeInput.stringInput("Adress:");
+            NewOrder.ID = SafeInput.IntegerInput("ID order: ");
+            NewOrder.CustomerId = SafeInput.IntegerInput("ID Customer: ");        
 
             DateTime? MinDateTime = DateTime.MinValue;
             NewOrder.OrderDate = Convert.ToDateTime(MinDateTime);

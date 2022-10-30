@@ -85,9 +85,7 @@ internal static class DataSource
             ordersArry[i] = new Order 
             { 
                 ID = i,
-                CustomerName = "a",
-                CustomerEmail =  "harta@gmail.com",
-                CustomerAdress = "Jerus",
+                CustomerId = 5454544,
                 OrderDate = DateTime.MinValue,
                 ShipDate = DateTime.MinValue,
                 DeliveryDate = DateTime.MinValue
