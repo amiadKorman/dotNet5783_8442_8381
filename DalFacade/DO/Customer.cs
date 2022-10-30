@@ -1,10 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DO
 {
     public struct Customer
@@ -12,7 +6,7 @@ namespace DO
         /// <summary>
         /// Customer ID
         /// </summary>
-        public int CustomerId { get; set; }
+        public int CustomerID { get; set; }
 
         /// <summary>
         /// Customer name

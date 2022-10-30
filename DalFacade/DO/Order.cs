@@ -12,19 +12,9 @@ public struct Order
     public int ID { get; set; }
 
     /// <summary>
-    /// Customer name
+    /// Customer ID
     /// </summary>
-    public string CustomerName { get; set; }
-
-    /// <summary>
-    /// Customer email
-    /// </summary>
-    public string CustomerEmail { get; set; }
-
-    /// <summary>
-    /// Customer address
-    /// </summary>
-    public string CustomerAdress { get; set; }
+    public string CustomerID { get; set; }
 
     /// <summary>
     /// Order date
