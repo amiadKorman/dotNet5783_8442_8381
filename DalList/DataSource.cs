@@ -31,8 +31,8 @@ internal static class DataSource
         internal static int orderItemsLastIndex = 0;
         internal static int ordersLastIndex = 0;
 
-        private static int OrderItemID { get; } = 0;
-        private static int OrderID { get; } = 0;
+        private static int orderItemID = 1000000;
+        private static int orderID = 5000000;
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ internal static class DataSource
                 ID = 100000 + i,
                 Name = "something",
                 Price = 100,
-                Category = CategoryOfProduct.Tech,
+                Category = CategoryOfProduct.Accessories,
                 InStock = 10
             };
         }
