@@ -1,4 +1,4 @@
 ﻿
 namespace DO;
 
-public enum CategoryOfProduct { Computers, Phones, Cables, Televisions, Accessories }
+public enum CategoryOfProduct { Phones, Laptops, Screens, Televisions, Accessories }
