@@ -1,5 +1,4 @@
-﻿
-namespace DO;
+﻿namespace DO;
 
 /// <summary> 
 /// Strucure for Order
@@ -14,9 +13,6 @@ public struct Order
     /// <summary>
     /// Customer ID
     /// </summary>
-    public int CustomerId { get; set; }
-
-  
     public int CustomerID { get; set; }
 
     /// <summary>

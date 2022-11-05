@@ -1,40 +1,30 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DO;
 
-namespace DO
+public struct Customer
 {
-    public struct Customer
-    {
-        /// <summary>
-        /// Customer ID
-        /// </summary>
-        public int CustomerId { get; set; }
+    /// <summary>
+    /// Customer ID
+    /// </summary>
+    public int CustomerID { get; set; }
 
-        /// <summary>
-        /// Customer name
-        /// </summary>
-        public string CustomerName { get; set; }
+    /// <summary>
+    /// Customer name
+    /// </summary>
+    public string CustomerName { get; set; }
 
-        /// <summary>
-        /// Customer email
-        /// </summary>
-        public string CustomerEmail { get; set; }
+    /// <summary>
+    /// Customer email
+    /// </summary>
+    public string CustomerEmail { get; set; }
 
-        /// <summary>
-        /// Customer address
-        /// </summary>
-        public string CustomerAdress { get; set; }
+    /// <summary>
+    /// Customer address
+    /// </summary>
+    public string CustomerAddress { get; set; }
 
-        public override string ToString() => $@"
-        Customer ID: {CustomerId}, 
+    public override string ToString() => $@"
+        Customer ID: {CustomerID}, 
         Customer Name: {CustomerName},
         Customer Email: {CustomerEmail},
-        Customer Adress: {CustomerAdress}";  
-    }
-
-    
+        Customer Adress: {CustomerAddress}";  
 }
