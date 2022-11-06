@@ -8,7 +8,7 @@ public class DalOrder
     /// </summary>
     /// <param name="newOrder"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void AddOrder(Order newOrder)
+    public void addOrder(Order newOrder)
     {
         throw new NotImplementedException();
     }
@@ -19,7 +19,7 @@ public class DalOrder
     /// <param name="orderID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order GetOrder(int orderID)
+    public Order getOrder(int orderID)
     {
         throw new NotImplementedException();
     }
@@ -30,7 +30,7 @@ public class DalOrder
     /// <param name="newOrder"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order UpdateOrder(Order newOrder)
+    public Order updateOrder(Order newOrder)
     {
         throw new NotImplementedException();
     }
@@ -41,7 +41,7 @@ public class DalOrder
     /// <param name="orderID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order DeleteOrder(int orderID)
+    public Order deleteOrder(int orderID)
     {
         throw new NotImplementedException();
     }
