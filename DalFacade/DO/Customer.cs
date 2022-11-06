@@ -5,26 +5,26 @@ public struct Customer
     /// <summary>
     /// Customer ID
     /// </summary>
-    public int CustomerID { get; set; }
+    public int ID { get; set; }
 
     /// <summary>
     /// Customer name
     /// </summary>
-    public string CustomerName { get; set; }
+    public string Name { get; set; }
 
     /// <summary>
     /// Customer email
     /// </summary>
-    public string CustomerEmail { get; set; }
+    public string Email { get; set; }
 
     /// <summary>
     /// Customer address
     /// </summary>
-    public string CustomerAddress { get; set; }
+    public string Address { get; set; }
 
     public override string ToString() => $@"
-        Customer ID: {CustomerID}, 
-        Customer Name: {CustomerName},
-        Customer Email: {CustomerEmail},
-        Customer Adress: {CustomerAddress}";  
+        Customer ID: {ID}, 
+        Customer Name: {Name},
+        Customer Email: {Email},
+        Customer Adress: {Address}";  
 }
