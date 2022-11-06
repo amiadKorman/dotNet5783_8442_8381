@@ -28,7 +28,7 @@ namespace Dal
             Console.WriteLine("Adding a new Base Station...");
             
 
-            Console.WriteLine("The new Base Station was successfully added\n");
+            Console.WriteLine("The new Order Item was successfully added\n");
 
 
         }
