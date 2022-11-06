@@ -20,7 +20,7 @@ public class DalOrderItem
     /// <param name="orderItemID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order GetOrderItem(int orderItemID)
+    public OrderItem GetOrderItem(int orderItemID)
     {
         throw new NotImplementedException();
     }
@@ -31,7 +31,7 @@ public class DalOrderItem
     /// <param name="newOrderItem"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order UpdateOrderItem(OrderItem newOrderItem)
+    public OrderItem UpdateOrderItem(OrderItem newOrderItem)
     {
         throw new NotImplementedException();
     }
@@ -40,9 +40,8 @@ public class DalOrderItem
     /// Delete order item by given ID
     /// </summary>
     /// <param name="orderItemID"></param>
-    /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order DeleteOrderItem(int orderItemID)
+    public void DeleteOrderItem(int orderItemID)
     {
         throw new NotImplementedException();
     }

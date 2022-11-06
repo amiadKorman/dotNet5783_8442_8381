@@ -1,4 +1,5 @@
 ﻿using DO;
+
 namespace Dal;
 
 public class DalOrder
@@ -39,9 +40,8 @@ public class DalOrder
     /// Delete order by given ID
     /// </summary>
     /// <param name="orderID"></param>
-    /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order DeleteOrder(int orderID)
+    public void DeleteOrder(int orderID)
     {
         throw new NotImplementedException();
     }

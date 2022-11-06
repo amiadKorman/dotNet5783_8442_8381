@@ -2,46 +2,46 @@
 
 namespace Dal;
 
-public class DalProduct
+public class DalCustomer
 {
     /// <summary>
-    /// Add new product item
+    /// Add new customer item
     /// </summary>
-    /// <param name="newProdect"></param>
+    /// <param name="newCustomer"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void AddProduct(OrderItem newProdect)
+    public void AddCustomer(Customer newCustomer)
     {
         throw new NotImplementedException();
     }
 
     /// <summary>
-    /// Return product by given
+    /// Return order by given
     /// </summary>
-    /// <param name="productID"></param>
+    /// <param name="customerID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order GetProduct(int productID)
+    public Customer GetCustomer(int customerID)
     {
         throw new NotImplementedException();
     }
 
     /// <summary>
-    /// Update product item by given ID
+    /// Update order item by given ID
     /// </summary>
-    /// <param name="newProduct"></param>
+    /// <param name="newCustomer"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Product UpdateProduct(Product newProduct)
+    public Customer UpdateOrderItem(Customer newCustomer)
     {
         throw new NotImplementedException();
     }
 
     /// <summary>
-    /// Delete product item by given ID
+    /// Delete customer by given ID
     /// </summary>
-    /// <param name="productID"></param>
+    /// <param name="customerID"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void DeleteProduct(int productID)
+    public void DeleteCustomer(int customerID)
     {
         throw new NotImplementedException();
     }
