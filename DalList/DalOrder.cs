@@ -4,6 +4,7 @@ namespace Dal;
 
 public class DalOrder
 {
+    #region Add new order
     /// <summary>
     /// Add new order
     /// </summary>
@@ -13,7 +14,9 @@ public class DalOrder
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Return order by given ID
     /// <summary>
     /// Return order by given ID
     /// </summary>
@@ -24,7 +27,9 @@ public class DalOrder
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Update order by given ID
     /// <summary>
     /// Update order by given ID
     /// </summary>
@@ -35,7 +40,9 @@ public class DalOrder
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Delete order by given ID
     /// <summary>
     /// Delete order by given ID
     /// </summary>
@@ -45,5 +52,5 @@ public class DalOrder
     {
         throw new NotImplementedException();
     }
-
+    #endregion
 }

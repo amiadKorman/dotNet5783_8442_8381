@@ -4,6 +4,8 @@ namespace Dal;
 
 public class DalProduct
 {
+
+    #region Add new product item
     /// <summary>
     /// Add new product item
     /// </summary>
@@ -13,7 +15,9 @@ public class DalProduct
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Return product by given
     /// <summary>
     /// Return product by given
     /// </summary>
@@ -24,7 +28,9 @@ public class DalProduct
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Update product item by given ID
     /// <summary>
     /// Update product item by given ID
     /// </summary>
@@ -35,7 +41,9 @@ public class DalProduct
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Delete product item by given ID
     /// <summary>
     /// Delete product item by given ID
     /// </summary>
@@ -45,4 +53,6 @@ public class DalProduct
     {
         throw new NotImplementedException();
     }
+    #endregion
+
 }
