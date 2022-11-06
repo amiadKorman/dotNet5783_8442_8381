@@ -173,10 +173,10 @@ internal static class DataSource
         {
             customersArray[Config.customersLastIndex++] = new Customer
             {
-                CustomerID = RandomNumber.Next(100000000, 1000000000),
-                CustomerName = ((Names)i).ToString(),
-                CustomerEmail = $"{((Names)i).ToString() + i}@gmail.com",
-                CustomerAddress = $"{(Cities)RandomNumber.Next(5)} {(Streets)RandomNumber.Next(4)} {i}"
+                ID = RandomNumber.Next(100000000, 1000000000),
+                Name = ((Names)i).ToString(),
+                Email = $"{((Names)i).ToString() + i}@gmail.com",
+                Address = $"{(Cities)RandomNumber.Next(5)} {(Streets)RandomNumber.Next(4)} {i}"
             };
         }
     }
@@ -188,7 +188,7 @@ internal static class DataSource
             ordersArray[Config.ordersLastIndex++] = new Order
             {
                 ID = Config.getOrderID(),
-                CustomerID = (customersArray[RandomNumber.Next(5)]).CustomerID,
+                CustomerID = (customersArray[RandomNumber.Next(5)]).ID,
                 OrderDate = DateTime.MinValue,
                 ShipDate = DateTime.MinValue,
                 DeliveryDate = DateTime.MinValue
