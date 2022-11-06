@@ -4,6 +4,7 @@ namespace Dal;
 
 public class DalCustomer
 {
+    #region Add new customer item
     /// <summary>
     /// Add new customer item
     /// </summary>
@@ -13,7 +14,9 @@ public class DalCustomer
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Return order by given
     /// <summary>
     /// Return order by given
     /// </summary>
@@ -24,7 +27,9 @@ public class DalCustomer
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Update order item by given ID
     /// <summary>
     /// Update order item by given ID
     /// </summary>
@@ -35,7 +40,9 @@ public class DalCustomer
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Delete customer by given ID
     /// <summary>
     /// Delete customer by given ID
     /// </summary>
@@ -45,4 +52,5 @@ public class DalCustomer
     {
         throw new NotImplementedException();
     }
+    #endregion
 }
