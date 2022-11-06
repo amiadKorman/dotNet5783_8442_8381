@@ -19,24 +19,14 @@ namespace Dal
 
 
             NewOrder.ID = SafeInput.IntegerInput("ID order: ");
-            NewOrder.CustomerId = SafeInput.IntegerInput("ID Customer: ");        
+            NewOrder.CustomerID = SafeInput.IntegerInput("ID Customer: ");        
 
             DateTime? MinDateTime = DateTime.MinValue;
             NewOrder.OrderDate = Convert.ToDateTime(MinDateTime);
             NewOrder.ShipDate = Convert.ToDateTime(MinDateTime); ;
             NewOrder.DeliveryDate = Convert.ToDateTime(MinDateTime);
 
-            Console.WriteLine("Adding a new Order...");
-
-            DalOrder.Equals(NewOrder);            
-
-
-
-
-
-
-
-
+            Console.WriteLine("Adding a new Order...");                  
 
 
             Console.WriteLine("The new Base Station was successfully added\n");

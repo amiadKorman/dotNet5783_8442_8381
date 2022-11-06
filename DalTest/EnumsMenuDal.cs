@@ -55,6 +55,8 @@ namespace Dal
         ShowListOfOrderItems = 4,
         [Description("Delete an Order Items List")]
         DeleteAnOrderItems = 5,
+        [Description("Return back to the menu")]
+        GoToTheFirstMenu = 9
     }
     #endregion
 
@@ -71,6 +73,8 @@ namespace Dal
         ShowListOfProduct = 4,
         [Description("Delete a Product List")]
         DeleteAProduct = 5,
+        [Description("Return back to the menu")]
+        GoToTheFirstMenu = 9
     }
     #endregion       
 }
