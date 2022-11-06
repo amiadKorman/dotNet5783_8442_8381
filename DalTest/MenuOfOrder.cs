@@ -28,9 +28,13 @@ namespace Dal
 
             Console.WriteLine("Adding a new Order...");
 
-            
-            
-               
+            DalOrder.Equals(NewOrder);            
+
+
+
+
+
+
 
 
 
