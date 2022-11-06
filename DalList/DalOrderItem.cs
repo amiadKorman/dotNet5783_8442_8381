@@ -40,9 +40,8 @@ public class DalOrderItem
     /// Delete order item by given ID
     /// </summary>
     /// <param name="orderItemID"></param>
-    /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public OrderItem DeleteOrderItem(int orderItemID)
+    public void DeleteOrderItem(int orderItemID)
     {
         throw new NotImplementedException();
     }

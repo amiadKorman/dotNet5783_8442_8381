@@ -31,7 +31,7 @@ public class DalProduct
     /// <param name="newProduct"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Product UpdateOrderItem(Product newProduct)
+    public Product UpdateProduct(Product newProduct)
     {
         throw new NotImplementedException();
     }
@@ -40,9 +40,8 @@ public class DalProduct
     /// Delete product item by given ID
     /// </summary>
     /// <param name="productID"></param>
-    /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Product DeleteOrderItem(int productID)
+    public void DeleteProduct(int productID)
     {
         throw new NotImplementedException();
     }
