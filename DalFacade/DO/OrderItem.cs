@@ -6,6 +6,11 @@
 public struct OrderItem
 {
     /// <summary>
+    /// ID of the order item
+    /// </summary>
+    public int ID { get; set; }
+
+    /// <summary>
     /// ID of the product
     /// </summary>
     public int ProductID { get; set; }
@@ -26,6 +31,7 @@ public struct OrderItem
     public int Amount { get; set; }
 
     public override string ToString() => $@"
+        Order Item ID: {ID}
         Product ID: {ProductID}, 
         Order Name: {OrderID}
         Price: {Price}
