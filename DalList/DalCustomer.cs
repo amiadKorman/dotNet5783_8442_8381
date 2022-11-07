@@ -28,8 +28,6 @@ public class DalCustomer
         throw new NotImplementedException();
     }
     #endregion
-
-    #region Update order item by given ID
     /// <summary>
     /// Update order item by given ID
     /// </summary>
@@ -40,9 +38,7 @@ public class DalCustomer
     {
         throw new NotImplementedException();
     }
-    #endregion
 
-    #region Delete customer by given ID
     /// <summary>
     /// Delete customer by given ID
     /// </summary>
@@ -52,5 +48,4 @@ public class DalCustomer
     {
         throw new NotImplementedException();
     }
-    #endregion
 }
