@@ -12,12 +12,13 @@ public class DalOrderItem
     /// <exception cref="NotImplementedException"></exception>
     public static void AddOrderItem(int Orderid, int ProductId, double priceOr, int AmountOr)
     {
-        OrderItem NewOrderItem = new OrderItem(); 
-        NewOrderItem.OrderID = Orderid;
-        NewOrderItem.ProductID = ProductId;
-        NewOrderItem.Price = priceOr;
-        NewOrderItem.Amount = AmountOr;
-        throw new NotImplementedException();
+         OrderItem newOrderItem= new()
+        {
+            OrderID = Orderid,
+            ProductID = ProductId,
+            Price = priceOr,
+            Amount = AmountOr
+        };
     }
     #endregion
 
@@ -37,7 +38,7 @@ public class DalOrderItem
                 return OItem;
             }
         }
-        throw new NotImplementedException();
+        throw new Exception("Order Item ID Not Exist");
     }
     #endregion
 
@@ -49,7 +50,7 @@ public class DalOrderItem
     {
         foreach (OrderItem orderItem in DataSource.orderItemsArray)
         {
-            orderItem.ToString();
+            Console.WriteLine(orderItem);
         }
     }
 
@@ -84,9 +85,10 @@ public class DalOrderItem
             {
                 int index = Array.IndexOf(DataSource.orderItemsArray, OrderItem);
                 DataSource.orderItemsArray = DataSource.orderItemsArray.Where((e, i) => i != index).ToArray();
+                return;
             }
         }
-        throw new NotImplementedException();
+        throw new Exception("Order Item ID Not Exist");
     }
     #endregion
 }
