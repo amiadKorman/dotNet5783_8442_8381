@@ -57,7 +57,7 @@ public class DalProduct
     {
         foreach (Product p in DataSource.productsArray)
         {
-            p.ToString();
+            Console.WriteLine(p);
 
         }
     }
