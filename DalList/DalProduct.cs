@@ -13,16 +13,22 @@ public class DalProduct
     /// <exception cref="NotImplementedException"></exception>
     public static void AddProduct(int Id, string nameP,double price, CategoryOfProduct category, int InStock)
     {
-        Product NewProduct = new Product();
-        NewProduct.ID = Id;
-        NewProduct.Name = nameP;
-        NewProduct.Price = price;
-        NewProduct.Category = category;
-        NewProduct.InStock = InStock;
+        foreach (OrderItem OItem in DataSource.orderItemsArray)
+        {
+            if (Id == OItem.ID)
+            {
+                throw new Exception("product ID Are Exist");
 
-        //DataSource.productsArray[0] = NewProduct;  
-
-        throw new NotImplementedException();
+            }
+        }
+        Product NewProduct = new Product
+        {
+            ID = Id,
+            Name = nameP,
+            Price = price,
+            Category = category,
+            InStock = InStock
+        };
     }
     #endregion
 
