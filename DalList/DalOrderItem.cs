@@ -9,7 +9,7 @@ public class DalOrderItem
     /// Add new order item
     /// </summary>
     /// <param name="newOrderItem"></param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="Throw New Exception"></exception>
     public static void AddOrderItem(int Orderid, int ProductId, double priceOr, int AmountOr)
     {
         foreach (OrderItem OItem in DataSource.orderItemsArray)

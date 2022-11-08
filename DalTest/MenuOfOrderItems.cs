@@ -16,8 +16,9 @@ namespace Dal
         /// </summary>
         public static void AddNewOrderItem()
         {
+            
             Console.WriteLine("for add a new Order Item, please fill in the following data:");
-            int OrderID = SafeInput.IntegerInput("ID: ");
+            int OrderID = SafeInput.IntegerInput("ID: ");            
             int ProductID = SafeInput.IntegerInput("ProductID: ");
             double Price = SafeInput.DoubleInput("Price: ");
             int Amount = SafeInput.IntegerInput("Amount: ");

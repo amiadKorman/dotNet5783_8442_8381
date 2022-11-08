@@ -22,15 +22,27 @@ namespace Dal
             DateTime ShipDate = Convert.ToDateTime(NullDateTime); ;
             DateTime DeliveryDate = Convert.ToDateTime(NullDateTime);
             Console.WriteLine("Adding a new Order...");
-            DalOrder.AddOrder(Id,CustomerId,OrderDate,ShipDate,DeliveryDate);           
-            Console.WriteLine("The new Order was successfully added\n");
+            DalOrder.AddOrder(Id,CustomerId,OrderDate,ShipDate,DeliveryDate);    
+            
         }
         #endregion
 
         #region Update Order
         public static void UpdateOrder()
         {
-            
+            int Id = SafeInput.IntegerInput("Plese enter the ID of order that you wont to update: ");
+            DalOrder.OrderAreExist(Id);
+            int CustomerId = SafeInput.IntegerInput("ID Customer: ");
+            DateTime? NullDateTime = null;
+            DateTime OrderDate = Convert.ToDateTime(NullDateTime);
+            DateTime ShipDate = Convert.ToDateTime(NullDateTime); ;
+            DateTime DeliveryDate = Convert.ToDateTime(NullDateTime);
+            Console.WriteLine("Update the Order ditels...");
+
+
+
+
+
 
         }
         #endregion

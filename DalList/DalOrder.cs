@@ -6,21 +6,17 @@ public class DalOrder
 {
     #region Add new order
     /// <summary>
-    /// Add new order
+    /// Add new order and before the create check if there is an Id exist
     /// </summary>
     /// <param name="newOrder"></param>
     /// <exception cref="NotImplementedException"></exception>
     public static void AddOrder(int Id, int CustomerId, DateTime OrderD, DateTime ShipD, DateTime DeliveryD)
     {
-        foreach (OrderItem OItem in DataSource.orderItemsArray)
+        if (OrderAreExist(Id))
         {
-            if (Id == OItem.ID)
-            {
-                throw new Exception("Order ID Are Exist");
-
-            }
+            throw new Exception("Order ID Are Exist");
         }
-
+        // create new order
         Order NewOrder = new()
         {
             ID = Id,
@@ -29,8 +25,7 @@ public class DalOrder
             ShipDate = ShipD,
             DeliveryDate = DeliveryD
         };
-
-        throw new NotImplementedException();
+        Console.WriteLine("The new Order was successfully added\n");
     }
     #endregion
 
@@ -49,22 +44,20 @@ public class DalOrder
             {
                 return order;
             }
-
         }
-        throw new NotImplementedException();
+        throw new Exception("Order ID Are not Exist");
     }
     #endregion
 
     #region Rerurn all Orders
     /// <summary>
-    /// 
+    /// Print all the orders in the array
     /// </summary>
     public static void ShowAllOrders()
     {
         foreach (Order order in DataSource.ordersArray)
         {
-            Console.WriteLine(order);
-          
+            Console.WriteLine(order);          
         }
     }
 
@@ -77,10 +70,11 @@ public class DalOrder
     /// <param name="newOrder"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order UpdateOrder(Order newOrder)
+    public static void UpdateOrder(Order newOrder)
     {
+        
 
-        throw new NotImplementedException();
+        
     }
     #endregion
 
@@ -92,7 +86,7 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public static void DeleteOrder(int orderID)
     {
-        int i = 0;
+        
         foreach (Order order in DataSource.ordersArray)
         {
             if (orderID == order.ID)
@@ -102,6 +96,27 @@ public class DalOrder
             }
         }
         throw new NotImplementedException();
+    }
+    #endregion
+
+
+    #region Order Are Exist
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="IdOfOrder"></param>
+    /// <returns>True if Order Are Exist False if Not</returns>
+    public static bool OrderAreExist(int IdOfOrder)
+    {
+        // Run all over the Array and check if there is an Id exist
+        foreach (OrderItem OItem in DataSource.orderItemsArray)
+        {
+            if (IdOfOrder == OItem.ID)
+            {                
+                return true;
+            }
+        }
+        return false;
     }
     #endregion
 }
