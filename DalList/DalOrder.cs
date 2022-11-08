@@ -37,7 +37,6 @@ public class DalOrder
             if (orderID == order.ID)
             {
                 return order;
-
             }
 
         }
@@ -54,6 +53,7 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public Order UpdateOrder(Order newOrder)
     {
+
         throw new NotImplementedException();
     }
     #endregion
@@ -64,8 +64,17 @@ public class DalOrder
     /// </summary>
     /// <param name="orderID"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void DeleteOrder(int orderID)
+    public static void DeleteOrder(int orderID)
     {
+        int i = 0;
+        foreach (Order order in DataSource.ordersArray)
+        {
+            if (orderID == order.ID)
+            {
+                int index = Array.IndexOf(DataSource.ordersArray, order);
+                DataSource.ordersArray = DataSource.ordersArray.Where((e, i) => i != index).ToArray();
+            }
+        }
         throw new NotImplementedException();
     }
     #endregion

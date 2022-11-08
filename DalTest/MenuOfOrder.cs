@@ -48,6 +48,7 @@ namespace Dal
         #region Show Order List
         public static void ShowOrderList()
         {
+            
            
 
         }
@@ -56,7 +57,8 @@ namespace Dal
         #region Delete Order
         public static void DeleteOrder()
         {
-
+            int IdOrder = SafeInput.IntegerInput("ID: ");
+            DalOrder.DeleteOrder(IdOrder);
         }
         #endregion
 
