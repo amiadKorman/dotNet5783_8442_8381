@@ -1,6 +1,6 @@
 ﻿namespace Dal;
 
-class SafeInput
+internal class SafeInput
 {
     /// <summary>
     /// Input an integer value in safe way. if there is an invalid input - try again.

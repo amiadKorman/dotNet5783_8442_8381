@@ -1,6 +1,6 @@
 ﻿namespace Dal;
 
-public class MenuOfOrder
+internal class MenuOfOrder
 {
     #region Add New Order
     public static void AddNewOrder()

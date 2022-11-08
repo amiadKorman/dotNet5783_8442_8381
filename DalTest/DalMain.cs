@@ -1,9 +1,9 @@
 ﻿namespace Dal;
 
-class DalMain
+public class DalMain
 {
     #region Mainaly Main
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         EntitysMenu MenuChoise = EntitysMenu.OrderMenu;
         while (!MenuChoise.Equals(EntitysMenu.Exit))
