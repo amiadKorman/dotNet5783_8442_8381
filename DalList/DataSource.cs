@@ -39,8 +39,8 @@ internal static class DataSource
         private static int orderItemID = 1000000;
         private static int orderID = 5000000;
 
-        internal static int getOrderID() { return orderID++; }
-        internal static int getorderItemID() { return orderItemID++; }
+        internal static int GetOrderID { get => orderID++; }
+        internal static int GetorderItemID { get => orderItemID++; }
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ internal static class DataSource
 
     private static void InitializeProducts()
     {
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100000,
             Name = "Apple iPhone 14 128GB",
@@ -69,7 +69,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Phones,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100001,
             Name = "Apple iPhone 14 Pro 256GB",
@@ -77,7 +77,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Phones,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100002,
             Name = "Apple iPhone 14 Pro Max 512GB",
@@ -85,7 +85,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Phones,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100100,
             Name = "Apple MacBook Pro 16 2TB",
@@ -93,7 +93,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Laptops,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100101,
             Name = "Apple MacBook Pro 14 512GB",
@@ -101,7 +101,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Laptops,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100110,
             Name = "Dell XPS 17 1TB",
@@ -109,7 +109,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Laptops,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100111,
             Name = "Dell XPS 15 1TB",
@@ -117,7 +117,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Laptops,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100300,
             Name = "Samsung Odyssey 48.7'' 4K",
@@ -125,7 +125,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Screens,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100310,
             Name = "ASUS ROG Strix 43'' 4K",
@@ -133,7 +133,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Screens,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100400,
             Name = "Samsung 75'' Neo QLED 8K",
@@ -141,7 +141,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Televisions,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100410,
             Name = "Sony Bravia OLED 77'' 4K",
@@ -149,7 +149,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Televisions,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100500,
             Name = "Logitech MX Master 3S",
@@ -157,7 +157,7 @@ internal static class DataSource
             Category = CategoryOfProduct.Accessories,
             InStock = RandomNumber.Next(50)
         };
-        productsArray[Config.productsLastIndex++] = new Product
+        productsArray[Config.productsLastIndex++] = new()
         {
             ID = 100510,
             Name = "Logitech MX Mechanical",
@@ -171,7 +171,7 @@ internal static class DataSource
     {
         for (int i = 0; i < 5; i++)
         {
-            customersArray[Config.customersLastIndex++] = new Customer
+            customersArray[Config.customersLastIndex++] = new()
             {
                 ID = RandomNumber.Next(100000000, 1000000000),
                 Name = ((Names)i).ToString(),
@@ -185,14 +185,30 @@ internal static class DataSource
     {
         for (int i = 0; i < 20; i++)
         {
-            ordersArray[Config.ordersLastIndex++] = new Order
+            Order order = new()
             {
-                ID = Config.getOrderID(),
-                CustomerID = (customersArray[RandomNumber.Next(5)]).ID,
-                OrderDate = DateTime.MinValue,
-                ShipDate = DateTime.MinValue,
-                DeliveryDate = DateTime.MinValue
+                ID = Config.GetOrderID,
+                CustomerID = (customersArray[RandomNumber.Next(Config.customersLastIndex)]).ID,
             };
+            bool shipped = RandomNumber.NextDouble() < 0.7D;
+            if (shipped)
+            {
+                bool delivered = RandomNumber.NextDouble() < 0.3D;
+                if (delivered)
+                {
+                    order.DeliveryDate = DateTime.Now - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay));
+                    order.ShipDate = order.DeliveryDate - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay*18));
+                }
+                else
+                {
+                    order.ShipDate = order.OrderDate - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay * 10));
+                }
+                order.OrderDate = (DateTime)order.ShipDate - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay * 3));
+            }
+            else
+            {
+                order.OrderDate = DateTime.Now - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay * 3));
+            }
         }
     }
 
@@ -200,12 +216,13 @@ internal static class DataSource
     {
         for (int i = 0; i < 40; i++)
         {
+            Product product = productsArray[RandomNumber.Next(Config.productsLastIndex)];
             orderItemsArray[Config.orderItemsLastIndex++] = new OrderItem
             {
-                ProductID = (productsArray[RandomNumber.Next(13)]).ID,
+                ProductID = product.ID,
                 OrderID = (ordersArray[RandomNumber.Next(20)]).ID,
-                Price = 100,
-                Amount = 3,
+                Price = product.Price,
+                Amount = RandomNumber.Next(5),
             };
         }
     }
