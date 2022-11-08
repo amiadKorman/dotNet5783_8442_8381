@@ -26,5 +26,5 @@ public struct Customer
         Customer ID: {ID}, 
         Customer Name: {Name},
         Customer Email: {Email},
-        Customer Adress: {Address}";  
+        Customer Adress: {Address}";
 }

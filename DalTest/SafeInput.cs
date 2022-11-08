@@ -14,7 +14,6 @@ class SafeInput
         return int.TryParse(Console.ReadLine(), out num) ? num : IntegerInput("Invalid input. Please enter only an integer value:\n");
     }
 
-
     /// <summary>
     /// Input a rational value in safe way. if there is an invalid input - try again.
     /// </summary>
@@ -27,11 +26,11 @@ class SafeInput
         return double.TryParse(Console.ReadLine(), out num) ? num : DoubleInput("Invalid input. Please enter only an integer value:\n");
     }
 
-    public static string stringInput(string message = "")
+    public static string StringInput(string message = "")
     {
         Console.Write(message);
-        string My_str= " ";
-        return string.IsNullOrWhiteSpace(message) ? My_str : stringInput("Invalid input. Please enter value value:\n");
+        string My_str = " ";
+        return string.IsNullOrWhiteSpace(message) ? My_str : StringInput("Invalid input. Please enter value value:\n");
     }
 
 }

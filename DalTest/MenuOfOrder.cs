@@ -13,8 +13,8 @@ public class MenuOfOrder
         DateTime ShipDate = Convert.ToDateTime(NullDateTime); ;
         DateTime DeliveryDate = Convert.ToDateTime(NullDateTime);
         Console.WriteLine("Adding a new Order...");
-        DalOrder.AddOrder(Id,CustomerId,OrderDate,ShipDate,DeliveryDate);    
-        
+        DalOrder.AddOrder(Id, CustomerId, OrderDate, ShipDate, DeliveryDate);
+
     }
     #endregion
 
@@ -41,7 +41,7 @@ public class MenuOfOrder
     #region Show Order
     public static void ShowOrder()
     {
-        int IdOrder = SafeInput.IntegerInput("ID: ");            
+        int IdOrder = SafeInput.IntegerInput("ID: ");
         Console.WriteLine(DalOrder.GetOrder(IdOrder));
 
     }

@@ -4,14 +4,13 @@ namespace Dal;
 
 public class DalProduct
 {
-
     #region Add new product item
     /// <summary>
     /// Add new product item
     /// </summary>
     /// <param name="newProdect"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public static void AddProduct(int Id, string nameP,double price, CategoryOfProduct category, int InStock)
+    public static void AddProduct(int Id, string nameP, double price, CategoryOfProduct category, int InStock)
     {
         foreach (OrderItem OItem in DataSource.orderItemsArray)
         {
@@ -92,9 +91,8 @@ public class DalProduct
                 DataSource.productsArray = DataSource.productsArray.Where((e, i) => i != index).ToArray();
             }
         }
-        
+
         throw new NotImplementedException();
     }
     #endregion
-
 }

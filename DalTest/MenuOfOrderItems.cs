@@ -8,9 +8,9 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void AddNewOrderItem()
     {
-        
+
         Console.WriteLine("for add a new Order Item, please fill in the following data:");
-        int OrderID = SafeInput.IntegerInput("ID: ");            
+        int OrderID = SafeInput.IntegerInput("ID: ");
         int ProductID = SafeInput.IntegerInput("ProductID: ");
         double Price = SafeInput.DoubleInput("Price: ");
         int Amount = SafeInput.IntegerInput("Amount: ");
@@ -54,7 +54,7 @@ internal class MenuOfOrderItems
     {
         int IdOrderIthem = SafeInput.IntegerInput("ID: ");
         DalOrderItem.DeleteOrderItem(IdOrderIthem);
-        
+
     }
     #endregion
 
@@ -96,5 +96,4 @@ internal class MenuOfOrderItems
         }
     }
     #endregion
-
 }

@@ -4,14 +4,13 @@ namespace Dal;
 
 internal class MenuOfProduct
 {
-
     #region Add New Product
     public static void AddNewProduct()
     {
         Console.WriteLine("for add a new Order Item, please fill in the following data:");
 
         int ID = SafeInput.IntegerInput("ID: ");
-        string Name = SafeInput.stringInput("Name:" );
+        string Name = SafeInput.StringInput("Name:");
         double Price = SafeInput.DoubleInput("Price: ");
         Console.WriteLine("Category: ");
         CategoryOfProduct CategoryOf = (CategoryOfProduct)SafeInput.IntegerInput
@@ -29,7 +28,7 @@ internal class MenuOfProduct
     #region Update Product
     public static void UpdateProduct()
     {
-        
+
 
     }
     #endregion
@@ -57,7 +56,8 @@ internal class MenuOfProduct
         DalProduct.DeleteProduct(Idproduct);
     }
     #endregion
-    
+
+    #region Product Menu
     public static void ProductMenu()
     {
         ProductMenu ProductChoise = Dal.ProductMenu.AddProduct;
@@ -92,4 +92,5 @@ internal class MenuOfProduct
 
         }
     }
+    #endregion
 }

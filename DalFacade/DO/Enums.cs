@@ -13,11 +13,8 @@ public enum CategoryOfProduct
     [Description("Televisions")]
     Televisions = 4,
     [Description("Accessories")]
-    Accessories = 5,        
-    }
-
-
-
+    Accessories = 5,
+}
 
 public enum Names
 {
@@ -43,8 +40,6 @@ public enum Names
     Nathan = 10,
 }
 
-
-
 public enum Cities
 {
     [Description("Jerusalem")]
@@ -58,7 +53,6 @@ public enum Cities
     [Description("Merav")]
     Merav = 5,
 }
-
 
 public enum Streets
 {

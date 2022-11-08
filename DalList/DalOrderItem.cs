@@ -17,10 +17,10 @@ public class DalOrderItem
             if (Orderid == OItem.ID)
             {
                 throw new Exception("Order Item ID Are Exist");
-                
+
             }
         }
-        OrderItem newOrderItem= new()
+        OrderItem newOrderItem = new()
         {
             OrderID = Orderid,
             ProductID = ProductId,

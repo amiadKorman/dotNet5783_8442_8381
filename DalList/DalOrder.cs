@@ -57,7 +57,7 @@ public class DalOrder
     {
         foreach (Order order in DataSource.ordersArray)
         {
-            Console.WriteLine(order);          
+            Console.WriteLine(order);
         }
     }
 
@@ -72,9 +72,9 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public static void UpdateOrder(Order newOrder)
     {
-        
 
-        
+
+
     }
     #endregion
 
@@ -86,7 +86,7 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public static void DeleteOrder(int orderID)
     {
-        
+
         foreach (Order order in DataSource.ordersArray)
         {
             if (orderID == order.ID)
@@ -98,7 +98,6 @@ public class DalOrder
         throw new NotImplementedException();
     }
     #endregion
-
 
     #region Order Are Exist
     /// <summary>
@@ -112,7 +111,7 @@ public class DalOrder
         foreach (OrderItem OItem in DataSource.orderItemsArray)
         {
             if (IdOfOrder == OItem.ID)
-            {                
+            {
                 return true;
             }
         }
