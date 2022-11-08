@@ -14,32 +14,28 @@ namespace Dal
         #region Add New Product
         public static void AddNewProduct()
         {
-            Product NewProduct = new Product();
             Console.WriteLine("for add a new Order Item, please fill in the following data:");
 
-            NewProduct.ID = SafeInput.IntegerInput("ID: ");
-            NewProduct.Name = SafeInput.stringInput("Name:" );
-            NewProduct.Price = SafeInput.DoubleInput("Price: ");
+            int ID = SafeInput.IntegerInput("ID: ");
+            string Name = SafeInput.stringInput("Name:" );
+            double Price = SafeInput.DoubleInput("Price: ");
             Console.WriteLine("Category: ");
-            NewProduct.Category = (CategoryOfProduct)SafeInput.IntegerInput
+            CategoryOfProduct CategoryOf = (CategoryOfProduct)SafeInput.IntegerInput
                 ("Category Of Product:\n" +
                 "X - press 1\n" +
                 "Y- press 2\n" +
                 "Z - press 3\n");
-            NewProduct.ID = SafeInput.IntegerInput("InStock: ");
-
-
+            int InStock = SafeInput.IntegerInput("InStock: ");
             Console.WriteLine("Adding a new Product...");
-            
-
+            DalProduct.AddProduct(ID, Name, Price, CategoryOf, InStock);
             Console.WriteLine("The new Product was successfully added\n");
-
         }
         #endregion
 
         #region Update Product
         public static void UpdateProduct()
         {
+            
 
         }
         #endregion

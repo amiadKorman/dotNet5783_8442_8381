@@ -22,17 +22,15 @@ namespace Dal
             DateTime ShipDate = Convert.ToDateTime(NullDateTime); ;
             DateTime DeliveryDate = Convert.ToDateTime(NullDateTime);
             Console.WriteLine("Adding a new Order...");
-            Dal.DalOrder.AddOrder(Id,CustomerId,OrderDate,ShipDate,DeliveryDate);            
-            
+            DalOrder.AddOrder(Id,CustomerId,OrderDate,ShipDate,DeliveryDate);           
             Console.WriteLine("The new Order was successfully added\n");
-
         }
         #endregion
 
         #region Update Order
         public static void UpdateOrder()
         {
-
+            
 
         }
         #endregion
@@ -40,8 +38,8 @@ namespace Dal
         #region Show Order
         public static void ShowOrder()
         {
-            int IdOrder = SafeInput.IntegerInput("ID: ");
-            //Console.WriteLine(DalOrder(IdOrder));
+            int IdOrder = SafeInput.IntegerInput("ID: ");            
+            Console.WriteLine(DalOrder.GetOrder(IdOrder));
 
         }
 
@@ -50,7 +48,7 @@ namespace Dal
         #region Show Order List
         public static void ShowOrderList()
         {
-
+           
 
         }
         #endregion
