@@ -47,6 +47,14 @@ public class DalProduct
     #endregion
 
     #region Return all products
+    public static void ShowAllProdoct()
+    {
+        foreach (Product p in DataSource.productsArray)
+        {
+            p.ToString();
+
+        }
+    }
 
     #endregion
 

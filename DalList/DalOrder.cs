@@ -44,6 +44,20 @@ public class DalOrder
     }
     #endregion
 
+    #region Rerurn all Orders
+    /// <summary>
+    /// 
+    /// </summary>
+    public static void ShowAllOrders()
+    {
+        foreach (Order order in DataSource.ordersArray)
+        {
+            order.ToString();
+        }
+    }
+
+    #endregion
+
     #region Update order by given ID
     /// <summary>
     /// Update order by given ID

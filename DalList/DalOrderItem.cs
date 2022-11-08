@@ -41,6 +41,20 @@ public class DalOrderItem
     }
     #endregion
 
+    #region Return All Order Item
+    /// <summary>
+    /// 
+    /// </summary>
+    public static void ShowAllOrderItems()
+    {
+        foreach (OrderItem orderItem in DataSource.orderItemsArray)
+        {
+            orderItem.ToString();
+        }
+    }
+
+    #endregion
+
     #region Update order item by given ID
     /// <summary>
     /// Update order item by given ID
@@ -50,6 +64,8 @@ public class DalOrderItem
     /// <exception cref="NotImplementedException"></exception>
     public OrderItem UpdateOrderItem(OrderItem newOrderItem)
     {
+
+
         throw new NotImplementedException();
     }
     #endregion
