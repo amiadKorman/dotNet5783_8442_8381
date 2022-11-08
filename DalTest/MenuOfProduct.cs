@@ -59,7 +59,8 @@ namespace Dal
         #region Delete Product
         public static void DeleteProduct()
         {
-
+            int Idproduct = SafeInput.IntegerInput("ID: ");
+            DalProduct.DeleteProduct(Idproduct);
         }
         #endregion
 

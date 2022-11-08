@@ -65,14 +65,14 @@ public class DalProduct
     /// </summary>
     /// <param name="productID"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void DeleteProduct(int productID)
+    public static void DeleteProduct(int productID)
     {
         foreach (Product product in DataSource.productsArray)
         {
             if (productID == product.ID)
             {
-                
-                
+                int index = Array.IndexOf(DataSource.productsArray, product);
+                DataSource.productsArray = DataSource.productsArray.Where((e, i) => i != index).ToArray();
             }
         }
         
