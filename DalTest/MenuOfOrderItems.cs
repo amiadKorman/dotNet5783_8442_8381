@@ -59,7 +59,9 @@ namespace Dal
         #region Delete Order Item
         public static void DeleteOrderItem()
         {
-
+            int IdOrderIthem = SafeInput.IntegerInput("ID: ");
+            DalOrderItem.DeleteOrderItem(IdOrderIthem);
+            
         }
         #endregion
 

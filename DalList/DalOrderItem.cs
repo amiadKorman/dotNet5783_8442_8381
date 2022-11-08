@@ -35,7 +35,6 @@ public class DalOrderItem
             if (orderItemID == OItem.ID)
             {
                 return OItem;
-
             }
         }
         throw new NotImplementedException();
@@ -61,8 +60,16 @@ public class DalOrderItem
     /// </summary>
     /// <param name="orderItemID"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void DeleteOrderItem(int orderItemID)
+    public static void DeleteOrderItem(int orderItemID)
     {
+        foreach (OrderItem OrderItem in DataSource.orderItemsArray)
+        {
+            if (OrderItem.ID == orderItemID)
+            {
+                int index = Array.IndexOf(DataSource.orderItemsArray, OrderItem);
+                DataSource.orderItemsArray = DataSource.orderItemsArray.Where((e, i) => i != index).ToArray();
+            }
+        }
         throw new NotImplementedException();
     }
     #endregion
