@@ -11,8 +11,17 @@ public class DalProduct
     /// </summary>
     /// <param name="newProdect"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void AddProduct(OrderItem newProdect)
+    public static void AddProduct(int Id, string nameP,double price, CategoryOfProduct category, int InStock)
     {
+        Product NewProduct = new Product();
+        NewProduct.ID = Id;
+        NewProduct.Name = nameP;
+        NewProduct.Price = price;
+        NewProduct.Category = category;
+        NewProduct.InStock = InStock;
+
+        //DataSource.productsArray[0] = NewProduct;  
+
         throw new NotImplementedException();
     }
     #endregion
@@ -24,8 +33,15 @@ public class DalProduct
     /// <param name="productID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order GetProduct(int productID)
+    public Product GetProduct(int productID)
     {
+        foreach (Product product in DataSource.productsArray)
+        {
+            if (productID == product.ID)
+            {
+                return product;
+            }
+        }
         throw new NotImplementedException();
     }
     #endregion
@@ -51,6 +67,15 @@ public class DalProduct
     /// <exception cref="NotImplementedException"></exception>
     public void DeleteProduct(int productID)
     {
+        foreach (Product product in DataSource.productsArray)
+        {
+            if (productID == product.ID)
+            {
+                
+                
+            }
+        }
+        
         throw new NotImplementedException();
     }
     #endregion

@@ -30,8 +30,17 @@ public class DalOrder
     /// <param name="orderID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Order GetOrder(int orderID)
+    public static Order GetOrder(int orderID)
     {
+        foreach (Order order in DataSource.ordersArray)
+        {
+            if (orderID == order.ID)
+            {
+                return order;
+
+            }
+
+        }
         throw new NotImplementedException();
     }
     #endregion
