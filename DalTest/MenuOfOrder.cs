@@ -14,22 +14,17 @@ namespace Dal
         #region Add New Order
         public static void AddNewOrder()
         {
-            Order NewOrder = new Order();
             Console.WriteLine("for add a new Order, please fill in the following data:");
-
-
-            NewOrder.ID = SafeInput.IntegerInput("ID order: ");
-            NewOrder.CustomerID = SafeInput.IntegerInput("ID Customer: ");
-
+            int Id = SafeInput.IntegerInput("ID order: ");
+            int CustomerId = SafeInput.IntegerInput("ID Customer: ");
             DateTime? NullDateTime = null;
-            NewOrder.OrderDate = Convert.ToDateTime(NullDateTime);
-            NewOrder.ShipDate = Convert.ToDateTime(NullDateTime); ;
-            NewOrder.DeliveryDate = Convert.ToDateTime(NullDateTime);
-
-            Console.WriteLine("Adding a new Order...");                  
-
-
-            Console.WriteLine("The new Base Station was successfully added\n");
+            DateTime OrderDate = Convert.ToDateTime(NullDateTime);
+            DateTime ShipDate = Convert.ToDateTime(NullDateTime); ;
+            DateTime DeliveryDate = Convert.ToDateTime(NullDateTime);
+            Console.WriteLine("Adding a new Order...");
+            Dal.DalOrder.AddOrder(Id,CustomerId,OrderDate,ShipDate,DeliveryDate);            
+            
+            Console.WriteLine("The new Order was successfully added\n");
 
         }
         #endregion
