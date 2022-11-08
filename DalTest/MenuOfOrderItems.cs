@@ -16,21 +16,14 @@ namespace Dal
         /// </summary>
         public static void AddNewOrderItem()
         {
-            OrderItem NewOrderItem = new OrderItem();
             Console.WriteLine("for add a new Order Item, please fill in the following data:");
-
-
-            NewOrderItem.OrderID = SafeInput.IntegerInput("ID: ");
-            NewOrderItem.ProductID = SafeInput.IntegerInput("ProductID: ");
-            NewOrderItem.Price = SafeInput.DoubleInput("Price: ");
-            NewOrderItem.Amount = SafeInput.IntegerInput("Amount: ");
-
+            int OrderID = SafeInput.IntegerInput("ID: ");
+            int ProductID = SafeInput.IntegerInput("ProductID: ");
+            double Price = SafeInput.DoubleInput("Price: ");
+            int Amount = SafeInput.IntegerInput("Amount: ");
             Console.WriteLine("Adding a new Base Station...");
-            
-
+            Dal.DalOrderItem.AddOrderItem(OrderID, ProductID, Price, Amount);
             Console.WriteLine("The new Order Item was successfully added\n");
-
-
         }
         #endregion
 

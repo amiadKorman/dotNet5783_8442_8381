@@ -10,8 +10,13 @@ public class DalOrderItem
     /// </summary>
     /// <param name="newOrderItem"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public void AddOrderItem(OrderItem newOrderItem)
+    public static void AddOrderItem(int Orderid, int ProductId, double priceP, int AmountP)
     {
+        OrderItem NewOrderItem = new OrderItem(); 
+        NewOrderItem.OrderID = Orderid;
+        NewOrderItem.ProductID = ProductId;
+        NewOrderItem.Price = priceP;
+        NewOrderItem.Amount = AmountP;
         throw new NotImplementedException();
     }
     #endregion
