@@ -67,7 +67,7 @@ internal static class DataSource
             Name = "Apple iPhone 14 128GB",
             Price = 3749,
             Category = CategoryOfProduct.Phones,
-            InStock = 10
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -75,7 +75,7 @@ internal static class DataSource
             Name = "Apple iPhone 14 Pro 256GB",
             Price = 5445,
             Category = CategoryOfProduct.Phones,
-            InStock = 5
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -83,7 +83,7 @@ internal static class DataSource
             Name = "Apple iPhone 14 Pro Max 512GB",
             Price = 7499,
             Category = CategoryOfProduct.Phones,
-            InStock = 0
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -91,7 +91,7 @@ internal static class DataSource
             Name = "Apple MacBook Pro 16 2TB",
             Price = 15890,
             Category = CategoryOfProduct.Laptops,
-            InStock = 7
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -99,7 +99,7 @@ internal static class DataSource
             Name = "Apple MacBook Pro 14 512GB",
             Price = 13590,
             Category = CategoryOfProduct.Laptops,
-            InStock = 9
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -107,7 +107,7 @@ internal static class DataSource
             Name = "Dell XPS 17 1TB",
             Price = 16290,
             Category = CategoryOfProduct.Laptops,
-            InStock = 4
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -115,7 +115,7 @@ internal static class DataSource
             Name = "Dell XPS 15 1TB",
             Price = 12649,
             Category = CategoryOfProduct.Laptops,
-            InStock = 2
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -123,7 +123,7 @@ internal static class DataSource
             Name = "Samsung Odyssey 48.7'' 4K",
             Price = 11870,
             Category = CategoryOfProduct.Screens,
-            InStock = 1
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -131,7 +131,7 @@ internal static class DataSource
             Name = "ASUS ROG Strix 43'' 4K",
             Price = 7849,
             Category = CategoryOfProduct.Screens,
-            InStock = 7
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -139,7 +139,7 @@ internal static class DataSource
             Name = "Samsung 75'' Neo QLED 8K",
             Price = 29990,
             Category = CategoryOfProduct.Televisions,
-            InStock = 10
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -147,7 +147,7 @@ internal static class DataSource
             Name = "Sony Bravia OLED 77'' 4K",
             Price = 14280,
             Category = CategoryOfProduct.Televisions,
-            InStock = 6
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -155,7 +155,7 @@ internal static class DataSource
             Name = "Logitech MX Master 3S",
             Price = 469,
             Category = CategoryOfProduct.Accessories,
-            InStock = 20
+            InStock = RandomNumber.Next(50)
         };
         productsArray[Config.productsLastIndex++] = new Product
         {
@@ -163,7 +163,7 @@ internal static class DataSource
             Name = "Logitech MX Mechanical",
             Price = 699,
             Category = CategoryOfProduct.Accessories,
-            InStock = 15
+            InStock = RandomNumber.Next(50)
         };
     }
 
