@@ -33,7 +33,7 @@ public class DalProduct
     /// <param name="productID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Product GetProduct(int productID)
+    public static Product GetProduct(int productID)
     {
         foreach (Product product in DataSource.productsArray)
         {
@@ -44,6 +44,10 @@ public class DalProduct
         }
         throw new NotImplementedException();
     }
+    #endregion
+
+    #region Return all products
+
     #endregion
 
     #region Update product item by given ID

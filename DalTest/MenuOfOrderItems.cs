@@ -41,7 +41,7 @@ namespace Dal
         public static void ShowOrderItem()
         {
             int IdOrderItem = SafeInput.IntegerInput("ID: ");
-            //Console.WriteLine(DalOrderItem(IdOrderItem));
+            Console.WriteLine(DalOrderItem.GetOrderItem(IdOrderItem));
 
         }
         #endregion

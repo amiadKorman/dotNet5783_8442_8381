@@ -43,6 +43,8 @@ namespace Dal
         #region Show Product
         public static void ShowProduct()
         {
+            int IdProduct = SafeInput.IntegerInput("ID: ");
+            Console.WriteLine(DalProduct.GetProduct(IdProduct));
 
         }
         #endregion
@@ -50,8 +52,7 @@ namespace Dal
         #region Show List Product
         public static void ShowListProduct()
         {
-            int IdProduct = SafeInput.IntegerInput("ID: ");
-            //Console.WriteLine(DalProduct(IdProduct));
+           
 
         }
         #endregion

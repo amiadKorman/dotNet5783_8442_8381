@@ -28,7 +28,7 @@ public class DalOrderItem
     /// <param name="orderItemID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public OrderItem GetOrderItem(int orderItemID)
+    public static OrderItem GetOrderItem(int orderItemID)
     {
         foreach (OrderItem OItem in DataSource.orderItemsArray)
         {
