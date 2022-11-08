@@ -40,7 +40,7 @@ internal static class DataSource
         private static int orderID = 5000000;
 
         internal static int GetOrderID { get => orderID++; }
-        internal static int GetorderItemID { get => orderItemID++; }
+        internal static int GetOrderItemID { get => orderItemID++; }
     }
 
     /// <summary>
@@ -59,6 +59,9 @@ internal static class DataSource
         InitializeOrders();
     }
 
+    /// <summary>
+    /// Initialize array with products
+    /// </summary>
     private static void InitializeProducts()
     {
         productsArray[Config.productsLastIndex++] = new()
@@ -167,6 +170,9 @@ internal static class DataSource
         };
     }
 
+    /// <summary>
+    /// Initialize array with customers
+    /// </summary>
     private static void InitializeCustomers()
     {
         for (int i = 0; i < 5; i++)
@@ -181,6 +187,9 @@ internal static class DataSource
         }
     }
 
+    /// <summary>
+    /// Initialize array with orders
+    /// </summary>
     private static void InitializeOrders()
     {
         for (int i = 0; i < 20; i++)
@@ -212,6 +221,9 @@ internal static class DataSource
         }
     }
 
+    /// <summary>
+    /// Initialize array with order items
+    /// </summary>
     private static void InitializeOrderItems()
     {
         for (int i = 0; i < 40; i++)
@@ -219,6 +231,7 @@ internal static class DataSource
             Product product = productsArray[RandomNumber.Next(Config.productsLastIndex)];
             orderItemsArray[Config.orderItemsLastIndex++] = new OrderItem
             {
+                ID = Config.GetOrderItemID,
                 ProductID = product.ID,
                 OrderID = (ordersArray[RandomNumber.Next(20)]).ID,
                 Price = product.Price,
