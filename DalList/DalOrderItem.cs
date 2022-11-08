@@ -12,7 +12,15 @@ public class DalOrderItem
     /// <exception cref="NotImplementedException"></exception>
     public static void AddOrderItem(int Orderid, int ProductId, double priceOr, int AmountOr)
     {
-         OrderItem newOrderItem= new()
+        foreach (OrderItem OItem in DataSource.orderItemsArray)
+        {
+            if (Orderid == OItem.ID)
+            {
+                throw new Exception("Order Item ID Are Exist");
+                
+            }
+        }
+        OrderItem newOrderItem= new()
         {
             OrderID = Orderid,
             ProductID = ProductId,

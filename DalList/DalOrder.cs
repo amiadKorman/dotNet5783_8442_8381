@@ -12,12 +12,23 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public static void AddOrder(int Id, int CustomerId, DateTime OrderD, DateTime ShipD, DateTime DeliveryD)
     {
-        Order NewOrder = new Order();
-        NewOrder.ID = Id;
-        NewOrder.CustomerID = CustomerId;        
-        NewOrder.OrderDate = OrderD;
-        NewOrder.ShipDate = ShipD;
-        NewOrder.DeliveryDate = DeliveryD;     
+        foreach (OrderItem OItem in DataSource.orderItemsArray)
+        {
+            if (Id == OItem.ID)
+            {
+                throw new Exception("Order ID Are Exist");
+
+            }
+        }
+
+        Order NewOrder = new()
+        {
+            ID = Id,
+            CustomerID = CustomerId,
+            OrderDate = OrderD,
+            ShipDate = ShipD,
+            DeliveryDate = DeliveryD
+        };
 
         throw new NotImplementedException();
     }
@@ -52,7 +63,8 @@ public class DalOrder
     {
         foreach (Order order in DataSource.ordersArray)
         {
-            order.ToString();
+            Console.WriteLine(order);
+          
         }
     }
 
