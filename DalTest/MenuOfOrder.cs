@@ -30,7 +30,7 @@ namespace Dal
         #region Update Order
         public static void UpdateOrder()
         {
-            DalOrder.ShowAllOrders();
+            ;
 
         }
         #endregion
@@ -49,7 +49,7 @@ namespace Dal
         public static void ShowOrderList()
         {
             
-           
+           DalOrder.ShowAllOrders()
 
         }
         #endregion
