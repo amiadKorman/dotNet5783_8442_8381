@@ -9,11 +9,10 @@ public class DalMain
         while (!MenuChoise.Equals(EntitysMenu.Exit))
         {
             MenuChoise = (EntitysMenu)SafeInput.IntegerInput(
-                "For Order press 1\n" +
-                "For OrderItem press 2\n" +
-                "For product press 3\n" +
+                "For Order Menu press 1\n" +
+                "For OrderItem Menu press 2\n" +
+                "For Product Menu press 3\n" +
                 "Foe Exit press 0\n\n");
-
 
             switch (MenuChoise)
             {

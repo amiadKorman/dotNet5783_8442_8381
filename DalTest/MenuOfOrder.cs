@@ -71,13 +71,12 @@ internal class MenuOfOrder
         while (!Orderchoise.Equals(Dal.EntitysMenu.Exit))
         {
             Orderchoise = (OrderMenu)SafeInput.IntegerInput(
-            "for add Order - press 1\n" +
-            "for Update Order - press 2\n" +
-            "for show order - press 3\n" +
-            "for show order list - press 4\n" +
-            "for delete order - press 5\n");
-
-
+            "To Add an Order - press 1\n" +
+            "To Update an Order - press 2\n" +
+            "To Show an Order - press 3\n" +
+            "To Show Orders List - press 4\n" +
+            "To Delete an Order - press 5\n" +
+            "To Return Back To The Main Menu - press 0\n\n");
 
             switch (Orderchoise)
             {
@@ -96,14 +95,15 @@ internal class MenuOfOrder
                 case Dal.OrderMenu.DeleteAnOrder:
                     DeleteOrder();
                     break;
+                case Dal.OrderMenu.GoToTheFirstMenu:
+                    break; ;
                 default:
                     Console.WriteLine("This option does not exist, please try again\n");
                     break;
             }
         }
-        #endregion
-
     }
+    #endregion
 
 }
-  
+

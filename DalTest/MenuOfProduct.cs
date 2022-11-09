@@ -64,11 +64,12 @@ internal class MenuOfProduct
         while (!ProductChoise.Equals(EntitysMenu.Exit))
         {
             ProductChoise = (ProductMenu)SafeInput.IntegerInput(
-                "for add Order - press 1\n" +
-                "for Update Order - press 2\n" +
-                "for show order - press 3\n" +
-                "for show order list - press 4\n" +
-                "for delete order - press 5\n");
+                "To Add a Product - press 1\n" +
+                "To Update a Product - press 2\n" +
+                "To Show a Product - press 3\n" +
+                "To Show Products List - press 4\n" +
+                "To Delete a Product List - press 5\n" +
+                "To Return back to the menu - press 0\n\n");
 
 
                 switch (ProductChoise)
@@ -88,10 +89,11 @@ internal class MenuOfProduct
                 case Dal.ProductMenu.DeleteAProduct:
                     DeleteProduct();
                     break;
+                case Dal.ProductMenu.GoToTheFirstMenu:
+                    break;
                 default:
                     Console.WriteLine("This option does not exist, please try again\n");
                     break;
-
                 }
         }
 

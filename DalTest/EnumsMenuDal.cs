@@ -7,11 +7,11 @@ public enum EntitysMenu
 {
     [Description("Exit from program")]
     Exit = 0,
-    [Description("Get to Order's menu")]
+    [Description("Get to Order menu")]
     OrderMenu = 1,
-    [Description("Get to OrderItems's menu")]
+    [Description("Get to OrderItem menu")]
     OrderItemsMenu = 2,
-    [Description("Get to Product's menu")]
+    [Description("Get to Product menu")]
     ProductMenu = 3,
 }
 #endregion
@@ -25,12 +25,12 @@ public enum OrderMenu
     UpdateOrder = 2,
     [Description("Show an Order")]
     ShowOrder = 3,
-    [Description("Show an Order List")]
+    [Description("Show Orders List")]
     ShowListOfOrder = 4,
     [Description("Delete an Order")]
     DeleteAnOrder = 5,
-    [Description("Return back to the menu")]
-    GoToTheFirstMenu = 9
+    [Description("To Return Back To The Main Menu")]
+    GoToTheFirstMenu = 0
 
 }
 #endregion
@@ -38,18 +38,18 @@ public enum OrderMenu
 #region Order Item Menu
 public enum OrderItemMenu
 {
-    [Description("Add an Order Items")]
+    [Description("Add an Order item")]
     AddOrderItems = 1,
-    [Description("Update an Order Items")]
+    [Description("Update an Order item")]
     UpdateOrderItems = 2,
-    [Description("Show an Order Items")]
+    [Description("Show an Order item")]
     ShowOrderItems = 3,
-    [Description("Show an Order Items List")]
+    [Description("Show Order items List")]
     ShowListOfOrderItems = 4,
-    [Description("Delete an Order Items List")]
+    [Description("Delete an Order item")]
     DeleteAnOrderItems = 5,
-    [Description("Return back to the menu")]
-    GoToTheFirstMenu = 9
+    [Description("To Return Back To The Main Menu")]
+    GoToTheFirstMenu = 0
 }
 #endregion
 
@@ -62,11 +62,11 @@ public enum ProductMenu
     UpdateProduct = 2,
     [Description("Show a Product")]
     ShowProduct = 3,
-    [Description("Show a Product List")]
+    [Description("Show Products List")]
     ShowListOfProduct = 4,
-    [Description("Delete a Product List")]
+    [Description("Delete a Product")]
     DeleteAProduct = 5,
-    [Description("Return back to the menu")]
-    GoToTheFirstMenu = 9
+    [Description("To Return Back To The Main Menu")]
+    GoToTheFirstMenu = 0
 }
 #endregion       
