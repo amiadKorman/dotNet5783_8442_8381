@@ -72,7 +72,7 @@ internal class MenuOfProduct
 
 
                 switch (ProductChoise)
-            {
+                {
                 case Dal.ProductMenu.AddProduct:
                     AddNewProduct();
                     break;
@@ -92,7 +92,7 @@ internal class MenuOfProduct
                     Console.WriteLine("This option does not exist, please try again\n");
                     break;
 
-            }
+                }
         }
 
     }
