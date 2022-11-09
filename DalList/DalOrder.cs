@@ -108,9 +108,9 @@ public class DalOrder
     public static bool OrderAreExist(int IdOfOrder)
     {
         // Run all over the Array and check if there is an Id exist
-        foreach (OrderItem OItem in DataSource.orderItemsArray)
+        foreach (Order order in DataSource.ordersArray)
         {
-            if (IdOfOrder == OItem.ID)
+            if (IdOfOrder == order.ID)
             {
                 return true;
             }

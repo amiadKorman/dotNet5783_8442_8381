@@ -67,33 +67,38 @@ internal class MenuOfOrderItems
         OrderItemMenu OrderItemchoise = Dal.OrderItemMenu.AddOrderItems;
         while (!OrderItemchoise.Equals(EntitysMenu.Exit))
         {
-            Console.WriteLine("for add Order - press 1\n" +
-        "for Update Order - press 2\n" +
-        "for show order - press 3\n" +
-        "for show order list - press 4\n" +
-        "for delete order - press 5\n");
+            OrderItemchoise = (OrderItemMenu)SafeInput.IntegerInput();
+            {
+                Console.WriteLine("for add Order - press 1\n" +
+               "for Update Order - press 2\n" +
+               "for show order - press 3\n" +
+               "for show order list - press 4\n" +
+               "for delete order - press 5\n");
+            }
+
+
+            switch (OrderItemchoise)
+            {
+                case Dal.OrderItemMenu.AddOrderItems:
+                    AddNewOrderItem();
+                    break;
+                case Dal.OrderItemMenu.UpdateOrderItems:
+                    UpdateOrderItem();
+                    break;
+                case Dal.OrderItemMenu.ShowOrderItems:
+                    ShowOrderItem();
+                    break;
+                case Dal.OrderItemMenu.ShowListOfOrderItems:
+                    ShowListOfOrderItem();
+                    break;
+                case Dal.OrderItemMenu.DeleteAnOrderItems:
+                    DeleteOrderItem();
+                    break;
+                default:
+                    Console.WriteLine("This option does not exist, please try again\n");
+                    break;
+            }
         }
-        switch (OrderItemchoise)
-        {
-            case Dal.OrderItemMenu.AddOrderItems:
-                AddNewOrderItem();
-                break;
-            case Dal.OrderItemMenu.UpdateOrderItems:
-                UpdateOrderItem();
-                break;
-            case Dal.OrderItemMenu.ShowOrderItems:
-                ShowOrderItem();
-                break;
-            case Dal.OrderItemMenu.ShowListOfOrderItems:
-                ShowListOfOrderItem();
-                break;
-            case Dal.OrderItemMenu.DeleteAnOrderItems:
-                DeleteOrderItem();
-                break;
-            default:
-                Console.WriteLine("This option does not exist, please try again\n");
-                break;
-        }
+        #endregion
     }
-    #endregion
 }

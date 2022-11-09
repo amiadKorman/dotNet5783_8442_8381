@@ -63,34 +63,38 @@ internal class MenuOfProduct
         ProductMenu ProductChoise = Dal.ProductMenu.AddProduct;
         while (!ProductChoise.Equals(EntitysMenu.Exit))
         {
-            Console.WriteLine("for add Order - press 1\n" +
-        "for Update Order - press 2\n" +
-        "for show order - press 3\n" +
-        "for show order list - press 4\n" +
-        "for delete order - press 5\n");
-        }
-        switch (ProductChoise)
-        {
-            case Dal.ProductMenu.AddProduct:
-                AddNewProduct();
-                break;
-            case Dal.ProductMenu.UpdateProduct:
-                UpdateProduct();
-                break;
-            case Dal.ProductMenu.ShowProduct:
-                ShowProduct();
-                break;
-            case Dal.ProductMenu.ShowListOfProduct:
-                ShowListProduct();
-                break;
-            case Dal.ProductMenu.DeleteAProduct:
-                DeleteProduct();
-                break;
-            default:
-                Console.WriteLine("This option does not exist, please try again\n");
-                break;
+            ProductChoise = (ProductMenu)SafeInput.IntegerInput(
+                "for add Order - press 1\n" +
+                "for Update Order - press 2\n" +
+                "for show order - press 3\n" +
+                "for show order list - press 4\n" +
+                "for delete order - press 5\n");
 
+
+                switch (ProductChoise)
+            {
+                case Dal.ProductMenu.AddProduct:
+                    AddNewProduct();
+                    break;
+                case Dal.ProductMenu.UpdateProduct:
+                    UpdateProduct();
+                    break;
+                case Dal.ProductMenu.ShowProduct:
+                    ShowProduct();
+                    break;
+                case Dal.ProductMenu.ShowListOfProduct:
+                    ShowListProduct();
+                    break;
+                case Dal.ProductMenu.DeleteAProduct:
+                    DeleteProduct();
+                    break;
+                default:
+                    Console.WriteLine("This option does not exist, please try again\n");
+                    break;
+
+            }
         }
+
     }
     #endregion
 }
