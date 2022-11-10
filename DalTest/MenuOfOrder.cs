@@ -28,12 +28,6 @@ internal class MenuOfOrder
         DateTime? ShipDate = Convert.ToDateTime(NullDateTime); ;
         DateTime? DeliveryDate = Convert.ToDateTime(NullDateTime);
         Console.WriteLine("Update the Order ditels...");
-
-
-
-
-
-
     }
     #endregion
 
@@ -42,17 +36,13 @@ internal class MenuOfOrder
     {
         int IdOrder = SafeInput.IntegerInput("ID: ");
         Console.WriteLine(DalOrder.GetOrder(IdOrder));
-
     }
-
     #endregion
 
     #region Show Order List
     public static void ShowOrderList()
     {
-
         DalOrder.ShowAllOrders();
-
     }
     #endregion
 

@@ -14,7 +14,7 @@ public class DalOrder
     {
         if (OrderAreExist(Id))
         {
-            throw new Exception("Order ID Are Exist");
+            throw new Exception("Order ID Already Exist");
         }
         // create new order
         Order NewOrder = new()
@@ -45,13 +45,13 @@ public class DalOrder
                 return order;
             }
         }
-        throw new Exception("Order ID Are not Exist");
+        throw new Exception("Order ID Not Exist");
     }
     #endregion
 
     #region Rerurn all Orders
     /// <summary>
-    /// Print all the orders in the array
+    /// Print all the orders in the DataSource
     /// </summary>
     public static void ShowAllOrders()
     {
@@ -72,9 +72,7 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public static void UpdateOrder(Order newOrder)
     {
-
-
-
+        throw new NotImplementedException();
     }
     #endregion
 
@@ -86,16 +84,16 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public static void DeleteOrder(int orderID)
     {
-
         foreach (Order order in DataSource.ordersArray)
         {
             if (orderID == order.ID)
             {
                 int index = Array.IndexOf(DataSource.ordersArray, order);
                 DataSource.ordersArray = DataSource.ordersArray.Where((e, i) => i != index).ToArray();
+                return;
             }
         }
-        throw new NotImplementedException();
+        throw new Exception("Order ID Not Exist");
     }
     #endregion
 

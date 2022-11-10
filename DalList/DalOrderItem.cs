@@ -16,7 +16,7 @@ public class DalOrderItem
         {
             if (Orderid == OItem.ID)
             {
-                throw new Exception("Order Item ID Are Exist");
+                throw new Exception("Order Item ID Already Exist");
 
             }
         }
@@ -52,7 +52,7 @@ public class DalOrderItem
 
     #region Return All Order Item
     /// <summary>
-    /// 
+    /// Print all the order items in the DataSource
     /// </summary>
     public static void ShowAllOrderItems()
     {
@@ -61,7 +61,6 @@ public class DalOrderItem
             Console.WriteLine(orderItem);
         }
     }
-
     #endregion
 
     #region Update order item by given ID
@@ -73,8 +72,6 @@ public class DalOrderItem
     /// <exception cref="NotImplementedException"></exception>
     public OrderItem UpdateOrderItem(OrderItem newOrderItem)
     {
-
-
         throw new NotImplementedException();
     }
     #endregion

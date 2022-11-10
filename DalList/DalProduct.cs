@@ -16,11 +16,10 @@ public class DalProduct
         {
             if (Id == OItem.ID)
             {
-                throw new Exception("product ID Are Exist");
-
+                throw new Exception("product ID Already Exist");
             }
         }
-        Product NewProduct = new Product
+        Product NewProduct = new()
         {
             ID = Id,
             Name = nameP,
@@ -47,11 +46,14 @@ public class DalProduct
                 return product;
             }
         }
-        throw new NotImplementedException();
+        throw new Exception("Product ID Not Exist");
     }
     #endregion
 
     #region Return all products
+    /// <summary>
+    /// Print all the products in the DataSource
+    /// </summary>
     public static void ShowAllProdoct()
     {
         foreach (Product p in DataSource.productsArray)
@@ -89,10 +91,10 @@ public class DalProduct
             {
                 int index = Array.IndexOf(DataSource.productsArray, product);
                 DataSource.productsArray = DataSource.productsArray.Where((e, i) => i != index).ToArray();
+                return;
             }
         }
-
-        throw new NotImplementedException();
+        throw new Exception("Product ID Not Exist");
     }
     #endregion
 }

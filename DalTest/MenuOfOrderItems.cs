@@ -45,7 +45,7 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void ShowListOfOrderItem()
     {
-
+        DalOrderItem.ShowAllOrderItems();
     }
     #endregion
 

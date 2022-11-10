@@ -38,7 +38,6 @@ internal class MenuOfProduct
     {
         int IdProduct = SafeInput.IntegerInput("ID: ");
         Console.WriteLine(DalProduct.GetProduct(IdProduct));
-
     }
     #endregion
 
@@ -71,9 +70,8 @@ internal class MenuOfProduct
                 "To Delete a Product List - press 5\n" +
                 "To Return back to the menu - press 0\n\n");
 
-
-                switch (ProductChoise)
-                {
+            switch (ProductChoise)
+            {
                 case Dal.ProductMenu.AddProduct:
                     AddNewProduct();
                     break;
@@ -94,9 +92,8 @@ internal class MenuOfProduct
                 default:
                     Console.WriteLine("This option does not exist, please try again\n");
                     break;
-                }
+            }
         }
-
     }
     #endregion
 }
