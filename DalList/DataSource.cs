@@ -55,8 +55,8 @@ internal static class DataSource
     {
         InitializeProducts();
         InitializeCustomers();
-        InitializeOrderItems();
         InitializeOrders();
+        InitializeOrderItems();
     }
 
     /// <summary>
