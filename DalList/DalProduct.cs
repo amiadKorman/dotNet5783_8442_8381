@@ -1,4 +1,5 @@
 ﻿using DO;
+using System.Linq;
 
 namespace Dal;
 
@@ -39,13 +40,13 @@ public class DalProduct
     /// <exception cref="NotImplementedException"></exception>
     public static Product GetProduct(int productID)
     {
-        foreach (Product product in DataSource.productsArray)
+        foreach (var product in from Product product in DataSource.productsArray
+                                where productID == product.ID
+                                select product)
         {
-            if (productID == product.ID)
-            {
-                return product;
-            }
+            return product;
         }
+
         throw new Exception("Product ID Not Exist");
     }
     #endregion
@@ -85,15 +86,13 @@ public class DalProduct
     /// <exception cref="NotImplementedException"></exception>
     public static void DeleteProduct(int productID)
     {
-        foreach (Product product in DataSource.productsArray)
+        foreach (var product in DataSource.productsArray.Where(product => productID == product.ID))
         {
-            if (productID == product.ID)
-            {
-                int index = Array.IndexOf(DataSource.productsArray, product);
-                DataSource.productsArray = DataSource.productsArray.Where((e, i) => i != index).ToArray();
-                return;
-            }
+            int index = Array.IndexOf(DataSource.productsArray, product);
+            DataSource.productsArray = DataSource.productsArray.Where((e, i) => i != index).ToArray();
+            return;
         }
+
         throw new Exception("Product ID Not Exist");
     }
     #endregion

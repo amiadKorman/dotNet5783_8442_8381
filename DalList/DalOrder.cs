@@ -1,4 +1,5 @@
 ﻿using DO;
+using System.Linq;
 
 namespace Dal;
 
@@ -38,13 +39,11 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public static Order GetOrder(int orderID)
     {
-        foreach (Order order in DataSource.ordersArray)
+        foreach (var order in DataSource.ordersArray.Where(order => orderID == order.ID))
         {
-            if (orderID == order.ID)
-            {
-                return order;
-            }
+            return order;
         }
+
         throw new Exception("Order ID Not Exist");
     }
     #endregion
@@ -105,14 +104,13 @@ public class DalOrder
     /// <returns>True if Order Are Exist False if Not</returns>
     public static bool OrderAreExist(int IdOfOrder)
     {
+        foreach (var _ in DataSource.ordersArray.Where(order => IdOfOrder == order.ID).Select(
         // Run all over the Array and check if there is an Id exist
-        foreach (Order order in DataSource.ordersArray)
+        order => new { }))
         {
-            if (IdOfOrder == order.ID)
-            {
-                return true;
-            }
+            return true;
         }
+
         return false;
     }
     #endregion
