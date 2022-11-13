@@ -45,7 +45,11 @@ internal class MenuOfProduct
     #region Show List Product
     public static void ShowListProduct()
     {
-        dalProduct.ShowAllProdoct();
+        Product[] products = dalProduct.ShowAllProdoct();
+        foreach (Product product in products)
+        {
+            Console.WriteLine(product);
+        }
     }
     #endregion
 

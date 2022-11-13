@@ -1,4 +1,6 @@
-﻿namespace Dal;
+﻿using DO;
+
+namespace Dal;
 
 internal class MenuOfOrderItems
 {
@@ -42,7 +44,11 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void ShowListOfOrderItem()
     {
-        dalOrderItem.ShowAllOrderItems();
+        OrderItem[] orderItems = dalOrderItem.ShowAllOrderItems();
+        foreach (OrderItem orderItem in orderItems)
+        {
+            Console.WriteLine(orderItem);
+        }
     }
     #endregion
 
