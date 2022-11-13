@@ -210,7 +210,7 @@ internal static class DataSource
                 }
                 else
                 {
-                    order.ShipDate = order.OrderDate - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay * 10));
+                    order.ShipDate = DateTime.Now - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay * 10));
                 }
                 order.OrderDate = (DateTime)order.ShipDate - new TimeSpan(RandomNumber.NextInt64(TimeSpan.TicksPerDay * 3));
             }
