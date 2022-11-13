@@ -2,20 +2,20 @@
 
 internal class MenuOfOrderItems
 {
+    private static dalOrderItem dalOrderItem = new dalOrderItem();
     #region Add New Order Item
     /// <summary>
     /// 
     /// </summary>
     public static void AddNewOrderItem()
     {
-
         Console.WriteLine("for add a new Order Item, please fill in the following data:");
-        int OrderID = SafeInput.IntegerInput("ID: ");
-        int ProductID = SafeInput.IntegerInput("ProductID: ");
+        int OrderID = SafeInput.IntegerInput("Order ID: ");
+        int ProductID = SafeInput.IntegerInput("Product ID: ");
         double Price = SafeInput.DoubleInput("Price: ");
         int Amount = SafeInput.IntegerInput("Amount: ");
         Console.WriteLine("Adding a new Base Station...");
-        Dal.DalOrderItem.AddOrderItem(OrderID, ProductID, Price, Amount);
+        dalOrderItem.AddOrderItem(OrderID, ProductID, Price, Amount);
         Console.WriteLine("The new Order Item was successfully added\n");
     }
     #endregion
@@ -34,7 +34,7 @@ internal class MenuOfOrderItems
     public static void ShowOrderItem()
     {
         int IdOrderItem = SafeInput.IntegerInput("ID: ");
-        Console.WriteLine(DalOrderItem.GetOrderItem(IdOrderItem));
+        Console.WriteLine(dalOrderItem.GetOrderItem(IdOrderItem));
 
     }
     #endregion
@@ -45,7 +45,7 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void ShowListOfOrderItem()
     {
-        DalOrderItem.ShowAllOrderItems();
+        dalOrderItem.ShowAllOrderItems();
     }
     #endregion
 
@@ -53,7 +53,7 @@ internal class MenuOfOrderItems
     public static void DeleteOrderItem()
     {
         int IdOrderIthem = SafeInput.IntegerInput("ID: ");
-        DalOrderItem.DeleteOrderItem(IdOrderIthem);
+        dalOrderItem.DeleteOrderItem(IdOrderIthem);
 
     }
     #endregion

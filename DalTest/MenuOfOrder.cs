@@ -2,6 +2,7 @@
 
 internal class MenuOfOrder
 {
+    private static dalOrder dalOrder = new dalOrder();
     #region Add New Order
     public static void AddNewOrder()
     {
@@ -13,7 +14,7 @@ internal class MenuOfOrder
         DateTime ShipDate = Convert.ToDateTime(NullDateTime); ;
         DateTime DeliveryDate = Convert.ToDateTime(NullDateTime);
         Console.WriteLine("Adding a new Order...");
-        DalOrder.AddOrder(Id, CustomerId, OrderDate, ShipDate, DeliveryDate);
+        dalOrder.AddOrder(Id, CustomerId, OrderDate, ShipDate, DeliveryDate);
     }
     #endregion
 
@@ -21,7 +22,7 @@ internal class MenuOfOrder
     public static void UpdateOrder()
     {
         int Id = SafeInput.IntegerInput("Plese enter the ID of order that you wont to update: ");
-        DalOrder.OrderAreExist(Id);
+        dalOrder.OrderAreExist(Id);
         int CustomerId = SafeInput.IntegerInput("ID Customer: ");
         DateTime? NullDateTime = null;
         DateTime? OrderDate = Convert.ToDateTime(NullDateTime);
@@ -35,14 +36,14 @@ internal class MenuOfOrder
     public static void ShowOrder()
     {
         int IdOrder = SafeInput.IntegerInput("ID: ");
-        Console.WriteLine(DalOrder.GetOrder(IdOrder));
+        Console.WriteLine(dalOrder.GetOrder(IdOrder));
     }
     #endregion
 
     #region Show Order List
     public static void ShowOrderList()
     {
-        DalOrder.ShowAllOrders();
+        dalOrder.ShowAllOrders();
     }
     #endregion
 
@@ -50,7 +51,7 @@ internal class MenuOfOrder
     public static void DeleteOrder()
     {
         int IdOrder = SafeInput.IntegerInput("ID: ");
-        DalOrder.DeleteOrder(IdOrder);
+        dalOrder.DeleteOrder(IdOrder);
     }
     #endregion
 
@@ -86,7 +87,7 @@ internal class MenuOfOrder
                     DeleteOrder();
                     break;
                 case Dal.OrderMenu.GoToTheFirstMenu:
-                    break; ;
+                    break;
                 default:
                     Console.WriteLine("This option does not exist, please try again\n");
                     break;

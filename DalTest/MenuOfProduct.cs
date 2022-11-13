@@ -4,6 +4,7 @@ namespace Dal;
 
 internal class MenuOfProduct
 {
+    private static dalProduct dalProduct = new dalProduct();
     #region Add New Product
     public static void AddNewProduct()
     {
@@ -20,7 +21,7 @@ internal class MenuOfProduct
             "Z - press 3\n");
         int InStock = SafeInput.IntegerInput("InStock: ");
         Console.WriteLine("Adding a new Product...");
-        DalProduct.AddProduct(ID, Name, Price, CategoryOf, InStock);
+        dalProduct.AddProduct(ID, Name, Price, CategoryOf, InStock);
         Console.WriteLine("The new Product was successfully added\n");
     }
     #endregion
@@ -37,14 +38,14 @@ internal class MenuOfProduct
     public static void ShowProduct()
     {
         int IdProduct = SafeInput.IntegerInput("ID: ");
-        Console.WriteLine(DalProduct.GetProduct(IdProduct));
+        Console.WriteLine(dalProduct.GetProduct(IdProduct));
     }
     #endregion
 
     #region Show List Product
     public static void ShowListProduct()
     {
-        DalProduct.ShowAllProdoct();
+        dalProduct.ShowAllProdoct();
     }
     #endregion
 
@@ -52,7 +53,7 @@ internal class MenuOfProduct
     public static void DeleteProduct()
     {
         int Idproduct = SafeInput.IntegerInput("ID: ");
-        DalProduct.DeleteProduct(Idproduct);
+        dalProduct.DeleteProduct(Idproduct);
     }
     #endregion
 
