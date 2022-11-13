@@ -1,5 +1,5 @@
 ﻿using DO;
-using System.Linq;
+using static Dal.DataSource;
 
 namespace Dal;
 
@@ -7,26 +7,32 @@ public class DalOrder
 {
     #region Add new order
     /// <summary>
-    /// Add new order and before the create check if there is an Id exist
+    /// Add new order
     /// </summary>
-    /// <param name="newOrder"></param>
-    /// <exception cref="NotImplementedException"></exception>
-    public static void AddOrder(int Id, int CustomerId, DateTime OrderD, DateTime ShipD, DateTime DeliveryD)
+    /// <param name="UD"></param>
+    /// <param name="CustomerID"></param>
+    /// <param name="OrderD"></param>
+    /// <param name="ShipD"></param>
+    /// <param name="DeliveryD"></param>
+    /// <returns>new order ID</returns>
+    /// <exception cref="Exception"></exception>
+    public int AddOrder(int UD, int CustomerID, DateTime OrderD, DateTime ShipD, DateTime DeliveryD)
     {
-        if (OrderAreExist(Id))
+        if (OrderAreExist(UD))
         {
             throw new Exception("Order ID Already Exist");
         }
         // create new order
         Order NewOrder = new()
         {
-            ID = Id,
-            CustomerID = CustomerId,
+            ID = Config.GetOrderID,
+            CustomerID = CustomerID,
             OrderDate = OrderD,
             ShipDate = ShipD,
             DeliveryDate = DeliveryD
         };
-        Console.WriteLine("The new Order was successfully added\n");
+
+        return NewOrder.ID;
     }
     #endregion
 
@@ -35,11 +41,11 @@ public class DalOrder
     /// Return order by given ID
     /// </summary>
     /// <param name="orderID"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    public static Order GetOrder(int orderID)
+    /// <returns>order</returns>
+    /// <exception cref="Exception"></exception>
+    public Order GetOrder(int orderID)
     {
-        foreach (var order in DataSource.ordersArray.Where(order => orderID == order.ID))
+        foreach (var order in ordersArray.Where(order => orderID == order.ID))
         {
             return order;
         }
@@ -50,14 +56,14 @@ public class DalOrder
 
     #region Rerurn all Orders
     /// <summary>
-    /// Print all the orders in the DataSource
+    /// Return all the orders in the DataSource
     /// </summary>
-    public static void ShowAllOrders()
+    /// <returns>all orders</returns>
+    public Order[] ShowAllOrders()
     {
-        foreach (Order order in DataSource.ordersArray)
-        {
-            Console.WriteLine(order);
-        }
+        Order[] orders = new Order[Config.ordersLastIndex];
+        Array.Copy(ordersArray, orders, orders.Length);
+        return orders;
     }
 
     #endregion
@@ -69,7 +75,7 @@ public class DalOrder
     /// <param name="newOrder"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public static void UpdateOrder(Order newOrder)
+    public void UpdateOrder(Order newOrder)
     {
         throw new NotImplementedException();
     }
@@ -81,14 +87,15 @@ public class DalOrder
     /// </summary>
     /// <param name="orderID"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public static void DeleteOrder(int orderID)
+    public void DeleteOrder(int orderID)
     {
-        foreach (Order order in DataSource.ordersArray)
+        foreach (Order order in ordersArray)
         {
             if (orderID == order.ID)
             {
-                int index = Array.IndexOf(DataSource.ordersArray, order);
-                DataSource.ordersArray = DataSource.ordersArray.Where((e, i) => i != index).ToArray();
+                int index = Array.IndexOf(ordersArray, order);
+                ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
+                Config.ordersLastIndex--;
                 return;
             }
         }
@@ -102,9 +109,9 @@ public class DalOrder
     /// </summary>
     /// <param name="IdOfOrder"></param>
     /// <returns>True if Order Are Exist False if Not</returns>
-    public static bool OrderAreExist(int IdOfOrder)
+    public bool OrderAreExist(int IdOfOrder)
     {
-        foreach (var _ in DataSource.ordersArray.Where(order => IdOfOrder == order.ID).Select(
+        foreach (var _ in ordersArray.Where(order => IdOfOrder == order.ID).Select(
         // Run all over the Array and check if there is an Id exist
         order => new { }))
         {

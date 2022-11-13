@@ -16,7 +16,24 @@ public class DalProduct
     /// <param name="InStock"></param>
     /// <returns>new product ID</returns>
     /// <exception cref="Exception"></exception>
-    public static int AddProduct(int ID, string nameP, double Price, CategoryOfProduct Category, int InStock)
+    
+    public int AddProduct(Product product)
+    {
+        int result = Array.FindIndex(orderItemsArray,p => p.ID==product.ID);
+        if(result == -1)
+            throw new Exception("product ID Already Exist");
+        productsArray[Config.productsLastIndex++] = new()
+        {
+            ID = product.ID,
+            Name = product.Name,
+            Price = product.Price,
+            Category = product.Category,
+            InStock = product.InStock
+        };
+        return result;
+    }
+
+    public int AddProduct(int ID, string nameP, double Price, CategoryOfProduct Category, int InStock)
     {
         foreach (var _ in from OrderItem OItem in orderItemsArray
                           where ID == OItem.ID
@@ -44,7 +61,7 @@ public class DalProduct
     /// <param name="productID"></param>
     /// <returns>product</returns>
     /// <exception cref="Exception"></exception>
-    public static Product GetProduct(int productID)
+    public Product GetProduct(int productID)
     {
         foreach (var product in from Product product in productsArray
                                 where productID == product.ID
@@ -62,7 +79,7 @@ public class DalProduct
     /// Return all the products in the DataSource
     /// </summary>
     /// <returns>products array</returns>
-    public static Product[] ShowAllProdoct()
+    public Product[] ShowAllProdoct()
     {
 
         Product[] products = new Product[Config.productsLastIndex];
@@ -78,7 +95,7 @@ public class DalProduct
     /// </summary>
     /// <param name="newProduct"></param>
     /// <exception cref="Exception"></exception>
-    public static void UpdateProduct(Product newProduct)
+    public void UpdateProduct(Product newProduct)
     {
         for (int i = 0; i < Config.productsLastIndex; i++)
         {
@@ -106,7 +123,7 @@ public class DalProduct
     /// </summary>
     /// <param name="productID"></param>
     /// <exception cref="Exception"></exception>
-    public static void DeleteProduct(int productID)
+    public void DeleteProduct(int productID)
     {
         foreach (var product in productsArray.Where(product => productID == product.ID))
         {

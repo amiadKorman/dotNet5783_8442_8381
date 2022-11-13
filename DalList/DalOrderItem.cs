@@ -16,14 +16,14 @@ public class DalOrderItem
     /// <param name="Amount"></param>
     /// <returns>new order item ID</returns>
     /// <exception cref="Exception"></exception>
-    public static int AddOrderItem(int OItemID, int Orderid, int ProductId, double Price, int Amount)
+    public int AddOrderItem(int Orderid, int ProductId, double Price, int Amount)
     {
-        foreach (var _ in from OrderItem OItem in orderItemsArray
-                          where OItemID == OItem.ID
+        /*foreach (var _ in from OrderItem OItem in orderItemsArray
+                          where Orderid == OItem.OrderID
                           select new { })
         {
             throw new Exception("Order Item ID Already Exist");
-        }
+        }*/
 
         OrderItem newOrderItem = new()
         {
@@ -44,7 +44,7 @@ public class DalOrderItem
     /// <param name="orderItemID"></param>
     /// <returns>order item</returns>
     /// <exception cref="Exception"></exception>
-    public static OrderItem GetOrderItem(int orderItemID)
+    public OrderItem GetOrderItem(int orderItemID)
     {
         foreach (var OItem in from OrderItem OItem in orderItemsArray
                               where orderItemID == OItem.ID
@@ -62,7 +62,7 @@ public class DalOrderItem
     /// Return all the order items in the DataSource
     /// </summary>
     /// <returns>all order items</returns>
-    public static OrderItem[] ShowAllOrderItems()
+    public OrderItem[] ShowAllOrderItems()
     {
         OrderItem[] orderItems = new OrderItem[Config.orderItemsLastIndex];
         Array.Copy(orderItemsArray, orderItems, orderItems.Length);
@@ -104,7 +104,7 @@ public class DalOrderItem
     /// </summary>
     /// <param name="orderItemID"></param>
     /// <exception cref="Exception"></exception>
-    public static void DeleteOrderItem(int orderItemID)
+    public void DeleteOrderItem(int orderItemID)
     {
         foreach (OrderItem OrderItem in orderItemsArray)
         {
