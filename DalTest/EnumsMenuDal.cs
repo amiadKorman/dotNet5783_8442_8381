@@ -5,14 +5,14 @@ namespace Dal;
 #region Entitys's menu
 public enum EntitysMenu
 {
-    [Description("Exit from program")]
-    Exit = 0,
     [Description("Get to Order menu")]
     OrderMenu = 1,
     [Description("Get to OrderItem menu")]
     OrderItemsMenu = 2,
     [Description("Get to Product menu")]
     ProductMenu = 3,
+    [Description("Exit from program")]
+    Exit = 0
 }
 #endregion
 
@@ -31,7 +31,6 @@ public enum OrderMenu
     DeleteAnOrder = 5,
     [Description("To Return Back To The Main Menu")]
     GoToTheFirstMenu = 0
-
 }
 #endregion
 
