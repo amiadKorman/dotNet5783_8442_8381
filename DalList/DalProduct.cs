@@ -1,5 +1,5 @@
 ﻿using DO;
-using System.Linq;
+using static Dal.DataSource;
 
 namespace Dal;
 
@@ -11,23 +11,24 @@ public class DalProduct
     /// </summary>
     /// <param name="newProdect"></param>
     /// <exception cref="NotImplementedException"></exception>
-    public static void AddProduct(int Id, string nameP, double price, CategoryOfProduct category, int InStock)
+    public static int AddProduct(int ID, string nameP, double price, CategoryOfProduct category, int InStock)
     {
-        foreach (OrderItem OItem in DataSource.orderItemsArray)
+        foreach (var _ in from OrderItem OItem in orderItemsArray
+                          where ID == OItem.ID
+                          select new { })
         {
-            if (Id == OItem.ID)
-            {
-                throw new Exception("product ID Already Exist");
-            }
+            throw new Exception("product ID Already Exist");
         }
-        Product NewProduct = new()
+
+        productsArray[Config.productsLastIndex++] = new()
         {
-            ID = Id,
+            ID = ID,
             Name = nameP,
             Price = price,
             Category = category,
             InStock = InStock
         };
+        return ID;
     }
     #endregion
 
@@ -40,7 +41,7 @@ public class DalProduct
     /// <exception cref="NotImplementedException"></exception>
     public static Product GetProduct(int productID)
     {
-        foreach (var product in from Product product in DataSource.productsArray
+        foreach (var product in from Product product in productsArray
                                 where productID == product.ID
                                 select product)
         {
@@ -53,14 +54,14 @@ public class DalProduct
 
     #region Return all products
     /// <summary>
-    /// Print all the products in the DataSource
+    /// Return all the products in the DataSource
     /// </summary>
-    public static void ShowAllProdoct()
+    public static Product[] ShowAllProdoct()
     {
-        foreach (Product p in DataSource.productsArray)
-        {
-            Console.WriteLine(p);
-        }
+
+        Product[] products = new Product[Config.productsLastIndex];
+        Array.Copy(productsArray, products, products.Length);
+        return products;
     }
 
     #endregion
@@ -72,9 +73,25 @@ public class DalProduct
     /// <param name="newProduct"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public Product UpdateProduct(Product newProduct)
+    public static void UpdateProduct(Product newProduct)
     {
-        throw new NotImplementedException();
+        for(int i = 0; i < Config.productsLastIndex; i++)
+        {
+            if (newProduct.ID == productsArray[i].ID)
+            {
+                if (newProduct.Name != "")
+                    productsArray[i].Name = newProduct.Name;
+                if(newProduct.Price != 0)
+                    productsArray[i].Price = newProduct.Price;
+                if(newProduct.Category != 0)
+                    productsArray[i].Category = newProduct.Category;
+                if(newProduct.InStock != 0)
+                    productsArray[i].InStock = newProduct.InStock;
+                return;
+            }
+        }
+
+        throw new Exception("Product ID Not Exist");
     }
     #endregion
 
@@ -86,10 +103,11 @@ public class DalProduct
     /// <exception cref="NotImplementedException"></exception>
     public static void DeleteProduct(int productID)
     {
-        foreach (var product in DataSource.productsArray.Where(product => productID == product.ID))
+        foreach (var product in productsArray.Where(product => productID == product.ID))
         {
-            int index = Array.IndexOf(DataSource.productsArray, product);
-            DataSource.productsArray = DataSource.productsArray.Where((e, i) => i != index).ToArray();
+            int index = Array.IndexOf(productsArray, product);
+            productsArray = productsArray.Where((e, i) => i != index).ToArray();
+            Config.productsLastIndex--;
             return;
         }
 
