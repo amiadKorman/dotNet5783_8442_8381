@@ -2,11 +2,8 @@
 
 internal class MenuOfOrderItems
 {
-    private static dalOrderItem dalOrderItem = new dalOrderItem();
+    private static DalOrderItem dalOrderItem = new();
     #region Add New Order Item
-    /// <summary>
-    /// 
-    /// </summary>
     public static void AddNewOrderItem()
     {
         Console.WriteLine("for add a new Order Item, please fill in the following data:");

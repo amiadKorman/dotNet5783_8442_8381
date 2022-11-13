@@ -2,7 +2,7 @@
 
 internal class MenuOfOrder
 {
-    private static dalOrder dalOrder = new dalOrder();
+    private static DalOrder dalOrder = new();
     #region Add New Order
     public static void AddNewOrder()
     {

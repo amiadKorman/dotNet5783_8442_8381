@@ -4,7 +4,7 @@ namespace Dal;
 
 internal class MenuOfProduct
 {
-    private static dalProduct dalProduct = new dalProduct();
+    private static DalProduct dalProduct = new();
     #region Add New Product
     public static void AddNewProduct()
     {
