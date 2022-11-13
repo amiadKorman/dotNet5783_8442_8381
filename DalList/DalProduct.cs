@@ -9,9 +9,14 @@ public class DalProduct
     /// <summary>
     /// Add new product item
     /// </summary>
-    /// <param name="newProdect"></param>
-    /// <exception cref="NotImplementedException"></exception>
-    public static int AddProduct(int ID, string nameP, double price, CategoryOfProduct category, int InStock)
+    /// <param name="ID"></param>
+    /// <param name="nameP"></param>
+    /// <param name="Price"></param>
+    /// <param name="Category"></param>
+    /// <param name="InStock"></param>
+    /// <returns>new product ID</returns>
+    /// <exception cref="Exception"></exception>
+    public static int AddProduct(int ID, string nameP, double Price, CategoryOfProduct Category, int InStock)
     {
         foreach (var _ in from OrderItem OItem in orderItemsArray
                           where ID == OItem.ID
@@ -24,21 +29,21 @@ public class DalProduct
         {
             ID = ID,
             Name = nameP,
-            Price = price,
-            Category = category,
+            Price = Price,
+            Category = Category,
             InStock = InStock
         };
         return ID;
     }
     #endregion
 
-    #region Return product by given
+    #region Return product by given ID
     /// <summary>
-    /// Return product by given
+    /// Return product by given ID
     /// </summary>
     /// <param name="productID"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <returns>product</returns>
+    /// <exception cref="Exception"></exception>
     public static Product GetProduct(int productID)
     {
         foreach (var product in from Product product in productsArray
@@ -56,6 +61,7 @@ public class DalProduct
     /// <summary>
     /// Return all the products in the DataSource
     /// </summary>
+    /// <returns>products array</returns>
     public static Product[] ShowAllProdoct()
     {
 
@@ -71,21 +77,20 @@ public class DalProduct
     /// Update product item by given ID
     /// </summary>
     /// <param name="newProduct"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="Exception"></exception>
     public static void UpdateProduct(Product newProduct)
     {
-        for(int i = 0; i < Config.productsLastIndex; i++)
+        for (int i = 0; i < Config.productsLastIndex; i++)
         {
             if (newProduct.ID == productsArray[i].ID)
             {
                 if (newProduct.Name != "")
                     productsArray[i].Name = newProduct.Name;
-                if(newProduct.Price != 0)
+                if (newProduct.Price != 0.0)
                     productsArray[i].Price = newProduct.Price;
-                if(newProduct.Category != 0)
+                if (newProduct.Category != 0)
                     productsArray[i].Category = newProduct.Category;
-                if(newProduct.InStock != 0)
+                if (newProduct.InStock != 0)
                     productsArray[i].InStock = newProduct.InStock;
                 return;
             }
@@ -100,7 +105,7 @@ public class DalProduct
     /// Delete product item by given ID
     /// </summary>
     /// <param name="productID"></param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="Exception"></exception>
     public static void DeleteProduct(int productID)
     {
         foreach (var product in productsArray.Where(product => productID == product.ID))
