@@ -1,4 +1,5 @@
 ﻿using DO;
+using System.Diagnostics;
 using static Dal.DataSource;
 
 namespace Dal;
@@ -9,31 +10,23 @@ public class DalOrderItem
     /// <summary>
     /// Add new order item
     /// </summary>
-    /// <param name="OItemID"></param>
-    /// <param name="Orderid"></param>
-    /// <param name="ProductId"></param>
-    /// <param name="Price"></param>
-    /// <param name="Amount"></param>
+    /// <param name="orderItem"></param>
     /// <returns>new order item ID</returns>
     /// <exception cref="Exception"></exception>
-    public int AddOrderItem(int Orderid, int ProductId, double Price, int Amount)
+    public int AddOrderItem(OrderItem orderItem)
     {
-        /*foreach (var _ in from OrderItem OItem in orderItemsArray
-                          where Orderid == OItem.OrderID
-                          select new { })
-        {
+        int result = Array.FindIndex(orderItemsArray, oi => oi.ID == orderItem.ID);
+        if (result == -1)
             throw new Exception("Order Item ID Already Exist");
-        }*/
-
-        OrderItem newOrderItem = new()
+        orderItemsArray[Config.orderItemsLastIndex++] = new()
         {
             ID = Config.GetOrderItemID,
-            OrderID = Orderid,
-            ProductID = ProductId,
-            Price = Price,
-            Amount = Amount
+            OrderID = orderItem.OrderID,
+            ProductID = orderItem.ProductID,
+            Price = orderItem.Price,
+            Amount = orderItem.Amount
         };
-        return newOrderItem.ID;
+        return orderItem.ID;
     }
     #endregion
 

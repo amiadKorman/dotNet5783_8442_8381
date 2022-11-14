@@ -9,12 +9,19 @@ internal class MenuOfOrderItems
     public static void AddNewOrderItem()
     {
         Console.WriteLine("for add a new Order Item, please fill in the following data:");
-        int OrderID = SafeInput.IntegerInput("Order ID: ");
-        int ProductID = SafeInput.IntegerInput("Product ID: ");
-        double Price = SafeInput.DoubleInput("Price: ");
-        int Amount = SafeInput.IntegerInput("Amount: ");
-        Console.WriteLine("Adding a new Base Station...");
-        dalOrderItem.AddOrderItem(OrderID, ProductID, Price, Amount);
+        int orderID = SafeInput.IntegerInput("Order ID: ");
+        int productID = SafeInput.IntegerInput("Product ID: ");
+        double price = SafeInput.DoubleInput("Price: ");
+        int amount = SafeInput.IntegerInput("Amount: ");
+        Console.WriteLine("Adding a new Order Item...");
+        OrderItem orderItem = new()
+        {
+            OrderID = orderID,
+            ProductID = productID,
+            Price = price,
+            Amount = amount
+        };
+        int orderItemID = dalOrderItem.AddOrderItem(orderItem);
         Console.WriteLine("The new Order Item was successfully added\n");
     }
     #endregion
