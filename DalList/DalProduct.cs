@@ -9,18 +9,13 @@ public class DalProduct
     /// <summary>
     /// Add new product item
     /// </summary>
-    /// <param name="ID"></param>
-    /// <param name="nameP"></param>
-    /// <param name="Price"></param>
-    /// <param name="Category"></param>
-    /// <param name="InStock"></param>
-    /// <returns>new product ID</returns>
+    /// <param name="product"></param>
+    /// <returns>ID of new product</returns>
     /// <exception cref="Exception"></exception>
-    
     public int AddProduct(Product product)
     {
-        int result = Array.FindIndex(orderItemsArray,p => p.ID==product.ID);
-        if(result == -1)
+        int result = Array.FindIndex(orderItemsArray, p => p.ID == product.ID);
+        if (result == -1)
             throw new Exception("product ID Already Exist");
         productsArray[Config.productsLastIndex++] = new()
         {
@@ -31,26 +26,6 @@ public class DalProduct
             InStock = product.InStock
         };
         return result;
-    }
-
-    public int AddProduct(int ID, string nameP, double Price, CategoryOfProduct Category, int InStock)
-    {
-        foreach (var _ in from OrderItem OItem in orderItemsArray
-                          where ID == OItem.ID
-                          select new { })
-        {
-            throw new Exception("product ID Already Exist");
-        }
-
-        productsArray[Config.productsLastIndex++] = new()
-        {
-            ID = ID,
-            Name = nameP,
-            Price = Price,
-            Category = Category,
-            InStock = InStock
-        };
-        return ID;
     }
     #endregion
 
