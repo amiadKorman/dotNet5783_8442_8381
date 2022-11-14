@@ -30,7 +30,7 @@ internal class MenuOfProduct
             Category = category,
             InStock = InStock
         };
-        dalProduct.AddProduct(product);
+        int productID = dalProduct.AddProduct(product);
         Console.WriteLine("The new Product was successfully added\n");
     }
     #endregion

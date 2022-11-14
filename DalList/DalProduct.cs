@@ -14,7 +14,7 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public int AddProduct(Product product)
     {
-        int result = Array.FindIndex(orderItemsArray, p => p.ID == product.ID);
+        int result = Array.FindIndex(productsArray, p => p.ID == product.ID);
         if (result == -1)
             throw new Exception("product ID Already Exist");
         productsArray[Config.productsLastIndex++] = new()
@@ -25,7 +25,7 @@ public class DalProduct
             Category = product.Category,
             InStock = product.InStock
         };
-        return result;
+        return product.ID;
     }
     #endregion
 
