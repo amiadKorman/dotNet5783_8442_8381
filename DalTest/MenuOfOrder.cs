@@ -9,14 +9,21 @@ internal class MenuOfOrder
     public static void AddNewOrder()
     {
         Console.WriteLine("for add a new Order, please fill in the following data:");
-        int Id = SafeInput.IntegerInput("ID order: ");
-        int CustomerId = SafeInput.IntegerInput("ID Customer: ");
+        int ID = SafeInput.IntegerInput("ID order: ");
+        int customerID = SafeInput.IntegerInput("ID Customer: ");
         DateTime? NullDateTime = null;
-        DateTime OrderDate = Convert.ToDateTime(NullDateTime);
-        DateTime ShipDate = Convert.ToDateTime(NullDateTime); ;
-        DateTime DeliveryDate = Convert.ToDateTime(NullDateTime);
+        DateTime orderDate = Convert.ToDateTime(NullDateTime);
+        DateTime shipDate = Convert.ToDateTime(NullDateTime); ;
+        DateTime deliveryDate = Convert.ToDateTime(NullDateTime);
         Console.WriteLine("Adding a new Order...");
-        dalOrder.AddOrder(Id, CustomerId, OrderDate, ShipDate, DeliveryDate);
+        Order order = new()
+        {
+            CustomerID = customerID,
+            OrderDate = orderDate,
+            ShipDate = shipDate,
+            DeliveryDate = deliveryDate
+        };
+        dalOrder.AddOrder(order);
     }
     #endregion
 

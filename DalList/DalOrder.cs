@@ -9,30 +9,23 @@ public class DalOrder
     /// <summary>
     /// Add new order
     /// </summary>
-    /// <param name="UD"></param>
-    /// <param name="CustomerID"></param>
-    /// <param name="OrderD"></param>
-    /// <param name="ShipD"></param>
-    /// <param name="DeliveryD"></param>
+    /// <param name="order"></param>
     /// <returns>new order ID</returns>
     /// <exception cref="Exception"></exception>
-    public int AddOrder(int UD, int CustomerID, DateTime OrderD, DateTime ShipD, DateTime DeliveryD)
+    public int AddOrder(Order order)
     {
-        if (OrderAreExist(UD))
-        {
+        int result = Array.FindIndex(ordersArray, o => o.ID == order.ID);
+        if (result == -1)
             throw new Exception("Order ID Already Exist");
-        }
-        // create new order
-        Order NewOrder = new()
+        ordersArray[Config.ordersLastIndex++] = new()
         {
             ID = Config.GetOrderID,
-            CustomerID = CustomerID,
-            OrderDate = OrderD,
-            ShipDate = ShipD,
-            DeliveryDate = DeliveryD
+            CustomerID = order.CustomerID,
+            OrderDate = order.OrderDate,
+            ShipDate = order.ShipDate,
+            DeliveryDate = order.DeliveryDate
         };
-
-        return NewOrder.ID;
+        return order.ID;
     }
     #endregion
 
@@ -73,11 +66,24 @@ public class DalOrder
     /// Update order by given ID
     /// </summary>
     /// <param name="newOrder"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="Exception"></exception>
     public void UpdateOrder(Order newOrder)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < Config.ordersLastIndex; i++)
+        {
+            if (newOrder.ID == ordersArray[i].ID)
+            {
+                if (newOrder.CustomerID != 0)
+                    ordersArray[i].CustomerID = newOrder.CustomerID;
+                if (newOrder.ShipDate != null)
+                    ordersArray[i].ShipDate = newOrder.ShipDate;
+                if (newOrder.DeliveryDate != null)
+                    ordersArray[i].DeliveryDate = newOrder.DeliveryDate;
+                return;
+            }
+        }
+
+        throw new Exception("Order ID Not Exist");
     }
     #endregion
 
