@@ -51,7 +51,6 @@ public class DalOrder
         Array.Copy(ordersArray, orders, orders.Length);
         return orders;
     }
-
     #endregion
 
     #region UPDATE

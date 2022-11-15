@@ -83,18 +83,21 @@ internal class MenuOfProduct
     }
     #endregion
 
-    #region Product Menu
+    #region MENU
+    /// <summary>
+    /// Print Product menu and calls the appropriate method
+    /// </summary>
     public static void ProductMenu()
     {
         ProductMenu ProductChoise = Dal.ProductMenu.AddProduct;
-        while (!ProductChoise.Equals(EntitysMenu.Exit))
+        while (!ProductChoise.Equals(Dal.ProductMenu.GoBack))
         {
             ProductChoise = (ProductMenu)SafeInput.IntegerInput(
                 "To Add a Product - press 1\n" +
                 "To Update a Product - press 2\n" +
                 "To Show a Product - press 3\n" +
                 "To Show Products List - press 4\n" +
-                "To Delete a Product List - press 5\n" +
+                "To Delete a Product - press 5\n" +
                 "To Return back to the menu - press 0\n\n");
 
             switch (ProductChoise)
@@ -114,7 +117,7 @@ internal class MenuOfProduct
                 case Dal.ProductMenu.DeleteAProduct:
                     DeleteProduct();
                     break;
-                case Dal.ProductMenu.GoToTheFirstMenu:
+                case Dal.ProductMenu.GoBack:
                     break;
                 default:
                     Console.WriteLine("This option does not exist, please try again\n");

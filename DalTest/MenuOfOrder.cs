@@ -76,11 +76,14 @@ internal class MenuOfOrder
     }
     #endregion
 
-    #region OrderMenu
+    #region MENU
+    /// <summary>
+    /// Print Order menu and calls the appropriate method
+    /// </summary>
     public static void OrderMenu()
     {
         OrderMenu Orderchoise = Dal.OrderMenu.AddOrder;
-        while (!Orderchoise.Equals(Dal.EntitysMenu.Exit))
+        while (!Orderchoise.Equals(Dal.OrderMenu.GoBack))
         {
             Orderchoise = (OrderMenu)SafeInput.IntegerInput(
             "To Add an Order - press 1\n" +
@@ -107,7 +110,7 @@ internal class MenuOfOrder
                 case Dal.OrderMenu.DeleteAnOrder:
                     DeleteOrder();
                     break;
-                case Dal.OrderMenu.GoToTheFirstMenu:
+                case Dal.OrderMenu.GoBack:
                     break;
                 default:
                     Console.WriteLine("This option does not exist, please try again\n");

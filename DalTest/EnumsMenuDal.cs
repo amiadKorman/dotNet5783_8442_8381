@@ -30,7 +30,7 @@ public enum OrderMenu
     [Description("Delete an Order")]
     DeleteAnOrder = 5,
     [Description("To Return Back To The Main Menu")]
-    GoToTheFirstMenu = 0
+    GoBack = 0
 }
 #endregion
 
@@ -48,7 +48,7 @@ public enum OrderItemMenu
     [Description("Delete an Order item")]
     DeleteAnOrderItems = 5,
     [Description("To Return Back To The Main Menu")]
-    GoToTheFirstMenu = 0
+    GoBack = 0
 }
 #endregion
 
@@ -66,6 +66,6 @@ public enum ProductMenu
     [Description("Delete a Product")]
     DeleteAProduct = 5,
     [Description("To Return Back To The Main Menu")]
-    GoToTheFirstMenu = 0
+    GoBack = 0
 }
 #endregion       
