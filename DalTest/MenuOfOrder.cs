@@ -30,14 +30,22 @@ internal class MenuOfOrder
     #region Update Order
     public static void UpdateOrder()
     {
-        int Id = SafeInput.IntegerInput("Plese enter the ID of order that you wont to update: ");
-        dalOrder.OrderAreExist(Id);
+        throw new NotImplementedException();
+
+        int ID = SafeInput.IntegerInput("Plese enter the ID of order that you wont to update: ");
+        Order order = dalOrder.GetOrder(ID);
         int CustomerId = SafeInput.IntegerInput("ID Customer: ");
         DateTime? NullDateTime = null;
         DateTime? OrderDate = Convert.ToDateTime(NullDateTime);
         DateTime? ShipDate = Convert.ToDateTime(NullDateTime); ;
         DateTime? DeliveryDate = Convert.ToDateTime(NullDateTime);
         Console.WriteLine("Update the Order ditels...");
+        if (order.CustomerID != 0)
+            order.CustomerID = order.CustomerID;
+        if (order.ShipDate != null)
+            order.ShipDate = order.ShipDate;
+        if (order.DeliveryDate != null)
+            order.DeliveryDate = order.DeliveryDate;
     }
     #endregion
 
@@ -52,7 +60,7 @@ internal class MenuOfOrder
     #region Show Order List
     public static void ShowOrderList()
     {
-        Order[] orders = dalOrder.ShowAllOrders();
+        Order[] orders = dalOrder.GetAllOrders();
         foreach (Order order in orders)
         {
             Console.WriteLine(order);

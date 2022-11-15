@@ -38,7 +38,20 @@ internal class MenuOfProduct
     #region Update Product
     public static void UpdateProduct()
     {
+        throw new NotImplementedException();
 
+        int ID = SafeInput.IntegerInput("Plese enter the ID of product that you wont to update: ");
+        Product newProduct = dalProduct.GetProduct(ID);
+        // USer input of product item properties
+        if (newProduct.Name != "")
+            newProduct.Name = newProduct.Name;
+        if (newProduct.Price != 0.0)
+            newProduct.Price = newProduct.Price;
+        if (newProduct.Category != 0)
+            newProduct.Category = newProduct.Category;
+        if (newProduct.InStock != 0)
+            newProduct.InStock = newProduct.InStock;
+        return;
 
     }
     #endregion
@@ -54,7 +67,7 @@ internal class MenuOfProduct
     #region Show List Product
     public static void ShowListProduct()
     {
-        Product[] products = dalProduct.ShowAllProdoct();
+        Product[] products = dalProduct.GetAllProdoct();
         foreach (Product product in products)
         {
             Console.WriteLine(product);

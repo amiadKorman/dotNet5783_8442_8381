@@ -29,7 +29,19 @@ internal class MenuOfOrderItems
     #region Update Order Item
     public static void UpdateOrderItem()
     {
+        throw new NotImplementedException();
 
+        int ID = SafeInput.IntegerInput("Plese enter the ID of order item that you wont to update: ");
+        OrderItem orderItem = dalOrderItem.GetOrderItem(ID);
+        // USer input of order item properties
+        if (orderItem.ProductID != 0)
+            orderItem.ProductID = orderItem.ProductID;
+        if (orderItem.OrderID != 0)
+            orderItem.OrderID = orderItem.OrderID;
+        if (orderItem.Price != 0.0)
+            orderItem.Price = orderItem.Price;
+        if (orderItem.Amount != 0)
+            orderItem.Amount = orderItem.Amount;
     }
     #endregion
 
@@ -51,7 +63,7 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void ShowListOfOrderItem()
     {
-        OrderItem[] orderItems = dalOrderItem.ShowAllOrderItems();
+        OrderItem[] orderItems = dalOrderItem.GetAllOrderItems();
         foreach (OrderItem orderItem in orderItems)
         {
             Console.WriteLine(orderItem);
