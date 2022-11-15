@@ -1,5 +1,7 @@
 ﻿using DO;
 using static Dal.DataSource;
+using System.Linq;
+using System;
 
 namespace Dal;
 
@@ -14,8 +16,8 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public int AddProduct(Product product)
     {
-        int result = Array.FindIndex(productsArray, p => p.ID == product.ID);
-        if (result == -1)
+        int index = Array.FindIndex(productsArray, p => p.ID == product.ID);
+        if (index == -1)
             throw new Exception("product ID Already Exist");
         productsArray[Config.productsLastIndex++] = new()
         {
@@ -38,14 +40,11 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public Product GetProduct(int productID)
     {
-        foreach (var product in from Product product in productsArray
-                                where productID == product.ID
-                                select product)
-        {
-            return product;
-        }
+        int index = Array.FindIndex(productsArray, p => p.ID == productID);
+        if (index == -1)
+            throw new Exception("Product ID Not Exist");
 
-        throw new Exception("Product ID Not Exist");
+        return productsArray[index];
     }
     #endregion
 
@@ -56,7 +55,6 @@ public class DalProduct
     /// <returns>products array</returns>
     public Product[] ShowAllProdoct()
     {
-
         Product[] products = new Product[Config.productsLastIndex];
         Array.Copy(productsArray, products, products.Length);
         return products;
@@ -72,7 +70,13 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public void UpdateProduct(Product newProduct)
     {
-        for (int i = 0; i < Config.productsLastIndex; i++)
+        int index = Array.FindIndex(productsArray, p => p.ID == newProduct.ID);
+        if (index == -1)
+            throw new Exception("Product ID Not Exist");
+
+        productsArray[index] = newProduct;
+
+        /*for (int i = 0; i < Config.productsLastIndex; i++)
         {
             if (newProduct.ID == productsArray[i].ID)
             {
@@ -88,7 +92,7 @@ public class DalProduct
             }
         }
 
-        throw new Exception("Product ID Not Exist");
+        throw new Exception("Product ID Not Exist");*/
     }
     #endregion
 
@@ -100,15 +104,24 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public void DeleteProduct(int productID)
     {
-        foreach (var product in productsArray.Where(product => productID == product.ID))
+        int index = Array.FindIndex(productsArray, p => p.ID == productID);
+        if (index == -1)
+            throw new Exception("Product ID Not Exist");
+
+        productsArray = productsArray.Where((e, i) => i != index).ToArray();
+        Config.productsLastIndex--;
+        return;
+
+        /*foreach (var index in from product in productsArray.Where(product => productID == product.ID)
+                              let index = Array.IndexOf(productsArray, product)
+                              select index)
         {
-            int index = Array.IndexOf(productsArray, product);
             productsArray = productsArray.Where((e, i) => i != index).ToArray();
             Config.productsLastIndex--;
             return;
         }
 
-        throw new Exception("Product ID Not Exist");
+        throw new Exception("Product ID Not Exist");*/
     }
     #endregion
 }

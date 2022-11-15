@@ -1,5 +1,6 @@
 ﻿using DO;
 using static Dal.DataSource;
+using System.Linq;
 
 namespace Dal;
 
@@ -14,16 +15,11 @@ public class DalOrder
     /// <exception cref="Exception"></exception>
     public int AddOrder(Order order)
     {
-        int result = Array.FindIndex(ordersArray, o => o.ID == order.ID);
-        if (result == -1)
-            throw new Exception("Order ID Already Exist");
         ordersArray[Config.ordersLastIndex++] = new()
         {
             ID = Config.GetOrderID,
             CustomerID = order.CustomerID,
-            OrderDate = order.OrderDate,
-            ShipDate = order.ShipDate,
-            DeliveryDate = order.DeliveryDate
+            OrderDate = DateTime.Now,
         };
         return order.ID;
     }
@@ -38,12 +34,11 @@ public class DalOrder
     /// <exception cref="Exception"></exception>
     public Order GetOrder(int orderID)
     {
-        foreach (var order in ordersArray.Where(order => orderID == order.ID))
-        {
-            return order;
-        }
+        int index = Array.FindIndex(orderItemsArray, p => p.ID == orderID);
+        if (index == -1)
+            throw new Exception("Order ID Not Exist");
 
-        throw new Exception("Order ID Not Exist");
+        return ordersArray[index];
     }
     #endregion
 
@@ -69,7 +64,13 @@ public class DalOrder
     /// <exception cref="Exception"></exception>
     public void UpdateOrder(Order newOrder)
     {
-        for (int i = 0; i < Config.ordersLastIndex; i++)
+        int index = Array.FindIndex(orderItemsArray, p => p.ID == newOrder.ID);
+        if (index == -1)
+            throw new Exception("Order ID Not Exist");
+
+        ordersArray[index] = newOrder;
+
+        /*for (int i = 0; i < Config.ordersLastIndex; i++)
         {
             if (newOrder.ID == ordersArray[i].ID)
             {
@@ -83,7 +84,7 @@ public class DalOrder
             }
         }
 
-        throw new Exception("Order ID Not Exist");
+        throw new Exception("Order ID Not Exist");*/
     }
     #endregion
 
@@ -95,17 +96,25 @@ public class DalOrder
     /// <exception cref="NotImplementedException"></exception>
     public void DeleteOrder(int orderID)
     {
-        foreach (Order order in ordersArray)
+        int index = Array.FindIndex(orderItemsArray, p => p.ID == orderID);
+        if (index == -1)
+            throw new Exception("Order ID Not Exist");
+
+        ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
+        Config.ordersLastIndex--;
+        return;
+
+        /*foreach (var index in from Order order in ordersArray
+                              where orderID == order.ID
+                              let index = Array.IndexOf(ordersArray, order)
+                              select index)
         {
-            if (orderID == order.ID)
-            {
-                int index = Array.IndexOf(ordersArray, order);
-                ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
-                Config.ordersLastIndex--;
-                return;
-            }
+            ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
+            Config.ordersLastIndex--;
+            return;
         }
-        throw new Exception("Order ID Not Exist");
+
+        throw new Exception("Order ID Not Exist");*/
     }
     #endregion
 

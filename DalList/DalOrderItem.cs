@@ -1,6 +1,8 @@
 ﻿using DO;
 using System.Diagnostics;
 using static Dal.DataSource;
+using System.Linq;
+using System;
 
 namespace Dal;
 
@@ -15,9 +17,6 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public int AddOrderItem(OrderItem orderItem)
     {
-        int result = Array.FindIndex(orderItemsArray, oi => oi.ID == orderItem.ID);
-        if (result == -1)
-            throw new Exception("Order Item ID Already Exist");
         orderItemsArray[Config.orderItemsLastIndex++] = new()
         {
             ID = Config.GetOrderItemID,
@@ -30,35 +29,59 @@ public class DalOrderItem
     }
     #endregion
 
-    #region Return order by given ID
+    #region Return order item by given ID
     /// <summary>
-    /// Return order by given ID
+    /// Return order item by given ID
     /// </summary>
     /// <param name="orderItemID"></param>
     /// <returns>order item</returns>
     /// <exception cref="Exception"></exception>
     public OrderItem GetOrderItem(int orderItemID)
     {
-        foreach (var OItem in from OrderItem OItem in orderItemsArray
-                              where orderItemID == OItem.ID
-                              select OItem)
-        {
-            return OItem;
-        }
+        int index = Array.FindIndex(orderItemsArray, p => p.ID == orderItemID);
+        if (index == -1)
+            throw new Exception("Order Item ID Not Exist");
 
-        throw new Exception("Order Item ID Not Exist");
+        return orderItemsArray[index];
+    }
+
+    /// <summary>
+    /// Return order item by given order and product ID
+    /// </summary>
+    /// <param name="orderID"></param>
+    /// <param name="productID"></param>
+    /// <returns>order item</returns>
+    /// <exception cref="Exception"></exception>
+    public OrderItem GetOrderItem(int orderID, int productID)
+    {
+        int index = Array.FindIndex(orderItemsArray, p => p.OrderID == orderID && p.ProductID == productID);
+        if (index == -1)
+            throw new Exception("Order Item ID Not Exist");
+
+        return orderItemsArray[index];
     }
     #endregion
 
-    #region Return All Order Item
+    #region Return All Order Items
     /// <summary>
     /// Return all the order items in the DataSource
     /// </summary>
-    /// <returns>all order items</returns>
+    /// <returns>order items array</returns>
     public OrderItem[] ShowAllOrderItems()
     {
         OrderItem[] orderItems = new OrderItem[Config.orderItemsLastIndex];
         Array.Copy(orderItemsArray, orderItems, orderItems.Length);
+        return orderItems;
+    }
+
+    /// <summary>
+    /// Return all the order items of specific order
+    /// </summary>
+    /// <param name="orderID"></param>
+    /// <returns>order item array</returns>
+    public OrderItem[] ShowAllOrderItems(int orderID)
+    {
+        OrderItem[] orderItems = Array.FindAll(orderItemsArray, oi => oi.OrderID == orderID);
         return orderItems;
     }
     #endregion
@@ -71,7 +94,13 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public void UpdateOrderItem(OrderItem newOrderItem)
     {
-        for (int i = 0; i < Config.orderItemsLastIndex; i++)
+        int index = Array.FindIndex(orderItemsArray, p => p.ID == newOrderItem.ID);
+        if (index == -1)
+            throw new Exception("Order Item ID Not Exist");
+
+        orderItemsArray[index] = newOrderItem;
+
+        /*for (int i = 0; i < Config.orderItemsLastIndex; i++)
         {
             if (newOrderItem.ID == orderItemsArray[i].ID)
             {
@@ -87,7 +116,7 @@ public class DalOrderItem
             }
         }
 
-        throw new Exception("Product ID Not Exist");
+        throw new Exception("Product ID Not Exist");*/
     }
     #endregion
 
@@ -99,17 +128,25 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public void DeleteOrderItem(int orderItemID)
     {
-        foreach (OrderItem OrderItem in orderItemsArray)
+        int index = Array.FindIndex(orderItemsArray, p => p.ID == orderItemID);
+        if (index == -1)
+            throw new Exception("Order Item ID Not Exist");
+
+        orderItemsArray = orderItemsArray.Where((e, i) => i != index).ToArray();
+        Config.orderItemsLastIndex--;
+        return;
+
+        /*foreach (var index in from OrderItem OrderItem in orderItemsArray
+                              where OrderItem.ID == orderItemID
+                              let index = Array.IndexOf(orderItemsArray, OrderItem)
+                              select index)
         {
-            if (OrderItem.ID == orderItemID)
-            {
-                int index = Array.IndexOf(orderItemsArray, OrderItem);
-                orderItemsArray = orderItemsArray.Where((e, i) => i != index).ToArray();
-                Config.orderItemsLastIndex--;
-                return;
-            }
+            orderItemsArray = orderItemsArray.Where((e, i) => i != index).ToArray();
+            Config.orderItemsLastIndex--;
+            return;
         }
-        throw new Exception("Order Item ID Not Exist");
+
+        throw new Exception("Order Item ID Not Exist");*/
     }
     #endregion
 }
