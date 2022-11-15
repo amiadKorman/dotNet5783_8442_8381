@@ -120,7 +120,7 @@ internal class MenuOfProduct
                 case Dal.ProductMenu.GoBack:
                     break;
                 default:
-                    Console.WriteLine("This option does not exist, please try again\n");
+                    Console.WriteLine("This option doesn't exist, please try again\n");
                     break;
             }
         }
