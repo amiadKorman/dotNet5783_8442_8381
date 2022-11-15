@@ -40,7 +40,7 @@ public class DalOrderItem
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == orderItemID);
         if (index == -1)
-            throw new Exception("Order Item ID Not Exist");
+            throw new Exception("Order item ID doesn't exist");
 
         return orderItemsArray[index];
     }
@@ -56,7 +56,7 @@ public class DalOrderItem
     {
         int index = Array.FindIndex(orderItemsArray, p => p.OrderID == orderID && p.ProductID == productID);
         if (index == -1)
-            throw new Exception("Order Item ID Not Exist");
+            throw new Exception("Order item ID doesn't exist");
 
         return orderItemsArray[index];
     }
@@ -94,7 +94,7 @@ public class DalOrderItem
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == newOrderItem.ID);
         if (index == -1)
-            throw new Exception("Order Item ID Not Exist");
+            throw new Exception("Order item ID doesn't exist");
 
         orderItemsArray[index] = newOrderItem;
     }
@@ -110,7 +110,7 @@ public class DalOrderItem
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == orderItemID);
         if (index == -1)
-            throw new Exception("Order Item ID Not Exist");
+            throw new Exception("Order item ID doesn't exist");
 
         orderItemsArray = orderItemsArray.Where((e, i) => i != index).ToArray();
         Config.orderItemsLastIndex--;

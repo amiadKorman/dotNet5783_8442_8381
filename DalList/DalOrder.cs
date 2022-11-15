@@ -36,7 +36,7 @@ public class DalOrder
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == orderID);
         if (index == -1)
-            throw new Exception("Order ID Not Exist");
+            throw new Exception("Order ID doesn't exist");
 
         return ordersArray[index];
     }
@@ -63,7 +63,7 @@ public class DalOrder
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == newOrder.ID);
         if (index == -1)
-            throw new Exception("Order ID Not Exist");
+            throw new Exception("Order ID doesn't exist");
 
         ordersArray[index] = newOrder;
     }
@@ -74,12 +74,12 @@ public class DalOrder
     /// Delete order by given ID
     /// </summary>
     /// <param name="orderID"></param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="Exception"></exception>
     public void DeleteOrder(int orderID)
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == orderID);
         if (index == -1)
-            throw new Exception("Order ID Not Exist");
+            throw new Exception("Order ID doesn't exist");
 
         ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
         Config.ordersLastIndex--;

@@ -16,7 +16,7 @@ public class DalCustomer
     {
         int index = Array.FindIndex(customersArray, c => c.ID == customer.ID);
         if (index == -1)
-            throw new Exception("customer ID Already Exist");
+            throw new Exception("Customer ID already exist");
 
         customersArray[Config.customersLastIndex++] = new()
         {
@@ -40,7 +40,7 @@ public class DalCustomer
     {
         int index = Array.FindIndex(customersArray, c => c.ID == customerID);
         if (index == -1)
-            throw new Exception("customer ID Not Exist");
+            throw new Exception("Customer ID doesn't exist");
 
         return customersArray[index];
     }
@@ -67,7 +67,7 @@ public class DalCustomer
     {
         int index = Array.FindIndex(customersArray, c => c.ID == newCustomer.ID);
         if (index == -1)
-            throw new Exception("customer ID Not Exist");
+            throw new Exception("Customer ID doesn't exist");
 
         customersArray[index] = newCustomer;
     }
@@ -83,7 +83,7 @@ public class DalCustomer
     {
         int index = Array.FindIndex(customersArray, c => c.ID == customerID);
         if (index == -1)
-            throw new Exception("customer ID Not Exist");
+            throw new Exception("Customer ID doesn't exist");
 
         customersArray = customersArray.Where((e, i) => i != index).ToArray();
         Config.customersLastIndex--;

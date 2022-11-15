@@ -18,7 +18,7 @@ public class DalProduct
     {
         int index = Array.FindIndex(productsArray, p => p.ID == product.ID);
         if (index == -1)
-            throw new Exception("Product ID Already Exist");
+            throw new Exception("Product ID already exist");
         productsArray[Config.productsLastIndex++] = new()
         {
             ID = product.ID,
@@ -42,7 +42,7 @@ public class DalProduct
     {
         int index = Array.FindIndex(productsArray, p => p.ID == productID);
         if (index == -1)
-            throw new Exception("Product ID Not Exist");
+            throw new Exception("Product ID doesn't exist");
 
         return productsArray[index];
     }
@@ -69,7 +69,7 @@ public class DalProduct
     {
         int index = Array.FindIndex(productsArray, p => p.ID == newProduct.ID);
         if (index == -1)
-            throw new Exception("Product ID Not Exist");
+            throw new Exception("Product ID doesn't exist");
 
         productsArray[index] = newProduct;
     }
@@ -85,7 +85,7 @@ public class DalProduct
     {
         int index = Array.FindIndex(productsArray, p => p.ID == productID);
         if (index == -1)
-            throw new Exception("Product ID Not Exist");
+            throw new Exception("Product ID doesn't exist");
 
         productsArray = productsArray.Where((e, i) => i != index).ToArray();
         Config.productsLastIndex--;
