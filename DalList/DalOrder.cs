@@ -6,7 +6,7 @@ namespace Dal;
 
 public class DalOrder
 {
-    #region Add new order
+    #region ADD
     /// <summary>
     /// Add new order
     /// </summary>
@@ -25,7 +25,7 @@ public class DalOrder
     }
     #endregion
 
-    #region Return order by given ID
+    #region GET
     /// <summary>
     /// Return order by given ID
     /// </summary>
@@ -40,14 +40,12 @@ public class DalOrder
 
         return ordersArray[index];
     }
-    #endregion
-
-    #region Rerurn all Orders
+    
     /// <summary>
     /// Return all the orders in the DataSource
     /// </summary>
     /// <returns>all orders</returns>
-    public Order[] ShowAllOrders()
+    public Order[] GetAllOrders()
     {
         Order[] orders = new Order[Config.ordersLastIndex];
         Array.Copy(ordersArray, orders, orders.Length);
@@ -56,9 +54,9 @@ public class DalOrder
 
     #endregion
 
-    #region Update order by given ID
+    #region UPDATE
     /// <summary>
-    /// Update order by given ID
+    /// Update order
     /// </summary>
     /// <param name="newOrder"></param>
     /// <exception cref="Exception"></exception>
@@ -69,26 +67,10 @@ public class DalOrder
             throw new Exception("Order ID Not Exist");
 
         ordersArray[index] = newOrder;
-
-        /*for (int i = 0; i < Config.ordersLastIndex; i++)
-        {
-            if (newOrder.ID == ordersArray[i].ID)
-            {
-                if (newOrder.CustomerID != 0)
-                    ordersArray[i].CustomerID = newOrder.CustomerID;
-                if (newOrder.ShipDate != null)
-                    ordersArray[i].ShipDate = newOrder.ShipDate;
-                if (newOrder.DeliveryDate != null)
-                    ordersArray[i].DeliveryDate = newOrder.DeliveryDate;
-                return;
-            }
-        }
-
-        throw new Exception("Order ID Not Exist");*/
     }
     #endregion
 
-    #region Delete order by given ID
+    #region DELETE
     /// <summary>
     /// Delete order by given ID
     /// </summary>
@@ -103,37 +85,6 @@ public class DalOrder
         ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
         Config.ordersLastIndex--;
         return;
-
-        /*foreach (var index in from Order order in ordersArray
-                              where orderID == order.ID
-                              let index = Array.IndexOf(ordersArray, order)
-                              select index)
-        {
-            ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
-            Config.ordersLastIndex--;
-            return;
-        }
-
-        throw new Exception("Order ID Not Exist");*/
-    }
-    #endregion
-
-    #region Order Are Exist
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="IdOfOrder"></param>
-    /// <returns>True if Order Are Exist False if Not</returns>
-    public bool OrderAreExist(int IdOfOrder)
-    {
-        foreach (var _ in ordersArray.Where(order => IdOfOrder == order.ID).Select(
-        // Run all over the Array and check if there is an Id exist
-        order => new { }))
-        {
-            return true;
-        }
-
-        return false;
     }
     #endregion
 }
