@@ -49,15 +49,27 @@ internal class MenuOfOrder
     }
     #endregion
 
-    #region Show Order
+    #region SHOW 
+    /// <summary>
+    /// Print specific order
+    /// </summary>
     public static void ShowOrder()
     {
-        int IdOrder = SafeInput.IntegerInput("ID: ");
-        Console.WriteLine(dalOrder.GetOrder(IdOrder));
+        int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
+        try
+        {
+            Order order = dalOrder.GetOrder(IdOrder);
+            Console.WriteLine(order);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
-    #endregion
 
-    #region Show Order List
+    /// <summary>
+    /// Print all orders
+    /// </summary>
     public static void ShowOrderList()
     {
         Order[] orders = dalOrder.GetAllOrders();

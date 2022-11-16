@@ -45,21 +45,26 @@ internal class MenuOfOrderItems
     }
     #endregion
 
-    #region Show Order Item
+    #region SHOW
     /// <summary>
-    /// 
+    /// Print specific order item
     /// </summary>
     public static void ShowOrderItem()
     {
-        int IdOrderItem = SafeInput.IntegerInput("ID: ");
-        Console.WriteLine(dalOrderItem.GetOrderItem(IdOrderItem));
-
+        int IdOrderItem = SafeInput.IntegerInput("Enter order item ID: ");
+        try
+        {
+            OrderItem orderItem = dalOrderItem.GetOrderItem(IdOrderItem);
+            Console.WriteLine(orderItem);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
-    #endregion
-
-    #region Show list Order Item
+    
     /// <summary>
-    /// 
+    /// Print all order items
     /// </summary>
     public static void ShowListOfOrderItem()
     {

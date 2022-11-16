@@ -56,15 +56,27 @@ internal class MenuOfProduct
     }
     #endregion
 
-    #region Show Product
+    #region SHOW
+    /// <summary>
+    /// Print specific product
+    /// </summary>
     public static void ShowProduct()
     {
-        int IdProduct = SafeInput.IntegerInput("ID: ");
-        Console.WriteLine(dalProduct.GetProduct(IdProduct));
+        int IdProduct = SafeInput.IntegerInput("Enter product ID: ");
+        try
+        {
+            Product product = dalProduct.GetProduct(IdProduct);
+            Console.WriteLine(product);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
-    #endregion
 
-    #region Show List Product
+    /// <summary>
+    /// Print all products
+    /// </summary>
     public static void ShowListProduct()
     {
         Product[] products = dalProduct.GetAllProdoct();
@@ -86,7 +98,7 @@ internal class MenuOfProduct
         {
             dalProduct.DeleteProduct(IdProduct);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message + ", please try again\n");
         }
