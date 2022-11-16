@@ -9,17 +9,18 @@ internal class MenuOfProduct
     #region Add New Product
     public static void AddNewProduct()
     {
-        Console.WriteLine("for add a new Order Item, please fill in the following data:");
+        Console.WriteLine("To add a new product, please fill in the following data:");
 
         int ID = SafeInput.IntegerInput("ID: ");
         string name = SafeInput.StringInput("Name:");
         double price = SafeInput.DoubleInput("Price: ");
         Console.WriteLine("Category: ");
-        CategoryOfProduct category = (CategoryOfProduct)SafeInput.IntegerInput
-            ("Category Of Product:\n" +
-            "X - press 1\n" +
-            "Y- press 2\n" +
-            "Z - press 3\n");
+        var categories = Enum.GetValues(typeof(CategoryOfProduct));
+        foreach (var category in categories)
+        {
+            Console.WriteLine($"\tFor {category} - press {(int)category}");
+        }
+        CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
         int InStock = SafeInput.IntegerInput("InStock: ");
         Console.WriteLine("Adding a new Product...");
         Product product = new()
@@ -27,11 +28,18 @@ internal class MenuOfProduct
             ID = ID,
             Name = name,
             Price = price,
-            Category = category,
+            Category = categorfy,
             InStock = InStock
         };
-        int productID = dalProduct.AddProduct(product);
-        Console.WriteLine("The new Product was successfully added\n");
+        try
+        {
+            int productID = dalProduct.AddProduct(product);
+            Console.WriteLine($"The new Product was successfully added with ID {productID}\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
