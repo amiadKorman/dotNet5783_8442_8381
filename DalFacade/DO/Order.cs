@@ -31,11 +31,11 @@ public struct Order
     public DateTime? DeliveryDate { get; set; }
 
     public override string ToString() => $@"
-        Order ID: {ID}, 
-        Customer ID: {CustomerID},
-        Order Date: {OrderDate},
-        Ship Date: {ShipDate},
-        Delivery Date: {DeliveryDate},
+        Order ID: {ID}
+        Customer ID: {CustomerID}
+        Order Date: {OrderDate}
+        Ship Date: {ShipDate}
+        Delivery Date: {DeliveryDate}
     ";
 
 }
