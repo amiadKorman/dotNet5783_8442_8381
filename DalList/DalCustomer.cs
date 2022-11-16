@@ -15,7 +15,7 @@ public class DalCustomer
     public int AddCustomer(Customer customer)
     {
         int index = Array.FindIndex(customersArray, c => c.ID == customer.ID);
-        if (index == -1)
+        if (index != -1)
             throw new Exception("Customer ID already exist");
 
         customersArray[Config.customersLastIndex++] = new()

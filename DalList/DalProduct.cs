@@ -17,7 +17,7 @@ public class DalProduct
     public int AddProduct(Product product)
     {
         int index = Array.FindIndex(productsArray, p => p.ID == product.ID);
-        if (index == -1)
+        if (index != -1)
             throw new Exception("Product ID already exist");
         productsArray[Config.productsLastIndex++] = new()
         {
