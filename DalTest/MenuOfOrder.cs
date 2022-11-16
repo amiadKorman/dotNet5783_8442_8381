@@ -68,11 +68,21 @@ internal class MenuOfOrder
     }
     #endregion
 
-    #region Delete Order
+    #region DELETE
+    /// <summary>
+    /// Delete order by ID
+    /// </summary>
     public static void DeleteOrder()
     {
-        int IdOrder = SafeInput.IntegerInput("ID: ");
-        dalOrder.DeleteOrder(IdOrder);
+        int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
+        try
+        {
+            dalOrder.DeleteOrder(IdOrder);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 

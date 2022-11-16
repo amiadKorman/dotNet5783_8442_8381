@@ -75,11 +75,21 @@ internal class MenuOfProduct
     }
     #endregion
 
-    #region Delete Product
+    #region DELETE
+    /// <summary>
+    /// Delete product by ID
+    /// </summary>
     public static void DeleteProduct()
     {
-        int Idproduct = SafeInput.IntegerInput("ID: ");
-        dalProduct.DeleteProduct(Idproduct);
+        int IdProduct = SafeInput.IntegerInput("Enter product ID: ");
+        try
+        {
+            dalProduct.DeleteProduct(IdProduct);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
