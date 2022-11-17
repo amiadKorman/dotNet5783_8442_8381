@@ -8,7 +8,7 @@ internal class MenuOfOrderItems
     #region Add New Order Item
     public static void AddNewOrderItem()
     {
-        Console.WriteLine("for add a new Order Item, please fill in the following data:");
+        Console.WriteLine("To add a new order item, please fill in the following data:");
         int orderID = SafeInput.IntegerInput("Order ID: ");
         int productID = SafeInput.IntegerInput("Product ID: ");
         double price = SafeInput.DoubleInput("Price: ");

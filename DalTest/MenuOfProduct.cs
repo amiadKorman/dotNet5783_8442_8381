@@ -34,7 +34,7 @@ internal class MenuOfProduct
         try
         {
             int productID = dalProduct.AddProduct(product);
-            Console.WriteLine($"The new Product was successfully added with ID {productID}\n");
+            Console.WriteLine($"The new product was successfully added with ID {productID}\n");
         }
         catch (Exception ex)
         {
