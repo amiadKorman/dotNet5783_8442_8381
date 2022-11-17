@@ -197,7 +197,7 @@ internal static class DataSource
             Order order = new()
             {
                 ID = Config.GetOrderID,
-                CustomerID = (customersArray[RandomNumber.Next(Config.customersLastIndex)]).ID,
+                Customer = customersArray[RandomNumber.Next(Config.customersLastIndex)],
             };
             bool shipped = RandomNumber.NextDouble() < 0.7D;
             if (shipped)

@@ -18,13 +18,13 @@ public class DalOrder
         ordersArray[Config.ordersLastIndex++] = new()
         {
             ID = Config.GetOrderID,
-            CustomerID = order.CustomerID,
+            Customer = order.Customer,
             OrderDate = DateTime.Now,
         };
         return order.ID;
     }
     #endregion
-
+    
     #region GET
     /// <summary>
     /// Return order by given ID

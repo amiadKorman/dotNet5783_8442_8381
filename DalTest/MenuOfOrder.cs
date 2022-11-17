@@ -8,22 +8,41 @@ internal class MenuOfOrder
     #region Add New Order
     public static void AddNewOrder()
     {
-        Console.WriteLine("for add a new Order, please fill in the following data:");
-        int ID = SafeInput.IntegerInput("ID order: ");
-        int customerID = SafeInput.IntegerInput("ID Customer: ");
-        DateTime? NullDateTime = null;
+        Console.WriteLine("To add a new order, please fill in the following data:");
+
+        //int ID = SafeInput.IntegerInput("ID: ");
+        int customerID = SafeInput.IntegerInput("Customer ID: ");
+        string customerName = SafeInput.StringInput("Customer name: ");
+        string customerEmail = SafeInput.StringInput("Customer email: ");
+        string customerAddress = SafeInput.StringInput("Customer address: ");
+        DateTime ? NullDateTime = null;
         DateTime orderDate = Convert.ToDateTime(NullDateTime);
         DateTime shipDate = Convert.ToDateTime(NullDateTime); ;
         DateTime deliveryDate = Convert.ToDateTime(NullDateTime);
         Console.WriteLine("Adding a new Order...");
+        Customer customer = new()
+        {
+            ID = customerID,
+            Name = customerName,
+            Email = customerEmail,
+            Address = customerAddress
+        };
         Order order = new()
         {
-            CustomerID = customerID,
+            Customer = customer,
             OrderDate = orderDate,
             ShipDate = shipDate,
             DeliveryDate = deliveryDate
         };
-        dalOrder.AddOrder(order);
+        try
+        {
+            int orderID = dalOrder.AddOrder(order);
+            Console.WriteLine($"The new order was successfully added with ID {orderID}\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
@@ -40,8 +59,8 @@ internal class MenuOfOrder
         DateTime? ShipDate = Convert.ToDateTime(NullDateTime); ;
         DateTime? DeliveryDate = Convert.ToDateTime(NullDateTime);
         Console.WriteLine("Update the Order ditels...");
-        if (order.CustomerID != 0)
-            order.CustomerID = order.CustomerID;
+        if (order.Customer.ID != 0)
+            order.Customer = order.Customer;
         if (order.ShipDate != null)
             order.ShipDate = order.ShipDate;
         if (order.DeliveryDate != null)
