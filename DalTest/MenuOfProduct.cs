@@ -12,7 +12,7 @@ internal class MenuOfProduct
         Console.WriteLine("To add a new product, please fill in the following data:");
 
         int ID = SafeInput.IntegerInput("ID: ");
-        string name = SafeInput.StringInput("Name:");
+        string name = SafeInput.StringInput("Name: ");
         double price = SafeInput.DoubleInput("Price: ");
         Console.WriteLine("Category: ");
         var categories = Enum.GetValues(typeof(CategoryOfProduct));
@@ -21,7 +21,7 @@ internal class MenuOfProduct
             Console.WriteLine($"\tFor {category} - press {(int)category}");
         }
         CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
-        int InStock = SafeInput.IntegerInput("InStock: ");
+        int inStock = SafeInput.IntegerInput("In Stock: ");
         Console.WriteLine("Adding a new Product...");
         Product product = new()
         {
@@ -29,7 +29,7 @@ internal class MenuOfProduct
             Name = name,
             Price = price,
             Category = categorfy,
-            InStock = InStock
+            InStock = inStock
         };
         try
         {
@@ -46,21 +46,40 @@ internal class MenuOfProduct
     #region Update Product
     public static void UpdateProduct()
     {
-        throw new NotImplementedException();
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to update: ");
+        try
+        {
+            Product product = dalProduct.GetProduct(IDProduct);
+            Console.WriteLine(product);
+            Console.WriteLine("Enter change for each property, enter -1 for no change: ");
+            string name = SafeInput.StringInput("Name: ");
+            double price = SafeInput.DoubleInput("Price: ");
+            Console.WriteLine("Category: ");
+            var categories = Enum.GetValues(typeof(CategoryOfProduct));
+            foreach (var category in categories)
+            {
+                Console.WriteLine($"\tFor {category} - press {(int)category}");
+            }
+            Console.WriteLine($"\tFor no change - press 0");
+            CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
+            int inStock = SafeInput.IntegerInput("In Stock: ");
+            
+            if (name != "-1")
+                product.Name = name;
+            if (price != -1)
+                product.Price = price;
+            if (categorfy != 0)
+                product.Category = categorfy;
+            if (inStock != -1)
+                product.InStock = inStock;
 
-        int ID = SafeInput.IntegerInput("Plese enter the ID of product that you wont to update: ");
-        Product newProduct = dalProduct.GetProduct(ID);
-        // USer input of product item properties
-        if (newProduct.Name != "")
-            newProduct.Name = newProduct.Name;
-        if (newProduct.Price != 0.0)
-            newProduct.Price = newProduct.Price;
-        if (newProduct.Category != 0)
-            newProduct.Category = newProduct.Category;
-        if (newProduct.InStock != 0)
-            newProduct.InStock = newProduct.InStock;
-        return;
-
+            dalProduct.UpdateProduct(product);
+            Console.WriteLine($"The product was successfully updated:\n" + product);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
@@ -70,10 +89,10 @@ internal class MenuOfProduct
     /// </summary>
     public static void ShowProduct()
     {
-        int IdProduct = SafeInput.IntegerInput("Enter product ID: ");
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
         try
         {
-            Product product = dalProduct.GetProduct(IdProduct);
+            Product product = dalProduct.GetProduct(IDProduct);
             Console.WriteLine(product);
         }
         catch (Exception ex)
@@ -101,10 +120,11 @@ internal class MenuOfProduct
     /// </summary>
     public static void DeleteProduct()
     {
-        int IdProduct = SafeInput.IntegerInput("Enter product ID: ");
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to delete: ");
         try
         {
-            dalProduct.DeleteProduct(IdProduct);
+            dalProduct.DeleteProduct(IDProduct);
+            Console.WriteLine($"The product was successfully deleted\n");
         }
         catch (Exception ex)
         {
