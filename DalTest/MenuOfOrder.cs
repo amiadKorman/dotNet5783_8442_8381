@@ -5,47 +5,65 @@ namespace Dal;
 internal class MenuOfOrder
 {
     private static DalOrder dalOrder = new();
+
     #region Add New Order
+    /// <summary>
+    /// Add new order
+    /// </summary>
     public static void AddNewOrder()
     {
-        Console.WriteLine("for add a new Order, please fill in the following data:");
-        int ID = SafeInput.IntegerInput("ID order: ");
-        int customerID = SafeInput.IntegerInput("ID Customer: ");
-        DateTime? NullDateTime = null;
-        DateTime orderDate = Convert.ToDateTime(NullDateTime);
-        DateTime shipDate = Convert.ToDateTime(NullDateTime); ;
-        DateTime deliveryDate = Convert.ToDateTime(NullDateTime);
+        Console.WriteLine("To add a new Order, please fill in the following data:");
+
+        int customerID = SafeInput.IntegerInput("Customer ID: ");
         Console.WriteLine("Adding a new Order...");
         Order order = new()
         {
-            CustomerID = customerID,
-            OrderDate = orderDate,
-            ShipDate = shipDate,
-            DeliveryDate = deliveryDate
+            CustomerID = customerID
         };
-        dalOrder.AddOrder(order);
+        try
+        {
+            int orderID = dalOrder.AddOrder(order);
+            Console.WriteLine($"The new Order was successfully added with ID {orderID}\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
     #region Update Order
+    /// <summary>
+    /// Update existing order
+    /// </summary>
     public static void UpdateOrder()
     {
-        throw new NotImplementedException();
-
-        int ID = SafeInput.IntegerInput("Plese enter the ID of order that you wont to update: ");
-        Order order = dalOrder.GetOrder(ID);
-        int CustomerId = SafeInput.IntegerInput("ID Customer: ");
-        DateTime? NullDateTime = null;
-        DateTime? OrderDate = Convert.ToDateTime(NullDateTime);
-        DateTime? ShipDate = Convert.ToDateTime(NullDateTime); ;
-        DateTime? DeliveryDate = Convert.ToDateTime(NullDateTime);
-        Console.WriteLine("Update the Order ditels...");
-        if (order.CustomerID != 0)
-            order.CustomerID = order.CustomerID;
-        if (order.ShipDate != null)
-            order.ShipDate = order.ShipDate;
-        if (order.DeliveryDate != null)
-            order.DeliveryDate = order.DeliveryDate;
+        int IDOrder = SafeInput.IntegerInput("Enter order ID to update: ");
+        try
+        {
+            Order order = dalOrder.GetOrder(IDOrder);
+            Console.WriteLine(order);
+            Console.WriteLine("To update, please fill in the following data(-1 for no update):");
+            // User input for order item properties
+            int customerID = SafeInput.IntegerInput("Customer ID: ");
+            DateTime? NullDateTime = null;
+            DateTime orderDate = Convert.ToDateTime(NullDateTime);
+            DateTime? shipDate = Convert.ToDateTime(NullDateTime); ;
+            DateTime? deliveryDate = Convert.ToDateTime(NullDateTime);
+            // Checking for changes to update
+            if (customerID != -1)
+                order.CustomerID = customerID;
+            if (orderDate != null)
+                order.OrderDate = orderDate;
+            if (shipDate != null)
+                order.ShipDate = shipDate;
+            if (deliveryDate != null)
+                order.DeliveryDate = deliveryDate;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
@@ -100,7 +118,7 @@ internal class MenuOfOrder
 
     #region MENU
     /// <summary>
-    /// Print Order menu and calls the appropriate method
+    /// Print order menu and calls the appropriate method
     /// </summary>
     public static void OrderMenu()
     {
