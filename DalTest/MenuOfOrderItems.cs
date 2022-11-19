@@ -77,7 +77,7 @@ internal class MenuOfOrderItems
 
     #region SHOW
     /// <summary>
-    /// Print specific order item
+    /// Print specific order item by ID
     /// </summary>
     public static void ShowOrderItem()
     {
@@ -92,16 +92,54 @@ internal class MenuOfOrderItems
             Console.WriteLine(ex.Message + ", please try again\n");
         }
     }
-    
+
+    /// <summary>
+    /// Print specific order item by order and product ID
+    /// </summary>
+    public static void ShowOrderItemByOrderAndCustomer()
+    {
+        int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
+        int productID = SafeInput.IntegerInput("Enter Order item's product ID: ");
+        try
+        {
+            OrderItem orderItem = dalOrderItem.GetOrderItem(orderID, productID);
+            Console.WriteLine(orderItem);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
+    }
+
     /// <summary>
     /// Print all order items
     /// </summary>
-    public static void ShowListOfOrderItem()
+    public static void ShowListOfOrderItems()
     {
         OrderItem[] orderItems = dalOrderItem.GetAllOrderItems();
         foreach (OrderItem orderItem in orderItems)
         {
             Console.WriteLine(orderItem);
+        }
+    }
+
+    /// <summary>
+    /// Print all order order items
+    /// </summary>
+    public static void ShowListOfOrderOrderItems()
+    {
+        int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
+        try
+        {
+            OrderItem[] orderItems = dalOrderItem.GetAllOrderItems(orderID);
+            foreach (OrderItem orderItem in orderItems)
+            {
+                Console.WriteLine(orderItem);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
         }
     }
     #endregion
@@ -137,9 +175,11 @@ internal class MenuOfOrderItems
             OrderItemchoise = (OrderItemMenu)SafeInput.IntegerInput(
                "To Add an Order item - press 1\n" +
                "To Update an Order item - press 2\n" +
-               "To Show an Order item - press 3\n" +
-               "To Show Order items list - press 4\n" +
-               "To Delete an Order item - press 5\n" +
+               "To Show an Order item by ID - press 3\n" +
+               "To Show an Order item by order and product ID's - press 4\n" +
+               "To Show Order items list - press 5\n" +
+               "To Show an specific Order's order items list - press 6\n" +
+               "To Delete an Order item - press 7\n" +
                "To Return back to the menu - press 0\n\n");
 
             switch (OrderItemchoise)
@@ -150,11 +190,17 @@ internal class MenuOfOrderItems
                 case Dal.OrderItemMenu.UpdateOrderItems:
                     UpdateOrderItem();
                     break;
-                case Dal.OrderItemMenu.ShowOrderItems:
+                case Dal.OrderItemMenu.ShowOrderItemByID:
                     ShowOrderItem();
                     break;
+                case Dal.OrderItemMenu.ShowOrderItemByProductAndCustomerID:
+                    ShowOrderItemByOrderAndCustomer();
+                    break;
+                case Dal.OrderItemMenu.ShowOrderItemsListOfSpecificOrder:
+                    ShowListOfOrderOrderItems();
+                    break;
                 case Dal.OrderItemMenu.ShowListOfOrderItems:
-                    ShowListOfOrderItem();
+                    ShowListOfOrderItems();
                     break;
                 case Dal.OrderItemMenu.DeleteAnOrderItems:
                     DeleteOrderItem();

@@ -41,12 +41,16 @@ public enum OrderItemMenu
     AddOrderItems = 1,
     [Description("Update an Order item")]
     UpdateOrderItems = 2,
-    [Description("Show an Order item")]
-    ShowOrderItems = 3,
-    [Description("Show Order items List")]
-    ShowListOfOrderItems = 4,
+    [Description("Show an Order item by ID")]
+    ShowOrderItemByID = 3,
+    [Description("Show an Order item by order and product ID's")]
+    ShowOrderItemByProductAndCustomerID = 4,
+    [Description("Show Order items list")]
+    ShowListOfOrderItems = 5,
+    [Description("Show an specific Order's order items list")]
+    ShowOrderItemsListOfSpecificOrder = 6,
     [Description("Delete an Order item")]
-    DeleteAnOrderItems = 5,
+    DeleteAnOrderItems = 7,
     [Description("To Return Back To The Main Menu")]
     GoBack = 0
 }

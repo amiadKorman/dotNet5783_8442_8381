@@ -54,9 +54,9 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public OrderItem GetOrderItem(int orderID, int productID)
     {
-        int index = Array.FindIndex(orderItemsArray, p => p.OrderID == orderID && p.ProductID == productID);
+        int index = Array.FindIndex(orderItemsArray, oi => oi.OrderID == orderID && oi.ProductID == productID);
         if (index == -1)
-            throw new Exception("Order item ID doesn't exist");
+            throw new Exception("Order item like this doesnwt exist");
 
         return orderItemsArray[index];
     }
@@ -80,6 +80,10 @@ public class DalOrderItem
     public OrderItem[] GetAllOrderItems(int orderID)
     {
         OrderItem[] orderItems = Array.FindAll(orderItemsArray, oi => oi.OrderID == orderID);
+
+        if (orderItems.Length == 0)
+            throw new Exception("Order item like this doesn't exist");
+
         return orderItems;
     }
     #endregion
