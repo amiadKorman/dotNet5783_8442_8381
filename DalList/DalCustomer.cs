@@ -49,7 +49,7 @@ public class DalCustomer
     /// Return all the customers in the DataSource
     /// </summary>
     /// <returns>customer array</returns>
-    public Customer[] GetAllCostomers()
+    public Customer[] GetAllCustomers()
     {
         Customer[] customer = new Customer[Config.customersLastIndex];
         Array.Copy(customersArray, customer, customer.Length);

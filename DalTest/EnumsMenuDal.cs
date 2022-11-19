@@ -11,8 +11,10 @@ public enum EntitysMenu
     OrderItemsMenu = 2,
     [Description("Get to Product menu")]
     ProductMenu = 3,
+    [Description("Get to Customer menu")]
+    CustomerMenu = 4,
     [Description("Exit from program")]
-    Exit = 0
+    Exit = 0,
 }
 #endregion
 
@@ -69,6 +71,24 @@ public enum ProductMenu
     ShowListOfProduct = 4,
     [Description("Delete a Product")]
     DeleteAProduct = 5,
+    [Description("To Return Back To The Main Menu")]
+    GoBack = 0
+}
+#endregion     
+
+#region Customer Menu
+public enum CustomerMenu
+{
+    [Description("Add an Customer")]
+    AddCustomer = 1,
+    [Description("Update an Customer")]
+    UpdateCustomer = 2,
+    [Description("Show an Customer")]
+    ShowCustomer = 3,
+    [Description("Show Customers List")]
+    ShowListOfCustomers = 4,
+    [Description("Delete an Customer")]
+    DeleteCustomer = 5,
     [Description("To Return Back To The Main Menu")]
     GoBack = 0
 }
