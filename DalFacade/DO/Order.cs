@@ -11,9 +11,9 @@ public struct Order
     public int ID { get; set; }
 
     /// <summary>
-    /// Customer entity
+    /// Customer ID
     /// </summary>
-    public Customer Customer { get; set; }
+    public int CustomerID { get; set; }
 
     /// <summary>
     /// Order date
@@ -32,7 +32,7 @@ public struct Order
 
     public override string ToString() => $@"
         Order ID: {ID}
-        {Customer}
+        Customer ID: {CustomerID}
         Order Date: {OrderDate}
         Ship Date: {ShipDate}
         Delivery Date: {DeliveryDate}
