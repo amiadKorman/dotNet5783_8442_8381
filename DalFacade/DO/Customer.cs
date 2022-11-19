@@ -24,7 +24,7 @@ public struct Customer
 
     public override string ToString() => $@"
         Customer ID: {ID}
-        Customer name: {Name}
-        Customer email: {Email}
-        Customer adress: {Address}";
+        Name: {Name}
+        Email: {Email}
+        Address: {Address}";
 }
