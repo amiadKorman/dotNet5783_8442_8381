@@ -5,7 +5,8 @@ namespace Dal;
 internal class MenuOfOrderItems
 {
     private static DalOrderItem dalOrderItem = new();
-    #region Add New Order Item
+
+    #region ADD
     /// <summary>
     /// Add new order item
     /// </summary>
@@ -38,7 +39,7 @@ internal class MenuOfOrderItems
     }
     #endregion
 
-    #region Update Order Item
+    #region UPDATE
     /// <summary>
     /// Update existing order item
     /// </summary>
@@ -165,7 +166,7 @@ internal class MenuOfOrderItems
 
     #region MENU
     /// <summary>
-    /// Print Order Item menu and calls the appropriate method
+    /// Print order item menu and calls the appropriate method
     /// </summary>
     public static void OrderItemMenu()
     {
