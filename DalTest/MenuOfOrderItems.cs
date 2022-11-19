@@ -6,13 +6,18 @@ internal class MenuOfOrderItems
 {
     private static DalOrderItem dalOrderItem = new();
     #region Add New Order Item
+    /// <summary>
+    /// Add new order item
+    /// </summary>
     public static void AddNewOrderItem()
     {
         Console.WriteLine("To add a new order item, please fill in the following data:");
+
         int orderID = SafeInput.IntegerInput("Order ID: ");
         int productID = SafeInput.IntegerInput("Product ID: ");
         double price = SafeInput.DoubleInput("Price: ");
         int amount = SafeInput.IntegerInput("Amount: ");
+
         Console.WriteLine("Adding a new Order Item...");
         OrderItem orderItem = new()
         {
@@ -21,27 +26,52 @@ internal class MenuOfOrderItems
             Price = price,
             Amount = amount
         };
-        int orderItemID = dalOrderItem.AddOrderItem(orderItem);
-        Console.WriteLine("The new Order Item was successfully added\n");
+        try
+        {
+            int orderItemID = dalOrderItem.AddOrderItem(orderItem);
+            Console.WriteLine($"The new Order Item was successfully added with ID {orderItemID}\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
     #region Update Order Item
+    /// <summary>
+    /// Update existing order item
+    /// </summary>
     public static void UpdateOrderItem()
     {
-        throw new NotImplementedException();
+        int IDOrderItem = SafeInput.IntegerInput("Enter order item ID to update: ");
+        try
+        {
+            OrderItem orderItem = dalOrderItem.GetOrderItem(IDOrderItem);
+            Console.WriteLine(orderItem);
+            Console.WriteLine("To update, please fill in the following data(-1 for no update):");
+            // User input for order item properties
+            int productID = SafeInput.IntegerInput("Product ID: ");
+            int orderID = SafeInput.IntegerInput("Order ID: ");
+            double price = SafeInput.DoubleInput("Price: ");
+            int amount = SafeInput.IntegerInput("Amount: ");
+            // Checking for changes to update
+            if (productID != -1)
+                orderItem.ProductID = productID;
+            if (orderID != -1)
+                orderItem.OrderID = orderID;
+            if (price != -1)
+                orderItem.Price = price;
+            if (amount != -1)
+                orderItem.Amount = amount;
 
-        int ID = SafeInput.IntegerInput("Plese enter the ID of order item that you wont to update: ");
-        OrderItem orderItem = dalOrderItem.GetOrderItem(ID);
-        // USer input of order item properties
-        if (orderItem.ProductID != 0)
-            orderItem.ProductID = orderItem.ProductID;
-        if (orderItem.OrderID != 0)
-            orderItem.OrderID = orderItem.OrderID;
-        if (orderItem.Price != 0.0)
-            orderItem.Price = orderItem.Price;
-        if (orderItem.Amount != 0)
-            orderItem.Amount = orderItem.Amount;
+            dalOrderItem.UpdateOrderItem(orderItem);
+            Console.WriteLine($"The product was successfully updated:\n" + orderItem);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message + ", please try again\n");
+        }
     }
     #endregion
 
@@ -51,7 +81,7 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void ShowOrderItem()
     {
-        int IdOrderItem = SafeInput.IntegerInput("Enter order item ID: ");
+        int IdOrderItem = SafeInput.IntegerInput("Enter order item ID to show: ");
         try
         {
             OrderItem orderItem = dalOrderItem.GetOrderItem(IdOrderItem);
@@ -82,10 +112,11 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void DeleteOrderItem()
     {
-        int IdOrderIthem = SafeInput.IntegerInput("Enter order item ID: ");
+        int IdOrderIthem = SafeInput.IntegerInput("Enter order item ID to delete: ");
         try
         {
             dalOrderItem.DeleteOrderItem(IdOrderIthem);
+            Console.WriteLine("The order item was successfully deleted\n");
         }
         catch (Exception ex)
         {
