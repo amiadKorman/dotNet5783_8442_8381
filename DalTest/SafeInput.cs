@@ -26,6 +26,11 @@ internal class SafeInput
         return double.TryParse(Console.ReadLine(), out num) ? num : DoubleInput("Invalid input. Please enter only an integer value:\n");
     }
 
+    /// <summary>
+    /// Input a string in safe way. if there is an invalid input - try again.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static string StringInput(string message = "")
     {
         Console.Write(message);

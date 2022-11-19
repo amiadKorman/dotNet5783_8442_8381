@@ -40,7 +40,7 @@ public class DalOrder
 
         return ordersArray[index];
     }
-    
+
     /// <summary>
     /// Return all the orders in the DataSource
     /// </summary>

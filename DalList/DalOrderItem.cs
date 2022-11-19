@@ -60,7 +60,7 @@ public class DalOrderItem
 
         return orderItemsArray[index];
     }
-    
+
     /// <summary>
     /// Return all the order items in the DataSource
     /// </summary>

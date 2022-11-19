@@ -46,7 +46,7 @@ public class DalProduct
 
         return productsArray[index];
     }
-    
+
     /// <summary>
     /// Return all the products in the DataSource
     /// </summary>

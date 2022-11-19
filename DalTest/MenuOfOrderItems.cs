@@ -87,7 +87,7 @@ internal class MenuOfOrderItems
             OrderItem orderItem = dalOrderItem.GetOrderItem(IdOrderItem);
             Console.WriteLine(orderItem);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message + ", please try again\n");
         }
