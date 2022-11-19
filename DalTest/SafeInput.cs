@@ -35,7 +35,13 @@ internal class SafeInput
     {
         Console.Write(message);
         string My_str = Console.ReadLine();
-        return string.IsNullOrWhiteSpace(My_str) ? StringInput("Invalid input. Please enter value value:\n"): My_str ;
+        return string.IsNullOrWhiteSpace(My_str) ? StringInput("Invalid input. Please enter correct value:\n"): My_str ;
+    }
+
+    public static DateTime DateTimeInput(string message = "")
+    {
+        throw new NotImplementedException();
+        Console.WriteLine(message);
     }
 
 }
