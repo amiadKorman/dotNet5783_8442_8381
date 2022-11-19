@@ -7,6 +7,9 @@ internal class MenuOfProduct
 {
     private static DalProduct dalProduct = new();
     #region Add New Product
+    /// <summary>
+    /// Add new product
+    /// </summary>
     public static void AddNewProduct()
     {
         Console.WriteLine("To add a new product, please fill in the following data:");
@@ -44,6 +47,9 @@ internal class MenuOfProduct
     #endregion
 
     #region Update Product
+    /// <summary>
+    /// Update existing product
+    /// </summary>
     public static void UpdateProduct()
     {
         int IDProduct = SafeInput.IntegerInput("Enter product ID to update: ");
@@ -51,7 +57,8 @@ internal class MenuOfProduct
         {
             Product product = dalProduct.GetProduct(IDProduct);
             Console.WriteLine(product);
-            Console.WriteLine("Enter change for each property, enter -1 for no change: ");
+            Console.WriteLine("To update, please fill in the following data(-1 for no update):");
+            // User input for product properties
             string name = SafeInput.StringInput("Name: ");
             double price = SafeInput.DoubleInput("Price: ");
             Console.WriteLine("Category: ");
@@ -63,7 +70,7 @@ internal class MenuOfProduct
             Console.WriteLine($"\tFor no change - press 0");
             CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
             int inStock = SafeInput.IntegerInput("In Stock: ");
-            
+            // Checking for changes to update
             if (name != "-1")
                 product.Name = name;
             if (price != -1)
@@ -124,7 +131,7 @@ internal class MenuOfProduct
         try
         {
             dalProduct.DeleteProduct(IDProduct);
-            Console.WriteLine($"The product was successfully deleted\n");
+            Console.WriteLine("The product was successfully deleted\n");
         }
         catch (Exception ex)
         {
