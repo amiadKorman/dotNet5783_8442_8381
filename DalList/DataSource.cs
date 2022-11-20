@@ -175,14 +175,14 @@ internal static class DataSource
     /// </summary>
     private static void InitializeCustomers()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 1; i < 6; i++)
         {
             customersArray[Config.customersLastIndex++] = new()
             {
                 ID = RandomNumber.Next(100000000, 1000000000),
                 Name = ((Names)i).ToString(),
                 Email = $"{((Names)i).ToString() + i}@gmail.com",
-                Address = $"{(Cities)RandomNumber.Next(5)} {(Streets)RandomNumber.Next(4)} {i}"
+                Address = $"{(Cities)RandomNumber.Next(1, 6)} {(Streets)RandomNumber.Next(1, 5)} {i}"
             };
         }
     }

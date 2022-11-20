@@ -12,7 +12,7 @@ public class DalMain
                 "For Order Menu - press 1\n" +
                 "For Order Item Menu - press 2\n" +
                 "For Product Menu - press 3\n" +
-                "For Customer Menu - press 4" +
+                "For Customer Menu - press 4\n" +
                 "For Exit - press 0\n\n");
 
             switch (MenuChoise)
