@@ -71,13 +71,13 @@ internal class MenuOfProduct
             CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
             int inStock = SafeInput.IntegerInput("In Stock: ");
             // Checking for changes to update
-            if (name != "-1")
+            if (name.Equals(""))
                 product.Name = name;
-            if (price != -1)
+            if (price.Equals(""))
                 product.Price = price;
-            if (categorfy != 0)
+            if (categorfy.Equals(""))
                 product.Category = categorfy;
-            if (inStock != -1)
+            if (inStock.Equals(""))
                 product.InStock = inStock;
 
             dalProduct.UpdateProduct(product);

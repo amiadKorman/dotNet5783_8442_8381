@@ -47,7 +47,7 @@ internal class MenuOfOrder
             // User input for order item properties
             int customerID = SafeInput.IntegerInput("Customer ID: ");
             // Checking for changes to update
-            if (customerID != -1)
+            if (customerID.Equals(""))
                 order.CustomerID = customerID;
             // update she date of delivey and shiping 
             DateTime? NullDateTime = null;
