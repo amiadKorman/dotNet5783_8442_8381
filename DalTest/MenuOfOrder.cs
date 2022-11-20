@@ -46,19 +46,27 @@ internal class MenuOfOrder
             Console.WriteLine("To update, please fill in the following data(-1 for no update):");
             // User input for order item properties
             int customerID = SafeInput.IntegerInput("Customer ID: ");
-            DateTime? NullDateTime = null;
-            DateTime orderDate = Convert.ToDateTime(NullDateTime);
-            DateTime? shipDate = Convert.ToDateTime(NullDateTime); ;
-            DateTime? deliveryDate = Convert.ToDateTime(NullDateTime);
             // Checking for changes to update
             if (customerID != -1)
                 order.CustomerID = customerID;
-            if (orderDate != null)
-                order.OrderDate = orderDate;
-            if (shipDate != null)
-                order.ShipDate = shipDate;
-            if (deliveryDate != null)
-                order.DeliveryDate = deliveryDate;
+
+            // update she date of delivey and shiping 
+            DateTime? NullDateTime = null;
+            YseOrNo Y = (YseOrNo)SafeInput.IntegerInput("Are the ship go to the castumer");
+            if(Y == YseOrNo.Yes)
+            {
+                order.ShipDate = DateTime.Now;
+                Y = (YseOrNo)SafeInput.IntegerInput("Are the delivery get to the castumer");
+                if (Y==YseOrNo.Yes)
+                {
+                    order.DeliveryDate = DateTime.Now;
+                }
+                else
+                {
+                    order.ShipDate = Convert.ToDateTime(NullDateTime);
+                }
+                order.DeliveryDate = Convert.ToDateTime(NullDateTime);
+            } 
         }
         catch (Exception ex)
         {

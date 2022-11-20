@@ -93,3 +93,11 @@ public enum CustomerMenu
     GoBack = 0
 }
 #endregion       
+
+public enum YseOrNo
+{
+    [Description("No")]
+    No = 1,
+    [Description("Yes")]
+    Yes = 2,
+}
