@@ -55,11 +55,11 @@ internal class MenuOfCustomer
             string email = SafeInput.StringInput("Email: ");
             string address = SafeInput.StringInput("Address: ");
             // Checking for changes to update
-            if (name != "-1")
+            if (name.Equals(""))
                 customer.Name = name;
-            if (email != "-1")
+            if (email.Equals(""))
                 customer.Email = email;
-            if (address != "-1")
+            if (address.Equals(""))
                 customer.Address = address;
 
             dalCustomer.UpdateCustomer(customer);

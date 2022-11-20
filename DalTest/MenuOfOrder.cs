@@ -49,7 +49,6 @@ internal class MenuOfOrder
             // Checking for changes to update
             if (customerID != -1)
                 order.CustomerID = customerID;
-
             // update she date of delivey and shiping 
             DateTime? NullDateTime = null;
             YseOrNo Y = (YseOrNo)SafeInput.IntegerInput("Are the ship go to the castumer");
