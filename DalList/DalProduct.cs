@@ -1,7 +1,5 @@
 ﻿using DO;
 using static Dal.DataSource;
-using System.Linq;
-using System;
 
 namespace Dal;
 
@@ -19,7 +17,7 @@ public class DalProduct
         int index = Array.FindIndex(productsArray, p => p.ID == product.ID);
         if (index != -1)
             throw new Exception("Product ID already exist");
-        productsArray[Config.productsLastIndex++] = new()
+        productsArray[productsLastIndex++] = new()
         {
             ID = product.ID,
             Name = product.Name,
@@ -53,7 +51,8 @@ public class DalProduct
     /// <returns>products array</returns>
     public Product[] GetAllProdoct()
     {
-        Product[] products = new Product[Config.productsLastIndex];
+        Array.FindIndex(productsArray, p => p.ID == 100000);
+        Product[] products = new Product[productsLastIndex];
         Array.Copy(productsArray, products, products.Length);
         return products;
     }
@@ -88,7 +87,7 @@ public class DalProduct
             throw new Exception("Product ID doesn't exist");
 
         productsArray = productsArray.Where((e, i) => i != index).ToArray();
-        Config.productsLastIndex--;
+        productsLastIndex--;
     }
     #endregion
 }

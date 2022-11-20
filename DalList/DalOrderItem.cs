@@ -1,8 +1,5 @@
 ﻿using DO;
-using System.Diagnostics;
 using static Dal.DataSource;
-using System.Linq;
-using System;
 
 namespace Dal;
 
@@ -17,7 +14,7 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public int AddOrderItem(OrderItem orderItem)
     {
-        orderItemsArray[Config.orderItemsLastIndex++] = new()
+        orderItemsArray[orderItemsLastIndex++] = new()
         {
             ID = Config.GetOrderItemID,
             OrderID = orderItem.OrderID,
@@ -67,7 +64,7 @@ public class DalOrderItem
     /// <returns>order items array</returns>
     public OrderItem[] GetAllOrderItems()
     {
-        OrderItem[] orderItems = new OrderItem[Config.orderItemsLastIndex];
+        OrderItem[] orderItems = new OrderItem[orderItemsLastIndex];
         Array.Copy(orderItemsArray, orderItems, orderItems.Length);
         return orderItems;
     }
@@ -117,7 +114,7 @@ public class DalOrderItem
             throw new Exception("Order item ID doesn't exist");
 
         orderItemsArray = orderItemsArray.Where((e, i) => i != index).ToArray();
-        Config.orderItemsLastIndex--;
+        orderItemsLastIndex--;
     }
     #endregion
 }

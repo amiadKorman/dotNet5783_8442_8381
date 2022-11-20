@@ -18,7 +18,7 @@ public class DalCustomer
         if (index != -1)
             throw new Exception("Customer ID already exist");
 
-        customersArray[Config.customersLastIndex++] = new()
+        customersArray[customersLastIndex++] = new()
         {
             ID = customer.ID,
             Name = customer.Name,
@@ -51,7 +51,7 @@ public class DalCustomer
     /// <returns>customer array</returns>
     public Customer[] GetAllCustomers()
     {
-        Customer[] customer = new Customer[Config.customersLastIndex];
+        Customer[] customer = new Customer[customersLastIndex];
         Array.Copy(customersArray, customer, customer.Length);
         return customer;
     }
@@ -86,7 +86,7 @@ public class DalCustomer
             throw new Exception("Customer ID doesn't exist");
 
         customersArray = customersArray.Where((e, i) => i != index).ToArray();
-        Config.customersLastIndex--;
+        customersLastIndex--;
         return;
     }
     #endregion
