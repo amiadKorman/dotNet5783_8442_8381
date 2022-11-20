@@ -63,9 +63,9 @@ internal class MenuOfOrder
                 }
                 else
                 {
-                    order.ShipDate = Convert.ToDateTime(NullDateTime);
+                    order.DeliveryDate = Convert.ToDateTime(NullDateTime);
                 }
-                order.DeliveryDate = Convert.ToDateTime(NullDateTime);
+                order.ShipDate = Convert.ToDateTime(NullDateTime);
             } 
         }
         catch (Exception ex)
