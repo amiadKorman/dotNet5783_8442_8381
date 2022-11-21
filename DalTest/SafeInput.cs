@@ -10,8 +10,13 @@ internal class SafeInput
     public static int IntegerInput(string message = "")
     {
         Console.Write(message);
-        int num = 0;
-        return int.TryParse(Console.ReadLine(), out num) ? num : IntegerInput("Invalid input. Please enter only an integer value:\n");
+        return int.TryParse(Console.ReadLine(), out int num) ? num : IntegerInput("Invalid input. Please enter only an integer value:\n");
+    }
+
+    public static int? NullIntegerInput(string message = "")
+    {
+        Console.Write(message);
+        return int.TryParse(Console.ReadLine(), out int num) ? num : null;
     }
 
     /// <summary>
@@ -22,8 +27,13 @@ internal class SafeInput
     public static double DoubleInput(string message = "")
     {
         Console.Write(message);
-        double num = 0.0;
-        return double.TryParse(Console.ReadLine(), out num) ? num : DoubleInput("Invalid input. Please enter only an integer value:\n");
+        return double.TryParse(Console.ReadLine(), out double num) ? num : DoubleInput("Invalid input. Please enter only an integer value:\n");
+    }
+
+    public static double? NullDoubleInput(string message = "")
+    {
+        Console.Write(message);
+        return double.TryParse(Console.ReadLine(), out double num) ? num : null;
     }
 
     /// <summary>
@@ -38,10 +48,10 @@ internal class SafeInput
         return string.IsNullOrWhiteSpace(My_str) ? StringInput("Invalid input. Please enter correct value:\n"): My_str ;
     }
 
-    public static DateTime DateTimeInput(string message = "")
+    public static string NullStringInput(string message = "")
     {
-        throw new NotImplementedException();
-        Console.WriteLine(message);
+        Console.Write(message);
+        string My_str = Console.ReadLine();
+        return string.IsNullOrWhiteSpace(My_str) ? "" : My_str;
     }
-
 }

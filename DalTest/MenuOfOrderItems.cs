@@ -1,4 +1,5 @@
 ﻿using DO;
+using System.Security.AccessControl;
 
 namespace Dal;
 
@@ -50,21 +51,15 @@ internal class MenuOfOrderItems
         {
             OrderItem orderItem = dalOrderItem.GetOrderItem(IDOrderItem);
             Console.WriteLine(orderItem);
-            Console.WriteLine("To update, please fill in the following data(-1 for no update):");
+            Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for order item properties
-            int productID = SafeInput.IntegerInput("Product ID: ");
-            int orderID = SafeInput.IntegerInput("Order ID: ");
-            double price = SafeInput.DoubleInput("Price: ");
-            int amount = SafeInput.IntegerInput("Amount: ");
+            double? price = SafeInput.NullDoubleInput("Price: ");
+            int? amount = SafeInput.NullIntegerInput("Amount: ");
             // Checking for changes to update
-            if (productID != -1)
-                orderItem.ProductID = productID;
-            if (orderID != -1)
-                orderItem.OrderID = orderID;
-            if (price != -1)
-                orderItem.Price = price;
-            if (amount != -1)
-                orderItem.Amount = amount;
+            if (price.HasValue)
+                orderItem.Price = price.Value;
+            if (amount.HasValue)
+                orderItem.Amount = amount.Value;
 
             dalOrderItem.UpdateOrderItem(orderItem);
             Console.WriteLine($"The product was successfully updated:\n" + orderItem);

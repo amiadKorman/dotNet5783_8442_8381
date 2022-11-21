@@ -57,28 +57,15 @@ internal class MenuOfProduct
         {
             Product product = dalProduct.GetProduct(IDProduct);
             Console.WriteLine(product);
-            Console.WriteLine("To update, please fill in the following data(-1 for no update):");
+            Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
-            string name = SafeInput.StringInput("Name: ");
-            double price = SafeInput.DoubleInput("Price: ");
-            Console.WriteLine("Category: ");
-            var categories = Enum.GetValues(typeof(CategoryOfProduct));
-            foreach (var category in categories)
-            {
-                Console.WriteLine($"\tFor {category} - press {(int)category}");
-            }
-            Console.WriteLine($"\tFor no change - press 0");
-            CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
-            int inStock = SafeInput.IntegerInput("In Stock: ");
+            double? price = SafeInput.NullDoubleInput("Price: ");
+            int? inStock = SafeInput.NullIntegerInput("In Stock: ");
             // Checking for changes to update
-            if (name != "-1")
-                product.Name = name;
-            if (price != -1)
-                product.Price = price;
-            if (categorfy != 0)
-                product.Category = categorfy;
-            if (inStock != -1)
-                product.InStock = inStock;
+            if (price.HasValue)
+                product.Price = price.Value;
+            if (inStock.HasValue)
+                product.InStock = inStock.Value;
 
             dalProduct.UpdateProduct(product);
             Console.WriteLine($"The product was successfully updated:\n" + product);

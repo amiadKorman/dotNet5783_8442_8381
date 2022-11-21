@@ -49,17 +49,14 @@ internal class MenuOfCustomer
         {
             Customer customer = dalCustomer.GetCustomer(IDCustomer);
             Console.WriteLine(customer);
-            Console.WriteLine("To update, please fill in the following data(-1 for no update):");
+            Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
-            string name = SafeInput.StringInput("Name: ");
-            string email = SafeInput.StringInput("Email: ");
-            string address = SafeInput.StringInput("Address: ");
+            string email = SafeInput.NullStringInput("Email: ");
+            string address = SafeInput.NullStringInput("Address: ");
             // Checking for changes to update
-            if (name.Equals(""))
-                customer.Name = name;
-            if (email.Equals(""))
+            if (email != "")
                 customer.Email = email;
-            if (address.Equals(""))
+            if (address!= "")
                 customer.Address = address;
 
             dalCustomer.UpdateCustomer(customer);
