@@ -2,7 +2,10 @@
 
 namespace Dal;
 
-#region Entitys's menu
+#region Entitys's menu 
+/// <summary>
+/// Enums for the Main program
+/// </summary>
 public enum EntitysMenu
 {
     [Description("Get to Order menu")]
@@ -19,6 +22,9 @@ public enum EntitysMenu
 #endregion
 
 #region Order Menu
+/// <summary>
+/// Enus for the Menu of the Order menu
+/// </summary>
 public enum OrderMenu
 {
     [Description("Add an Order")]
@@ -37,6 +43,9 @@ public enum OrderMenu
 #endregion
 
 #region Order Item Menu
+/// <summary>
+/// Enums for the Menu of the Order Item menu
+/// </summary>
 public enum OrderItemMenu
 {
     [Description("Add an Order item")]
@@ -59,6 +68,9 @@ public enum OrderItemMenu
 #endregion
 
 #region Product Menu
+/// <summary>
+/// Enus for the Menu of the Product menu
+/// </summary>
 public enum ProductMenu
 {
     [Description("Add a Product")]
@@ -77,6 +89,9 @@ public enum ProductMenu
 #endregion     
 
 #region Customer Menu
+/// <summary>
+/// Enus for the Menu of the customer menu
+/// </summary>
 public enum CustomerMenu
 {
     [Description("Add an Customer")]

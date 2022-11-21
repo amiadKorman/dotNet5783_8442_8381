@@ -15,7 +15,7 @@ public struct Product
     /// </summary>
     public string Name { get; set; }
 
-    /// <summary>
+    /// <summary> 
     /// Product price
     /// </summary>
     public double Price { get; set; }

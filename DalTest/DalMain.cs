@@ -31,7 +31,7 @@ public class DalMain
                     break;
                 case EntitysMenu.Exit:
                     break;
-                default:
+                default: 
                     Console.WriteLine("Error. Try again");
                     break;
             }

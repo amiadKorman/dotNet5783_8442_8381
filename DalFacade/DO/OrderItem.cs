@@ -11,7 +11,7 @@ public struct OrderItem
     public int ID { get; set; }
 
     /// <summary>
-    /// ID of the product
+    /// ID of the product 
     /// </summary>
     public int ProductID { get; set; }
 

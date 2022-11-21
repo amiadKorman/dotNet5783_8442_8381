@@ -26,7 +26,7 @@ public struct Order
     public DateTime? ShipDate { get; set; }
 
     /// <summary>
-    /// Delivery date
+    /// Delivery date 
     /// </summary>
     public DateTime? DeliveryDate { get; set; }
 

@@ -20,7 +20,7 @@ internal static class DataSource
     internal static Order[] ordersArray = new Order[100];
 
     /// <summary>
-    /// Array of order items
+    /// Array of order items 
     /// </summary>
     internal static OrderItem[] orderItemsArray = new OrderItem[200];
 

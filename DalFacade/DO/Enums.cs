@@ -2,6 +2,10 @@
 
 namespace DO;
 
+
+/// <summary>
+/// Enus stract for the CategoryOfProduct
+/// </summary>
 public enum CategoryOfProduct
 {
     [Description("Phones")]
@@ -16,6 +20,9 @@ public enum CategoryOfProduct
     Accessories = 5,
 }
 
+/// <summary>
+/// Enus stract for the Names
+/// </summary>
 public enum Names
 {
     [Description("Yossef")]
@@ -40,6 +47,10 @@ public enum Names
     Nathan = 10,
 }
 
+
+/// <summary>
+/// Enums stract for the cities
+/// </summary>
 public enum Cities
 {
     [Description("Jerusalem")]
@@ -54,6 +65,9 @@ public enum Cities
     Merav = 5,
 }
 
+/// <summary>
+/// Enums stract fot the steets
+/// </summary>
 public enum Streets
 {
     [Description("Hertzel")]

@@ -58,7 +58,7 @@ public class DalCustomer
     #endregion
 
     #region UPDATE
-    /// <summary>
+    /// <summary> 
     /// Update customer
     /// </summary>
     /// <param name="newCustomer"></param>
