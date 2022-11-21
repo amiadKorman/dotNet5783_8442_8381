@@ -43,20 +43,25 @@ internal class MenuOfOrder
         {
             Order order = dalOrder.GetOrder(IDOrder);
             Console.WriteLine(order);
-            Console.WriteLine("To update, please fill in the following data(-1 for no update):");
+            Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for order item properties
-            int customerID = SafeInput.IntegerInput("Customer ID: ");
+            string shipDate = SafeInput.NullStringInput("Ship date: ");
+            string deliveryDate = SafeInput.NullStringInput("Delivery date: ");
             // Checking for changes to update
-            if (customerID.Equals(""))
-                order.CustomerID = customerID;
-            // update she date of delivey and shiping 
+            if (shipDate != "") ;
+            // convert shipDate to DateTime object
+            if (deliveryDate != "") ;
+            // convert deliveryDate to DateTime object
+
+
+            /*// update she date of delivey and shiping 
             DateTime? NullDateTime = null;
             YseOrNo Y = (YseOrNo)SafeInput.IntegerInput("Are the ship go to the castumer");
-            if(Y == YseOrNo.Yes)
+            if (Y == YseOrNo.Yes)
             {
                 order.ShipDate = DateTime.Now;
                 Y = (YseOrNo)SafeInput.IntegerInput("Are the delivery get to the castumer");
-                if (Y==YseOrNo.Yes)
+                if (Y == YseOrNo.Yes)
                 {
                     order.DeliveryDate = DateTime.Now;
                 }
@@ -65,7 +70,9 @@ internal class MenuOfOrder
                     order.DeliveryDate = Convert.ToDateTime(NullDateTime);
                 }
                 order.ShipDate = Convert.ToDateTime(NullDateTime);
-            } 
+            }*/
+            dalOrder.UpdateOrder(order);
+            Console.WriteLine($"The order was successfully updated:\n" + order);
         }
         catch (Exception ex)
         {
