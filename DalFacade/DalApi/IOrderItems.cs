@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DalApi
 {
-    internal interface Iorder : ICrud<Order>
+    internal interface IOrderItems : ICrud<OrderItem>
     {
-        Task<Order> Get(int id);           
-                
+        List<OrderItem> GetOrderItems(int id);
+         
     }
 }
