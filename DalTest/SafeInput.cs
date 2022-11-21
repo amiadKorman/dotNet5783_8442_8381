@@ -13,6 +13,10 @@ internal class SafeInput
         return int.TryParse(Console.ReadLine(), out int num) ? num : IntegerInput("Invalid input. Please enter only an integer value:\n");
     }
 
+    /// <summary>
+    /// Input an integer value or null value.
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static int? NullIntegerInput(string message = "")
     {
         Console.Write(message);
@@ -30,6 +34,14 @@ internal class SafeInput
         return double.TryParse(Console.ReadLine(), out double num) ? num : DoubleInput("Invalid input. Please enter only an integer value:\n");
     }
 
+    /// <summary>
+    /// // <summary>
+    /// Input an rational value or null value.
+    /// <param name="message"></param>
+    /// <returns></returns>
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static double? NullDoubleInput(string message = "")
     {
         Console.Write(message);
@@ -48,6 +60,11 @@ internal class SafeInput
         return string.IsNullOrWhiteSpace(My_str) ? StringInput("Invalid input. Please enter correct value:\n"): My_str ;
     }
 
+    /// <summary>
+    /// Input a string or empty string.
+    /// </summary>
+    /// <param name="message"></param>
+    /// <returns></returns>
     public static string NullStringInput(string message = "")
     {
         Console.Write(message);
