@@ -43,34 +43,21 @@ internal class MenuOfOrder
         {
             Order order = dalOrder.GetOrder(IDOrder);
             Console.WriteLine(order);
-            Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for order item properties
-            string shipDate = SafeInput.NullStringInput("Ship date: ");
-            string deliveryDate = SafeInput.NullStringInput("Delivery date: ");
-            // Checking for changes to update
-            if (shipDate != "") ;
-            // convert shipDate to DateTime object
-            if (deliveryDate != "") ;
-            // convert deliveryDate to DateTime object
-
-
-            /*// update she date of delivey and shiping 
-            DateTime? NullDateTime = null;
-            YseOrNo Y = (YseOrNo)SafeInput.IntegerInput("Are the ship go to the castumer");
-            if (Y == YseOrNo.Yes)
+            string shipDate = "", deliveryDate = "";
+            if (!order.ShipDate.HasValue)
             {
-                order.ShipDate = DateTime.Now;
-                Y = (YseOrNo)SafeInput.IntegerInput("Are the delivery get to the castumer");
-                if (Y == YseOrNo.Yes)
-                {
+                shipDate = SafeInput.NullStringInput("To update ship date to now enter something, or leave empty for no update: ");
+                if (shipDate != "")
+                    order.ShipDate = DateTime.Now;
+            }
+            else if (!order.DeliveryDate.HasValue)
+            {
+                deliveryDate = SafeInput.NullStringInput("To update delivery date to now enter something, or leave empty for no update: ");
+                if (deliveryDate != "")
                     order.DeliveryDate = DateTime.Now;
-                }
-                else
-                {
-                    order.DeliveryDate = Convert.ToDateTime(NullDateTime);
-                }
-                order.ShipDate = Convert.ToDateTime(NullDateTime);
-            }*/
+            }
+            
             dalOrder.UpdateOrder(order);
             Console.WriteLine($"The order was successfully updated:\n" + order);
         }

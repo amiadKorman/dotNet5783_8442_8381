@@ -51,7 +51,6 @@ public class DalProduct
     /// <returns>products array</returns>
     public Product[] GetAllProdoct()
     {
-        Array.FindIndex(productsArray, p => p.ID == 100000);
         Product[] products = new Product[productsLastIndex];
         Array.Copy(productsArray, products, products.Length);
         return products;

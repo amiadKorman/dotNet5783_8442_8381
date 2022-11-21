@@ -33,7 +33,7 @@ public class DalOrder
     /// <exception cref="Exception"></exception>
     public Order GetOrder(int orderID)
     {
-        int index = Array.FindIndex(orderItemsArray, p => p.ID == orderID);
+        int index = Array.FindIndex(ordersArray, o => o.ID == orderID);
         if (index == -1)
             throw new Exception("Order ID doesn't exist");
 
@@ -60,7 +60,7 @@ public class DalOrder
     /// <exception cref="Exception"></exception>
     public void UpdateOrder(Order newOrder)
     {
-        int index = Array.FindIndex(orderItemsArray, p => p.ID == newOrder.ID);
+        int index = Array.FindIndex(ordersArray, o => o.ID == newOrder.ID);
         if (index == -1)
             throw new Exception("Order ID doesn't exist");
 
