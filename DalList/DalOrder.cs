@@ -16,7 +16,7 @@ public class DalOrder
     {
         ordersArray[ordersLastIndex++] = new()
         {
-            ID = Config.GetOrderID,
+            ID = Config.NextOrderID,
             CustomerID = order.CustomerID,
             OrderDate = DateTime.Now,
         };

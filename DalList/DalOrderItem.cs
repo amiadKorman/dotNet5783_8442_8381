@@ -16,7 +16,7 @@ public class DalOrderItem
     {
         orderItemsArray[orderItemsLastIndex++] = new()
         {
-            ID = Config.GetOrderItemID,
+            ID = Config.NextOrderItemID,
             OrderID = orderItem.OrderID,
             ProductID = orderItem.ProductID,
             Price = orderItem.Price,
