@@ -3,6 +3,5 @@
 namespace DalApi;
 
 public interface IOrder : ICrud<Order>
-{
-    Task<Order> Get(int id);              
+{             
 }
