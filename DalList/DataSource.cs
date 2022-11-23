@@ -1,8 +1,10 @@
-﻿using DalApi;
-using DO;
+﻿using DO;
 
 namespace Dal;
 
+/// <summary>
+/// Database for DalList
+/// </summary>
 internal static class DataSource
 {
     /// <summary>
@@ -28,7 +30,7 @@ internal static class DataSource
     /// <summary>
     /// List of products
     /// </summary>
-    internal static List<Product> products = new();
+    internal static List<Product?> products = new();
 
     internal static class Config
     {
@@ -49,6 +51,9 @@ internal static class DataSource
         s_Initialize();
     }
 
+    /// <summary>
+    /// Initilazing all entities lists
+    /// </summary>
     private static void s_Initialize()
     {
         InitializeProducts();
@@ -58,7 +63,7 @@ internal static class DataSource
     }
 
     /// <summary>
-    /// Initialize array with products
+    /// Initialize products list
     /// </summary>
     private static void InitializeProducts()
     {
@@ -182,7 +187,7 @@ internal static class DataSource
     }
 
     /// <summary>
-    /// Initialize array with customers
+    /// Initialize customers list
     /// </summary>
     private static void InitializeCustomers()
     {
@@ -200,16 +205,17 @@ internal static class DataSource
     }
 
     /// <summary>
-    /// Initialize array with orders
+    /// Initialize orders list
     /// </summary>
     private static void InitializeOrders()
     {
         for (int i = 0; i < 20; i++)
         {
+            Customer? customer = customers[RandomNumber.Next(customers.Count)];
             Order order = new()
             {
                 ID = Config.NextOrderID,
-                CustomerID = customers[RandomNumber.Next(customers.Count)].Value.ID,
+                CustomerID = customer?.ID ?? 0
             };
             bool shipped = RandomNumber.NextDouble() < 0.7D;
             if (shipped)
@@ -235,7 +241,7 @@ internal static class DataSource
     }
 
     /// <summary>
-    /// Initialize array with order items
+    /// Initialize order items list
     /// </summary>
     private static void InitializeOrderItems()
     {
