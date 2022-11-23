@@ -61,17 +61,12 @@ internal class DalOrder : IOrder
     /// <summary>
     /// Delete order by given ID
     /// </summary>
-    /// <param name="orderID"></param>
-    /// <exception cref="Exception"></exception>
+    /// <param name="id"></param>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public void Delete(int id)
     {
-        int index = Array.FindIndex(orderItemsArray, p => p.ID == orderID);
-        if (index == -1)
-            throw new Exception("Order ID doesn't exist");
-
-        ordersArray = ordersArray.Where((e, i) => i != index).ToArray();
-        ordersLastIndex--;
-        return;
+        if (orders.RemoveAll(o => o?.ID == id) == 0)
+            throw new DalDoesNotExistException("Can't delete, order ID doesn't exist");
     }
     #endregion
 }

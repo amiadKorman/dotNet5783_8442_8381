@@ -63,16 +63,12 @@ internal class DalProduct : IProduct
     /// <summary>
     /// Delete product item by given ID
     /// </summary>
-    /// <param name="productID"></param>
-    /// <exception cref="Exception"></exception>
+    /// <param name="id"></param>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public void Delete(int id)
     {
-        int index = Array.FindIndex(productsArray, p => p.ID == productID);
-        if (index == -1)
-            throw new Exception("Product ID doesn't exist");
-
-        productsArray = productsArray.Where((e, i) => i != index).ToArray();
-        productsLastIndex--;
+        if (products.RemoveAll(p => p?.ID == id) == 0)
+            throw new DalDoesNotExistException("Can't delete, product ID doesn't exist");
     }
     #endregion
 }

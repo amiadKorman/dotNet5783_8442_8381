@@ -63,17 +63,12 @@ internal class DalCustomer : ICustomer
     /// <summary>
     /// Delete customer by given ID
     /// </summary>
-    /// <param name="customerID"></param>
-    /// <exception cref="Exception"></exception>
+    /// <param name="id"></param>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public void Delete(int id)
     {
-        int index = Array.FindIndex(customersArray, c => c.ID == customerID);
-        if (index == -1)
-            throw new Exception("Customer ID doesn't exist");
-
-        customersArray = customersArray.Where((e, i) => i != index).ToArray();
-        customersLastIndex--;
-        return;
+        if (customers.RemoveAll(c => c?.ID == id) == 0)
+            throw new DalDoesNotExistException("Can't delete, customer ID doesn't exist");
     }
     #endregion
 }
