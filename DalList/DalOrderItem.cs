@@ -24,17 +24,11 @@ internal class DalOrderItem : IOrderItem
     /// <summary>
     /// Return order item by given ID
     /// </summary>
-    /// <param name="orderItemID"></param>
-    /// <returns>order item</returns>
-    /// <exception cref="Exception"></exception>
-    public OrderItem GetById(int id)
-    {
-        int index = Array.FindIndex(orderItemsArray, p => p.ID == orderItemID);
-        if (index == -1)
-            throw new Exception("Order item ID doesn't exist");
+    /// <param name="id"></param>
+    /// <returns> order item </returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
+    public OrderItem GetById(int id) => orderItems.FirstOrDefault(oi => oi?.ID == id) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
 
-        return orderItemsArray[index];
-    }
 
     /// <summary>
     /// Return all the order items in the DataSource

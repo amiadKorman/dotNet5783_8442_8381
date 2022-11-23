@@ -26,17 +26,10 @@ internal class DalProduct : IProduct
     /// <summary>
     /// Return product by given ID
     /// </summary>
-    /// <param name="productID"></param>
-    /// <returns>product</returns>
-    /// <exception cref="Exception"></exception>
-    public Product GetById(int id)
-    {
-        int index = Array.FindIndex(productsArray, p => p.ID == productID);
-        if (index == -1)
-            throw new Exception("Product ID doesn't exist");
-
-        return productsArray[index];
-    }
+    /// <param name="id"></param>
+    /// <returns> product </returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
+    public Product GetById(int id) => products.FirstOrDefault(p => p?.ID == id) ?? throw new DalDoesNotExistException("Product ID doesn't exist");
 
     /// <summary>
     /// Return all the products in the DataSource

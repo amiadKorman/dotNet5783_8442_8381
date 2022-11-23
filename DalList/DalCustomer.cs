@@ -26,17 +26,10 @@ internal class DalCustomer : ICustomer
     /// <summary>
     /// Return customer by given ID
     /// </summary>
-    /// <param name="customerID"></param>
-    /// <returns>customer</returns>
-    /// <exception cref="Exception"></exception>
-    public Customer GetById(int id)
-    {
-        int index = Array.FindIndex(customersArray, c => c.ID == customerID);
-        if (index == -1)
-            throw new Exception("Customer ID doesn't exist");
-
-        return customersArray[index];
-    }
+    /// <param name="id"></param>
+    /// <returns> customer </returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
+    public Customer GetById(int id) => customers.FirstOrDefault(c => c?.ID == id) ?? throw new DalDoesNotExistException("Customer ID doesn't exist");
 
     /// <summary>
     /// Return all the customers in the DataSource
