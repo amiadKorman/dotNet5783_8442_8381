@@ -47,15 +47,7 @@ internal class DalOrderItem : IOrderItem
     /// </summary>
     /// <param name="orderID"></param>
     /// <returns>order item array</returns>
-    public List<OrderItem> GetByOrderId(int orderID)
-    {
-        OrderItem[] orderItems = Array.FindAll(orderItemsArray, oi => oi.OrderID == orderID);
-
-        if (orderItems.Length == 0)
-            throw new Exception("Order item like this doesn't exist");
-
-        return orderItems;
-    }
+    public List<OrderItem?> GetByOrderId(int orderID) => orderItems.FindAll(oi => oi?.OrderID == orderID) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
     #endregion
 
     #region UPDATE
