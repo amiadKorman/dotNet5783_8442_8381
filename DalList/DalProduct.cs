@@ -11,11 +11,11 @@ internal class DalProduct : IProduct
     /// Add new product
     /// </summary>
     /// <param name="product"></param>
-    /// <returns></returns>
+    /// <returns>product ID</returns>
     /// <exception cref="DalAlreadyExistsException"></exception>
     public int Add(Product product)
     {
-        if (orders.FirstOrDefault(p => p?.ID == product.ID) != null)
+        if (products.FirstOrDefault(p => p?.ID == product.ID) != null)
             throw new DalAlreadyExistsException($"Product with ID={product.ID} already exists");
         products.Add(product);
         return product.ID;

@@ -11,21 +11,13 @@ internal class DalCustomer : ICustomer
     /// Add new customer
     /// </summary>
     /// <param name="customer"></param>
-    /// <returns>new customer ID</returns>
-    /// <exception cref="Exception"></exception>
+    /// <returns>customer ID</returns>
+    /// <exception cref="DalAlreadyExistsException"></exception>
     public int Add(Customer customer)
     {
-        int index = Array.FindIndex(customersArray, c => c.ID == customer.ID);
-        if (index != -1)
-            throw new Exception("Customer ID already exist");
-
-        customersArray[customersLastIndex++] = new()
-        {
-            ID = customer.ID,
-            Name = customer.Name,
-            Email = customer.Email,
-            Address = customer.Address
-        };
+        if (customers.FirstOrDefault(c => c?.ID == customer.ID) != null)
+            throw new DalAlreadyExistsException($"Customer with ID={customer.ID} already exists");
+        customers.Add(customer);
         return customer.ID;
     }
     #endregion

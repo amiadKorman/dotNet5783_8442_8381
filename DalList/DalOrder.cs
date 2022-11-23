@@ -11,16 +11,11 @@ internal class DalOrder : IOrder
     /// Add new order
     /// </summary>
     /// <param name="order"></param>
-    /// <returns>new order ID</returns>
-    /// <exception cref="Exception"></exception>
+    /// <returns>order ID</returns>
     public int Add(Order order)
     {
-        ordersArray[ordersLastIndex++] = new()
-        {
-            ID = Config.NextOrderID,
-            CustomerID = order.CustomerID,
-            OrderDate = DateTime.Now,
-        };
+        order.ID = Config.NextOrderID;
+        orders.Add(order);
         return order.ID;
     }
     #endregion

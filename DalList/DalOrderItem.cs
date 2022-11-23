@@ -11,18 +11,11 @@ internal class DalOrderItem : IOrderItem
     /// Add new order item
     /// </summary>
     /// <param name="orderItem"></param>
-    /// <returns>new order item ID</returns>
-    /// <exception cref="Exception"></exception>
+    /// <returns>order item ID</returns>
     public int Add(OrderItem orderItem)
     {
-        orderItemsArray[orderItemsLastIndex++] = new()
-        {
-            ID = Config.NextOrderItemID,
-            OrderID = orderItem.OrderID,
-            ProductID = orderItem.ProductID,
-            Price = orderItem.Price,
-            Amount = orderItem.Amount
-        };
+        orderItem.ID = Config.NextOrderItemID;
+        orderItems.Add(orderItem);
         return orderItem.ID;
     }
     #endregion
