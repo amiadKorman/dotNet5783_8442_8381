@@ -1,6 +1,7 @@
 ﻿using DO;
 using DalApi;
 using static Dal.DataSource;
+using System.Linq;
 
 namespace Dal;
 
@@ -34,12 +35,11 @@ internal class DalOrderItem : IOrderItem
     /// Return all the order items in the DataSource
     /// </summary>
     /// <returns>order items array</returns>
-    public IEnumerable<OrderItem?> GetAll(Func<OrderItem?, bool>? filter)
-    {
-        OrderItem[] orderItems = new OrderItem[orderItemsLastIndex];
-        Array.Copy(orderItemsArray, orderItems, orderItems.Length);
-        return orderItems;
-    }
+    public IEnumerable<OrderItem?> GetAll(Func<OrderItem?, bool>? filter) =>
+        (filter == null ?
+            orderItems.Select(orderItem => orderItem) :
+            orderItems.Where(filter))
+        ?? throw new DalDoesNotExistException("Missing order items");
 
     /// <summary>
     /// Return all the order items of specific order

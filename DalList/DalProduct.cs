@@ -1,6 +1,7 @@
 ﻿using DO;
 using DalApi;
 using static Dal.DataSource;
+using System.Linq;
 
 namespace Dal;
 
@@ -35,12 +36,11 @@ internal class DalProduct : IProduct
     /// Return all the products in the DataSource
     /// </summary>
     /// <returns>products array</returns>
-    public IEnumerable<Product?> GetAll(Func<Product?, bool>? filter)
-    {
-        Product[] products = new Product[productsLastIndex];
-        Array.Copy(productsArray, products, products.Length);
-        return products;
-    }
+    public IEnumerable<Product?> GetAll(Func<Product?, bool>? filter) =>
+        (filter == null ?
+            products.Select(product => product) :
+            products.Where(filter))
+        ?? throw new DalDoesNotExistException("Missing products");
     #endregion
 
     #region UPDATE

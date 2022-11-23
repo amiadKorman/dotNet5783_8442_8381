@@ -33,12 +33,11 @@ internal class DalOrder : IOrder
     /// Return all the orders in the DataSource
     /// </summary>
     /// <returns>all orders</returns>
-    public IEnumerable<Order?> GetAll(Func<Order?, bool>? filter)
-    {
-        Order[] orders = new Order[ordersLastIndex];
-        Array.Copy(ordersArray, orders, orders.Length);
-        return orders;
-    }
+    public IEnumerable<Order?> GetAll(Func<Order?, bool>? filter) =>
+        (filter == null ?
+            orders.Select(order => order) :
+            orders.Where(filter))
+        ?? throw new DalDoesNotExistException("Missing orders");
     #endregion
 
     #region UPDATE

@@ -1,6 +1,7 @@
 ﻿using DO;
 using DalApi;
 using static Dal.DataSource;
+using System.Linq;
 
 namespace Dal;
 
@@ -35,12 +36,11 @@ internal class DalCustomer : ICustomer
     /// Return all the customers in the DataSource
     /// </summary>
     /// <returns>customer array</returns>
-    public IEnumerable<Customer?> GetAll(Func<Customer?, bool>? filter)
-    {
-        Customer[] customer = new Customer[customersLastIndex];
-        Array.Copy(customersArray, customer, customer.Length);
-        return customer;
-    }
+    public IEnumerable<Customer?> GetAll(Func<Customer?, bool>? filter) =>
+        (filter == null ?
+            customers.Select(customer => customer) :
+            customers.Where(filter))
+        ?? throw new DalDoesNotExistException("Missing customers");
     #endregion
 
     #region UPDATE
