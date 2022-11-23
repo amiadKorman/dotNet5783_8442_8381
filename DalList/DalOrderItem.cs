@@ -55,15 +55,15 @@ internal class DalOrderItem : IOrderItem
     /// <summary>
     /// Update order item
     /// </summary>
-    /// <param name="newOrderItem"></param>
-    /// <exception cref="Exception"></exception>
+    /// <param name="orderItem"></param>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public void Update(OrderItem orderItem)
     {
-        int index = Array.FindIndex(orderItemsArray, p => p.ID == newOrderItem.ID);
+        int index = orderItems.FindIndex(oi => oi?.ID == orderItem.ID);
         if (index == -1)
-            throw new Exception("Order item ID doesn't exist");
+            throw new DalDoesNotExistException($"Order item with ID={orderItem.ID} doesn't exists");
 
-        orderItemsArray[index] = newOrderItem;
+        orderItems[index] = orderItem;
     }
     #endregion
 

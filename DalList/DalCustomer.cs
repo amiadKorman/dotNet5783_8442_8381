@@ -45,18 +45,18 @@ internal class DalCustomer : ICustomer
     #endregion
 
     #region UPDATE
-    /// <summary> 
+    /// <summary>
     /// Update customer
     /// </summary>
-    /// <param name="newCustomer"></param>
-    /// <exception cref="Exception"></exception>
+    /// <param name="customer"></param>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public void Update(Customer customer)
     {
-        int index = Array.FindIndex(customersArray, c => c.ID == newCustomer.ID);
+        int index = customers.FindIndex(c => c?.ID == customer.ID);
         if (index == -1)
-            throw new Exception("Customer ID doesn't exist");
+            throw new DalDoesNotExistException($"Customer item with ID={customer.ID} doesn't exists");
 
-        customersArray[index] = newCustomer;
+        customers[index] = customer;
     }
     #endregion
 

@@ -48,15 +48,15 @@ internal class DalProduct : IProduct
     /// <summary>
     /// Update product
     /// </summary>
-    /// <param name="newProduct"></param>
-    /// <exception cref="Exception"></exception>
+    /// <param name="product"></param>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public void Update(Product product)
     {
-        int index = Array.FindIndex(productsArray, p => p.ID == newProduct.ID);
+        int index = products.FindIndex(p => p?.ID == product.ID);
         if (index == -1)
-            throw new Exception("Product ID doesn't exist");
+            throw new DalDoesNotExistException($"Product with ID={product.ID} doesn't exists");
 
-        productsArray[index] = newProduct;
+        products[index] = product;
     }
     #endregion
 
