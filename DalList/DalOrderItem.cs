@@ -29,7 +29,6 @@ internal class DalOrderItem : IOrderItem
     /// <exception cref="DalDoesNotExistException"></exception>
     public OrderItem GetById(int id) => orderItems.FirstOrDefault(oi => oi?.ID == id) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
 
-
     /// <summary>
     /// Return all order items in DataSource by filter
     /// </summary>
@@ -80,4 +79,3 @@ internal class DalOrderItem : IOrderItem
     }
     #endregion
 }
- 
