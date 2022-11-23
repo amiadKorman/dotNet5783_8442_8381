@@ -1,30 +1,23 @@
 ﻿using DO;
+using DalApi;
 using static Dal.DataSource;
 
 namespace Dal;
 
-public class DalProduct
+internal class DalProduct : IProduct
 {
     #region ADD
     /// <summary>
-    /// Add new product item
+    /// Add new product
     /// </summary>
     /// <param name="product"></param>
-    /// <returns>ID of new product</returns>
-    /// <exception cref="Exception"></exception>
-    public int AddProduct(Product product)
+    /// <returns></returns>
+    /// <exception cref="DalAlreadyExistsException"></exception>
+    public int Add(Product product)
     {
-        int index = Array.FindIndex(productsArray, p => p.ID == product.ID);
-        if (index != -1)
-            throw new Exception("Product ID already exist");
-        productsArray[productsLastIndex++] = new()
-        {
-            ID = product.ID,
-            Name = product.Name,
-            Price = product.Price,
-            Category = product.Category,
-            InStock = product.InStock
-        };
+        if (orders.FirstOrDefault(p => p?.ID == product.ID) != null)
+            throw new DalAlreadyExistsException($"Product with ID={product.ID} already exists");
+        products.Add(product);
         return product.ID;
     }
     #endregion
@@ -36,7 +29,7 @@ public class DalProduct
     /// <param name="productID"></param>
     /// <returns>product</returns>
     /// <exception cref="Exception"></exception>
-    public Product GetProduct(int productID)
+    public Product GetById(int id)
     {
         int index = Array.FindIndex(productsArray, p => p.ID == productID);
         if (index == -1)
@@ -49,7 +42,7 @@ public class DalProduct
     /// Return all the products in the DataSource
     /// </summary>
     /// <returns>products array</returns>
-    public Product[] GetAllProdoct()
+    public IEnumerable<Product?> GetAll(Func<Product?, bool>? filter)
     {
         Product[] products = new Product[productsLastIndex];
         Array.Copy(productsArray, products, products.Length);
@@ -63,7 +56,7 @@ public class DalProduct
     /// </summary>
     /// <param name="newProduct"></param>
     /// <exception cref="Exception"></exception>
-    public void UpdateProduct(Product newProduct)
+    public void Update(Product product)
     {
         int index = Array.FindIndex(productsArray, p => p.ID == newProduct.ID);
         if (index == -1)
@@ -79,7 +72,7 @@ public class DalProduct
     /// </summary>
     /// <param name="productID"></param>
     /// <exception cref="Exception"></exception>
-    public void DeleteProduct(int productID)
+    public void Delete(int id)
     {
         int index = Array.FindIndex(productsArray, p => p.ID == productID);
         if (index == -1)

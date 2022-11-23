@@ -1,9 +1,10 @@
 ﻿using DO;
+using DalApi;
 using static Dal.DataSource;
 
 namespace Dal;
 
-public class DalOrder
+internal class DalOrder : IOrder
 {
     #region ADD
     /// <summary>
@@ -12,7 +13,7 @@ public class DalOrder
     /// <param name="order"></param>
     /// <returns>new order ID</returns>
     /// <exception cref="Exception"></exception>
-    public int AddOrder(Order order)
+    public int Add(Order order)
     {
         ordersArray[ordersLastIndex++] = new()
         {
@@ -31,7 +32,7 @@ public class DalOrder
     /// <param name="orderID"></param>
     /// <returns>order</returns>
     /// <exception cref="Exception"></exception>
-    public Order GetOrder(int orderID)
+    public Order GetById(int id)
     {
         int index = Array.FindIndex(ordersArray, o => o.ID == orderID);
         if (index == -1)
@@ -44,7 +45,7 @@ public class DalOrder
     /// Return all the orders in the DataSource
     /// </summary>
     /// <returns>all orders</returns>
-    public Order[] GetAllOrders()
+    public IEnumerable<Order?> GetAll(Func<Order?, bool>? filter)
     {
         Order[] orders = new Order[ordersLastIndex];
         Array.Copy(ordersArray, orders, orders.Length);
@@ -58,7 +59,7 @@ public class DalOrder
     /// </summary>
     /// <param name="newOrder"></param>
     /// <exception cref="Exception"></exception>
-    public void UpdateOrder(Order newOrder)
+    public void Update(Order order)
     {
         int index = Array.FindIndex(ordersArray, o => o.ID == newOrder.ID);
         if (index == -1)
@@ -74,7 +75,7 @@ public class DalOrder
     /// </summary>
     /// <param name="orderID"></param>
     /// <exception cref="Exception"></exception>
-    public void DeleteOrder(int orderID)
+    public void Delete(int id)
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == orderID);
         if (index == -1)

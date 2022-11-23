@@ -22,7 +22,7 @@ internal class MenuOfOrder
         };
         try
         {
-            int orderID = dalOrder.AddOrder(order);
+            int orderID = dalOrder.Add(order);
             Console.WriteLine($"The new Order was successfully added with ID {orderID}\n");
         }
         catch (Exception ex)
@@ -41,7 +41,7 @@ internal class MenuOfOrder
         int IDOrder = SafeInput.IntegerInput("Enter order ID to update: ");
         try
         {
-            Order order = dalOrder.GetOrder(IDOrder);
+            Order order = dalOrder.GetById(IDOrder);
             Console.WriteLine(order);
             // User input for order item properties
             string shipDate = "", deliveryDate = "";
@@ -58,7 +58,7 @@ internal class MenuOfOrder
                     order.DeliveryDate = DateTime.Now;
             }
             
-            dalOrder.UpdateOrder(order);
+            dalOrder.Update(order);
             Console.WriteLine($"The order was successfully updated:\n" + order);
         }
         catch (Exception ex)
@@ -77,7 +77,7 @@ internal class MenuOfOrder
         int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
         try
         {
-            Order order = dalOrder.GetOrder(IdOrder);
+            Order order = dalOrder.GetById(IdOrder);
             Console.WriteLine(order);
         }
         catch (Exception ex)
@@ -91,7 +91,7 @@ internal class MenuOfOrder
     /// </summary>
     public static void ShowOrderList()
     {
-        Order[] orders = dalOrder.GetAllOrders();
+        Order[] orders = dalOrder.GetAll();
         foreach (Order order in orders)
         {
             Console.WriteLine(order);
@@ -108,7 +108,7 @@ internal class MenuOfOrder
         int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
         try
         {
-            dalOrder.DeleteOrder(IdOrder);
+            dalOrder.Delete(IdOrder);
         }
         catch (Exception ex)
         {

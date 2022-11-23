@@ -28,7 +28,7 @@ internal class MenuOfCustomer
         };
         try
         {
-            int customerID = dalCustomer.AddCustomer(customer);
+            int customerID = dalCustomer.Add(customer);
             Console.WriteLine($"The new customer was successfully added with ID {customerID}\n");
         }
         catch (Exception ex)
@@ -47,7 +47,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to update: ");
         try
         {
-            Customer customer = dalCustomer.GetCustomer(IDCustomer);
+            Customer customer = dalCustomer.GetById(IDCustomer);
             Console.WriteLine(customer);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
@@ -59,7 +59,7 @@ internal class MenuOfCustomer
             if (address!= "")
                 customer.Address = address;
 
-            dalCustomer.UpdateCustomer(customer);
+            dalCustomer.Update(customer);
             Console.WriteLine($"The customer was successfully updated:\n" + customer);
         }
         catch (Exception ex)
@@ -78,7 +78,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to show: ");
         try
         {
-            Customer customer = dalCustomer.GetCustomer(IDCustomer);
+            Customer customer = dalCustomer.GetById(IDCustomer);
             Console.WriteLine(customer);
         }
         catch (Exception ex)
@@ -92,7 +92,7 @@ internal class MenuOfCustomer
     /// </summary>
     public static void ShowListCustomer()
     {
-        Customer[] customers = dalCustomer.GetAllCustomers();
+        Customer[] customers = dalCustomer.GetAll();
         foreach (Customer customer in customers)
         {
             Console.WriteLine(customer);
@@ -109,7 +109,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to delete: ");
         try
         {
-            dalCustomer.DeleteCustomer(IDCustomer);
+            dalCustomer.Delete(IDCustomer);
             Console.WriteLine("The customer was successfully deleted\n");
         }
         catch (Exception ex)

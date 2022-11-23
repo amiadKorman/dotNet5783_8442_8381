@@ -1,9 +1,10 @@
 ﻿using DO;
+using DalApi;
 using static Dal.DataSource;
 
 namespace Dal;
 
-public class DalOrderItem
+internal class DalOrderItem : IOrderItem
 {
     #region ADD
     /// <summary>
@@ -12,7 +13,7 @@ public class DalOrderItem
     /// <param name="orderItem"></param>
     /// <returns>new order item ID</returns>
     /// <exception cref="Exception"></exception>
-    public int AddOrderItem(OrderItem orderItem)
+    public int Add(OrderItem orderItem)
     {
         orderItemsArray[orderItemsLastIndex++] = new()
         {
@@ -33,7 +34,7 @@ public class DalOrderItem
     /// <param name="orderItemID"></param>
     /// <returns>order item</returns>
     /// <exception cref="Exception"></exception>
-    public OrderItem GetOrderItem(int orderItemID)
+    public OrderItem GetById(int id)
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == orderItemID);
         if (index == -1)
@@ -43,26 +44,10 @@ public class DalOrderItem
     }
 
     /// <summary>
-    /// Return order item by given order and product ID
-    /// </summary>
-    /// <param name="orderID"></param>
-    /// <param name="productID"></param>
-    /// <returns>order item</returns>
-    /// <exception cref="Exception"></exception>
-    public OrderItem GetOrderItem(int orderID, int productID)
-    {
-        int index = Array.FindIndex(orderItemsArray, oi => oi.OrderID == orderID && oi.ProductID == productID);
-        if (index == -1)
-            throw new Exception("Order item like this doesnwt exist");
-
-        return orderItemsArray[index];
-    }
-
-    /// <summary>
     /// Return all the order items in the DataSource
     /// </summary>
     /// <returns>order items array</returns>
-    public OrderItem[] GetAllOrderItems()
+    public IEnumerable<OrderItem?> GetAll(Func<OrderItem?, bool>? filter)
     {
         OrderItem[] orderItems = new OrderItem[orderItemsLastIndex];
         Array.Copy(orderItemsArray, orderItems, orderItems.Length);
@@ -74,7 +59,7 @@ public class DalOrderItem
     /// </summary>
     /// <param name="orderID"></param>
     /// <returns>order item array</returns>
-    public OrderItem[] GetAllOrderItems(int orderID)
+    public List<OrderItem> GetByOrderId(int orderID)
     {
         OrderItem[] orderItems = Array.FindAll(orderItemsArray, oi => oi.OrderID == orderID);
 
@@ -91,7 +76,7 @@ public class DalOrderItem
     /// </summary>
     /// <param name="newOrderItem"></param>
     /// <exception cref="Exception"></exception>
-    public void UpdateOrderItem(OrderItem newOrderItem)
+    public void Update(OrderItem orderItem)
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == newOrderItem.ID);
         if (index == -1)
@@ -107,7 +92,7 @@ public class DalOrderItem
     /// </summary>
     /// <param name="orderItemID"></param>
     /// <exception cref="Exception"></exception>
-    public void DeleteOrderItem(int orderItemID)
+    public void Delete(int id)
     {
         int index = Array.FindIndex(orderItemsArray, p => p.ID == orderItemID);
         if (index == -1)

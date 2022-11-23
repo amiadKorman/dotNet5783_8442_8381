@@ -1,9 +1,10 @@
 ﻿using DO;
+using DalApi;
 using static Dal.DataSource;
 
 namespace Dal;
 
-public class DalCustomer
+internal class DalCustomer : ICustomer
 {
     #region ADD
     /// <summary>
@@ -12,7 +13,7 @@ public class DalCustomer
     /// <param name="customer"></param>
     /// <returns>new customer ID</returns>
     /// <exception cref="Exception"></exception>
-    public int AddCustomer(Customer customer)
+    public int Add(Customer customer)
     {
         int index = Array.FindIndex(customersArray, c => c.ID == customer.ID);
         if (index != -1)
@@ -36,7 +37,7 @@ public class DalCustomer
     /// <param name="customerID"></param>
     /// <returns>customer</returns>
     /// <exception cref="Exception"></exception>
-    public Customer GetCustomer(int customerID)
+    public Customer GetById(int id)
     {
         int index = Array.FindIndex(customersArray, c => c.ID == customerID);
         if (index == -1)
@@ -49,7 +50,7 @@ public class DalCustomer
     /// Return all the customers in the DataSource
     /// </summary>
     /// <returns>customer array</returns>
-    public Customer[] GetAllCustomers()
+    public IEnumerable<Customer?> GetAll(Func<Customer?, bool>? filter)
     {
         Customer[] customer = new Customer[customersLastIndex];
         Array.Copy(customersArray, customer, customer.Length);
@@ -63,7 +64,7 @@ public class DalCustomer
     /// </summary>
     /// <param name="newCustomer"></param>
     /// <exception cref="Exception"></exception>
-    public void UpdateCustomer(Customer newCustomer)
+    public void Update(Customer customer)
     {
         int index = Array.FindIndex(customersArray, c => c.ID == newCustomer.ID);
         if (index == -1)
@@ -79,7 +80,7 @@ public class DalCustomer
     /// </summary>
     /// <param name="customerID"></param>
     /// <exception cref="Exception"></exception>
-    public void DeleteCustomer(int customerID)
+    public void Delete(int id)
     {
         int index = Array.FindIndex(customersArray, c => c.ID == customerID);
         if (index == -1)
