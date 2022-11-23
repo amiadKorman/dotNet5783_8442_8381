@@ -1,7 +1,6 @@
 ﻿using DO;
 using DalApi;
 using static Dal.DataSource;
-using System.Linq;
 
 namespace Dal;
 
@@ -12,7 +11,7 @@ internal class DalCustomer : ICustomer
     /// Add new customer
     /// </summary>
     /// <param name="customer"></param>
-    /// <returns>customer ID</returns>
+    /// <returns> customer ID </returns>
     /// <exception cref="DalAlreadyExistsException"></exception>
     public int Add(Customer customer)
     {
@@ -33,9 +32,11 @@ internal class DalCustomer : ICustomer
     public Customer GetById(int id) => customers.FirstOrDefault(c => c?.ID == id) ?? throw new DalDoesNotExistException("Customer ID doesn't exist");
 
     /// <summary>
-    /// Return all the customers in the DataSource
+    /// Return all customers in DataSource by filter
     /// </summary>
-    /// <returns>customer array</returns>
+    /// <param name="filter"></param>
+    /// <returns> filtered list of customers </returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public IEnumerable<Customer?> GetAll(Func<Customer?, bool>? filter) =>
         (filter == null ?
             customers.Select(customer => customer) :

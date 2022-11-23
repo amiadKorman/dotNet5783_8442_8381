@@ -1,7 +1,6 @@
 ﻿using DO;
 using DalApi;
 using static Dal.DataSource;
-using System.Linq;
 
 namespace Dal;
 
@@ -12,7 +11,7 @@ internal class DalOrderItem : IOrderItem
     /// Add new order item
     /// </summary>
     /// <param name="orderItem"></param>
-    /// <returns>order item ID</returns>
+    /// <returns> order item ID </returns>
     public int Add(OrderItem orderItem)
     {
         orderItem.ID = Config.NextOrderItemID;
@@ -32,9 +31,11 @@ internal class DalOrderItem : IOrderItem
 
 
     /// <summary>
-    /// Return all the order items in the DataSource
+    /// Return all order items in DataSource by filter
     /// </summary>
-    /// <returns>order items array</returns>
+    /// <param name="filter"></param>
+    /// <returns> filtered list of order items </returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public IEnumerable<OrderItem?> GetAll(Func<OrderItem?, bool>? filter) =>
         (filter == null ?
             orderItems.Select(orderItem => orderItem) :

@@ -11,7 +11,7 @@ internal class DalOrder : IOrder
     /// Add new order
     /// </summary>
     /// <param name="order"></param>
-    /// <returns>order ID</returns>
+    /// <returns> order ID </returns>
     public int Add(Order order)
     {
         order.ID = Config.NextOrderID;
@@ -30,9 +30,11 @@ internal class DalOrder : IOrder
     public Order GetById(int id) => orders.FirstOrDefault(o => o?.ID == id) ?? throw new DalDoesNotExistException("Order ID doesn't exist");
 
     /// <summary>
-    /// Return all the orders in the DataSource
+    /// Return all orders in DataSource by filter
     /// </summary>
-    /// <returns>all orders</returns>
+    /// <param name="filter"></param>
+    /// <returns> filtered list of orders </returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
     public IEnumerable<Order?> GetAll(Func<Order?, bool>? filter) =>
         (filter == null ?
             orders.Select(order => order) :
