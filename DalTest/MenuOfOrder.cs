@@ -58,7 +58,7 @@ internal class MenuOfOrder
                 if (deliveryDate != "")
                     order.DeliveryDate = DateTime.Now;
             }
-            
+
             idal.Order.Update(order);
             Console.WriteLine($"The order was successfully updated:\n" + order);
         }

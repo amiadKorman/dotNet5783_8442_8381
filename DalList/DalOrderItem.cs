@@ -30,6 +30,14 @@ internal class DalOrderItem : IOrderItem
     public OrderItem GetById(int id) => orderItems.FirstOrDefault(oi => oi?.ID == id) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
 
     /// <summary>
+    /// Return order item by given order and product ID
+    /// </summary>
+    /// <param name="orderID"></param>
+    /// <returns> order item </returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
+    public OrderItem GetByOrderAndProductId(int orderID, int productID) => orderItems.FirstOrDefault(oi => oi?.OrderID == orderID && oi?.ProductID == productID) ?? throw new DalDoesNotExistException("Order item doesn't exist");
+
+    /// <summary>
     /// Return all order items in DataSource by filter
     /// </summary>
     /// <param name="filter"></param>
@@ -40,14 +48,6 @@ internal class DalOrderItem : IOrderItem
             orderItems.Select(orderItem => orderItem) :
             orderItems.Where(filter))
         ?? throw new DalDoesNotExistException("Missing order items");
-
-    /// <summary>
-    /// Return all the order items of specific order
-    /// </summary>
-    /// <param name="orderID"></param>
-    /// <returns> list of order items with same order id </returns>
-    /// <exception cref="DalDoesNotExistException"></exception>
-    public IEnumerable<OrderItem?> GetByOrderId(int orderID) => orderItems.Where(oi => oi?.OrderID == orderID) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
     #endregion
 
     #region UPDATE

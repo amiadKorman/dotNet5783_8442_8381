@@ -57,7 +57,7 @@ internal class MenuOfCustomer
             // Checking for changes to update
             if (email != "")
                 customer.Email = email;
-            if (address!= "")
+            if (address != "")
                 customer.Address = address;
 
             idal.Customer.Update(customer);

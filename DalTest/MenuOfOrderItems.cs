@@ -99,7 +99,7 @@ internal class MenuOfOrderItems
         int productID = SafeInput.IntegerInput("Enter Order item's product ID: ");
         try
         {
-            OrderItem orderItem = idal.OrderItem.GetById(orderID, productID);
+            OrderItem orderItem = idal.OrderItem.GetById(orderID/*, productID*/);
             Console.WriteLine(orderItem);
         }
         catch (Exception ex)
@@ -128,7 +128,8 @@ internal class MenuOfOrderItems
         int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
         try
         {
-            IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetByOrderId(orderID);
+            
+            IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetAll(oi => oi?.OrderID == orderID);
             foreach (OrderItem orderItem in orderItems)
             {
                 Console.WriteLine(orderItem);
