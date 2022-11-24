@@ -1,11 +1,12 @@
-﻿using DO;
+﻿using DalApi;
+using DO;
 using System.Security.AccessControl;
 
 namespace Dal;
 
 internal class MenuOfOrderItems
 {
-    private static DalOrderItem dalOrderItem = new();
+    private static IDal idal = new DalList();
 
     #region ADD
     /// <summary>
@@ -30,7 +31,7 @@ internal class MenuOfOrderItems
         };
         try
         {
-            int orderItemID = dalOrderItem.AddOrderItem(orderItem);
+            int orderItemID = idal.OrderItem.Add(orderItem);
             Console.WriteLine($"The new Order Item was successfully added with ID {orderItemID}\n");
         }
         catch (Exception ex)
@@ -49,7 +50,7 @@ internal class MenuOfOrderItems
         int IDOrderItem = SafeInput.IntegerInput("Enter order item ID to update: ");
         try
         {
-            OrderItem orderItem = dalOrderItem.GetOrderItem(IDOrderItem);
+            OrderItem orderItem = idal.OrderItem.GetById(IDOrderItem);
             Console.WriteLine(orderItem);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for order item properties
@@ -61,7 +62,7 @@ internal class MenuOfOrderItems
             if (amount.HasValue)
                 orderItem.Amount = amount.Value;
 
-            dalOrderItem.UpdateOrderItem(orderItem);
+            idal.OrderItem.Update(orderItem);
             Console.WriteLine($"The product was successfully updated:\n" + orderItem);
         }
         catch (Exception ex)
@@ -80,7 +81,7 @@ internal class MenuOfOrderItems
         int IdOrderItem = SafeInput.IntegerInput("Enter order item ID to show: ");
         try
         {
-            OrderItem orderItem = dalOrderItem.GetOrderItem(IdOrderItem);
+            OrderItem orderItem = idal.OrderItem.GetById(IdOrderItem);
             Console.WriteLine(orderItem);
         }
         catch (Exception ex)
@@ -98,7 +99,7 @@ internal class MenuOfOrderItems
         int productID = SafeInput.IntegerInput("Enter Order item's product ID: ");
         try
         {
-            OrderItem orderItem = dalOrderItem.GetOrderItem(orderID, productID);
+            OrderItem orderItem = idal.OrderItem.GetById(orderID, productID);
             Console.WriteLine(orderItem);
         }
         catch (Exception ex)
@@ -112,7 +113,7 @@ internal class MenuOfOrderItems
     /// </summary>
     public static void ShowListOfOrderItems()
     {
-        OrderItem[] orderItems = dalOrderItem.GetAllOrderItems();
+        IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetAll();
         foreach (OrderItem orderItem in orderItems)
         {
             Console.WriteLine(orderItem);
@@ -127,7 +128,7 @@ internal class MenuOfOrderItems
         int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
         try
         {
-            OrderItem[] orderItems = dalOrderItem.GetAllOrderItems(orderID);
+            IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetByOrderId(orderID);
             foreach (OrderItem orderItem in orderItems)
             {
                 Console.WriteLine(orderItem);
@@ -149,7 +150,7 @@ internal class MenuOfOrderItems
         int IdOrderIthem = SafeInput.IntegerInput("Enter order item ID to delete: ");
         try
         {
-            dalOrderItem.DeleteOrderItem(IdOrderIthem);
+            idal.OrderItem.Delete(IdOrderIthem);
             Console.WriteLine("The order item was successfully deleted\n");
         }
         catch (Exception ex)

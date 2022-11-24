@@ -1,10 +1,11 @@
-﻿using DO;
+﻿using DalApi;
+using DO;
 
 namespace Dal;
 
 internal class MenuOfOrder
 {
-    private static DalOrder dalOrder = new();
+    private static IDal idal = new DalList();
 
     #region Add New Order
     /// <summary>
@@ -22,7 +23,7 @@ internal class MenuOfOrder
         };
         try
         {
-            int orderID = dalOrder.Add(order);
+            int orderID = idal.Order.Add(order);
             Console.WriteLine($"The new Order was successfully added with ID {orderID}\n");
         }
         catch (Exception ex)
@@ -41,7 +42,7 @@ internal class MenuOfOrder
         int IDOrder = SafeInput.IntegerInput("Enter order ID to update: ");
         try
         {
-            Order order = dalOrder.GetById(IDOrder);
+            Order order = idal.Order.GetById(IDOrder);
             Console.WriteLine(order);
             // User input for order item properties
             string shipDate = "", deliveryDate = "";
@@ -58,7 +59,7 @@ internal class MenuOfOrder
                     order.DeliveryDate = DateTime.Now;
             }
             
-            dalOrder.Update(order);
+            idal.Order.Update(order);
             Console.WriteLine($"The order was successfully updated:\n" + order);
         }
         catch (Exception ex)
@@ -77,7 +78,7 @@ internal class MenuOfOrder
         int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
         try
         {
-            Order order = dalOrder.GetById(IdOrder);
+            Order order = idal.Order.GetById(IdOrder);
             Console.WriteLine(order);
         }
         catch (Exception ex)
@@ -91,7 +92,7 @@ internal class MenuOfOrder
     /// </summary>
     public static void ShowOrderList()
     {
-        Order[] orders = dalOrder.GetAll();
+        IEnumerable<Order?> orders = idal.Order.GetAll();
         foreach (Order order in orders)
         {
             Console.WriteLine(order);
@@ -108,7 +109,7 @@ internal class MenuOfOrder
         int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
         try
         {
-            dalOrder.Delete(IdOrder);
+            idal.Order.Delete(IdOrder);
         }
         catch (Exception ex)
         {

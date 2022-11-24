@@ -4,9 +4,6 @@ namespace Dal;
 
 sealed public class DalList : IDal
 {
-    public static IDal Instance { get; } = new DalList();
-    private DalList() { }
-
     public ICustomer Customer => new DalCustomer();
 
     public IOrder Order => new DalOrder();
