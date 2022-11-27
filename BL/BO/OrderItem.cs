@@ -15,7 +15,7 @@ public class OrderItem
     /// <summary>
     /// Name of product
     /// </summary>
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Price of the product

@@ -40,7 +40,7 @@ public class Order
     /// <summary>
     /// Order items
     /// </summary>
-    public List<OrderItem>? Items { get; set; }
+    public IEnumerable<OrderItem>? Items { get; set; }
 
     /// <summary>
     /// Total order price

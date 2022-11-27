@@ -1,36 +1,34 @@
 ﻿namespace BO;
 
+/// <summary>
+/// This class serves presentation of a product in Catalogue product list (for a buyer)
+/// </summary>
 public class ProductItem
 {
     /// <summary>
-    /// Product item ID
+    /// Product ID number
     /// </summary>
     public int ID { get; set; }
-
     /// <summary>
-    /// Product item name
+    /// Product name / short description
     /// </summary>
-    public string Name { get; set; }
-
-    /// <summary> 
-    /// Product item price
+    public string? Name { get; set; }
+    /// <summary>
+    /// Current product price
     /// </summary>
     public double Price { get; set; }
-
     /// <summary>
-    /// Product item category
+    /// Product category
     /// </summary>
-    public CategoryOfProduct Category { get; set; }
-
+    public Category Category { get; set; }
     /// <summary>
-    /// Amount of product items in cart
-    /// </summary>
-    public int Amount { get; set; }
-
-    /// <summary>
-    /// Is product item in stock
+    /// Shows whether the product is in stock
     /// </summary>
     public bool InStock { get; set; }
+    /// <summary>
+    /// Amount of product in cart
+    /// </summary>
+    public int Amount { get; set; }
 
     public override string ToString() => $@"
         Product ID: {ID}

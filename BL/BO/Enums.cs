@@ -2,7 +2,7 @@
 
 namespace BO;
 
-public enum CategoryOfProduct
+public enum Category
 {
     [Description("Phones")]
     Phones = 1,
@@ -18,10 +18,14 @@ public enum CategoryOfProduct
 
 public enum OrderStatus
 {
-    [Description("Approved")]
-    Approved = 1,
+    [Description("Initiated")]
+    Initiated = 1,
+    [Description("Ordered")]
+    Ordered,
+    [Description("Paid")]
+    Paid,
     [Description("Shipped")]
-    Shipped = 2,
+    Shipped,
     [Description("Delivered")]
-    Delivered = 3
+    Delivered,
 }
