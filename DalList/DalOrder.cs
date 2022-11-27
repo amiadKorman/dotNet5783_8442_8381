@@ -1,11 +1,11 @@
 ﻿using DO;
 using DalApi;
-using static Dal.DataSource;
 
 namespace Dal;
 
 internal class DalOrder : IOrder
 {
+    DataSource ds = DataSource.instance;
     #region ADD
     /// <summary>
     /// Add new order
@@ -14,8 +14,8 @@ internal class DalOrder : IOrder
     /// <returns> order ID </returns>
     public int Add(Order order)
     {
-        order.ID = Config.NextOrderID;
-        orders.Add(order);
+        order.ID = DataSource.Config.NextOrderID;
+        ds.orders.Add(order);
         return order.ID;
     }
     #endregion
@@ -27,7 +27,7 @@ internal class DalOrder : IOrder
     /// <param name="id"></param>
     /// <returns> order </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public Order GetById(int id) => orders.FirstOrDefault(o => o?.ID == id) ?? throw new DalDoesNotExistException("Order ID doesn't exist");
+    public Order GetById(int id) => ds.orders.FirstOrDefault(o => o?.ID == id) ?? throw new DalDoesNotExistException("Order ID doesn't exist");
 
     /// <summary>
     /// Return all orders in DataSource by filter
@@ -37,8 +37,8 @@ internal class DalOrder : IOrder
     /// <exception cref="DalDoesNotExistException"></exception>
     public IEnumerable<Order?> GetAll(Func<Order?, bool>? filter) =>
         (filter == null ?
-            orders.Select(order => order) :
-            orders.Where(filter))
+            ds.orders.Select(order => order) :
+            ds.orders.Where(filter))
         ?? throw new DalDoesNotExistException("Missing orders");
     #endregion
 
@@ -50,11 +50,11 @@ internal class DalOrder : IOrder
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Update(Order order)
     {
-        int index = orders.FindIndex(o => o?.ID == order.ID);
+        int index = ds.orders.FindIndex(o => o?.ID == order.ID);
         if (index == -1)
             throw new DalDoesNotExistException($"Order with ID={order.ID} doesn't exists");
 
-        orders[index] = order;
+        ds.orders[index] = order;
     }
     #endregion
 
@@ -66,7 +66,7 @@ internal class DalOrder : IOrder
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Delete(int id)
     {
-        if (orders.RemoveAll(o => o?.ID == id) == 0)
+        if (ds.orders.RemoveAll(o => o?.ID == id) == 0)
             throw new DalDoesNotExistException("Can't delete, order ID doesn't exist");
     }
     #endregion

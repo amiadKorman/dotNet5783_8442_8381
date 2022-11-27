@@ -1,11 +1,11 @@
 ﻿using DO;
 using DalApi;
-using static Dal.DataSource;
 
 namespace Dal;
 
 internal class DalCustomer : ICustomer
 {
+    DataSource ds = DataSource.instance;
     #region ADD
     /// <summary>
     /// Add new customer
@@ -15,9 +15,9 @@ internal class DalCustomer : ICustomer
     /// <exception cref="DalAlreadyExistsException"></exception>
     public int Add(Customer customer)
     {
-        if (customers.FirstOrDefault(c => c?.ID == customer.ID) != null)
+        if (ds.customers.FirstOrDefault(c => c?.ID == customer.ID) != null)
             throw new DalAlreadyExistsException($"Customer with ID={customer.ID} already exists");
-        customers.Add(customer);
+        ds.customers.Add(customer);
         return customer.ID;
     }
     #endregion
@@ -29,7 +29,7 @@ internal class DalCustomer : ICustomer
     /// <param name="id"></param>
     /// <returns> customer </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public Customer GetById(int id) => customers.FirstOrDefault(c => c?.ID == id) ?? throw new DalDoesNotExistException("Customer ID doesn't exist");
+    public Customer GetById(int id) => ds.customers.FirstOrDefault(c => c?.ID == id) ?? throw new DalDoesNotExistException("Customer ID doesn't exist");
 
     /// <summary>
     /// Return all customers in DataSource by filter
@@ -39,8 +39,8 @@ internal class DalCustomer : ICustomer
     /// <exception cref="DalDoesNotExistException"></exception>
     public IEnumerable<Customer?> GetAll(Func<Customer?, bool>? filter) =>
         (filter == null ?
-            customers.Select(customer => customer) :
-            customers.Where(filter))
+            ds.customers.Select(customer => customer) :
+            ds.customers.Where(filter))
         ?? throw new DalDoesNotExistException("Missing customers");
     #endregion
 
@@ -52,11 +52,11 @@ internal class DalCustomer : ICustomer
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Update(Customer customer)
     {
-        int index = customers.FindIndex(c => c?.ID == customer.ID);
+        int index = ds.customers.FindIndex(c => c?.ID == customer.ID);
         if (index == -1)
             throw new DalDoesNotExistException($"Customer item with ID={customer.ID} doesn't exists");
 
-        customers[index] = customer;
+        ds.customers[index] = customer;
     }
     #endregion
 
@@ -68,7 +68,7 @@ internal class DalCustomer : ICustomer
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Delete(int id)
     {
-        if (customers.RemoveAll(c => c?.ID == id) == 0)
+        if (ds.customers.RemoveAll(c => c?.ID == id) == 0)
             throw new DalDoesNotExistException("Can't delete, customer ID doesn't exist");
     }
     #endregion

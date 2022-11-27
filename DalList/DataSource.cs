@@ -5,8 +5,14 @@ namespace Dal;
 /// <summary>
 /// Database for DalList
 /// </summary>
-internal static class DataSource
+internal sealed class DataSource
 {
+    internal static DataSource instance { get; }
+    
+    private DataSource() => s_Initialize();
+
+    static DataSource() => instance = new DataSource();
+
     /// <summary>
     /// Random number field
     /// </summary>
@@ -15,22 +21,22 @@ internal static class DataSource
     /// <summary>
     /// List of customers
     /// </summary>
-    internal static List<Customer?> customers = new();
+    internal List<Customer?> customers = new();
 
     /// <summary>
     /// List of orders
     /// </summary>
-    internal static List<Order?> orders = new();
+    internal List<Order?> orders = new();
 
     /// <summary>
     /// List of order items 
     /// </summary>
-    internal static List<OrderItem?> orderItems = new();
+    internal List<OrderItem?> orderItems = new();
 
     /// <summary>
     /// List of products
     /// </summary>
-    internal static List<Product?> products = new();
+    internal List<Product?> products = new();
 
     internal static class Config
     {
@@ -44,17 +50,9 @@ internal static class DataSource
     }
 
     /// <summary>
-    /// Default constructor
-    /// </summary>
-    static DataSource()
-    {
-        s_Initialize();
-    }
-
-    /// <summary>
     /// Initilazing all entities lists
     /// </summary>
-    private static void s_Initialize()
+    private void s_Initialize()
     {
         InitializeProducts();
         InitializeCustomers();
@@ -65,7 +63,7 @@ internal static class DataSource
     /// <summary>
     /// Initialize products list
     /// </summary>
-    private static void InitializeProducts()
+    private void InitializeProducts()
     {
         products.Add(
             new()
@@ -189,7 +187,7 @@ internal static class DataSource
     /// <summary>
     /// Initialize customers list
     /// </summary>
-    private static void InitializeCustomers()
+    private void InitializeCustomers()
     {
         for (int i = 1; i < 6; i++)
         {
@@ -207,7 +205,7 @@ internal static class DataSource
     /// <summary>
     /// Initialize orders list
     /// </summary>
-    private static void InitializeOrders()
+    private void InitializeOrders()
     {
         for (int i = 0; i < 20; i++)
         {
@@ -243,7 +241,7 @@ internal static class DataSource
     /// <summary>
     /// Initialize order items list
     /// </summary>
-    private static void InitializeOrderItems()
+    private void InitializeOrderItems()
     {
         for (int i = 0; i < 40; i++)
         {

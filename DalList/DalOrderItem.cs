@@ -1,11 +1,12 @@
 ﻿using DO;
 using DalApi;
-using static Dal.DataSource;
 
 namespace Dal;
 
 internal class DalOrderItem : IOrderItem
 {
+    DataSource ds = DataSource.instance;
+
     #region ADD
     /// <summary>
     /// Add new order item
@@ -14,8 +15,8 @@ internal class DalOrderItem : IOrderItem
     /// <returns> order item ID </returns>
     public int Add(OrderItem orderItem)
     {
-        orderItem.ID = Config.NextOrderItemID;
-        orderItems.Add(orderItem);
+        orderItem.ID = DataSource.Config.NextOrderItemID;
+        ds.orderItems.Add(orderItem);
         return orderItem.ID;
     }
     #endregion
@@ -27,7 +28,7 @@ internal class DalOrderItem : IOrderItem
     /// <param name="id"></param>
     /// <returns> order item </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public OrderItem GetById(int id) => orderItems.FirstOrDefault(oi => oi?.ID == id) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
+    public OrderItem GetById(int id) => ds.orderItems.FirstOrDefault(oi => oi?.ID == id) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
 
     /// <summary>
     /// Return order item by given order and product ID
@@ -35,7 +36,7 @@ internal class DalOrderItem : IOrderItem
     /// <param name="orderID"></param>
     /// <returns> order item </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public OrderItem GetByOrderAndProductId(int orderID, int productID) => orderItems.FirstOrDefault(oi => oi?.OrderID == orderID && oi?.ProductID == productID) ?? throw new DalDoesNotExistException("Order item doesn't exist");
+    public OrderItem GetByOrderAndProductId(int orderID, int productID) => ds.orderItems.FirstOrDefault(oi => oi?.OrderID == orderID && oi?.ProductID == productID) ?? throw new DalDoesNotExistException("Order item doesn't exist");
 
     /// <summary>
     /// Return all order items in DataSource by filter
@@ -45,8 +46,8 @@ internal class DalOrderItem : IOrderItem
     /// <exception cref="DalDoesNotExistException"></exception>
     public IEnumerable<OrderItem?> GetAll(Func<OrderItem?, bool>? filter) =>
         (filter == null ?
-            orderItems.Select(orderItem => orderItem) :
-            orderItems.Where(filter))
+            ds.orderItems.Select(orderItem => orderItem) :
+            ds.orderItems.Where(filter))
         ?? throw new DalDoesNotExistException("Missing order items");
     #endregion
 
@@ -58,11 +59,11 @@ internal class DalOrderItem : IOrderItem
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Update(OrderItem orderItem)
     {
-        int index = orderItems.FindIndex(oi => oi?.ID == orderItem.ID);
+        int index = ds.orderItems.FindIndex(oi => oi?.ID == orderItem.ID);
         if (index == -1)
             throw new DalDoesNotExistException($"Order item with ID={orderItem.ID} doesn't exists");
 
-        orderItems[index] = orderItem;
+        ds.orderItems[index] = orderItem;
     }
     #endregion
 
@@ -74,7 +75,7 @@ internal class DalOrderItem : IOrderItem
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Delete(int id)
     {
-        if (orderItems.RemoveAll(oi => oi?.ID == id) == 0)
+        if (ds.orderItems.RemoveAll(oi => oi?.ID == id) == 0)
             throw new DalDoesNotExistException("Can't delete, order item ID doesn't exist");
     }
     #endregion

@@ -1,11 +1,12 @@
 ﻿using DO;
 using DalApi;
-using static Dal.DataSource;
 
 namespace Dal;
 
 internal class DalProduct : IProduct
 {
+    DataSource ds = DataSource.instance;
+
     #region ADD
     /// <summary>
     /// Add new product
@@ -15,9 +16,9 @@ internal class DalProduct : IProduct
     /// <exception cref="DalAlreadyExistsException"></exception>
     public int Add(Product product)
     {
-        if (products.FirstOrDefault(p => p?.ID == product.ID) != null)
+        if (ds.products.FirstOrDefault(p => p?.ID == product.ID) != null)
             throw new DalAlreadyExistsException($"Product with ID={product.ID} already exists");
-        products.Add(product);
+        ds.products.Add(product);
         return product.ID;
     }
     #endregion
@@ -29,19 +30,19 @@ internal class DalProduct : IProduct
     /// <param name="id"></param>
     /// <returns> product </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public Product GetById(int id) => products.FirstOrDefault(p => p?.ID == id) ?? throw new DalDoesNotExistException("Product ID doesn't exist");
+    public Product GetById(int id) => ds.products.FirstOrDefault(p => p?.ID == id) ?? throw new DalDoesNotExistException("Product ID doesn't exist");
 
     /// <summary>
-    /// Return all products in DataSource by filter
+    /// Return all ds.products in DataSource by filter
     /// </summary>
     /// <param name="filter"></param>
-    /// <returns> filtered list of products </returns>
+    /// <returns> filtered list of ds.products </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
     public IEnumerable<Product?> GetAll(Func<Product?, bool>? filter) =>
         (filter == null ?
-            products.Select(product => product) :
-            products.Where(filter))
-        ?? throw new DalDoesNotExistException("Missing products");
+            ds.products.Select(product => product) :
+            ds.products.Where(filter))
+        ?? throw new DalDoesNotExistException("Missing ds.products");
     #endregion
 
     #region UPDATE
@@ -52,11 +53,11 @@ internal class DalProduct : IProduct
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Update(Product product)
     {
-        int index = products.FindIndex(p => p?.ID == product.ID);
+        int index = ds.products.FindIndex(p => p?.ID == product.ID);
         if (index == -1)
             throw new DalDoesNotExistException($"Product with ID={product.ID} doesn't exists");
 
-        products[index] = product;
+        ds.products[index] = product;
     }
     #endregion
 
@@ -68,7 +69,7 @@ internal class DalProduct : IProduct
     /// <exception cref="DalDoesNotExistException"></exception>
     public void Delete(int id)
     {
-        if (products.RemoveAll(p => p?.ID == id) == 0)
+        if (ds.products.RemoveAll(p => p?.ID == id) == 0)
             throw new DalDoesNotExistException("Can't delete, product ID doesn't exist");
     }
     #endregion
