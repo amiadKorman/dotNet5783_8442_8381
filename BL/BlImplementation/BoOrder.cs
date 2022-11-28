@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace BlImplementation
 {
-    internal class BoCart : ICart
+    internal class BoOrder : IOrder
     {
-        public BoCart() { }
-        public BoCart(string name) { }
+        public BoOrder() { }
+        public BoOrder(string name) { }
 
 
-        
+
+
+
     }
 }
