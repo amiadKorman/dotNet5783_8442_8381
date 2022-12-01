@@ -14,10 +14,10 @@ namespace BlTest1
         #region Mainaly Main
         public static void Main(string[] args)
         {
-            EntitysMenu MenuChoise = EntitysMenu.OrderMenu;
-            while (!MenuChoise.Equals(EntitysMenu.Exit))
+            EnumsEntitysMenu MenuChoise = EnumsEntitysMenu.OrderMenu;
+            while (!MenuChoise.Equals(EnumsEntitysMenu.Exit))
             {
-                MenuChoise = (EntitysMenu)SafeInput.IntegerInput(
+                MenuChoise = (EnumsEntitysMenu)SafeInput.IntegerInput(
                     "For Order Menu - press 1\n" +
                     "For Order Item Menu - press 2\n" +
                     "For Product Menu - press 3\n" +
@@ -26,19 +26,19 @@ namespace BlTest1
 
                 switch (MenuChoise)
                 {
-                    case EntitysMenu.OrderMenu:
+                    case EnumsEntitysMenu.OrderMenu:
                         BlMenuOfOrder.OrderMenu();
                         break;
-                    case EntitysMenu.OrderItemsMenu:
-                        //MenuOfOrderItems.OrderItemMenu();
+                    case EnumsEntitysMenu.OrderItemsMenu:
+                        BlMenuOfOrderItems.OrderItemMenu();
                         break;
-                    case EntitysMenu.ProductMenu:
-                       // MenuOfProduct.ProductMenu();
+                    case EnumsEntitysMenu.ProductMenu:
+                        BlMenuOfProduct.ProductMenu();
                         break;
-                    case EntitysMenu.CustomerMenu:
-                       // MenuOfCustomer.CustomerMenu();
+                    case EnumsEntitysMenu.CustomerMenu:
+                        BlMenuOfCustomer.CustomerMenu();
                         break;
-                    case EntitysMenu.Exit:
+                    case EnumsEntitysMenu.Exit:
                         break;
                     default:
                         Console.WriteLine("Error. Try again");
