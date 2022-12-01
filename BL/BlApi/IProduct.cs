@@ -2,7 +2,7 @@
 
 namespace BlApi;
 
-public interface IBoProduct
+public interface IProduct
 {
     /// <summary>
     /// Returns list of all products, for manager and buyer

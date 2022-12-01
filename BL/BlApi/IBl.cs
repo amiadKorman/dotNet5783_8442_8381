@@ -2,7 +2,7 @@
 
 public interface IBl
 {
-    public IBoProduct Product { get;}
-    public IBoOrder Order { get;}
-    public IBoCart Cart { get;}
+    public IProduct Product { get;}
+    public IOrder Order { get;}
+    public ICart Cart { get;}
 }
