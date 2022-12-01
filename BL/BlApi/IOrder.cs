@@ -2,7 +2,7 @@
 
 namespace BlApi;
 
-public interface IOrder
+public interface IBoOrder
 {
     /// <summary>
     /// Returns list of all orders, for manager
