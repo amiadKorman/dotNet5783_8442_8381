@@ -10,8 +10,35 @@ namespace BlTest1
 {
     internal class BlMenuOfOrder
     {
-        
-      
+
+
+
+        #region Add New Order
+        /// <summary>
+        /// Add new order
+        /// </summary>
+        public static void AddNewOrder()
+        {
+            Console.WriteLine("To add a new Order, please fill in the following data:");
+
+            int customerID = SafeInput.IntegerInput("Customer ID: ");
+            Console.WriteLine("Adding a new Order...");
+            IOrder order = new()
+            {
+                CustomerID = customerID
+            };
+            try
+            {
+                int orderID = idal.Order.Add(order);
+                Console.WriteLine($"The new Order was successfully added with ID {orderID}\n");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
+
 
 
 
@@ -26,7 +53,7 @@ namespace BlTest1
         /// <summary>
         /// Print order menu and calls the appropriate method
         /// </summary>
-        public static void OrderMenu()
+        public static void OrderMenuBL()
         {
             EnumsOrderMenu Orderchoise = EnumsOrderMenu.AddOrder;
             while (!Orderchoise.Equals(EnumsOrderMenu.GoBack))
@@ -42,7 +69,7 @@ namespace BlTest1
                 switch (Orderchoise)
                 {
                     case EnumsOrderMenu.AddOrder:
-                        //AddNewOrder();
+                        AddNewOrder();
                         break;
                     case EnumsOrderMenu.UpdateOrder:
                         //UpdateOrder();

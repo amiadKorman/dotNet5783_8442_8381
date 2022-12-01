@@ -27,7 +27,7 @@ namespace BlTest1
                 switch (MenuChoise)
                 {
                     case EnumsEntitysMenu.OrderMenu:
-                        BlMenuOfOrder.OrderMenu();
+                        BlMenuOfOrder.OrderMenuBL();
                         break;
                     case EnumsEntitysMenu.OrderItemsMenu:
                         BlMenuOfOrderItems.OrderItemMenu();
