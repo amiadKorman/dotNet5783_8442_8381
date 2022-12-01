@@ -10,8 +10,10 @@ namespace BlTest1
 {
     internal class BlMenuOfOrder
     {
+        
+      
 
-       
+
 
 
 
@@ -26,10 +28,10 @@ namespace BlTest1
         /// </summary>
         public static void OrderMenu()
         {
-            OrderMenu Orderchoise = BlTest1.OrderMenu.AddOrder;
-            while (!Orderchoise.Equals(BlTest1.OrderMenu.GoBack))
+            EnumsOrderMenu Orderchoise = EnumsOrderMenu.AddOrder;
+            while (!Orderchoise.Equals(EnumsOrderMenu.GoBack))
             {
-                Orderchoise = (OrderMenu)SafeInput.IntegerInput(
+                Orderchoise = (EnumsOrderMenu)SafeInput.IntegerInput(
                 "To Add an Order - press 1\n" +
                 "To Update an Order - press 2\n" +
                 "To Show an Order - press 3\n" +
@@ -39,22 +41,22 @@ namespace BlTest1
 
                 switch (Orderchoise)
                 {
-                    case BlTest1.OrderMenu.AddOrder:
+                    case EnumsOrderMenu.AddOrder:
                         //AddNewOrder();
                         break;
-                    case BlTest1.OrderMenu.UpdateOrder:
+                    case EnumsOrderMenu.UpdateOrder:
                         //UpdateOrder();
                         break;
-                    case BlTest1.OrderMenu.ShowOrder:
+                    case EnumsOrderMenu.ShowOrder:
                         //ShowOrder();
                         break;
-                    case BlTest1.OrderMenu.ShowListOfOrder:
+                    case EnumsOrderMenu.ShowListOfOrder:
                         //ShowOrderList();
                         break;
-                    case BlTest1.OrderMenu.DeleteAnOrder:
+                    case EnumsOrderMenu.DeleteAnOrder:
                         //DeleteOrder();
                         break;
-                    case BlTest1.OrderMenu.GoBack:
+                    case EnumsOrderMenu.GoBack:
                         break;
                     default:
                         Console.WriteLine("This option doesn't exist, please try again\n");
