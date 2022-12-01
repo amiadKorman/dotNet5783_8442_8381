@@ -1,4 +1,5 @@
 ﻿using BO;
+using BlTest1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace BlTest1
                 switch (MenuChoise)
                 {
                     case EntitysMenu.OrderMenu:
-                        //MenuOfOrder.OrderMenu();
+                        BlMenuOfOrder.OrderMenu();
                         break;
                     case EntitysMenu.OrderItemsMenu:
                         //MenuOfOrderItems.OrderItemMenu();
