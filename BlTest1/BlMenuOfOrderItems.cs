@@ -192,22 +192,22 @@ namespace BlTest1
                         AddNewOrderItem();
                         break;
                     case BlTest1.EnumsOrderItemMenu.UpdateOrderItems:
-                        //UpdateOrderItem();
+                        UpdateOrderItem();
                         break;
                     case BlTest1.EnumsOrderItemMenu.ShowOrderItemByID:
-                        //ShowOrderItem();
+                        ShowOrderItem();
                         break;
                     case BlTest1.EnumsOrderItemMenu.ShowOrderItemByProductAndCustomerID:
-                        //ShowOrderItemByOrderAndCustomer();
+                        ShowOrderItemByOrderAndCustomer();
                         break;
                     case BlTest1.EnumsOrderItemMenu.ShowOrderItemsListOfSpecificOrder:
-                        //ShowListOfOrderOrderItems();
+                        ShowListOfOrderOrderItems();
                         break;
                     case BlTest1.EnumsOrderItemMenu.ShowListOfOrderItems:
-                        //ShowListOfOrderItems();
+                        ShowListOfOrderItems();
                         break;
                     case BlTest1.EnumsOrderItemMenu.DeleteAnOrderItems:
-                       //DeleteOrderItem();
+                       DeleteOrderItem();
                         break;
                     case BlTest1.EnumsOrderItemMenu.GoBack:
                         break;
