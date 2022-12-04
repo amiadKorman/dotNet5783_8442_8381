@@ -38,5 +38,5 @@ public interface IOrder
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    public Order Update(int ID);
+    public Order Update(Order order);
 }

@@ -1,5 +1,4 @@
 ﻿using BlApi;
-using BO;
 
 namespace BlImplementation;
 
@@ -12,17 +11,17 @@ internal class Order : IOrder
         throw new NotImplementedException();
     }
 
-    public IEnumerable<OrderForList> GetAll()
+    public IEnumerable<BO.OrderForList> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public OrderTracking TrackOrder(int ID)
+    public BO.OrderTracking TrackOrder(int ID)
     {
         throw new NotImplementedException();
     }
 
-    public BO.Order Update(int ID)
+    public BO.Order Update(BO.Order order)
     {
         throw new NotImplementedException();
     }

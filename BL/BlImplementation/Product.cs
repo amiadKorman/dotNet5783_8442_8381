@@ -1,5 +1,4 @@
 ﻿using BlApi;
-using BO;
 
 namespace BlImplementation;
 
@@ -22,14 +21,21 @@ internal class Product : IProduct
         throw new NotImplementedException();
     }
 
-    public ProductItem Get(int ID, BO.Cart cart)
+    public BO.ProductItem Get(int ID, BO.Cart cart)
     {
         throw new NotImplementedException();
     }
 
-    public IEnumerable<ProductForList> GetAll()
+    public IEnumerable<BO.ProductForList> GetAll()
     {
-        throw new NotImplementedException();
+        return from product in dal.Product.GetAll()
+        select new BO.ProductForList
+        {
+            ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
+            Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
+            Price = product?.Price ?? 0d,
+            Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
+        };
     }
 
     public void Update(BO.Product product)
