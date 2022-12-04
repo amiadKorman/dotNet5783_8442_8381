@@ -10,7 +10,7 @@ namespace BlTest1
 {
     internal class BlMenuOfOrder
     {
-
+        private static IBl Ibl = new Bl();
 
 
         #region Add New Order
@@ -39,7 +39,41 @@ namespace BlTest1
         }
         #endregion
 
+        #region Update Order
+        /// <summary>
+        /// Update existing order
+        /// </summary>
+        public static void UpdateOrder()
+        {
+            int BlOrder = SafeInput.IntegerInput("Enter order ID to update: ");
+            try
+            {
+                Order order = Ibl.Order.GetById(BlOrder);
+                Console.WriteLine(order);
+                // User input for order item properties
+                string shipDate = "", deliveryDate = "";
+                if (!order.ShipDate.HasValue)
+                {
+                    shipDate = SafeInput.NullStringInput("To update ship date to now enter something, or leave empty for no update: ");
+                    if (shipDate != "")
+                        order.ShipDate = DateTime.Now;
+                }
+                else if (!order.DeliveryDate.HasValue)
+                {
+                    deliveryDate = SafeInput.NullStringInput("To update delivery date to now enter something, or leave empty for no update: ");
+                    if (deliveryDate != "")
+                        order.DeliveryDate = DateTime.Now;
+                }
 
+                Ibl.Order.Update(order);
+                Console.WriteLine($"The order was successfully updated:\n" + order);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
 
 
 
@@ -72,7 +106,7 @@ namespace BlTest1
                         AddNewOrder();
                         break;
                     case EnumsOrderMenu.UpdateOrder:
-                        //UpdateOrder();
+                        UpdateOrder();
                         break;
                     case EnumsOrderMenu.ShowOrder:
                         //ShowOrder();
