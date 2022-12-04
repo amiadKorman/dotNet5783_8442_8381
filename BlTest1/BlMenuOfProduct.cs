@@ -154,22 +154,22 @@ namespace BlTest1
                 switch (ProductChoise)
                 {
                     case EnumsProductMenu.AddProduct:
-                        //AddNewProduct();
+                        AddNewProduct();
                         break;
                     case EnumsProductMenu.UpdateProduct:
-                        //UpdateProduct();
+                       UpdateProduct();
                         break;
                     case EnumsProductMenu.ShowProduct:
-                        //ShowProduct();
+                        ShowProduct();
                         break;
                     case EnumsProductMenu.ShowListOfProduct:
-                        //ShowListProduct();
+                       ShowListProduct();
                         break;
                     case EnumsProductMenu.DeleteAProduct:
-                        //DeleteProduct();
+                        DeleteProduct();
                         break;
                     case EnumsProductMenu.GoBack:
-                        // BlMain.Main();
+                        BlMain.Main();
                         break;
                     default:
                         Console.WriteLine("This option doesn't exist, please try again\n");
