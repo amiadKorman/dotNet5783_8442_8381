@@ -54,7 +54,7 @@ namespace BlTest1
             int IDOrderItem = SafeInput.IntegerInput("Enter order item ID to update: ");
             try
             {
-                OrderItem orderItem = idal.OrderItem.GetById(IDOrderItem);
+                OrderItem orderItem = ibl.OrderItem.GetById(IDOrderItem);
                 Console.WriteLine(orderItem);
                 Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
                 // User input for order item properties
@@ -85,7 +85,27 @@ namespace BlTest1
             int IdOrderItem = SafeInput.IntegerInput("Enter order item ID to show: ");
             try
             {
-                OrderItem orderItem = idal.OrderItem.GetById(IdOrderItem);
+                OrderItem orderItem = ibl.OrderItem.GetById(IdOrderItem);
+                Console.WriteLine(orderItem);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }      
+
+       
+
+        /// <summary>
+        /// Print specific order item by order and product ID
+        /// </summary>
+        public static void ShowOrderItemByOrderAndCustomer()
+        {
+            int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
+            int productID = SafeInput.IntegerInput("Enter Order item's product ID: ");
+            try
+            {
+                OrderItem orderItem = ibl.OrderItem.GetById(orderID/*, productID*/);
                 Console.WriteLine(orderItem);
             }
             catch (Exception ex)
@@ -93,7 +113,41 @@ namespace BlTest1
                 Console.WriteLine(ex.Message + ", please try again\n");
             }
         }
+
+        /// <summary>
+        /// Print all order items
+        /// </summary>
+        public static void ShowListOfOrderItems()
+        {
+            IEnumerable<OrderItem?> orderItems = ibl.OrderItem.GetAll();
+            foreach (OrderItem orderItem in orderItems)
+            {
+                Console.WriteLine(orderItem);
+            }
+        }
+
+        /// <summary>
+        /// Print all order order items
+        /// </summary>
+        public static void ShowListOfOrderOrderItems()
+        {
+            int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
+            try
+            {
+
+                IEnumerable<OrderItem?> orderItems = ibl.OrderItem.GetAll(oi => oi?.OrderID == orderID);
+                foreach (OrderItem orderItem in orderItems)
+                {
+                    Console.WriteLine(orderItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
         #endregion
+
 
 
         #region MENU

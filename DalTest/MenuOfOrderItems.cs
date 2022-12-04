@@ -89,9 +89,7 @@ internal class MenuOfOrderItems
             Console.WriteLine(ex.Message + ", please try again\n");
         }
     }
-    #endregion
-
-    #region Show All
+   
 
     /// <summary>
     /// Print specific order item by order and product ID
