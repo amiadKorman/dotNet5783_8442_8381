@@ -53,6 +53,36 @@ namespace BlTest1
         }
         #endregion
 
+        #region UPDATE
+        /// <summary>
+        /// Update existing product
+        /// </summary>
+        public static void UpdateProduct()
+        {
+            int IDProduct = SafeInput.IntegerInput("Enter product ID to update: ");
+            try
+            {
+                Product product = ibl.Product.GetById(IDProduct);
+                Console.WriteLine(product);
+                Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
+                // User input for product properties
+                double? price = SafeInput.NullDoubleInput("Price: ");
+                int? inStock = SafeInput.NullIntegerInput("In Stock: ");
+                // Checking for changes to update
+                if (price.HasValue)
+                    product.Price = price.Value;
+                if (inStock.HasValue)
+                    product.InStock = inStock.Value;
+
+                ibl.Product.Update(product);
+                Console.WriteLine($"The product was successfully updated:\n" + product);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
 
 
         #region MENU
