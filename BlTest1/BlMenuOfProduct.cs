@@ -84,6 +84,36 @@ namespace BlTest1
         }
         #endregion
 
+        #region SHOW
+        /// <summary>
+        /// Print specific product
+        /// </summary>
+        public static void ShowProduct()
+        {
+            int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
+            try
+            {
+                Product product = ibl.Product.GetById(IDProduct);
+                Console.WriteLine(product);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+
+        /// <summary>
+        /// Print all products
+        /// </summary>
+        public static void ShowListProduct()
+        {
+            IEnumerable<Product?> products = ibl.Product.GetAll();
+            foreach (Product product in products)
+            {
+                Console.WriteLine(product);
+            }
+        }
+        #endregion
 
         #region MENU
         /// <summary>
