@@ -115,6 +115,25 @@ namespace BlTest1
         }
         #endregion
 
+        #region DELETE
+        /// <summary>
+        /// Delete product by ID
+        /// </summary>
+        public static void DeleteProduct()
+        {
+            int IDProduct = SafeInput.IntegerInput("Enter product ID to delete: ");
+            try
+            {
+                ibl.Product.Delete(IDProduct);
+                Console.WriteLine("The product was successfully deleted\n");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
+
         #region MENU
         /// <summary>
         /// Print product menu and calls the appropriate method
