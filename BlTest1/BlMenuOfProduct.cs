@@ -5,12 +5,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 
 namespace BlTest1
 {
     internal class BlMenuOfProduct
     {
+        private static Ibl ibl = new Bl;
 
+        #region ADD
+        /// <summary>
+        /// Add new product
+        /// </summary>
+        public static void AddNewProduct()
+        {
+            Console.WriteLine("To add a new product, please fill in the following data:");
+
+            int ID = SafeInput.IntegerInput("ID: ");
+            string name = SafeInput.StringInput("Name: ");
+            double price = SafeInput.DoubleInput("Price: ");
+            Console.WriteLine("Category: ");
+            var categories = Enum.GetValues(typeof(CategoryOfProduct));
+            foreach (var category in categories)
+            {
+                Console.WriteLine($"\tFor {category} - press {(int)category}");
+            }
+            CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
+            int inStock = SafeInput.IntegerInput("In Stock: ");
+            Console.WriteLine("Adding a new Product...");
+            Product product = new()
+            {
+                ID = ID,
+                Name = name,
+                Price = price,
+                Category = categorfy,
+                InStock = inStock
+            };
+            try
+            {
+                int productID = ibl.Product.Add(product);
+                Console.WriteLine($"The new product was successfully added with ID {productID}\n");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
 
 
 
