@@ -75,7 +75,36 @@ namespace BlTest1
         }
         #endregion
 
+        #region SHOW 
+        /// <summary>
+        /// Print specific order
+        /// </summary>
+        public static void ShowOrder()
+        {
+            int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
+            try
+            {
+                Order order = Ibl.Order.GetById(IdOrder);
+                Console.WriteLine(order);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
 
+        /// <summary>
+        /// Print all orders
+        /// </summary>
+        public static void ShowOrderList()
+        {
+            IEnumerable<Order?> orders = Ibl.Order.GetAll();
+            foreach (Order order in orders)
+            {
+                Console.WriteLine(order);
+            }
+        }
+        #endregion
 
 
 
