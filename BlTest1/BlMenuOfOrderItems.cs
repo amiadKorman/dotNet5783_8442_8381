@@ -76,7 +76,24 @@ namespace BlTest1
         }
         #endregion
 
-
+        #region SHOW
+        /// <summary>
+        /// Print specific order item by ID
+        /// </summary>
+        public static void ShowOrderItem()
+        {
+            int IdOrderItem = SafeInput.IntegerInput("Enter order item ID to show: ");
+            try
+            {
+                OrderItem orderItem = idal.OrderItem.GetById(IdOrderItem);
+                Console.WriteLine(orderItem);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
 
 
         #region MENU
