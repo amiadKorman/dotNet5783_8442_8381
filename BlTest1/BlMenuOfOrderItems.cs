@@ -10,7 +10,7 @@ namespace BlTest1
 {
     internal class BlMenuOfOrderItems
     {
-        public static Ibl ibl = new bl;
+        public static IBl ibl = new bl();
 
         #region ADD
         /// <summary>
@@ -188,28 +188,28 @@ namespace BlTest1
 
                 switch (OrderItemchoise)
                 {
-                    case BlTest1.EnumsOrderItemMenu.AddOrderItems:
+                    case EnumsOrderItemMenu.AddOrderItems:
                         AddNewOrderItem();
                         break;
-                    case BlTest1.EnumsOrderItemMenu.UpdateOrderItems:
+                    case EnumsOrderItemMenu.UpdateOrderItems:
                         UpdateOrderItem();
                         break;
-                    case BlTest1.EnumsOrderItemMenu.ShowOrderItemByID:
+                    case EnumsOrderItemMenu.ShowOrderItemByID:
                         ShowOrderItem();
                         break;
-                    case BlTest1.EnumsOrderItemMenu.ShowOrderItemByProductAndCustomerID:
+                    case EnumsOrderItemMenu.ShowOrderItemByProductAndCustomerID:
                         ShowOrderItemByOrderAndCustomer();
                         break;
-                    case BlTest1.EnumsOrderItemMenu.ShowOrderItemsListOfSpecificOrder:
+                    case EnumsOrderItemMenu.ShowOrderItemsListOfSpecificOrder:
                         ShowListOfOrderOrderItems();
                         break;
-                    case BlTest1.EnumsOrderItemMenu.ShowListOfOrderItems:
+                    case EnumsOrderItemMenu.ShowListOfOrderItems:
                         ShowListOfOrderItems();
                         break;
-                    case BlTest1.EnumsOrderItemMenu.DeleteAnOrderItems:
+                    case EnumsOrderItemMenu.DeleteAnOrderItems:
                        DeleteOrderItem();
                         break;
-                    case BlTest1.EnumsOrderItemMenu.GoBack:
+                    case EnumsOrderItemMenu.GoBack:
                         break;
                     default:
                         Console.WriteLine("This option doesn't exist, please try again\n");

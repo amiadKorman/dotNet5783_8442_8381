@@ -1,4 +1,5 @@
 ﻿using BO;
+using BlApi;
 using BlTest1;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace BlTest1
 {
     internal class BlMenuOfProduct
     {
-        private static Ibl ibl = new Bl;
+        private static IBl ibl = new Bl();
 
         #region ADD
         /// <summary>
@@ -168,8 +169,7 @@ namespace BlTest1
                     case EnumsProductMenu.DeleteAProduct:
                         DeleteProduct();
                         break;
-                    case EnumsProductMenu.GoBack:
-                        BlMain.Main();
+                    case EnumsProductMenu.GoBack:                        
                         break;
                     default:
                         Console.WriteLine("This option doesn't exist, please try again\n");
