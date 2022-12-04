@@ -1,4 +1,5 @@
 ﻿using BO;
+using BlApi;
 using BlTest1;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace BlTest1
 {
     internal class BlMenuOfOrderItems
     {
-        public static IBl ibl = new bl();
+        public static IBl ibl = new BlImplementation.Bl();
 
         #region ADD
         /// <summary>

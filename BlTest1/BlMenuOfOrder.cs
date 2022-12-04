@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlApi;
 
 namespace BlTest1
 {
     internal class BlMenuOfOrder
     {
-        private static IBl Ibl = new Bl();
+        private static IBl Ibl = new BlImplementation.Bl();
 
 
         #region Add New Order
@@ -23,13 +24,13 @@ namespace BlTest1
 
             int customerID = SafeInput.IntegerInput("Customer ID: ");
             Console.WriteLine("Adding a new Order...");
-            IOrder order = new()
+            Order order = new()
             {
                 CustomerID = customerID
             };
             try
             {
-                int orderID = idal.Order.Add(order);
+                int orderID = Ibl.Order.Add(order);
                 Console.WriteLine($"The new Order was successfully added with ID {orderID}\n");
             }
             catch (Exception ex)

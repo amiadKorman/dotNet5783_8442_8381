@@ -12,7 +12,7 @@ namespace BlTest1
 {
     internal class BlMenuOfProduct
     {
-        private static IBl ibl = new Bl();
+        private static IBl ibl = new BlImplementation.Bl();
 
         #region ADD
         /// <summary>
