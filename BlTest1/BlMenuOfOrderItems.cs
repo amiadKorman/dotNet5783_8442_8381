@@ -10,8 +10,44 @@ namespace BlTest1
 {
     internal class BlMenuOfOrderItems
     {
+        public static Ibl ibl = new bl;
 
-          
+        #region ADD
+        /// <summary>
+        /// Add new order item
+        /// </summary>
+        public static void AddNewOrderItem()
+        {
+            Console.WriteLine("To add a new order item, please fill in the following data:");
+
+            int orderID = SafeInput.IntegerInput("Order ID: ");
+            int productID = SafeInput.IntegerInput("Product ID: ");
+            double price = SafeInput.DoubleInput("Price: ");
+            int amount = SafeInput.IntegerInput("Amount: ");
+
+            Console.WriteLine("Adding a new Order Item...");
+            OrderItem orderItem = new()
+            {
+                OrderID = orderID,
+                ProductID = productID,
+                Price = price,
+                Amount = amount
+            };
+            try
+            {
+                int orderItemID = ibl.OrderItem.Add(orderItem);
+                Console.WriteLine($"The new Order Item was successfully added with ID {orderItemID}\n");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
+
+
+
+
 
 
         #region MENU
@@ -20,8 +56,8 @@ namespace BlTest1
         /// </summary>
         public static void OrderItemMenu()
         {
-            EnumsOrderItemMenu OrderItemchoise = BlTest1.EnumsOrderItemMenu.AddOrderItems;
-            while (!OrderItemchoise.Equals(BlTest1.EnumsOrderItemMenu.GoBack))
+            EnumsOrderItemMenu OrderItemchoise = EnumsOrderItemMenu.AddOrderItems;
+            while (!OrderItemchoise.Equals(EnumsOrderItemMenu.GoBack))
             {
                 OrderItemchoise = (EnumsOrderItemMenu)SafeInput.IntegerInput(
                    "To Add an Order item - press 1\n" +
@@ -36,7 +72,7 @@ namespace BlTest1
                 switch (OrderItemchoise)
                 {
                     case BlTest1.EnumsOrderItemMenu.AddOrderItems:
-                        //AddNewOrderItem();
+                        AddNewOrderItem();
                         break;
                     case BlTest1.EnumsOrderItemMenu.UpdateOrderItems:
                         //UpdateOrderItem();
