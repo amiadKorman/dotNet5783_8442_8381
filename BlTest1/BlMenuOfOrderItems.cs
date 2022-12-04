@@ -148,7 +148,24 @@ namespace BlTest1
         }
         #endregion
 
-
+        #region DELETE
+        /// <summary>
+        /// Delete order item by ID
+        /// </summary>
+        public static void DeleteOrderItem()
+        {
+            int IdOrderIthem = SafeInput.IntegerInput("Enter order item ID to delete: ");
+            try
+            {
+                ibl.OrderItem.Delete(IdOrderIthem);
+                Console.WriteLine("The order item was successfully deleted\n");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
 
         #region MENU
         /// <summary>
