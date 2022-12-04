@@ -45,7 +45,36 @@ namespace BlTest1
         }
         #endregion
 
+        #region UPDATE
+        /// <summary>
+        /// Update existing order item
+        /// </summary>
+        public static void UpdateOrderItem()
+        {
+            int IDOrderItem = SafeInput.IntegerInput("Enter order item ID to update: ");
+            try
+            {
+                OrderItem orderItem = idal.OrderItem.GetById(IDOrderItem);
+                Console.WriteLine(orderItem);
+                Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
+                // User input for order item properties
+                double? price = SafeInput.NullDoubleInput("Price: ");
+                int? amount = SafeInput.NullIntegerInput("Amount: ");
+                // Checking for changes to update
+                if (price.HasValue)
+                    orderItem.Price = price.Value;
+                if (amount.HasValue)
+                    orderItem.Amount = amount.Value;
 
+                ibl.OrderItem.Update(orderItem);
+                Console.WriteLine($"The product was successfully updated:\n" + orderItem);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
 
 
 
