@@ -106,6 +106,23 @@ namespace BlTest1
         }
         #endregion
 
+        #region DELETE
+        /// <summary>
+        /// Delete order by ID
+        /// </summary>
+        public static void DeleteOrder()
+        {
+            int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
+            try
+            {
+                Ibl.Order.Delete(IdOrder);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message + ", please try again\n");
+            }
+        }
+        #endregion
 
 
 
