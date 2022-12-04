@@ -92,6 +92,9 @@ namespace BlTest1
                 Console.WriteLine(ex.Message + ", please try again\n");
             }
         }
+        #endregion
+
+        #region Show All
 
         /// <summary>
         /// Print all orders
@@ -125,10 +128,6 @@ namespace BlTest1
         #endregion
 
 
-
-
-
-
         #region MENU
         /// <summary>
         /// Print order menu and calls the appropriate method
@@ -155,13 +154,13 @@ namespace BlTest1
                         UpdateOrder();
                         break;
                     case EnumsOrderMenu.ShowOrder:
-                        //ShowOrder();
+                        ShowOrder();
                         break;
                     case EnumsOrderMenu.ShowListOfOrder:
-                        //ShowOrderList();
+                        ShowOrderList();
                         break;
                     case EnumsOrderMenu.DeleteAnOrder:
-                        //DeleteOrder();
+                       DeleteOrder();
                         break;
                     case EnumsOrderMenu.GoBack:
                         break;
