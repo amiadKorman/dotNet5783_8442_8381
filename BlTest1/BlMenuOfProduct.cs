@@ -26,12 +26,12 @@ namespace BlTest1
             string name = SafeInput.StringInput("Name: ");
             double price = SafeInput.DoubleInput("Price: ");
             Console.WriteLine("Category: ");
-            var categories = Enum.GetValues(typeof(CategoryOfProduct));
+            var categories = Enum.GetValues(typeof(Category));
             foreach (var category in categories)
             {
                 Console.WriteLine($"\tFor {category} - press {(int)category}");
             }
-            CategoryOfProduct categorfy = (CategoryOfProduct)SafeInput.IntegerInput();
+            Category categorfy = (Category)SafeInput.IntegerInput();
             int inStock = SafeInput.IntegerInput("In Stock: ");
             Console.WriteLine("Adding a new Product...");
             Product product = new()
@@ -94,7 +94,7 @@ namespace BlTest1
             int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
             try
             {
-                Product product = ibl.Product.GetById(IDProduct);
+                Product product = ibl.Product.ById(IDProduct);
                 Console.WriteLine(product);
             }
             catch (Exception ex)
