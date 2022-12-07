@@ -14,7 +14,7 @@ internal class Product : IProduct
     public void Add(BO.Product product)
     {
         //validation check of product fields 
-        if (product.ID < 100000 || product.ID > 1000000)
+        if (product.ID < 100000 || product.ID >= 1000000)
             throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
         if (product.Name == null)
             throw new BO.BlInvalidFieldException("Product name cannot be empty");
@@ -64,7 +64,25 @@ internal class Product : IProduct
     /// <exception cref="NotImplementedException"></exception>
     public BO.Product Get(int ID)
     {
-        throw new NotImplementedException();
+        if (ID < 100000 || ID >= 1000000)
+            throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
+
+        try
+        {
+            DO.Product? product = dal.Product.GetById(ID);
+            return new BO.Product
+            {
+                ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
+                Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
+                Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
+                Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
+                InStock = product?.InStock ?? throw new NullReferenceException("Missing stock amount")
+            };
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlDoesNotExistException(ex.Message);
+        }
     }
 
     /// <summary>
@@ -76,7 +94,28 @@ internal class Product : IProduct
     /// <exception cref="NotImplementedException"></exception>
     public BO.ProductItem Get(int ID, BO.Cart cart)
     {
-        throw new NotImplementedException();
+        if (ID < 100000 || ID >= 1000000)
+            throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
+
+        try
+        {
+            DO.Product? product = dal.Product.GetById(ID);
+            var PI = new BO.ProductItem
+            {
+                ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
+                Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
+                Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
+                Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
+                Amount = product?.InStock ?? throw new NullReferenceException("Missing stock amount"),
+                InStock = product?.InStock > 0 ? true : false
+            };
+            throw new NotImplementedException("missing cart use");
+            //return PI;
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlDoesNotExistException(ex.Message);
+        }
     }
 
     /// <summary>
@@ -103,21 +142,22 @@ internal class Product : IProduct
     /// <exception cref="NotImplementedException"></exception>
     public void Delete(int ID)
     {
-       
-            IEnumerable<DO.Product?> products = dal.Product.GetAll();
-            List<ProductForList> BOProducts = new List<BO.ProductForList>();
-            foreach (DO.Product product in products)
-            {
-                BOProducts.Add(new ProductForList()
-                {
-                    ID = product.ID,
-                    Name = product.Name,
-                    Price = product.Price,
-                    Category = (Category)product.Category
-                });
-            }
-            return BOProducts;
-        
-       
-    } 
+        if (ID < 100000 || ID >= 1000000)
+            throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
+
+        foreach (DO.OrderItem orderItem in dal.OrderItem.GetAll())
+        {
+            if (orderItem.ID == ID)
+                throw new BO.BlAlreadyExistsException("Cannot delete product in existing order");
+        }
+
+        try
+        {
+            dal.Product.Delete(ID);
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlDoesNotExistException(ex.Message);        
+        }
+    }
 }
