@@ -26,6 +26,7 @@ internal class Product : IProduct
         {
             dal.Product.Add(new DO.Product
             {
+                ID = product.ID,
                 Name = product.Name,
                 Price = product.Price,
                 Category = (DO.CategoryOfProduct)product.Category,
@@ -45,15 +46,31 @@ internal class Product : IProduct
     /// <exception cref="NotImplementedException"></exception>
     public void Update(BO.Product product)
     {
-        DO.Product DOProduct = new DO.Product()
+        //validation check of product fields 
+        if (product.ID < 100000 || product.ID >= 1000000)
+            throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
+        if (product.Name == null)
+            throw new BO.BlInvalidFieldException("Product name cannot be empty");
+        if (product.Price < 0)
+            throw new BO.BlInvalidFieldException("Product price cannot be negative");
+        if (product.InStock < 0)
+            throw new BO.BlInvalidFieldException("Product amount in stock cannot be negative");
+
+        try
         {
-            ID = product.ID,
-            Name = product.Name,
-            Price = product.Price,
-            InStock = product.InStock,
-            Category = (DO.CategoryOfProduct)product.Category
-        };
-        dal.Product.Update(DOProduct);
+            dal.Product.Update(new DO.Product
+            {
+                ID = product.ID,
+                Name = product.Name,
+                Price = product.Price,
+                Category = (DO.CategoryOfProduct)product.Category,
+                InStock = product.InStock
+            });
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlDoesNotExistException(ex.Message);
+        }
     }
 
     /// <summary>
