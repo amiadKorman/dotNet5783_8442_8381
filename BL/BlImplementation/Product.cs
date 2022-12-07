@@ -74,11 +74,10 @@ internal class Product : IProduct
     /// <param name="cart"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public ProductItem Get(int ID, BO.Cart cart)
+    public BO.ProductItem Get(int ID, BO.Cart cart)
     {
         throw new NotImplementedException();
     }
-
 
     /// <summary>
     /// print all product are axsiste
@@ -92,7 +91,7 @@ internal class Product : IProduct
                {
                    ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
                    Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
-                   Price = product?.Price ?? 0d,
+                   Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
                    Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
                };
     }
@@ -120,9 +119,5 @@ internal class Product : IProduct
             return BOProducts;
         
        
-    }
-
-   
-
-   
+    } 
 }
