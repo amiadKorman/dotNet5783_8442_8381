@@ -9,3 +9,8 @@ public class BlAlreadyExistsException : Exception
 {
     public BlAlreadyExistsException(string? message) : base(message) { }
 }
+
+public class BlInvalidFieldException : Exception
+{
+    public BlInvalidFieldException(string? message) : base(message) { }
+}

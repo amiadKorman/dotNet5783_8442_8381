@@ -1,5 +1,4 @@
 ﻿using BlApi;
-using BO;
 
 namespace BlImplementation;
 
@@ -14,15 +13,29 @@ internal class Product : IProduct
     /// <exception cref="NotImplementedException"></exception>
     public void Add(BO.Product product)
     {
-        DO.Product add_product = new DO.Product()
+        //validation check of product fields 
+        if (product.ID < 100000 || product.ID > 1000000)
+            throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
+        if (product.Name == null)
+            throw new BO.BlInvalidFieldException("Product name cannot be empty");
+        if (product.Price < 0)
+            throw new BO.BlInvalidFieldException("Product price cannot be negative");
+        if (product.InStock < 0)
+            throw new BO.BlInvalidFieldException("Product amount in stock cannot be negative");
+        try
         {
-            Name = product.Name,
-            Price = product.Price,
-            Category = (DO.CategoryOfProduct)product.Category,
-            InStock = product.InStock
-        };
-        dal.Product.Add(add_product);
-
+            dal.Product.Add(new DO.Product
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Category = (DO.CategoryOfProduct)product.Category,
+                InStock = product.InStock
+            });
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlAlreadyExistsException(ex.Message);
+        }
     }
 
     /// <summary>
