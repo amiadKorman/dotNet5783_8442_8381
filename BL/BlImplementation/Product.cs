@@ -2,15 +2,19 @@
 
 namespace BlImplementation;
 
+/// <summary>
+/// Logic product entity
+/// </summary>
 internal class Product : IProduct
 {
     private DalApi.IDal dal = new Dal.DalList();
 
     /// <summary>
-    /// Add new product to the list
+    /// Add product to store database, for manager screen
     /// </summary>
     /// <param name="product"></param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlAlreadyExistsException"></exception>
     public void Add(BO.Product product)
     {
         //validation check of product fields 
@@ -40,10 +44,11 @@ internal class Product : IProduct
     }
 
     /// <summary>
-    /// Update product details
+    /// Update product in store database, for manager screen
     /// </summary>
     /// <param name="product"></param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public void Update(BO.Product product)
     {
         //validation check of product fields 
@@ -74,11 +79,13 @@ internal class Product : IProduct
     }
 
     /// <summary>
-    ///  Get product by <paramref name="ID"/>
+    /// Get product details from the store, for manager screen
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public BO.Product Get(int ID)
     {
         if (ID < 100000 || ID >= 1000000)
@@ -103,12 +110,14 @@ internal class Product : IProduct
     }
 
     /// <summary>
-    /// 
+    /// Get product item details from the store, for catalog customer screen
     /// </summary>
     /// <param name="ID"></param>
     /// <param name="cart"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public BO.ProductItem Get(int ID, BO.Cart cart)
     {
         if (ID < 100000 || ID >= 1000000)
@@ -126,8 +135,23 @@ internal class Product : IProduct
                 Amount = product?.InStock ?? throw new NullReferenceException("Missing stock amount"),
                 InStock = product?.InStock > 0 ? true : false
             };
-            throw new NotImplementedException("missing cart use");
-            //return PI;
+
+            if (cart.Items != null)
+            {
+                foreach (var item in cart.Items)
+                {
+                    if (item.ID == ID)
+                    {
+                        PI.Amount = item.Amount;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                PI.Amount = 0;
+            }
+            return PI;
         }
         catch (Exception ex)
         {
@@ -136,7 +160,7 @@ internal class Product : IProduct
     }
 
     /// <summary>
-    /// print all product are axsiste
+    /// Get all products details from store database, for manager and catalog customer screens
     /// </summary>
     /// <returns></returns>
     /// <exception cref="NullReferenceException"></exception>
@@ -153,10 +177,12 @@ internal class Product : IProduct
     }
 
     /// <summary>
-    /// Delete product by <paramref name="ID"/>
+    /// Delete product from store database, for manager screen
     /// </summary>
     /// <param name="ID"></param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlAlreadyExistsException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public void Delete(int ID)
     {
         if (ID < 100000 || ID >= 1000000)
@@ -174,7 +200,7 @@ internal class Product : IProduct
         }
         catch (Exception ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);        
+            throw new BO.BlDoesNotExistException(ex.Message);
         }
     }
 }
