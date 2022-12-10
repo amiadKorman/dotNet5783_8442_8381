@@ -1,4 +1,6 @@
-﻿namespace BO;
+﻿using System.Runtime.Serialization;
+
+namespace BO;
 
 public class BlDoesNotExistException : Exception
 {
@@ -13,4 +15,9 @@ public class BlAlreadyExistsException : Exception
 public class BlInvalidFieldException : Exception
 {
     public BlInvalidFieldException(string? message) : base(message) { }
+}
+
+public class BlOutOfStockException : Exception
+{
+    public BlOutOfStockException(string? message) : base(message) { }
 }
