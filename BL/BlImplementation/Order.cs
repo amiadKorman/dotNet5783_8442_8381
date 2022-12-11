@@ -22,7 +22,7 @@ internal class Order : IOrder
         try
         {
             DO.Order? doOrder = dal.Order.GetById(ID);
-            BO.Order boOrder =  new ()
+            BO.Order boOrder = new()
             {
                 ID = doOrder?.ID ?? throw new NullReferenceException("Missing ID"),
                 CustomerID = doOrder?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),

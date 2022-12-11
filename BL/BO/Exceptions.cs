@@ -18,6 +18,7 @@ public class BlAlreadyExistsException : Exception
     protected BlAlreadyExistsException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
+
 public class BlInvalidFieldException : Exception
 {
     public BlInvalidFieldException(string? message) : base(message) { }
@@ -27,3 +28,4 @@ public class BlOutOfStockException : Exception
 {
     public BlOutOfStockException(string? message) : base(message) { }
 }
+
