@@ -1,4 +1,6 @@
 ﻿using BlApi;
+using BO;
+using DO;
 
 namespace BlImplementation;
 
@@ -6,6 +8,7 @@ internal class Order : IOrder
 {
     private DalApi.IDal dal = new Dal.DalList();
 
+    #region get by ID
     /// <summary>
     /// Get order details from database, for manager and customer screens
     /// </summary>
@@ -47,29 +50,83 @@ internal class Order : IOrder
             throw new BO.BlDoesNotExistException(ex.Message);
         }
     }
-
+    #endregion
+    /// <summary>
+    /// Get all orders details from store database, for manager and catalog customer screens
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    
+    #region get All
+    
+    
     public IEnumerable<BO.OrderForList> GetAll()
     {
-        throw new NotImplementedException();
-    }
+        return from Order in dal.Order.GetAll()
+               select new BO.OrderForList
+               {
+                   ID = Order?.ID ?? throw new NullReferenceException(),
+                   CustomerID = Order?.CustomerID ?? throw new NullReferenceException(),
+                   AmountOfItems = Order?.AmountOfItems ?? throw new NullReferenceException(),
+                   TotalPrice = Order?.TotalPrice?? throw new NullReferenceException(),
 
+
+
+
+
+               };
+    }
+    #endregion
+
+    #region Track Order
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ID"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
     public BO.OrderTracking TrackOrder(int ID)
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Update
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="order"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
     public BO.Order Update(BO.Order order)
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Update Delivery
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ID"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
     public BO.Order UpdateDelivery(int ID)
     {
         throw new NotImplementedException();
     }
+    #endregion
 
+    #region Update Shipping
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ID"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
     public BO.Order UpdateShipping(int ID)
     {
         throw new NotImplementedException();
     }
+    #endregion
 }
