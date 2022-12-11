@@ -1,10 +1,11 @@
 ﻿using BlApi;
 using BO;
+using DalApi;
 using DO;
 
 namespace BlImplementation;
 
-internal class Order : IOrder
+internal class Order : BlApi.IOrder
 {
     private DalApi.IDal dal = new Dal.DalList();
 
@@ -51,29 +52,25 @@ internal class Order : IOrder
         }
     }
     #endregion
-    /// <summary>
+
+
+
+   
+    
+    #region get All
+     /// <summary>
     /// Get all orders details from store database, for manager and catalog customer screens
     /// </summary>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
-    
-    #region get All
-    
-    
+    /// <exception cref="NotImplementedException"></exception>    
     public IEnumerable<BO.OrderForList> GetAll()
     {
         return from Order in dal.Order.GetAll()
                select new BO.OrderForList
                {
-                   ID = Order?.ID ?? throw new NullReferenceException(),
-                   CustomerID = Order?.CustomerID ?? throw new NullReferenceException(),
-                   AmountOfItems = Order?.AmountOfItems ?? throw new NullReferenceException(),
-                   TotalPrice = Order?.TotalPrice?? throw new NullReferenceException(),
-
-
-
-
-
+                   ID = Order?.ID ?? throw new NullReferenceException("Missing ID"),
+                   CustomerID = Order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
+                   
                };
     }
     #endregion
@@ -85,9 +82,13 @@ internal class Order : IOrder
     /// <param name="ID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public BO.OrderTracking TrackOrder(int ID)
+    public OrderTracking TrackOrder(int ID)
     {
-        throw new NotImplementedException();
+        if (0 >= ID)
+        {
+            throw new BlInvalidFieldException("ID not valid");
+        }
+     
     }
     #endregion
 
@@ -126,7 +127,34 @@ internal class Order : IOrder
     /// <exception cref="NotImplementedException"></exception>
     public BO.Order UpdateShipping(int ID)
     {
-        throw new NotImplementedException();
+        return null;
     }
     #endregion
+}
+
+
+
+
+/// <summary>
+/// help function to chack status
+/// </summary>
+/// <param name="item"></param>
+/// <returns></returns>
+internal OrderStatus CheckStatus(DO.Order item)
+{
+    OrderStatus Status = new OrderStatus();
+
+    if (!item.OrderDate.Equals(null))
+    {
+        Status = OrderStatus.Ordered;
+    }
+    else if (!item.ShipDate.Equals(null))
+    {
+        Status = OrderStatus.Shipped;
+    }
+    else
+    {
+        Status = OrderStatus.Delivered;       
+    }
+    return Status;
 }
