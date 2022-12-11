@@ -9,7 +9,13 @@ public class BlDoesNotExistException : Exception
 
 public class BlAlreadyExistsException : Exception
 {
+    public BlAlreadyExistsException() { }
+
     public BlAlreadyExistsException(string? message) : base(message) { }
+
+    public BlAlreadyExistsException(string? message, Exception? innerException) : base(message, innerException) { }
+
+    protected BlAlreadyExistsException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
 
