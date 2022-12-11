@@ -39,7 +39,7 @@ internal class Product : IProduct
         }
         catch (Exception ex)
         {
-            throw new BO.BlAlreadyExistsException(ex.Message);
+            throw new BO.BlAlreadyExistsException("add product failed",ex);
         }
     }
 
