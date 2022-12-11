@@ -44,7 +44,8 @@ namespace BlTest1
             };
             try
             {
-                int productID = ibl.Product.Add(product);
+                int productID = ID;
+                ibl.Product.Add(product);
                 Console.WriteLine($"The new product was successfully added with ID {productID}\n");
             }
             catch (Exception ex)
@@ -63,7 +64,7 @@ namespace BlTest1
             int IDProduct = SafeInput.IntegerInput("Enter product ID to update: ");
             try
             {
-                Product product = ibl.Product.GetById(IDProduct);
+                Product product = ibl.Product.Get(IDProduct);
                 Console.WriteLine(product);
                 Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
                 // User input for product properties
@@ -94,7 +95,7 @@ namespace BlTest1
             int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
             try
             {
-                Product product = ibl.Product.ById(IDProduct);
+                Product product = ibl.Product.Get(IDProduct) as Product;
                 Console.WriteLine(product);
             }
             catch (Exception ex)
@@ -108,8 +109,8 @@ namespace BlTest1
         /// </summary>
         public static void ShowListProduct()
         {
-            IEnumerable<Product?> products = ibl.Product.GetAll();
-            foreach (Product product in products)
+            IEnumerable<Product?> products = (IEnumerable<Product?>)ibl.Product.GetAll();
+            foreach (Product? product in products)
             {
                 Console.WriteLine(product);
             }

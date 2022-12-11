@@ -29,7 +29,7 @@ namespace BlTest1
             Console.WriteLine("Adding a new Order Item...");
             OrderItem orderItem = new()
             {
-                OrderID = orderID,
+                ID = orderID,
                 ProductID = productID,
                 Price = price,
                 Amount = amount
