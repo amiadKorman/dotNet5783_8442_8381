@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{80A9
 		{64BE1CC0-A02D-4F98-B83B-CE19A5D42DFC} = {64BE1CC0-A02D-4F98-B83B-CE19A5D42DFC}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlTest1", "BlTest1\BlTest1.csproj", "{D08F866D-DB3A-40C4-852A-4683C2662D86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlTest", "BlTest1\BlTest.csproj", "{D08F866D-DB3A-40C4-852A-4683C2662D86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
