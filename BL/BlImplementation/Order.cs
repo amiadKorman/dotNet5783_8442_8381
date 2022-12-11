@@ -6,9 +6,46 @@ internal class Order : IOrder
 {
     private DalApi.IDal dal = new Dal.DalList();
 
+    /// <summary>
+    /// Get order details from database, for manager and customer screens
+    /// </summary>
+    /// <param name="ID"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="NullReferenceException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public BO.Order Get(int ID)
     {
-        throw new NotImplementedException();
+        if (ID < 1000000 || ID >= 5000000)
+            throw new BO.BlInvalidFieldException("Order ID must be between 1000000 to 5000000");
+
+        try
+        {
+            DO.Order? doOrder = dal.Order.GetById(ID);
+            BO.Order boOrder = new()
+            {
+                ID = doOrder?.ID ?? throw new NullReferenceException("Missing ID"),
+                CustomerID = doOrder?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
+                OrderDate = doOrder?.OrderDate ?? throw new NullReferenceException("Missing order date"),
+                ShipDate = doOrder?.ShipDate ?? throw new NullReferenceException("Missing ship date"),
+                DeliveryDate = doOrder?.DeliveryDate ?? throw new NullReferenceException("Missing delivery date")
+            };
+            boOrder.Items = from order in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
+                            select new BO.OrderItem
+                            {
+                                ID = order?.ID ?? throw new NullReferenceException("Missing ID"),
+                                Price = order?.Price ?? throw new NullReferenceException("Missing price"),
+                                Amount = order?.Amount ?? throw new NullReferenceException("Missing amount"),
+                                ProductID = order?.ProductID ?? throw new NullReferenceException("Missing product ID"),
+                                TotalPrice = order?.Amount * order?.Price ?? throw new NullReferenceException("Missing amount or price"),
+                                Name = dal.Product.GetById(order?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
+                            };
+            return boOrder;
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlDoesNotExistException(ex.Message);
+        }
     }
 
     public IEnumerable<BO.OrderForList> GetAll()
