@@ -5,12 +5,6 @@ namespace BlImplementation;
 internal class Cart : ICart
 {
     private DalApi.IDal dal = new Dal.DalList();
-    internal class Config
-    {
-        private const int startItemsNumber = 10000;
-        private static int ItemID = startItemsNumber;
-        internal static int NextItemID { get => ItemID++; }
-    }
    
 public BO.Cart Add(BO.Cart cart, int productId)
     {
@@ -30,9 +24,9 @@ public BO.Cart Add(BO.Cart cart, int productId)
             var item = ProductInCart(cart, productId);
             if (item == null)
             {
-                cart.Items?.Append(new BO.OrderItem
+                cart.Items?.Add(new BO.OrderItem
                 {
-                    ID = Config.NextItemID,
+                    ID = 0,
                     ProductID = productId,
                     Name = product.Name,
                     Price = product.Price,
@@ -85,7 +79,7 @@ public BO.Cart Add(BO.Cart cart, int productId)
         if (amount == 0)
         {
             //Delete item from the cart
-            cart.Items = cart.Items?.Where(oi => oi.ID != product.ID);
+            cart.Items?.RemoveAll(oi => oi.ID == product.ID);
         }
         else if (item.Amount != amount)
         {
