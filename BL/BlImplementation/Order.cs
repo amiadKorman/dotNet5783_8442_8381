@@ -135,26 +135,3 @@ internal class Order : BlApi.IOrder
 
 
 
-/// <summary>
-/// help function to chack status
-/// </summary>
-/// <param name="item"></param>
-/// <returns></returns>
-internal OrderStatus CheckStatus(DO.Order item)
-{
-    OrderStatus Status = new OrderStatus();
-
-    if (!item.OrderDate.Equals(null))
-    {
-        Status = OrderStatus.Ordered;
-    }
-    else if (!item.ShipDate.Equals(null))
-    {
-        Status = OrderStatus.Shipped;
-    }
-    else
-    {
-        Status = OrderStatus.Delivered;       
-    }
-    return Status;
-}
