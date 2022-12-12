@@ -4,7 +4,13 @@ namespace BO;
 
 public class BlDoesNotExistException : Exception
 {
+    public BlDoesNotExistException() { }
+
     public BlDoesNotExistException(string? message) : base(message) { }
+
+    public BlDoesNotExistException(string? message, Exception? innerException) : base(message, innerException) { }
+
+    protected BlDoesNotExistException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
 public class BlAlreadyExistsException : Exception
@@ -21,11 +27,33 @@ public class BlAlreadyExistsException : Exception
 
 public class BlInvalidFieldException : Exception
 {
+    public BlInvalidFieldException() { }
+
     public BlInvalidFieldException(string? message) : base(message) { }
+
+    public BlInvalidFieldException(string? message, Exception? innerException) : base(message, innerException) { }
+
+    protected BlInvalidFieldException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
 public class BlOutOfStockException : Exception
 {
+    public BlOutOfStockException() { }
+
     public BlOutOfStockException(string? message) : base(message) { }
+
+    public BlOutOfStockException(string? message, Exception? innerException) : base(message, innerException) { }
+
+    protected BlOutOfStockException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
+public class BlFailedExceptiom : Exception
+{
+    public BlFailedExceptiom() { }
+
+    public BlFailedExceptiom(string? message) : base(message) { }
+
+    public BlFailedExceptiom(string? message, Exception? innerException) : base(message, innerException) { }
+
+    protected BlFailedExceptiom(SerializationInfo info, StreamingContext context) : base(info, context) { }
+}
