@@ -5,8 +5,17 @@ namespace BlImplementation;
 internal class Cart : ICart
 {
     private DalApi.IDal dal = new Dal.DalList();
-   
-public BO.Cart Add(BO.Cart cart, int productId)
+
+    /// <summary>
+    /// Add product to cart, for catalog and product details screens
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="productId"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlOutOfStockException"></exception>
+    /// <exception cref="BO.BlFailedExceptiom"></exception>
+    public BO.Cart Add(BO.Cart cart, int productId)
     {
         //check if the validation of the given product ID
         if (productId < 100000 || productId >= 1000000)
@@ -44,17 +53,82 @@ public BO.Cart Add(BO.Cart cart, int productId)
         }
         catch (Exception ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);
+            throw new BO.BlFailedExceptiom("Failed to add product to cart", ex);
         };
     }
 
+    /// <summary>
+    /// Update the total prce of the cart
+    /// </summary>
+    /// <param name="cart"></param>
     private void UpdateTotalPrice(BO.Cart cart) => cart.TotalPrice = cart.Items?.Sum(c => c.Price * c.Amount) ?? 0;
 
+    /// <summary>
+    /// Buying all the products in the cart, for cart or complete order screens
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlOutOfStockException"></exception>
+    /// <exception cref="BO.BlFailedExceptiom"></exception>
     public void Buy(BO.Cart cart)
     {
-        throw new NotImplementedException();
+        try
+        {
+            dal.Customer.GetById(cart.CustomerID);
+
+            if (cart.Items?.Count == 0)
+            {
+                throw new BO.BlInvalidFieldException("There is no items in the cart!");
+            }
+
+            foreach (var item in cart.Items)
+            {
+                //check if product exist
+                DO.Product product = dal.Product.GetById(item.ProductID);
+                if (item.Amount <= 0)
+                    throw new BO.BlInvalidFieldException("Amount of item can't be zero or negative");
+                if (item.Amount > product.InStock)
+                    throw new BO.BlOutOfStockException($"The Product {product.Name} does not have enough in stock!");
+            }
+            //create new order
+            DO.Order order = new()
+            {
+               CustomerID = cart.CustomerID,
+               OrderDate = DateTime.Now
+            };
+            int orderID = dal.Order.Add(order);
+            //try to add order items and update products amount in database
+            foreach(var item in cart.Items)
+            {
+                DO.OrderItem orderItem = new()
+                {
+                    ProductID = item.ProductID,
+                    OrderID = orderID,
+                    Price = item.Price,
+                    Amount = item.Amount,
+                };
+                int orderItemID = dal.OrderItem.Add(orderItem);
+                DO.Product product = dal.Product.GetById(item.ProductID);
+                product.InStock -= item.Amount;
+                dal.Product.Update(product);
+            }
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlFailedExceptiom("Failed to buy cart", ex);
+        }
     }
 
+    /// <summary>
+    /// Update amount of cart product, for cart screen
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="productId"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
+    /// <exception cref="BO.BlOutOfStockException"></exception>
     public BO.Cart Update(BO.Cart cart, int productId, int amount)
     {
         //check if the validation of the given product ID
@@ -68,11 +142,11 @@ public BO.Cart Add(BO.Cart cart, int productId)
         {
             //check if the product exist
             product = dal.Product.GetById(productId);
-            
+
         }
         catch (Exception ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);
+            throw new BO.BlDoesNotExistException("failed to update cart product", ex);
         };
 
         var item = ProductInCart(cart, productId) ?? throw new BO.BlDoesNotExistException("product does not exist in cart");
@@ -92,8 +166,11 @@ public BO.Cart Add(BO.Cart cart, int productId)
         return cart;
     }
 
-    private BO.OrderItem? ProductInCart(BO.Cart cart, int productID)
-    {
-        return cart.Items?.FirstOrDefault(oi => oi.ID == productID);
-    }
+    /// <summary>
+    /// Returns order item for product in cart
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="productID"></param>
+    /// <returns></returns>
+    private BO.OrderItem? ProductInCart(BO.Cart cart, int productID) => cart.Items?.Find(oi => oi.ID == productID);
 }
