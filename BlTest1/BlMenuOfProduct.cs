@@ -103,7 +103,9 @@ namespace BlTest1
                 Console.WriteLine(ex.Message + ", please try again\n");
             }
         }
+        #endregion
 
+        #region Show All
         /// <summary>
         /// Print all products
         /// </summary>

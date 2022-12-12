@@ -9,6 +9,7 @@ internal class Product : IProduct
 {
     private DalApi.IDal dal = new Dal.DalList();
 
+    #region Add
     /// <summary>
     /// Add product to store database, for manager screen
     /// </summary>
@@ -42,7 +43,9 @@ internal class Product : IProduct
             throw new BO.BlAlreadyExistsException("add product failed",ex);
         }
     }
+    #endregion
 
+    #region Update
     /// <summary>
     /// Update product in store database, for manager screen
     /// </summary>
@@ -77,7 +80,9 @@ internal class Product : IProduct
             throw new BO.BlDoesNotExistException(ex.Message);
         }
     }
+    #endregion
 
+    #region Get by ID
     /// <summary>
     /// Get product details from the store, for manager screen
     /// </summary>
@@ -108,6 +113,7 @@ internal class Product : IProduct
             throw new BO.BlDoesNotExistException(ex.Message);
         }
     }
+    #endregion
 
     /// <summary>
     /// Get product item details from the store, for catalog customer screen
@@ -159,6 +165,7 @@ internal class Product : IProduct
         }
     }
 
+    #region Get All
     /// <summary>
     /// Get all products details from store database, for manager and catalog customer screens
     /// </summary>
@@ -175,7 +182,9 @@ internal class Product : IProduct
                    Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
                };
     }
+    #endregion
 
+    #region Delete
     /// <summary>
     /// Delete product from store database, for manager screen
     /// </summary>
@@ -203,4 +212,5 @@ internal class Product : IProduct
             throw new BO.BlDoesNotExistException(ex.Message);
         }
     }
+    #endregion
 }
