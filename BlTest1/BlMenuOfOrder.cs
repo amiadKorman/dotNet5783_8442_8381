@@ -13,33 +13,6 @@ namespace BlTest1
     {
         private static IBl Ibl = new BlImplementation.Bl();
 
-
-        #region Add New Order
-        /// <summary>
-        /// Add new order
-        /// </summary>
-        public static void AddNewOrder()
-        {
-            Console.WriteLine("To add a new Order, please fill in the following data:");
-
-            int customerID = SafeInput.IntegerInput("Customer ID: ");
-            Console.WriteLine("Adding a new Order...");
-            Order order = new()
-            {
-                CustomerID = customerID
-            };
-            try
-            {
-                int orderID = Ibl.Order.Add(order);
-                Console.WriteLine($"The new Order was successfully added with ID {orderID}\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
-        }
-        #endregion
-
         #region Update Order
         /// <summary>
         /// Update existing order
@@ -49,7 +22,7 @@ namespace BlTest1
             int BlOrder = SafeInput.IntegerInput("Enter order ID to update: ");
             try
             {
-                Order order = Ibl.Order.GetById(BlOrder);
+                Order order = Ibl.Order.Get(BlOrder);
                 Console.WriteLine(order);
                 // User input for order item properties
                 string shipDate = "", deliveryDate = "";
@@ -85,7 +58,7 @@ namespace BlTest1
             int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
             try
             {
-                Order order = Ibl.Order.GetById(IdOrder);
+                Order order = Ibl.Order.Get(IdOrder);
                 Console.WriteLine(order);
             }
             catch (Exception ex)
@@ -102,28 +75,10 @@ namespace BlTest1
         /// </summary>
         public static void ShowOrderList()
         {
-            IEnumerable<Order?> orders = Ibl.Order.GetAll();
-            foreach (Order order in orders)
+            IEnumerable<OrderForList?> orders = Ibl.Order.GetAll();
+            foreach (var order in orders)
             {
                 Console.WriteLine(order);
-            }
-        }
-        #endregion
-
-        #region DELETE
-        /// <summary>
-        /// Delete order by ID
-        /// </summary>
-        public static void DeleteOrder()
-        {
-            int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
-            try
-            {
-                Ibl.Order.Delete(IdOrder);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
             }
         }
         #endregion
@@ -148,9 +103,6 @@ namespace BlTest1
 
                 switch (Orderchoise)
                 {
-                    case EnumsOrderMenu.AddOrder:
-                        AddNewOrder();
-                        break;
                     case EnumsOrderMenu.UpdateOrder:
                         UpdateOrder();
                         break;
@@ -159,9 +111,6 @@ namespace BlTest1
                         break;
                     case EnumsOrderMenu.ShowListOfOrder:
                         ShowOrderList();
-                        break;
-                    case EnumsOrderMenu.DeleteAnOrder:
-                       DeleteOrder();
                         break;
                     case EnumsOrderMenu.GoBack:
                         break;

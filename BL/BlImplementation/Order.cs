@@ -1,7 +1,4 @@
 ﻿using BlApi;
-using BO;
-using DalApi;
-using DO;
 
 namespace BlImplementation;
 
@@ -53,10 +50,6 @@ internal class Order : BlApi.IOrder
     }
     #endregion
 
-
-
-   
-    
     #region get All
      /// <summary>
     /// Get all orders details from store database, for manager and catalog customer screens
@@ -70,7 +63,6 @@ internal class Order : BlApi.IOrder
                {
                    ID = Order?.ID ?? throw new NullReferenceException("Missing ID"),
                    CustomerID = Order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
-                   
                };
     }
     #endregion
@@ -82,13 +74,9 @@ internal class Order : BlApi.IOrder
     /// <param name="ID"></param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    public OrderTracking TrackOrder(int ID)
+    public BO.OrderTracking TrackOrder(int ID)
     {
-        if (0 >= ID)
-        {
-            throw new BlInvalidFieldException("ID not valid");
-        }
-     
+        throw new NotImplementedException();
     }
     #endregion
 
@@ -127,7 +115,7 @@ internal class Order : BlApi.IOrder
     /// <exception cref="NotImplementedException"></exception>
     public BO.Order UpdateShipping(int ID)
     {
-        return null;
+        throw new NotImplementedException();
     }
     #endregion
 }
