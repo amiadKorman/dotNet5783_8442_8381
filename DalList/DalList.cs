@@ -4,11 +4,11 @@ namespace Dal;
 
 sealed public class DalList : IDal
 {
-    public ICustomer Customer => new DalCustomer();
+    public ICustomer Customer { get; } = new DalCustomer();
 
-    public IOrder Order => new DalOrder();
+    public IOrder Order { get; } = new DalOrder();
 
-    public IOrderItem OrderItem => new DalOrderItem();
+    public IOrderItem OrderItem { get; } = new DalOrderItem();
 
-    public IProduct Product => new DalProduct();
+    public IProduct Product { get; } = new DalProduct();
 }
