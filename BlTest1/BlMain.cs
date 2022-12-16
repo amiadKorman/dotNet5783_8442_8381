@@ -36,7 +36,7 @@ namespace BlTest1
                         BlMenuOfProduct.ProductMenu();
                         break;
                     case EnumsEntitysMenu.CustomerMenu:
-                        BlMenuOfCustomer.CustomerMenu();
+                        //BlMenuOfCustomer.CustomerMenu();
                         break;
                     case EnumsEntitysMenu.Exit:
                         break;
