@@ -51,19 +51,39 @@ internal class Order : BlApi.IOrder
     #endregion
 
     #region get All
-     /// <summary>
-    /// Get all orders details from store database, for manager and catalog customer screens
+    /// <summary>
+    /// Get all orders details from store database, for manager screen
     /// </summary>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>    
     public IEnumerable<BO.OrderForList> GetAll()
     {
-        return from Order in dal.Order.GetAll()
-               select new BO.OrderForList
-               {
-                   ID = Order?.ID ?? throw new NullReferenceException("Missing ID"),
-                   CustomerID = Order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
-               };
+        IEnumerable<DO.Order?> orders = dal.Order.GetAll() ?? throw new BO.BlDoesNotExistException("There is no orders to show!");
+        List<BO.OrderForList> ordersList = new();
+        foreach (var order in orders)
+        {
+            var orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == order?.ID) ?? throw new;
+            ordersList.Add(
+                new()
+                {
+                    ID = order?.ID ?? throw new NullReferenceException("Missing ID"),
+                    CustomerID = order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
+                    Status = CalcStatus(order),
+                    AmountOfItems = orderItems.Count(),
+                    TotalPrice = orderItems.Sum(oi => oi?.Price * oi?.Amount)
+                });
+        }
+        return ordersList;
+    }
+
+    private BO.OrderStatus CalcStatus(DO.Order? order)
+    {
+        if (order?.DeliveryDate != null)
+            return BO.OrderStatus.Delivered;
+        else if (order?.ShipDate != null)
+            return BO.OrderStatus.Shipped;
+        else
+            return BO.OrderStatus.Ordered;
     }
     #endregion
 
