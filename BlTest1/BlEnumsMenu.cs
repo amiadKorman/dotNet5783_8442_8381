@@ -46,7 +46,7 @@ public enum EnumsOrderMenu
 /// <summary>
 /// Enums for the Menu of the Order Item menu
 /// </summary>
-public enum EnumsOrderItemMenu
+public enum EnumCartMenu
 {
     [Description("Add an Order item")]
     AddOrderItems = 1,

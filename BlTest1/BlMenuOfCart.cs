@@ -1,15 +1,9 @@
-﻿using BO;
-using BlApi;
-using BlTest1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlApi;
+using BO;
 
 namespace BlTest1
 {
-    internal class BlMenuOfOrderItems
+    internal class BlMenuOfCart
     {
         public static IBl ibl = new BlImplementation.Bl();
 
@@ -17,7 +11,7 @@ namespace BlTest1
         /// <summary>
         /// Add new order item
         /// </summary>
-        public static void AddNewOrderItem()
+        public static void AddNewCart()
         {
             Console.WriteLine("To add a new order item, please fill in the following data:");
 
@@ -27,16 +21,14 @@ namespace BlTest1
             int amount = SafeInput.IntegerInput("Amount: ");
 
             Console.WriteLine("Adding a new Order Item...");
-            OrderItem orderItem = new()
+            Cart cart= new()
             {
-                ID = orderID,
-                ProductID = productID,
-                Price = price,
-                Amount = amount
+                CustomerID = 
+                
             };
             try
             {
-                int orderItemID = ibl.OrderItem.Add(orderItem);
+                int orderItemID = ibl.Cart.Add(cart);
                 Console.WriteLine($"The new Order Item was successfully added with ID {orderItemID}\n");
             }
             catch (Exception ex)
@@ -67,7 +59,7 @@ namespace BlTest1
                 if (amount.HasValue)
                     orderItem.Amount = amount.Value;
 
-                ibl.OrderItem.Update(orderItem);
+                ibl.Cart.Update(orderItem);
                 Console.WriteLine($"The product was successfully updated:\n" + orderItem);
             }
             catch (Exception ex)
@@ -172,12 +164,12 @@ namespace BlTest1
         /// <summary>
         /// Print order item menu and calls the appropriate method
         /// </summary>
-        public static void OrderItemMenu()
+        public static void CartMenu()
         {
-            EnumsOrderItemMenu OrderItemchoise = EnumsOrderItemMenu.AddOrderItems;
-            while (!OrderItemchoise.Equals(EnumsOrderItemMenu.GoBack))
+            EnumCartMenu OrderItemchoise = EnumCartMenu.AddOrderItems;
+            while (!OrderItemchoise.Equals(EnumCartMenu.GoBack))
             {
-                OrderItemchoise = (EnumsOrderItemMenu)SafeInput.IntegerInput(
+                OrderItemchoise = (EnumCartMenu)SafeInput.IntegerInput(
                    "To Add an Order item - press 1\n" +
                    "To Update an Order item - press 2\n" +
                    "To Show an Order item by ID - press 3\n" +
@@ -189,28 +181,28 @@ namespace BlTest1
 
                 switch (OrderItemchoise)
                 {
-                    case EnumsOrderItemMenu.AddOrderItems:
-                        AddNewOrderItem();
+                    case EnumCartMenu.AddOrderItems:
+                        AddNewCart();
                         break;
-                    case EnumsOrderItemMenu.UpdateOrderItems:
+                    case EnumCartMenu.UpdateOrderItems:
                         UpdateOrderItem();
                         break;
-                    case EnumsOrderItemMenu.ShowOrderItemByID:
+                    case EnumCartMenu.ShowOrderItemByID:
                         ShowOrderItem();
                         break;
-                    case EnumsOrderItemMenu.ShowOrderItemByProductAndCustomerID:
+                    case EnumCartMenu.ShowOrderItemByProductAndCustomerID:
                         ShowOrderItemByOrderAndCustomer();
                         break;
-                    case EnumsOrderItemMenu.ShowOrderItemsListOfSpecificOrder:
+                    case EnumCartMenu.ShowOrderItemsListOfSpecificOrder:
                         ShowListOfOrderOrderItems();
                         break;
-                    case EnumsOrderItemMenu.ShowListOfOrderItems:
+                    case EnumCartMenu.ShowListOfOrderItems:
                         ShowListOfOrderItems();
                         break;
-                    case EnumsOrderItemMenu.DeleteAnOrderItems:
+                    case EnumCartMenu.DeleteAnOrderItems:
                        DeleteOrderItem();
                         break;
-                    case EnumsOrderItemMenu.GoBack:
+                    case EnumCartMenu.GoBack:
                         break;
                     default:
                         Console.WriteLine("This option doesn't exist, please try again\n");
