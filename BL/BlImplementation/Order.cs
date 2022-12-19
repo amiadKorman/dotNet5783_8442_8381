@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using System.Collections.Generic;
 
 namespace BlImplementation;
 
@@ -73,14 +74,51 @@ internal class Order : BlApi.IOrder
 
     #region Track Order
     /// <summary>
-    /// 
+    /// Return order tracking information, for manager screen
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlFailedExceptiom"></exception>
     public BO.OrderTracking TrackOrder(int ID)
     {
-        throw new NotImplementedException();
+        if (ID < 1000000 || ID >= 5000000)
+            throw new BO.BlInvalidFieldException("Order ID must be between 1000000 to 5000000");
+
+        try
+        {
+            DO.Order order = dal.Order.GetById(ID);
+            return new BO.OrderTracking
+            {
+                ID = order.ID,
+                Status = CalcStatus(order),
+                Progress = CalcProgress(order)
+            };
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlFailedExceptiom("Failed to track order", ex);
+        }
+    }
+
+    private List<Tuple<DateTime?, string?>> CalcProgress(DO.Order order)
+    {
+        List<Tuple<DateTime?, string?>> progress = new ();
+        if (order.OrderDate != null)
+        {
+            progress.Add(new(order.OrderDate, "The order created"));
+        }
+        ///if not ship
+        if (order.ShipDate != null)
+        {
+            progress.Add(new(order.ShipDate, "The order shiped"));
+        }
+        ///if not delivery
+        if (order.DeliveryDate != null)
+        {
+            progress.Add(new(order.DeliveryDate, "The order delivered"));
+        }
+        return progress;
     }
     #endregion
 
@@ -117,7 +155,7 @@ internal class Order : BlApi.IOrder
                 throw new BO.BlInvalidFieldException("Order already delivered!");
             else if (order.ShipDate == null)
                 throw new BO.BlInvalidFieldException("Order must be shipped before delivered!");
-            
+
             order.DeliveryDate = DateTime.Now;
             dal.Order.Update(order);
             return buildBoOrder(order);
