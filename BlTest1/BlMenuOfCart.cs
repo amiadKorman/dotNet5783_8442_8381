@@ -9,156 +9,39 @@ namespace BlTest1
 
         #region ADD
         /// <summary>
-        /// Add new order item
+        /// Add product to cart
         /// </summary>
-        public static void AddNewCart()
+        public static void AddNewProductToCart()
         {
-            Console.WriteLine("To add a new order item, please fill in the following data:");
+            Console.WriteLine("To add a new product item to cart, please fill in the following data:");
 
-            int orderID = SafeInput.IntegerInput("Order ID: ");
             int productID = SafeInput.IntegerInput("Product ID: ");
-            double price = SafeInput.DoubleInput("Price: ");
             int amount = SafeInput.IntegerInput("Amount: ");
-
+            int CustomerID = SafeInput.IntegerInput("CustomerID :");
+            List<OrderItem>? Items = new List<OrderItem>();
+            int totalPrice = 0;
             Console.WriteLine("Adding a new Order Item...");
-            Cart cart= new()
+            Cart cart = new()
             {
-                CustomerID = 
-                
+                TotalPrice = totalPrice,
+                CustomerID = productID,
+                Items = Items
             };
             try
             {
-                int orderItemID = ibl.Cart.Add(cart);
-                Console.WriteLine($"The new Order Item was successfully added with ID {orderItemID}\n");
+                ibl.Cart.Add(cart, productID);
+                Console.WriteLine($"The Product was successfully added to cart{productID}\n");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message + ", please try again\n");
-            }
+            }   
         }
         #endregion
 
-        #region UPDATE
-        /// <summary>
-        /// Update existing order item
-        /// </summary>
-        public static void UpdateOrderItem()
-        {
-            int IDOrderItem = SafeInput.IntegerInput("Enter order item ID to update: ");
-            try
-            {
-                OrderItem orderItem = ibl.OrderItem.GetById(IDOrderItem);
-                Console.WriteLine(orderItem);
-                Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
-                // User input for order item properties
-                double? price = SafeInput.NullDoubleInput("Price: ");
-                int? amount = SafeInput.NullIntegerInput("Amount: ");
-                // Checking for changes to update
-                if (price.HasValue)
-                    orderItem.Price = price.Value;
-                if (amount.HasValue)
-                    orderItem.Amount = amount.Value;
 
-                ibl.Cart.Update(orderItem);
-                Console.WriteLine($"The product was successfully updated:\n" + orderItem);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
-        }
-        #endregion
 
-        #region SHOW
-        /// <summary>
-        /// Print specific order item by ID
-        /// </summary>
-        public static void ShowOrderItem()
-        {
-            int IdOrderItem = SafeInput.IntegerInput("Enter order item ID to show: ");
-            try
-            {
-                OrderItem orderItem = ibl.OrderItem.GetById(IdOrderItem);
-                Console.WriteLine(orderItem);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
-        }      
 
-       
-
-        /// <summary>
-        /// Print specific order item by order and product ID
-        /// </summary>
-        public static void ShowOrderItemByOrderAndCustomer()
-        {
-            int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
-            int productID = SafeInput.IntegerInput("Enter Order item's product ID: ");
-            try
-            {
-                OrderItem orderItem = ibl.OrderItem.GetById(orderID/*, productID*/);
-                Console.WriteLine(orderItem);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
-        }
-
-        /// <summary>
-        /// Print all order items
-        /// </summary>
-        public static void ShowListOfOrderItems()
-        {
-            IEnumerable<OrderItem?> orderItems = ibl.OrderItem.GetAll();
-            foreach (OrderItem orderItem in orderItems)
-            {
-                Console.WriteLine(orderItem);
-            }
-        }
-
-        /// <summary>
-        /// Print all order order items
-        /// </summary>
-        public static void ShowListOfOrderOrderItems()
-        {
-            int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
-            try
-            {
-
-                IEnumerable<OrderItem?> orderItems = ibl.OrderItem.GetAll(oi => oi?.OrderID == orderID);
-                foreach (OrderItem orderItem in orderItems)
-                {
-                    Console.WriteLine(orderItem);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
-        }
-        #endregion
-
-        #region DELETE
-        /// <summary>
-        /// Delete order item by ID
-        /// </summary>
-        public static void DeleteOrderItem()
-        {
-            int IdOrderIthem = SafeInput.IntegerInput("Enter order item ID to delete: ");
-            try
-            {
-                ibl.OrderItem.Delete(IdOrderIthem);
-                Console.WriteLine("The order item was successfully deleted\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
-        }
-        #endregion
 
         #region MENU
         /// <summary>
@@ -170,7 +53,7 @@ namespace BlTest1
             while (!OrderItemchoise.Equals(EnumCartMenu.GoBack))
             {
                 OrderItemchoise = (EnumCartMenu)SafeInput.IntegerInput(
-                   "To Add an Order item - press 1\n" +
+                   "To Add prodact to cart - press 1\n" +
                    "To Update an Order item - press 2\n" +
                    "To Show an Order item by ID - press 3\n" +
                    "To Show an Order item by order and product ID's - press 4\n" +
@@ -182,25 +65,25 @@ namespace BlTest1
                 switch (OrderItemchoise)
                 {
                     case EnumCartMenu.AddOrderItems:
-                        AddNewCart();
+                        AddNewProductToCart();
                         break;
                     case EnumCartMenu.UpdateOrderItems:
-                        UpdateOrderItem();
+                        //UpdateOrderItem();
                         break;
                     case EnumCartMenu.ShowOrderItemByID:
-                        ShowOrderItem();
+                        //ShowOrderItem();
                         break;
                     case EnumCartMenu.ShowOrderItemByProductAndCustomerID:
-                        ShowOrderItemByOrderAndCustomer();
+                        //ShowOrderItemByOrderAndCustomer();
                         break;
                     case EnumCartMenu.ShowOrderItemsListOfSpecificOrder:
-                        ShowListOfOrderOrderItems();
+                        //ShowListOfOrderOrderItems();
                         break;
                     case EnumCartMenu.ShowListOfOrderItems:
-                        ShowListOfOrderItems();
+                        //ShowListOfOrderItems();
                         break;
                     case EnumCartMenu.DeleteAnOrderItems:
-                       DeleteOrderItem();
+                       //DeleteOrderItem();
                         break;
                     case EnumCartMenu.GoBack:
                         break;

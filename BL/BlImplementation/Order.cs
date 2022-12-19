@@ -62,7 +62,7 @@ internal class Order : BlApi.IOrder
         List<BO.OrderForList> ordersList = new();
         foreach (var order in orders)
         {
-            var orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == order?.ID) ?? throw new;
+            var orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == order?.ID) ?? throw new
             ordersList.Add(
                 new()
                 {
