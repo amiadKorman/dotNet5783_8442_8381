@@ -35,7 +35,7 @@ public class Order
     /// <summary>
     /// Order items
     /// </summary>
-    public IEnumerable<OrderItem>? Items { get; set; }
+    public List<OrderItem>? Items { get; set; }
 
     /// <summary>
     /// Total order price

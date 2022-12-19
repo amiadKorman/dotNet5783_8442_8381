@@ -22,28 +22,8 @@ internal class Order : BlApi.IOrder
 
         try
         {
-            DO.Order? doOrder = dal.Order.GetById(ID);
-            BO.Order boOrder = new()
-            {
-                ID = doOrder?.ID ?? throw new NullReferenceException("Missing ID"),
-                CustomerID = doOrder?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
-                OrderDate = doOrder?.OrderDate ?? throw new NullReferenceException("Missing order date"),
-                ShipDate = doOrder?.ShipDate ?? throw new NullReferenceException("Missing ship date"),
-                DeliveryDate = doOrder?.DeliveryDate ?? throw new NullReferenceException("Missing delivery date"),
-                Status = CalcStatus(doOrder)
-            };
-            boOrder.Items = from oi in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
-                            select new BO.OrderItem
-                            {
-                                ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
-                                Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
-                                Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
-                                ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
-                                TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
-                                Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
-                            };
-            boOrder.TotalPrice = boOrder.Items.Sum(oi => oi.TotalPrice);
-            return boOrder;
+            DO.Order order = dal.Order.GetById(ID);
+            return buildBoOrder(order);
         }
         catch (Exception ex)
         {
@@ -119,27 +99,110 @@ internal class Order : BlApi.IOrder
 
     #region Update Delivery
     /// <summary>
-    /// 
+    /// Update delivery time, for manager screen
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlFailedExceptiom"></exception>
     public BO.Order UpdateDelivery(int ID)
     {
-        throw new NotImplementedException();
+        if (ID < 1000000 || ID >= 5000000)
+            throw new BO.BlInvalidFieldException("Order ID must be between 1000000 to 5000000");
+
+        try
+        {
+            DO.Order order = dal.Order.GetById(ID);
+            if (order.DeliveryDate != null)
+                throw new BO.BlInvalidFieldException("Order already delivered!");
+            else if (order.ShipDate == null)
+                throw new BO.BlInvalidFieldException("Order must be shipped before delivered!");
+            
+            order.DeliveryDate = DateTime.Now;
+            dal.Order.Update(order);
+            return buildBoOrder(order);
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlFailedExceptiom("Failed to update order delivery", ex);
+        }
+    }
+
+    private BO.Order buildBoOrder(DO.Order doOrder)
+    {
+        BO.Order boOrder = new()
+        {
+            ID = doOrder.ID,
+            CustomerID = doOrder.CustomerID,
+            OrderDate = doOrder.OrderDate,
+            ShipDate = doOrder.ShipDate,
+            DeliveryDate = doOrder.DeliveryDate,
+            Status = CalcStatus(doOrder)
+        };
+
+        IEnumerable<DO.OrderItem> items = (IEnumerable<DO.OrderItem>)dal.OrderItem.GetAll(oi => oi?.OrderID == boOrder.ID);
+        boOrder.Items = from oi in items
+                        select new BO.OrderItem
+                        {
+                            ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
+                            Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
+                            Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
+                            ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
+                            TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
+                            Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
+                        };
+        return boOrder;
+        /*BO.Order boOrder = new()
+        {
+            ID = doOrder?.ID ?? throw new NullReferenceException("Missing ID"),
+            CustomerID = doOrder?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
+            OrderDate = doOrder?.OrderDate ?? throw new NullReferenceException("Missing order date"),
+            ShipDate = doOrder?.ShipDate ?? throw new NullReferenceException("Missing ship date"),
+            DeliveryDate = doOrder?.DeliveryDate ?? throw new NullReferenceException("Missing delivery date"),
+            Status = CalcStatus(doOrder)
+        };
+        boOrder.Items = from oi in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
+                        select new BO.OrderItem
+                        {
+                            ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
+                            Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
+                            Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
+                            ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
+                            TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
+                            Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
+                        };
+        boOrder.TotalPrice = boOrder.Items.Sum(oi => oi.TotalPrice);
+        return boOrder;*/
     }
     #endregion
 
     #region Update Shipping
     /// <summary>
-    /// 
+    /// Update shipment time, for manager screen
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="BO.BlFailedExceptiom"></exception>
     public BO.Order UpdateShipping(int ID)
     {
-        throw new NotImplementedException();
+        if (ID < 1000000 || ID >= 5000000)
+            throw new BO.BlInvalidFieldException("Order ID must be between 1000000 to 5000000");
+
+        try
+        {
+            DO.Order order = dal.Order.GetById(ID);
+            if (order.ShipDate != null)
+                throw new BO.BlInvalidFieldException("Order already shipped!");
+
+            order.ShipDate = DateTime.Now;
+            dal.Order.Update(order);
+            return buildBoOrder(order);
+        }
+        catch (Exception ex)
+        {
+            throw new BO.BlFailedExceptiom("Failed to update order shipping", ex);
+        }
     }
     #endregion
 }
