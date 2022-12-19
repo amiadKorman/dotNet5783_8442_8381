@@ -29,40 +29,44 @@ internal class Order : BlApi.IOrder
                 CustomerID = doOrder?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
                 OrderDate = doOrder?.OrderDate ?? throw new NullReferenceException("Missing order date"),
                 ShipDate = doOrder?.ShipDate ?? throw new NullReferenceException("Missing ship date"),
-                DeliveryDate = doOrder?.DeliveryDate ?? throw new NullReferenceException("Missing delivery date")
+                DeliveryDate = doOrder?.DeliveryDate ?? throw new NullReferenceException("Missing delivery date"),
+                Status = CalcStatus(doOrder)
             };
-            boOrder.Items = from order in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
+            boOrder.Items = from oi in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
                             select new BO.OrderItem
                             {
-                                ID = order?.ID ?? throw new NullReferenceException("Missing ID"),
-                                Price = order?.Price ?? throw new NullReferenceException("Missing price"),
-                                Amount = order?.Amount ?? throw new NullReferenceException("Missing amount"),
-                                ProductID = order?.ProductID ?? throw new NullReferenceException("Missing product ID"),
-                                TotalPrice = order?.Amount * order?.Price ?? throw new NullReferenceException("Missing amount or price"),
-                                Name = dal.Product.GetById(order?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
+                                ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
+                                Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
+                                Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
+                                ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
+                                TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
+                                Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
                             };
+            boOrder.TotalPrice = boOrder.Items.Sum(oi => oi.TotalPrice);
             return boOrder;
         }
         catch (Exception ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);
+            throw new BO.BlFailedExceptiom("Failed to get order details", ex);
         }
     }
     #endregion
 
     #region get All
     /// <summary>
-    /// Get all orders details from store database, for manager screen
+    /// Get all orders from store database, for manager screens
     /// </summary>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>    
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
+    /// <exception cref=""></exception>
+    /// <exception cref="NullReferenceException"></exception>    
     public IEnumerable<BO.OrderForList> GetAll()
     {
         IEnumerable<DO.Order?> orders = dal.Order.GetAll() ?? throw new BO.BlDoesNotExistException("There is no orders to show!");
         List<BO.OrderForList> ordersList = new();
         foreach (var order in orders)
         {
-            var orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == order?.ID) ?? throw new
+            var orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == order?.ID) ?? throw new;
             ordersList.Add(
                 new()
                 {
@@ -70,7 +74,7 @@ internal class Order : BlApi.IOrder
                     CustomerID = order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
                     Status = CalcStatus(order),
                     AmountOfItems = orderItems.Count(),
-                    TotalPrice = orderItems.Sum(oi => oi?.Price * oi?.Amount)
+                    TotalPrice = orderItems.Sum(oi => oi.Price * oi.Amount)
                 });
         }
         return ordersList;

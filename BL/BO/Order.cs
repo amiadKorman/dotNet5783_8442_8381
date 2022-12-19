@@ -13,19 +13,14 @@ public class Order
     public int CustomerID { get; set; }
 
     /// <summary>
-    /// Order date
-    /// </summary>
-    public DateTime OrderDate { get; set; }
-
-    /// <summary>
     /// Order status
     /// </summary>
     public OrderStatus Status { get; set; }
 
     /// <summary>
-    /// Payment date
+    /// Order date
     /// </summary>
-    public DateTime? PaymentDate { get; set; }
+    public DateTime OrderDate { get; set; }
 
     /// <summary>
     /// Ship date
@@ -50,9 +45,8 @@ public class Order
     public override string ToString() => $@"
         Order ID: {ID}
         Customer ID: {CustomerID}
-        Order Date: {OrderDate}
         Status: {Status}
-        Payment Date: {PaymentDate}
+        Order Date: {OrderDate}
         Ship Date: {ShipDate}
         Delivery Date: {DeliveryDate}
         Items: {Items}
