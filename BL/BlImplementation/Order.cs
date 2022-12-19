@@ -14,7 +14,7 @@ internal class Order : BlApi.IOrder
     /// <returns></returns>
     /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="NullReferenceException"></exception>
-    /// <exception cref="BO.BlDoesNotExistException"></exception>
+    /// <exception cref="BO.BlFailedExceptiom"></exception>
     public BO.Order Get(int ID)
     {
         if (ID < 1000000 || ID >= 5000000)
@@ -58,7 +58,7 @@ internal class Order : BlApi.IOrder
     /// </summary>
     /// <returns></returns>
     /// <exception cref="BO.BlDoesNotExistException"></exception>
-    /// <exception cref=""></exception>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="NullReferenceException"></exception>    
     public IEnumerable<BO.OrderForList> GetAll()
     {
@@ -74,7 +74,7 @@ internal class Order : BlApi.IOrder
                     CustomerID = order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
                     Status = CalcStatus(order),
                     AmountOfItems = orderItems.Count(),
-                    TotalPrice = orderItems.Sum(oi => oi?.Price * oi.Amount)
+                    TotalPrice = orderItems.Sum(oi => oi?.Price * oi?.Amount) ?? throw new BO.BlFailedExceptiom("Failed to calculate order total price")
                 });
         }
         return ordersList;
