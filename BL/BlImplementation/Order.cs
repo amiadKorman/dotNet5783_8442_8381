@@ -66,7 +66,7 @@ internal class Order : BlApi.IOrder
         List<BO.OrderForList> ordersList = new();
         foreach (var order in orders)
         {
-            var orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == order?.ID) ?? throw new;
+            var orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == order?.ID) ?? throw new BO.BlInvalidFieldException("There is no order items to show!");
             ordersList.Add(
                 new()
                 {
@@ -74,7 +74,7 @@ internal class Order : BlApi.IOrder
                     CustomerID = order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
                     Status = CalcStatus(order),
                     AmountOfItems = orderItems.Count(),
-                    TotalPrice = orderItems.Sum(oi => oi.Price * oi.Amount)
+                    TotalPrice = orderItems.Sum(oi => oi?.Price * oi.Amount)
                 });
         }
         return ordersList;
