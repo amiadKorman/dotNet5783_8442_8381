@@ -197,9 +197,9 @@ internal class Product : IProduct
         if (ID < 100000 || ID >= 1000000)
             throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
 
-        foreach (DO.OrderItem orderItem in dal.OrderItem.GetAll())
+        foreach (DO.OrderItem? orderItem in dal.OrderItem.GetAll())
         {
-            if (orderItem.ID == ID)
+            if (orderItem?.ID == ID)
                 throw new BO.BlAlreadyExistsException("Cannot delete product in existing order");
         }
 
