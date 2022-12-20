@@ -8,43 +8,20 @@ namespace BlTest;
 /// </summary>
 public enum EnumsEntitysMenu
 {
+    [Description("Get to Cart menu")]
+    CartMenu = 1,
     [Description("Get to Order menu")]
-    OrderMenu = 1,
-    [Description("Get to OrderItem menu")]
-    OrderItemsMenu = 2,
+    OrderMenu = 2,
     [Description("Get to Product menu")]
     ProductMenu = 3,
-    [Description("Get to Customer menu")]
-    CustomerMenu = 4,
     [Description("Exit from program")]
     Exit = 0,
 }
 #endregion
 
-#region Order Menu
+#region Cart Menu
 /// <summary>
-/// Enus for the Menu of the Order menu
-/// </summary>
-public enum EnumsOrderMenu
-{
-    [Description("Add an Order")]
-    AddOrder = 1,
-    [Description("Update an Order")]
-    UpdateOrder = 2,
-    [Description("Show an Order")]
-    ShowOrder = 3,
-    [Description("Show Orders List")]
-    ShowListOfOrder = 4,
-    [Description("Delete an Order")]
-    DeleteAnOrder = 5,
-    [Description("To Return Back To The Main Menu")]
-    GoBack = 0
-}
-#endregion
-
-#region Order Item Menu
-/// <summary>
-/// Enums for the Menu of the Order Item menu
+/// Enums for the Menu of the Cart menu
 /// </summary>
 public enum EnumCartMenu
 {
@@ -67,9 +44,30 @@ public enum EnumCartMenu
 }
 #endregion
 
+#region Order Menu
+/// <summary>
+/// Enums for the Menu of the Order menu
+/// </summary>
+public enum EnumsOrderMenu
+{
+    [Description("Add an Order")]
+    AddOrder = 1,
+    [Description("Update an Order")]
+    UpdateOrder = 2,
+    [Description("Show an Order")]
+    ShowOrder = 3,
+    [Description("Show Orders List")]
+    ShowListOfOrder = 4,
+    [Description("Delete an Order")]
+    DeleteAnOrder = 5,
+    [Description("To Return Back To The Main Menu")]
+    GoBack = 0
+}
+#endregion
+
 #region Product Menu
 /// <summary>
-/// Enus for the Menu of the Product menu
+/// Enums for the Menu of the Product menu
 /// </summary>
 public enum EnumsProductMenu
 {
@@ -88,23 +86,3 @@ public enum EnumsProductMenu
 }
 #endregion
 
-#region Customer Menu
-/// <summary>
-/// Enus for the Menu of the customer menu
-/// </summary>
-public enum EnumsCustomerMenu
-{
-    [Description("Add an Customer")]
-    AddCustomer = 1,
-    [Description("Update an Customer")]
-    UpdateCustomer = 2,
-    [Description("Show an Customer")]
-    ShowCustomer = 3,
-    [Description("Show Customers List")]
-    ShowListOfCustomers = 4,
-    [Description("Delete an Customer")]
-    DeleteCustomer = 5,
-    [Description("To Return Back To The Main Menu")]
-    GoBack = 0
-}
-#endregion
