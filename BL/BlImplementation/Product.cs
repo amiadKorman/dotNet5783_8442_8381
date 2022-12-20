@@ -132,7 +132,7 @@ internal class Product : IProduct
         try
         {
             DO.Product? product = dal.Product.GetById(ID);
-            var PI = new BO.ProductItem
+            var pi = new BO.ProductItem
             {
                 ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
                 Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
@@ -148,16 +148,16 @@ internal class Product : IProduct
                 {
                     if (item.ID == ID)
                     {
-                        PI.Amount = item.Amount;
+                        pi.Amount = item.Amount;
                         break;
                     }
                 }
             }
             else
             {
-                PI.Amount = 0;
+                pi.Amount = 0;
             }
-            return PI;
+            return pi;
         }
         catch (Exception ex)
         {

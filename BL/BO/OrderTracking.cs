@@ -15,7 +15,7 @@ public class OrderTracking
     /// <summary>
     /// Pairs of order date and status
     /// </summary>
-    public List<Tuple<DateTime?, string?>>? Progress { set; get; }
+    public List<Tuple<DateTime?, string?>> Progress { set; get; } = new();
 
     public override string ToString() => $@"
     Order ID: {ID}

@@ -33,7 +33,7 @@ internal class Cart : ICart
             var item = ProductInCart(cart, productId);
             if (item == null)
             {
-                cart.Items?.Add(new BO.OrderItem
+                cart.Items.Add(new BO.OrderItem
                 {
                     ID = 0,
                     ProductID = productId,
@@ -61,7 +61,7 @@ internal class Cart : ICart
     /// Update the total prce of the cart
     /// </summary>
     /// <param name="cart"></param>
-    private void UpdateTotalPrice(BO.Cart cart) => cart.TotalPrice = cart.Items?.Sum(c => c.Price * c.Amount) ?? 0;
+    private void UpdateTotalPrice(BO.Cart cart) => cart.TotalPrice = cart.Items.Sum(c => c?.Price * c?.Amount) ?? 0;
 
     /// <summary>
     /// Buying all the products in the cart, for cart or complete order screens
@@ -76,7 +76,7 @@ internal class Cart : ICart
         {
             dal.Customer.GetById(cart.CustomerID);
 
-            if (cart.Items?.Count == 0)
+            if (cart.Items.Count == 0)
             {
                 throw new BO.BlInvalidFieldException("There is no items in the cart!");
             }
@@ -153,7 +153,7 @@ internal class Cart : ICart
         if (amount == 0)
         {
             //Delete item from the cart
-            cart.Items?.RemoveAll(oi => oi.ID == product.ID);
+            cart.Items.RemoveAll(oi => oi?.ID == product.ID);
         }
         else if (item.Amount != amount)
         {
