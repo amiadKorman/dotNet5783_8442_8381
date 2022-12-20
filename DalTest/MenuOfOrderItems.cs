@@ -115,7 +115,7 @@ internal class MenuOfOrderItems
     public static void ShowListOfOrderItems()
     {
         IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetAll();
-        foreach (OrderItem orderItem in orderItems)
+        foreach (var orderItem in orderItems)
         {
             Console.WriteLine(orderItem);
         }
@@ -131,7 +131,7 @@ internal class MenuOfOrderItems
         {
             
             IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetAll(oi => oi?.OrderID == orderID);
-            foreach (OrderItem orderItem in orderItems)
+            foreach (var orderItem in orderItems)
             {
                 Console.WriteLine(orderItem);
             }

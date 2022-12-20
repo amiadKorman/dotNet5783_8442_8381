@@ -16,9 +16,9 @@ internal class MenuOfCustomer
         Console.WriteLine("To add a new customer, please fill in the following data:");
 
         int ID = SafeInput.IntegerInput("ID: ");
-        string name = SafeInput.StringInput("Name: ");
-        string email = SafeInput.StringInput("Email: ");
-        string address = SafeInput.StringInput("Address: ");
+        string? name = SafeInput.StringInput("Name: ");
+        string? email = SafeInput.StringInput("Email: ");
+        string? address = SafeInput.StringInput("Address: ");
         Console.WriteLine("Adding a new Product...");
         Customer customer = new()
         {
@@ -52,8 +52,8 @@ internal class MenuOfCustomer
             Console.WriteLine(customer);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
-            string email = SafeInput.NullStringInput("Email: ");
-            string address = SafeInput.NullStringInput("Address: ");
+            string? email = SafeInput.NullStringInput("Email: ");
+            string? address = SafeInput.NullStringInput("Address: ");
             // Checking for changes to update
             if (email != "")
                 customer.Email = email;
@@ -94,7 +94,7 @@ internal class MenuOfCustomer
     public static void ShowListCustomer()
     {
         IEnumerable<Customer?> customers = idal.Customer.GetAll();
-        foreach (Customer customer in customers)
+        foreach (Customer? customer in customers)
         {
             Console.WriteLine(customer);
         }
