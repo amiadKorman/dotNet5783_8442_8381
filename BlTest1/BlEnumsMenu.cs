@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BlTest1;
+namespace BlTest;
 
 #region Entitys's menu 
 /// <summary>
