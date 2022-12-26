@@ -1,4 +1,8 @@
-﻿namespace BO;
+﻿
+
+
+
+namespace BO;
 
 internal class SafeInput
 {
@@ -56,7 +60,7 @@ internal class SafeInput
     public static string StringInput(string message = "")
     {
         Console.Write(message);
-        string? My_str = Console.ReadLine();
+        string My_str = Console.ReadLine();
         return string.IsNullOrWhiteSpace(My_str) ? StringInput("Invalid input. Please enter correct value:\n") : My_str;
     }
 
@@ -68,7 +72,7 @@ internal class SafeInput
     public static string NullStringInput(string message = "")
     {
         Console.Write(message);
-        string? My_str = Console.ReadLine();
+        string My_str = Console.ReadLine();
         return string.IsNullOrWhiteSpace(My_str) ? "" : My_str;
     }
 }

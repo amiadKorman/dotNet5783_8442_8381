@@ -102,7 +102,7 @@ internal class MenuOfProduct
     public static void ShowListProduct()
     {
         IEnumerable<Product?> products = idal.Product.GetAll();
-        foreach (var product in products)
+        foreach (Product product in products)
         {
             Console.WriteLine(product);
         }

@@ -15,12 +15,12 @@ public class Order
     /// <summary>
     /// Order status
     /// </summary>
-    public OrderStatus? Status { get; set; }
+    public OrderStatus Status { get; set; }
 
     /// <summary>
     /// Order date
     /// </summary>
-    public DateTime? OrderDate { get; set; }
+    public DateTime OrderDate { get; set; }
 
     /// <summary>
     /// Ship date
@@ -35,7 +35,7 @@ public class Order
     /// <summary>
     /// Order items
     /// </summary>
-    public List<OrderItem?> Items { get; set; } = new();
+    public IEnumerable<OrderItem>? Items { get; set; }
 
     /// <summary>
     /// Total order price

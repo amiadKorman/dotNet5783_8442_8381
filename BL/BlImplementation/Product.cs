@@ -132,7 +132,7 @@ internal class Product : IProduct
         try
         {
             DO.Product? product = dal.Product.GetById(ID);
-            var pi = new BO.ProductItem
+            var PI = new BO.ProductItem
             {
                 ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
                 Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
@@ -148,16 +148,16 @@ internal class Product : IProduct
                 {
                     if (item.ID == ID)
                     {
-                        pi.Amount = item.Amount;
+                        PI.Amount = item.Amount;
                         break;
                     }
                 }
             }
             else
             {
-                pi.Amount = 0;
+                PI.Amount = 0;
             }
-            return pi;
+            return PI;
         }
         catch (Exception ex)
         {
@@ -197,9 +197,9 @@ internal class Product : IProduct
         if (ID < 100000 || ID >= 1000000)
             throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
 
-        foreach (DO.OrderItem? orderItem in dal.OrderItem.GetAll())
+        foreach (DO.OrderItem orderItem in dal.OrderItem.GetAll())
         {
-            if (orderItem?.ID == ID)
+            if (orderItem.ID == ID)
                 throw new BO.BlAlreadyExistsException("Cannot delete product in existing order");
         }
 

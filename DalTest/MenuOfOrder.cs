@@ -94,7 +94,7 @@ internal class MenuOfOrder
     public static void ShowOrderList()
     {
         IEnumerable<Order?> orders = idal.Order.GetAll();
-        foreach (var order in orders)
+        foreach (Order order in orders)
         {
             Console.WriteLine(order);
         }
