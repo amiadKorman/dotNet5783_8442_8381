@@ -1,8 +1,4 @@
-﻿
-
-
-
-namespace BO;
+﻿namespace BO;
 
 internal class SafeInput
 {

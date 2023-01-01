@@ -93,12 +93,12 @@ internal class Cart : ICart
             //create new order
             DO.Order order = new()
             {
-               CustomerID = cart.CustomerID,
-               OrderDate = DateTime.Now
+                CustomerID = cart.CustomerID,
+                OrderDate = DateTime.Now
             };
             int orderID = dal.Order.Add(order);
             //try to add order items and update products amount in database
-            foreach(var item in cart.Items)
+            foreach (var item in cart.Items)
             {
                 DO.OrderItem orderItem = new()
                 {

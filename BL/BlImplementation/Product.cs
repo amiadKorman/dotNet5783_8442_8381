@@ -40,7 +40,7 @@ internal class Product : IProduct
         }
         catch (Exception ex)
         {
-            throw new BO.BlAlreadyExistsException("add product failed",ex);
+            throw new BO.BlAlreadyExistsException("add product failed", ex);
         }
     }
     #endregion
