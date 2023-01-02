@@ -87,14 +87,6 @@ internal class BlMenuOfProduct
 
     #region SHOW
     /// <summary>
-    /// Print products catalog
-    /// </summary>
-    private static void ShowCatalog()
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
     /// Print specific product for buyer screen
     /// </summary>
     private static void ShowProductBuyer(Cart cart)
@@ -145,13 +137,13 @@ internal class BlMenuOfProduct
     }
 
     /// <summary>
-    /// Print all products
+    /// Print all products for manager screen
     /// </summary>
     private static void ShowListProduct()
     {
         try
         {
-            IEnumerable<ProductForList> products = ibl.Product.GetAll();
+            IEnumerable<ProductForList> products = ibl.Product.GetList();
             foreach (var product in products)
             {
                 Console.WriteLine(product);
@@ -160,6 +152,25 @@ internal class BlMenuOfProduct
         catch (NullReferenceException ex)
         {
             Console.WriteLine("Failed to show products list" + ex + "\n\n");
+        }
+    }
+
+    /// <summary>
+    /// Print products catalog for buyer catalog screen
+    /// </summary>
+    private static void ShowCatalog()
+    {
+        try
+        {
+            IEnumerable<ProductItem> products = ibl.Product.GetCatalog();
+            foreach (var product in products)
+            {
+                Console.WriteLine(product);
+            }
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show products catalog" + ex + "\n\n");
         }
     }
     #endregion

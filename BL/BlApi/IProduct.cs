@@ -6,10 +6,17 @@ namespace BlApi;
 public interface IProduct
 {
     /// <summary>
-    /// Returns list of all products, for manager and buyer
+    /// Returns list of all products, for manager screen
     /// </summary>
     /// <returns> List of products </returns>
-    public IEnumerable<ProductForList> GetAll();
+    public IEnumerable<ProductForList> GetList();
+
+    /// <summary>
+    /// Returns list of all products, for buyer catalog screen
+    /// </summary>
+    /// <returns> List of products </returns>
+    public IEnumerable<ProductItem> GetCatalog();
+
     /// <summary>
     /// Get product item, for manager
     /// </summary>

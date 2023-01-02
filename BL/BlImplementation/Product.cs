@@ -82,7 +82,7 @@ internal class Product : IProduct
     }
     #endregion
 
-    #region Get by ID
+    #region Get
     /// <summary>
     /// Get product details from the store, for manager screen
     /// </summary>
@@ -113,7 +113,6 @@ internal class Product : IProduct
             throw new BO.BlDoesNotExistException("Product doesn't exist", ex);
         }
     }
-    #endregion
 
     /// <summary>
     /// Get product item details from the store, for catalog customer screen
@@ -165,13 +164,12 @@ internal class Product : IProduct
         }
     }
 
-    #region Get All
     /// <summary>
-    /// Get all products details from store database, for manager and catalog customer screens
+    /// Get all products details from store database, for manager screens
     /// </summary>
     /// <returns></returns>
     /// <exception cref="NullReferenceException"></exception>
-    public IEnumerable<BO.ProductForList> GetAll()
+    public IEnumerable<BO.ProductForList> GetList()
     {
         return from product in dal.Product.GetAll()
                select new BO.ProductForList
@@ -180,6 +178,25 @@ internal class Product : IProduct
                    Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
                    Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
                    Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
+               };
+    }
+
+    /// <summary>
+    /// Get all products details from store database, for buyer catalog screen
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="NullReferenceException"></exception>
+    public IEnumerable<BO.ProductItem> GetCatalog()
+    {
+        return from product in dal.Product.GetAll()
+               select new BO.ProductItem
+               {
+                   ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
+                   Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
+                   Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
+                   Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
+                   Amount = product?.InStock ?? throw new NullReferenceException("Missing Amount in stock"),
+                   InStock = product?.InStock > 0 ? true : false
                };
     }
     #endregion
