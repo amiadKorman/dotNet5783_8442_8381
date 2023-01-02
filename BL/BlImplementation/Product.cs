@@ -38,9 +38,9 @@ internal class Product : IProduct
                 InStock = product.InStock
             });
         }
-        catch (Exception ex)
+        catch (DO.DalAlreadyExistsException ex)
         {
-            throw new BO.BlAlreadyExistsException("add product failed", ex);
+            throw new BO.BlAlreadyExistsException("Product already exist", ex);
         }
     }
     #endregion
@@ -75,9 +75,9 @@ internal class Product : IProduct
                 InStock = product.InStock
             });
         }
-        catch (Exception ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);
+            throw new BO.BlDoesNotExistException("Product doesn't exist", ex);
         }
     }
     #endregion
@@ -108,9 +108,9 @@ internal class Product : IProduct
                 InStock = product?.InStock ?? throw new NullReferenceException("Missing stock amount")
             };
         }
-        catch (Exception ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);
+            throw new BO.BlDoesNotExistException("Product doesn't exist", ex);
         }
     }
     #endregion
@@ -159,9 +159,9 @@ internal class Product : IProduct
             }
             return PI;
         }
-        catch (Exception ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);
+            throw new BO.BlDoesNotExistException("Product doesn't exist", ex);
         }
     }
 
@@ -207,9 +207,9 @@ internal class Product : IProduct
         {
             dal.Product.Delete(ID);
         }
-        catch (Exception ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.BlDoesNotExistException(ex.Message);
+            throw new BO.BlDoesNotExistException("Product doesn't exist", ex);
         }
     }
     #endregion

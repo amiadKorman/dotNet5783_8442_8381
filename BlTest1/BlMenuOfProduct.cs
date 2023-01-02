@@ -6,7 +6,6 @@ namespace BlTest;
 internal class BlMenuOfProduct
 {
     private static IBl ibl = new BlImplementation.Bl();
-
     #region ADD
     /// <summary>
     /// Add new product
@@ -37,13 +36,16 @@ internal class BlMenuOfProduct
         };
         try
         {
-            int productID = ID;
             ibl.Product.Add(product);
-            Console.WriteLine($"The new product was successfully added with ID {productID}\n");
+            Console.WriteLine($"The new product was successfully added with ID {ID}\n");
         }
-        catch (Exception ex)
+        catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to add product", ex);
+        }
+        catch (BlAlreadyExistsException ex)
+        {
+            Console.WriteLine("Failed to add product", ex);
         }
     }
     #endregion
@@ -72,9 +74,13 @@ internal class BlMenuOfProduct
             ibl.Product.Update(product);
             Console.WriteLine($"The product was successfully updated:\n" + product);
         }
-        catch (Exception ex)
+        catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to update product" + ex + "\n\n");
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to update product" + ex + "\n\n");
         }
     }
     #endregion
@@ -91,9 +97,26 @@ internal class BlMenuOfProduct
     /// <summary>
     /// Print specific product for buyer screen
     /// </summary>
-    private static void ShowProductBuyer()
+    private static void ShowProductBuyer(Cart cart)
     {
-        throw new NotImplementedException();
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
+        try
+        {
+            ProductItem product = ibl.Product.Get(IDProduct, cart);
+            Console.WriteLine(product);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex + "\n\n");
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex + "\n\n");
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex + "\n\n");
+        }
     }
 
     /// <summary>
@@ -104,12 +127,20 @@ internal class BlMenuOfProduct
         int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
         try
         {
-            Product product = ibl.Product.Get(IDProduct) as Product;
+            Product product = ibl.Product.Get(IDProduct);
             Console.WriteLine(product);
         }
-        catch (Exception ex)
+        catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to show product" + ex + "\n\n");
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex + "\n\n");
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex + "\n\n");
         }
     }
 
@@ -118,10 +149,17 @@ internal class BlMenuOfProduct
     /// </summary>
     private static void ShowListProduct()
     {
-        IEnumerable<Product?> products = (IEnumerable<Product?>)ibl.Product.GetAll();
-        foreach (Product? product in products)
+        try
         {
-            Console.WriteLine(product);
+            IEnumerable<ProductForList> products = ibl.Product.GetAll();
+            foreach (var product in products)
+            {
+                Console.WriteLine(product);
+            }
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show products list" + ex + "\n\n");
         }
     }
     #endregion
@@ -138,9 +176,13 @@ internal class BlMenuOfProduct
             ibl.Product.Delete(IDProduct);
             Console.WriteLine("The product was successfully deleted\n");
         }
-        catch (Exception ex)
+        catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to delete product" + ex + "\n\n");
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to delete product" + ex + "\n\n");
         }
     }
     #endregion
@@ -149,7 +191,7 @@ internal class BlMenuOfProduct
     /// <summary>
     /// Print product menu and calls the appropriate method
     /// </summary>
-    public static void ProductMenu()
+    public static void ProductMenu(Cart cart)
     {
         EnumsProductMenu ProductChoise = EnumsProductMenu.AddProduct;
         while (!ProductChoise.Equals(EnumsProductMenu.GoBack))
@@ -176,7 +218,7 @@ internal class BlMenuOfProduct
                     ShowProductManager();
                     break;
                 case EnumsProductMenu.ShowProductBuyer:
-                    ShowProductBuyer();
+                    ShowProductBuyer(cart);
                     break;
                 case EnumsProductMenu.AddProduct:
                     AddNewProduct();
