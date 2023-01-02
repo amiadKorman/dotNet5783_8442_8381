@@ -2,6 +2,7 @@
 
 namespace BO;
 
+[Serializable]
 public class BlDoesNotExistException : Exception
 {
     public BlDoesNotExistException() { }
@@ -13,6 +14,7 @@ public class BlDoesNotExistException : Exception
     protected BlDoesNotExistException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
+[Serializable]
 public class BlAlreadyExistsException : Exception
 {
     public BlAlreadyExistsException() { }
@@ -24,7 +26,7 @@ public class BlAlreadyExistsException : Exception
     protected BlAlreadyExistsException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
-
+[Serializable]
 public class BlInvalidFieldException : Exception
 {
     public BlInvalidFieldException() { }
@@ -36,6 +38,7 @@ public class BlInvalidFieldException : Exception
     protected BlInvalidFieldException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
+[Serializable]
 public class BlOutOfStockException : Exception
 {
     public BlOutOfStockException() { }
@@ -47,6 +50,7 @@ public class BlOutOfStockException : Exception
     protected BlOutOfStockException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
 
+[Serializable]
 public class BlFailedExceptiom : Exception
 {
     public BlFailedExceptiom() { }
