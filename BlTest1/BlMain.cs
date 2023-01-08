@@ -7,6 +7,7 @@ public class BlMain
     #region Mainaly Main
     public static void Main(string[] args)
     {
+        Cart cart = new();
         EnumsEntitysMenu MenuChoise = EnumsEntitysMenu.OrderMenu;
         while (!MenuChoise.Equals(EnumsEntitysMenu.Exit))
         {
@@ -22,10 +23,10 @@ public class BlMain
                     BlMenuOfOrder.OrderMenuBL();
                     break;
                 case EnumsEntitysMenu.CartMenu:
-                    BlMenuOfCart.CartMenu();
+                    BlMenuOfCart.CartMenu(cart);
                     break;
                 case EnumsEntitysMenu.ProductMenu:
-                    BlMenuOfProduct.ProductMenu();
+                    BlMenuOfProduct.ProductMenu(cart);
                     break;
                 case EnumsEntitysMenu.Exit:
                     break;
