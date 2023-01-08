@@ -51,13 +51,13 @@ public class BlOutOfStockException : Exception
 }
 
 [Serializable]
-public class BlFailedExceptiom : Exception
+public class BlFailedException : Exception
 {
-    public BlFailedExceptiom() { }
+    public BlFailedException() { }
 
-    public BlFailedExceptiom(string? message) : base(message) { }
+    public BlFailedException(string? message) : base(message) { }
 
-    public BlFailedExceptiom(string? message, Exception? innerException) : base(message, innerException) { }
+    public BlFailedException(string? message, Exception? innerException) : base(message, innerException) { }
 
-    protected BlFailedExceptiom(SerializationInfo info, StreamingContext context) : base(info, context) { }
+    protected BlFailedException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 }
