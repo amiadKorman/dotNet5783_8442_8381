@@ -1,40 +1,35 @@
 ﻿using BlApi;
 using BO;
+using DO;
+using Microsoft.VisualBasic;
 
 namespace BlTest;
 
 internal class BlMenuOfCart
 {
     public static IBl ibl = new BlImplementation.Bl();
+    private static Cart MainCart;
 
     #region ADD
     /// <summary>
     /// Add product to cart
     /// </summary>
+    /// <param name="cart"></param>
     private static void AddNewProductToCart()
     {
-        Console.WriteLine("To add a new product item to cart, please fill in the following data:");
-
-        int productID = SafeInput.IntegerInput("Product ID: ");
-        int amount = SafeInput.IntegerInput("Amount: ");
-        int CustomerID = SafeInput.IntegerInput("CustomerID :");
-        List<OrderItem>? Items = new List<OrderItem>();
-        int totalPrice = 0;
-        Console.WriteLine("Adding a new Order Item...");
-        Cart cart = new()
-        {
-            TotalPrice = totalPrice,
-            CustomerID = productID,
-            Items = Items
-        };
+        int productID = SafeInput.IntegerInput("Enter product ID to add to cart: ");
         try
         {
-            ibl.Cart.Add(cart, productID);
-            Console.WriteLine($"The Product was successfully added to cart{productID}\n");
+            ibl.Cart.Add(MainCart, productID);
+            Console.WriteLine("The Product was successfully added to cart\n");
         }
-        catch (Exception ex)
+        catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to add product to cart", ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to add product to cart", ex);
         }
     }
     #endregion
@@ -44,7 +39,18 @@ internal class BlMenuOfCart
     /// </summary>
     private static void ConfirmOrder()
     {
-        throw new NotImplementedException();
+        try
+        {
+            ibl.Cart.Buy(MainCart);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to confirm order", ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to confirm order", ex);
+        }
     }
 
     /// <summary>
@@ -52,7 +58,24 @@ internal class BlMenuOfCart
     /// </summary>
     private static void UpdateProductAmount()
     {
-        throw new NotImplementedException();
+        int productID = SafeInput.IntegerInput("Enter product ID to update: ");
+        int amount = SafeInput.IntegerInput("Enter new amount: ");
+        try
+        {
+            MainCart = ibl.Cart.Update(MainCart, productID, amount);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to update product", ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to update product", ex);
+        }
+        catch (BlOutOfStockException ex)
+        {
+            Console.WriteLine("Failed to update product", ex);
+        }
     }
 
 
@@ -60,8 +83,9 @@ internal class BlMenuOfCart
     /// <summary>
     /// Print order item menu and calls the appropriate method
     /// </summary>
-    public static void CartMenu()
+    public static void CartMenu(Cart cart)
     {
+        MainCart = cart;
         EnumCartMenu OrderItemchoise = EnumCartMenu.ConfirmOrder;
         while (!OrderItemchoise.Equals(EnumCartMenu.GoBack))
         {
