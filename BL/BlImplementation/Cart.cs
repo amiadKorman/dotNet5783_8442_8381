@@ -14,7 +14,7 @@ internal class Cart : ICart
     /// <returns></returns>
     /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="BO.BlOutOfStockException"></exception>
-    /// <exception cref="BO.BlFailedExceptiom"></exception>
+    /// <exception cref="BO.BlFailedException"></exception>
     public BO.Cart Add(BO.Cart cart, int productId)
     {
         //check if the validation of the given product ID
@@ -53,7 +53,7 @@ internal class Cart : ICart
         }
         catch (Exception ex)
         {
-            throw new BO.BlFailedExceptiom("Failed to add product to cart", ex);
+            throw new BO.BlFailedException("Failed to add product to cart", ex);
         };
     }
 
@@ -69,7 +69,7 @@ internal class Cart : ICart
     /// <param name="cart"></param>
     /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="BO.BlOutOfStockException"></exception>
-    /// <exception cref="BO.BlFailedExceptiom"></exception>
+    /// <exception cref="BO.BlFailedException"></exception>
     public void Buy(BO.Cart cart)
     {
         try
@@ -115,7 +115,7 @@ internal class Cart : ICart
         }
         catch (Exception ex)
         {
-            throw new BO.BlFailedExceptiom("Failed to buy cart", ex);
+            throw new BO.BlFailedException("Failed to buy cart", ex);
         }
     }
 

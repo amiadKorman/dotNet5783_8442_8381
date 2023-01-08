@@ -14,7 +14,7 @@ internal class Order : BlApi.IOrder
     /// <returns></returns>
     /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="NullReferenceException"></exception>
-    /// <exception cref="BO.BlFailedExceptiom"></exception>
+    /// <exception cref="BO.BlFailedException"></exception>
     public BO.Order Get(int ID)
     {
         if (ID < 1000000 || ID >= 5000000)
@@ -30,24 +30,24 @@ internal class Order : BlApi.IOrder
                 OrderDate = doOrder?.OrderDate ?? throw new NullReferenceException("Missing order date"),
                 ShipDate = doOrder?.ShipDate ?? throw new NullReferenceException("Missing ship date"),
                 DeliveryDate = doOrder?.DeliveryDate ?? throw new NullReferenceException("Missing delivery date"),
-                Status = CalcStatus(doOrder)
+                Status = CalcStatus(doOrder),
+                Items = from oi in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
+                        select new BO.OrderItem
+                        {
+                            ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
+                            Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
+                            Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
+                            ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
+                            TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
+                            Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
+                        }
             };
-            boOrder.Items = from oi in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
-                            select new BO.OrderItem
-                            {
-                                ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
-                                Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
-                                Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
-                                ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
-                                TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
-                                Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
-                            };
             boOrder.TotalPrice = boOrder.Items.Sum(oi => oi.TotalPrice);
             return boOrder;
         }
         catch (Exception ex)
         {
-            throw new BO.BlFailedExceptiom("Failed to get order details", ex);
+            throw new BO.BlFailedException("Failed to get order details", ex);
         }
     }
     #endregion
@@ -74,7 +74,7 @@ internal class Order : BlApi.IOrder
                     CustomerID = order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
                     Status = CalcStatus(order),
                     AmountOfItems = orderItems.Count(),
-                    TotalPrice = orderItems.Sum(oi => oi?.Price * oi?.Amount) ?? throw new BO.BlFailedExceptiom("Failed to calculate order total price")
+                    TotalPrice = orderItems.Sum(oi => oi?.Price * oi?.Amount) ?? throw new BO.BlFailedException("Failed to calculate order total price")
                 });
         }
         return ordersList;
