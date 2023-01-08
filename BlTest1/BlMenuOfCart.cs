@@ -27,7 +27,7 @@ internal class BlMenuOfCart
         {
             Console.WriteLine("Failed to add product to cart", ex);
         }
-        catch (BlDoesNotExistException ex)
+        catch (BlDoesNotExistException ex)b
         {
             Console.WriteLine("Failed to add product to cart", ex);
         }
