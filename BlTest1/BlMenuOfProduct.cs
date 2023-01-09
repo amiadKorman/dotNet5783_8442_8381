@@ -76,11 +76,11 @@ internal class BlMenuOfProduct
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to update product" + ex + "\n\n");
+            Console.WriteLine("Failed to update product", ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to update product" + ex + "\n\n");
+            Console.WriteLine("Failed to update product", ex);
         }
     }
     #endregion
@@ -99,15 +99,15 @@ internal class BlMenuOfProduct
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to show product" + ex + "\n\n");
+            Console.WriteLine("Failed to show product", ex);
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to show product" + ex + "\n\n");
+            Console.WriteLine("Failed to show product", ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to show product" + ex + "\n\n");
+            Console.WriteLine("Failed to show product", ex);
         }
     }
 
@@ -124,15 +124,15 @@ internal class BlMenuOfProduct
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to show product" + ex + "\n\n");
+            Console.WriteLine("Failed to show product", ex);
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to show product" + ex + "\n\n");
+            Console.WriteLine("Failed to show product", ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to show product" + ex + "\n\n");
+            Console.WriteLine("Failed to show product", ex);
         }
     }
 
@@ -151,7 +151,7 @@ internal class BlMenuOfProduct
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to show products list" + ex + "\n\n");
+            Console.WriteLine("Failed to show products list", ex);
         }
     }
 
@@ -170,7 +170,7 @@ internal class BlMenuOfProduct
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to show products catalog" + ex + "\n\n");
+            Console.WriteLine("Failed to show products catalog", ex);
         }
     }
     #endregion
@@ -189,11 +189,11 @@ internal class BlMenuOfProduct
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to delete product" + ex + "\n\n");
+            Console.WriteLine("Failed to delete product", ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to delete product" + ex + "\n\n");
+            Console.WriteLine("Failed to delete product", ex);
         }
     }
     #endregion
