@@ -1,7 +1,5 @@
-﻿using BlApi;
-using BO;
-using DO;
-using Microsoft.VisualBasic;
+﻿using BO;
+using BlApi;
 
 namespace BlTest;
 
@@ -77,7 +75,6 @@ internal class BlMenuOfCart
             Console.WriteLine("Failed to update product", ex);
         }
     }
-
 
     #region MENU
     /// <summary>
