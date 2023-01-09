@@ -14,7 +14,7 @@ internal class Cart : ICart
     /// <returns></returns>
     /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="BO.BlOutOfStockException"></exception>
-    /// <exception cref="BO.BlFailedException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public BO.Cart Add(BO.Cart cart, int productId)
     {
         //check if the validation of the given product ID
@@ -51,9 +51,9 @@ internal class Cart : ICart
             UpdateTotalPrice(cart);
             return cart;
         }
-        catch (Exception ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.BlFailedException("Failed to add product to cart", ex);
+            throw new BO.BlDoesNotExistException("Product does not exist", ex);
         };
     }
 
@@ -69,7 +69,6 @@ internal class Cart : ICart
     /// <param name="cart"></param>
     /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="BO.BlOutOfStockException"></exception>
-    /// <exception cref="BO.BlFailedException"></exception>
     public void Buy(BO.Cart cart)
     {
         try
@@ -80,7 +79,7 @@ internal class Cart : ICart
             {
                 throw new BO.BlInvalidFieldException("There is no items in the cart!");
             }
-
+            // check if all items in cart are in stock
             foreach (var item in cart.Items)
             {
                 //check if product exist
@@ -113,9 +112,9 @@ internal class Cart : ICart
                 dal.Product.Update(product);
             }
         }
-        catch (Exception ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.BlFailedException("Failed to buy cart", ex);
+            throw new BO.BlInvalidFieldException("Entity does not exist", ex);
         }
     }
 
@@ -144,9 +143,9 @@ internal class Cart : ICart
             product = dal.Product.GetById(productId);
 
         }
-        catch (Exception ex)
+        catch (DO.DalDoesNotExistException ex)
         {
-            throw new BO.BlDoesNotExistException("failed to update cart product", ex);
+            throw new BO.BlDoesNotExistException("product does not exist", ex);
         };
 
         var item = ProductInCart(cart, productId) ?? throw new BO.BlDoesNotExistException("product does not exist in cart");

@@ -50,8 +50,8 @@ public enum EnumCartMenu
     AddProductToCart = 1,
     [Description("Update Product Amount")]
     UpdateProductAmount = 2,
-    [Description("Confirm Order")]
-    ConfirmOrder = 3,
+    [Description("Buy Cart")]
+    BuyCart = 3,
     [Description("To Return Back To The Main Menu")]
     GoBack = 0
 }

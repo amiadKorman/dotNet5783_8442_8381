@@ -25,7 +25,11 @@ internal class BlMenuOfCart
         {
             Console.WriteLine("Failed to add product to cart", ex);
         }
-        catch (BlDoesNotExistException ex)b
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to add product to cart", ex);
+        }
+        catch (BlOutOfStockException ex)
         {
             Console.WriteLine("Failed to add product to cart", ex);
         }
@@ -33,21 +37,26 @@ internal class BlMenuOfCart
     #endregion
 
     /// <summary>
-    /// Confirm order
+    /// Buy all products in cart
     /// </summary>
-    private static void ConfirmOrder()
+    private static void BuyCart()
     {
         try
         {
             ibl.Cart.Buy(MainCart);
+            Console.WriteLine("The cart was successfully bought\n");
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to confirm order", ex);
+            Console.WriteLine("Failed to buy cart", ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to confirm order", ex);
+            Console.WriteLine("Failed to buy cart", ex);
+        }
+        catch (BlOutOfStockException ex)
+        {
+            Console.WriteLine("Failed to buy cart", ex);
         }
     }
 
@@ -83,13 +92,13 @@ internal class BlMenuOfCart
     public static void CartMenu(Cart cart)
     {
         MainCart = cart;
-        EnumCartMenu OrderItemchoise = EnumCartMenu.ConfirmOrder;
+        EnumCartMenu OrderItemchoise = EnumCartMenu.BuyCart;
         while (!OrderItemchoise.Equals(EnumCartMenu.GoBack))
         {
             OrderItemchoise = (EnumCartMenu)SafeInput.IntegerInput(
                "To Add prodact to cart - press 1\n" +
                "To Update Product Amount - press 2\n" +
-               "To Confirm Order - press 3\n" +
+               "To Buy Cart - press 3\n" +
                "To Return back to the menu - press 0\n\n");
 
             switch (OrderItemchoise)
@@ -100,8 +109,8 @@ internal class BlMenuOfCart
                 case EnumCartMenu.UpdateProductAmount:
                     UpdateProductAmount();
                     break;
-                case EnumCartMenu.ConfirmOrder:
-                    ConfirmOrder();
+                case EnumCartMenu.BuyCart:
+                    BuyCart();
                     break;
                 case EnumCartMenu.GoBack:
                     break;
