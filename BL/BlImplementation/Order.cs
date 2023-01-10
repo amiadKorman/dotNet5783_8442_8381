@@ -21,28 +21,8 @@ internal class Order : IOrder
 
         try
         {
-            DO.Order? doOrder = dal.Order.GetById(ID);
-            BO.Order boOrder = new()
-            {
-                ID = doOrder?.ID ?? throw new NullReferenceException("Missing ID"),
-                CustomerID = doOrder?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
-                OrderDate = doOrder?.OrderDate ?? throw new NullReferenceException("Missing order date"),
-                ShipDate = doOrder?.ShipDate,
-                DeliveryDate = doOrder?.DeliveryDate,
-                Status = CalcStatus(doOrder),
-                Items = from oi in dal.OrderItem.GetAll(oi => oi?.OrderID == ID)
-                        select new BO.OrderItem
-                        {
-                            ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
-                            Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
-                            Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
-                            ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
-                            TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
-                            Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
-                        }
-            };
-            boOrder.TotalPrice = boOrder.Items.Sum(oi => oi.TotalPrice);
-            return boOrder;
+            DO.Order doOrder = dal.Order.GetById(ID);
+            return BuildBoOrder(doOrder);
         }
         catch (DO.DalDoesNotExistException ex)
         {
@@ -91,21 +71,50 @@ internal class Order : IOrder
             return BO.OrderStatus.Delivered;
         else if (order?.ShipDate != null)
             return BO.OrderStatus.Shipped;
-        else
+        else if (order?.ShipDate != null)
             return BO.OrderStatus.Ordered;
+        else
+            throw new NullReferenceException("The order must have order date");
     }
     #endregion
 
     #region Track Order
     /// <summary>
-    /// 
+    /// Create information of order tracking, for manager screen
     /// </summary>
     /// <param name="ID"></param>
     /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <exception cref="BO.BlDoesNotExistException"></exception>
     public BO.OrderTracking TrackOrder(int ID)
     {
-        throw new NotImplementedException();
+        CheckID(ID);
+        try
+        {
+            DO.Order doOrder = dal.Order.GetById(ID);
+            BO.OrderTracking track = new()
+            {
+                ID = doOrder.ID,
+                Status = CalcStatus(doOrder)
+            };
+            if (track.Status == BO.OrderStatus.Delivered)
+            {
+                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.DeliveryDate!.Value, "Order delivered"));
+            }
+            else if (track.Status == BO.OrderStatus.Shipped)
+            {
+                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.ShipDate!.Value, "Order shipped"));
+            }
+            else
+            {
+                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.OrderDate, "Order created"));
+
+            }
+            return track;
+        }
+        catch (DO.DalDoesNotExistException ex)
+        {
+            throw new BO.BlDoesNotExistException("Failed to track order", ex);
+        }
     }
     #endregion
 

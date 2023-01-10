@@ -129,7 +129,20 @@ internal class BlMenuOfOrder
     /// </summary>
     private static void TrackOrder()
     {
-        throw new NotImplementedException();
+        int orderID = SafeInput.IntegerInput("Enter order ID for tracking: ");
+        try
+        {
+            OrderTracking tracking = Ibl.Order.TrackOrder(orderID);
+            Console.WriteLine(tracking);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to track order", ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to track order", ex);
+        }
     }
     #endregion
 
