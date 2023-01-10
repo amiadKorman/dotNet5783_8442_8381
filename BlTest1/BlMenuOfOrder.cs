@@ -13,32 +13,27 @@ internal class BlMenuOfOrder
     /// </summary>
     private static void UpdateOrderShipping()
     {
-        int BlOrder = SafeInput.IntegerInput("Enter order ID to update: ");
+        int orderID = SafeInput.IntegerInput("Enter order ID to update shipping for: ");
         try
         {
-            Order order = Ibl.Order.Get(BlOrder);
-            Console.WriteLine(order);
-            // User input for order item properties
-            string shipDate = "", deliveryDate = "";
-            if (!order.ShipDate.HasValue)
-            {
-                shipDate = SafeInput.NullStringInput("To update ship date to now enter something, or leave empty for no update: ");
-                if (shipDate != "")
-                    order.ShipDate = DateTime.Now;
-            }
-            else if (!order.DeliveryDate.HasValue)
-            {
-                deliveryDate = SafeInput.NullStringInput("To update delivery date to now enter something, or leave empty for no update: ");
-                if (deliveryDate != "")
-                    order.DeliveryDate = DateTime.Now;
-            }
-
-            Ibl.Order.Update(order);
-            Console.WriteLine($"The order was successfully updated:\n" + order);
+            Ibl.Order.UpdateShipping(orderID);
+            Console.WriteLine("Order shipping date updated");
         }
-        catch (Exception ex)
+        catch (BlAlreadyExistsException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to update shipping date", ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to update shipping date", ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to update shipping date", ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to update shipping date", ex);
         }
     }
 
@@ -47,32 +42,27 @@ internal class BlMenuOfOrder
     /// </summary>
     private static void UpdateOrderDelivery()
     {
-        int BlOrder = SafeInput.IntegerInput("Enter order ID to update: ");
+        int orderID = SafeInput.IntegerInput("Enter order ID to update delivery for: ");
         try
         {
-            Order order = Ibl.Order.Get(BlOrder);
-            Console.WriteLine(order);
-            // User input for order item properties
-            string shipDate = "", deliveryDate = "";
-            if (!order.ShipDate.HasValue)
-            {
-                shipDate = SafeInput.NullStringInput("To update ship date to now enter something, or leave empty for no update: ");
-                if (shipDate != "")
-                    order.ShipDate = DateTime.Now;
-            }
-            else if (!order.DeliveryDate.HasValue)
-            {
-                deliveryDate = SafeInput.NullStringInput("To update delivery date to now enter something, or leave empty for no update: ");
-                if (deliveryDate != "")
-                    order.DeliveryDate = DateTime.Now;
-            }
-
-            Ibl.Order.Update(order);
-            Console.WriteLine($"The order was successfully updated:\n" + order);
+            Ibl.Order.UpdateDelivery(orderID);
+            Console.WriteLine("Order delivery date updated");
         }
-        catch (Exception ex)
+        catch (BlAlreadyExistsException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to update delivery date", ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to update delivery date", ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to update delivery date", ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to update delivery date", ex);
         }
     }
     #endregion
@@ -89,9 +79,17 @@ internal class BlMenuOfOrder
             Order order = Ibl.Order.Get(IdOrder);
             Console.WriteLine(order);
         }
-        catch (Exception ex)
+        catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine(ex.Message + ", please try again\n");
+            Console.WriteLine("Failed to get order details", ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to get order details", ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to get order details", ex);
         }
     }
 
@@ -100,10 +98,29 @@ internal class BlMenuOfOrder
     /// </summary>
     private static void ShowOrdersList()
     {
-        IEnumerable<OrderForList?> orders = Ibl.Order.GetAll();
-        foreach (var order in orders)
+        try
         {
-            Console.WriteLine(order);
+            IEnumerable<OrderForList?> orders = Ibl.Order.GetAll();
+            foreach (var order in orders)
+            {
+                Console.WriteLine(order);
+            }
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to show orders", ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to show orders", ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show orders", ex);
+        }
+        catch (BlFailedException ex)
+        {
+            Console.WriteLine("Failed to show orders", ex);
         }
     }
 
