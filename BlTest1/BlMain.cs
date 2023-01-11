@@ -7,12 +7,25 @@ public class BlMain
     #region Mainaly Main
     public static void Main(string[] args)
     {
-        Cart cart = new();
+        // receive from customer data to initialize the cart
+        Console.WriteLine("Hello! please enter your details:");
+        int customerID = SafeInput.IntegerInput("Enter your ID: ");
+        string customerName = SafeInput.StringInput("Enter your name: ");
+        string customerEmail = SafeInput.StringInput("Enter your email: ");
+        string customerAddress = SafeInput.StringInput("Enter your address: ");
+        DO.Customer customer = new()
+        {
+            ID = customerID,
+            Name = customerName,
+            Email = customerEmail,
+            Address = customerAddress
+        };
+        Cart cart = new() { CustomerID = customer.ID };
         EnumsEntitysMenu MenuChoise = EnumsEntitysMenu.OrderMenu;
         while (!MenuChoise.Equals(EnumsEntitysMenu.Exit))
         {
             MenuChoise = (EnumsEntitysMenu)SafeInput.IntegerInput(
-                "For Order Menu - press 1\n" +
+                "\nFor Order Menu - press 1\n" +
                 "For Cart Menu - press 2\n" +
                 "For Product Menu - press 3\n" +
                 "For Exit - press 0\n\n");

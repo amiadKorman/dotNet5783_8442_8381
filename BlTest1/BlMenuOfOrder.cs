@@ -21,19 +21,19 @@ internal class BlMenuOfOrder
         }
         catch (BlAlreadyExistsException ex)
         {
-            Console.WriteLine("Failed to update shipping date", ex);
+            Console.WriteLine("Failed to update shipping date" + ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to update shipping date", ex);
+            Console.WriteLine("Failed to update shipping date" + ex);
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to update shipping date", ex);
+            Console.WriteLine("Failed to update shipping date" + ex);
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to update shipping date", ex);
+            Console.WriteLine("Failed to update shipping date" + ex);
         }
     }
 
@@ -50,19 +50,19 @@ internal class BlMenuOfOrder
         }
         catch (BlAlreadyExistsException ex)
         {
-            Console.WriteLine("Failed to update delivery date", ex);
+            Console.WriteLine("Failed to update delivery date" + ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to update delivery date", ex);
+            Console.WriteLine("Failed to update delivery date" + ex);
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to update delivery date", ex);
+            Console.WriteLine("Failed to update delivery date" + ex);
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to update delivery date", ex);
+            Console.WriteLine("Failed to update delivery date" + ex);
         }
     }
     #endregion
@@ -81,15 +81,15 @@ internal class BlMenuOfOrder
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to get order details", ex);
+            Console.WriteLine("Failed to get order details" + ex);
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to get order details", ex);
+            Console.WriteLine("Failed to get order details" + ex);
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to get order details", ex);
+            Console.WriteLine("Failed to get order details" + ex);
         }
     }
 
@@ -108,19 +108,19 @@ internal class BlMenuOfOrder
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to show orders", ex);
+            Console.WriteLine("Failed to show orders" + ex);
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to show orders", ex);
+            Console.WriteLine("Failed to show orders" + ex);
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to show orders", ex);
+            Console.WriteLine("Failed to show orders" + ex);
         }
         catch (BlFailedException ex)
         {
-            Console.WriteLine("Failed to show orders", ex);
+            Console.WriteLine("Failed to show orders" + ex);
         }
     }
 
@@ -137,11 +137,15 @@ internal class BlMenuOfOrder
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to track order", ex);
+            Console.WriteLine("Failed to track order" + ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to track order" + ex);
         }
         catch (NullReferenceException ex)
         {
-            Console.WriteLine("Failed to track order", ex);
+            Console.WriteLine("Failed to track order" + ex);
         }
     }
     #endregion
@@ -156,7 +160,7 @@ internal class BlMenuOfOrder
         while (!Orderchoise.Equals(EnumsOrderMenu.GoBack))
         {
             Orderchoise = (EnumsOrderMenu)SafeInput.IntegerInput(
-            "To Show Orders List - press 1\n" +
+            "\nTo Show Orders List - press 1\n" +
             "To Show Order Details - press 2\n" +
             "To Update Order Shipping - press 3\n" +
             "To Update Order Delivery - press 4\n" +

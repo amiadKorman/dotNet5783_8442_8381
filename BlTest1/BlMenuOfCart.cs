@@ -23,15 +23,15 @@ internal class BlMenuOfCart
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to add product to cart", ex);
+            Console.WriteLine("Failed to add product to cart" + ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to add product to cart", ex);
+            Console.WriteLine("Failed to add product to cart" + ex);
         }
         catch (BlOutOfStockException ex)
         {
-            Console.WriteLine("Failed to add product to cart", ex);
+            Console.WriteLine("Failed to add product to cart" + ex);
         }
     }
     #endregion
@@ -48,18 +48,18 @@ internal class BlMenuOfCart
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to buy cart", ex);
+            Console.WriteLine("Failed to buy cart" + ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to buy cart", ex);
+            Console.WriteLine("Failed to buy cart" + ex);
         }
         catch (BlOutOfStockException ex)
         {
-            Console.WriteLine("Failed to buy cart", ex);
+            Console.WriteLine("Failed to buy cart" + ex);
         }
     }
-
+    
     /// <summary>
     /// Update amount of item in cart
     /// </summary>
@@ -73,15 +73,15 @@ internal class BlMenuOfCart
         }
         catch (BlInvalidFieldException ex)
         {
-            Console.WriteLine("Failed to update product", ex);
+            Console.WriteLine("Failed to update product" + ex);
         }
         catch (BlDoesNotExistException ex)
         {
-            Console.WriteLine("Failed to update product", ex);
+            Console.WriteLine("Failed to update product" + ex);
         }
         catch (BlOutOfStockException ex)
         {
-            Console.WriteLine("Failed to update product", ex);
+            Console.WriteLine("Failed to update product" + ex);
         }
     }
 
@@ -96,7 +96,7 @@ internal class BlMenuOfCart
         while (!OrderItemchoise.Equals(EnumCartMenu.GoBack))
         {
             OrderItemchoise = (EnumCartMenu)SafeInput.IntegerInput(
-               "To Add prodact to cart - press 1\n" +
+               "\nTo Add prodact to cart - press 1\n" +
                "To Update Product Amount - press 2\n" +
                "To Buy Cart - press 3\n" +
                "To Return back to the menu - press 0\n\n");
