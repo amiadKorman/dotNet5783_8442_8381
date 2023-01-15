@@ -35,7 +35,7 @@ public class Order
     /// <summary>
     /// Order items
     /// </summary>
-    public IEnumerable<OrderItem>? Items { get; set; }
+    public List<OrderItem>? Items { get; set; }
 
     /// <summary>
     /// Total order price
@@ -49,7 +49,8 @@ public class Order
         Order Date: {OrderDate}
         Ship Date: {ShipDate}
         Delivery Date: {DeliveryDate}
-        Items: {Items}
+        Items: 
+                {String.Join("\n\t\t", Items)}
         Total Price: {TotalPrice}
     ";
 }

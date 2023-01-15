@@ -111,6 +111,7 @@ internal class Cart : ICart
                 product.InStock -= item.Amount;
                 dal.Product.Update(product);
             }
+            cart.Items.Clear();
         }
         catch (DO.DalDoesNotExistException ex)
         {
@@ -171,7 +172,7 @@ internal class Cart : ICart
     /// <param name="cart"></param>
     /// <param name="productID"></param>
     /// <returns></returns>
-    private BO.OrderItem? ProductInCart(BO.Cart cart, int productID) => cart.Items?.Find(oi => oi.ID == productID);
+    private BO.OrderItem? ProductInCart(BO.Cart cart, int productID) => cart.Items?.Find(oi => oi.ProductID == productID);
 
     /// <summary>
     /// Adding customer details to log in
@@ -180,8 +181,18 @@ internal class Cart : ICart
     /// <param name="customer"></param>
     /// <returns></returns>
     /// <exception cref="BO.BlFailedException"></exception>
-    public BO.Cart LogIn(BO.Cart cart, DO.Customer customer)
+    public BO.Cart LogIn(BO.Cart cart, int ID, string name, string email, string address)
     {
+        if (email.Contains("@") == false)
+            throw new BO.BlInvalidFieldException("Email is not valid");
+        
+        DO.Customer customer = new DO.Customer
+        {
+            ID = ID,
+            Name = name,
+            Email = email,
+            Address = address
+        };
         try
         {
             dal.Customer.Add(customer);
@@ -196,7 +207,7 @@ internal class Cart : ICart
                 cart.CustomerID = customer.ID;
                 return cart;
             }
-            throw new BO.BlFailedException("This ID is already taken!", ex);
+            throw new BO.BlFailedException("This ID is already in use!", ex);
         }
     }
 }

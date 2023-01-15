@@ -137,7 +137,6 @@ internal class Product : IProduct
                 Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
                 Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
                 Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
-                Amount = product?.InStock ?? throw new NullReferenceException("Missing stock amount"),
                 InStock = product?.InStock > 0 ? true : false
             };
 
@@ -145,7 +144,7 @@ internal class Product : IProduct
             {
                 foreach (var item in cart.Items)
                 {
-                    if (item.ID == ID)
+                    if (item.ProductID == ID)
                     {
                         PI.Amount = item.Amount;
                         break;

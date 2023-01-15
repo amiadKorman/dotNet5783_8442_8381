@@ -29,7 +29,10 @@ public interface ICart
     /// Adding customer details to log in
     /// </summary>
     /// <param name="cart"></param>
-    /// <param name="customerId"></param>
+    /// <param name="ID"></param>
+    /// <param name="name"></param>
+    /// <param name="email"></param>
+    /// <param name="address"></param>
     /// <returns></returns>
-    public Cart LogIn(Cart cart, DO.Customer customer);
+    public Cart LogIn(BO.Cart cart, int ID, string name, string email, string address);
 }

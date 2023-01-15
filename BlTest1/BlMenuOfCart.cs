@@ -18,7 +18,7 @@ internal class BlMenuOfCart
         int productID = SafeInput.IntegerInput("Enter product ID to add to cart: ");
         try
         {
-            ibl.Cart.Add(MainCart, productID);
+            MainCart = ibl.Cart.Add(MainCart, productID);
             Console.WriteLine("The Product was successfully added to cart\n");
         }
         catch (BlInvalidFieldException ex)
@@ -95,14 +95,7 @@ internal class BlMenuOfCart
         string customerAddress = SafeInput.StringInput("Enter your address: ");
         try
         {
-            DO.Customer customer = new DO.Customer
-            {
-                ID = customerID,
-                Name = customerName,
-                Email = customerEmail,
-                Address = customerAddress
-            };
-            MainCart = ibl.Cart.LogIn(MainCart, customer);
+            MainCart = ibl.Cart.LogIn(MainCart, customerID, customerName, customerEmail, customerAddress);
             Console.WriteLine("You succesfully logged in!");
         }
         catch (BlFailedException ex)

@@ -253,7 +253,7 @@ internal sealed class DataSource
                     ProductID = product?.ID ?? 0,
                     OrderID = RandomNumber.Next(Config.startOrderNumber, Config.startOrderNumber + orders.Count),
                     Price = product?.Price ?? 0,
-                    Amount = RandomNumber.Next(5),
+                    Amount = RandomNumber.Next(1, 5),
                 });
         }
     }

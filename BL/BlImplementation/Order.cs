@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using System.Linq;
 
 namespace BlImplementation;
 
@@ -53,7 +54,7 @@ internal class Order : IOrder
                     ID = order?.ID ?? throw new NullReferenceException("Missing ID"),
                     CustomerID = order?.CustomerID ?? throw new NullReferenceException("Missing customer ID"),
                     Status = CalcStatus(order),
-                    AmountOfItems = orderItems.Count(),
+                    AmountOfItems = orderItems.Sum(oi => oi?.Amount) ?? 0,
                     TotalPrice = orderItems.Sum(oi => oi?.Price * oi?.Amount) ?? throw new BO.BlFailedException("Failed to calculate order total price")
                 });
         }
@@ -94,20 +95,17 @@ internal class Order : IOrder
             BO.OrderTracking track = new()
             {
                 ID = doOrder.ID,
-                Status = CalcStatus(doOrder)
+                Status = CalcStatus(doOrder),
+                Tracking = new() { new Tuple<DateTime, string>(doOrder.OrderDate, "Order created") }
             };
-            if (track.Status == BO.OrderStatus.Delivered)
-            {
-                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.DeliveryDate!.Value, "Order delivered"));
-            }
-            else if (track.Status == BO.OrderStatus.Shipped)
+            if (track.Status == BO.OrderStatus.Shipped)
             {
                 track.Tracking.Add(new Tuple<DateTime, string>(doOrder.ShipDate!.Value, "Order shipped"));
             }
-            else
+            else if (track.Status == BO.OrderStatus.Delivered)
             {
-                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.OrderDate, "Order created"));
-
+                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.ShipDate!.Value, "Order shipped"));
+                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.DeliveryDate!.Value, "Order delivered"));
             }
             return track;
         }
@@ -214,17 +212,19 @@ internal class Order : IOrder
             ShipDate = doOrder?.ShipDate,
             DeliveryDate = doOrder?.DeliveryDate,
             Status = CalcStatus(doOrder),
-            Items = from oi in dal.OrderItem.GetAll(oi => oi?.OrderID == doOrder?.ID)
-                    select new BO.OrderItem
-                    {
-                        ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
-                        Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
-                        Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
-                        ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
-                        TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
-                        Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
-                    }
+            Items = new()
         };
+
+        foreach (var oi in dal.OrderItem.GetAll(oi => oi?.OrderID == doOrder?.ID))
+            boOrder.Items.Add(new()
+            {
+                ID = oi?.ID ?? throw new NullReferenceException("Missing ID"),
+                Price = oi?.Price ?? throw new NullReferenceException("Missing price"),
+                Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
+                ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
+                TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
+                Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
+            });
         boOrder.TotalPrice = boOrder.Items.Sum(oi => oi.TotalPrice);
         return boOrder;
     }
