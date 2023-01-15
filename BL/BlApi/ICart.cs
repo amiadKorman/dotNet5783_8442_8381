@@ -24,4 +24,12 @@ public interface ICart
     /// </summary>
     /// <param name="cart"></param>
     public void Buy(Cart cart);
+
+    /// <summary>
+    /// Adding customer details to log in
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="customerId"></param>
+    /// <returns></returns>
+    public Cart LogIn(Cart cart, DO.Customer customer);
 }

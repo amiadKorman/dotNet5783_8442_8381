@@ -46,12 +46,14 @@ public enum EnumsOrderMenu
 /// </summary>
 public enum EnumCartMenu
 {
+    [Description("Log In")]
+    LogIn = 1,
     [Description("Add Product to Cart")]
-    AddProductToCart = 1,
+    AddProductToCart = 2,
     [Description("Update Product Amount")]
-    UpdateProductAmount = 2,
+    UpdateProductAmount = 3,
     [Description("Buy Cart")]
-    BuyCart = 3,
+    BuyCart = 4,
     [Description("To Return Back To The Main Menu")]
     GoBack = 0
 }

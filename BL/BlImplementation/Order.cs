@@ -71,7 +71,7 @@ internal class Order : IOrder
             return BO.OrderStatus.Delivered;
         else if (order?.ShipDate != null)
             return BO.OrderStatus.Shipped;
-        else if (order?.ShipDate != null)
+        else if (order?.OrderDate != null)
             return BO.OrderStatus.Ordered;
         else
             throw new NullReferenceException("The order must have order date");

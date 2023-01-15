@@ -75,9 +75,9 @@ internal class Cart : ICart
         {
             dal.Customer.GetById(cart.CustomerID);
 
-            if (cart.Items?.Count == 0)
+            if (cart.Items == null || cart.Items?.Count == 0)
             {
-                throw new BO.BlInvalidFieldException("There is no items in the cart!");
+                throw new BO.BlInvalidFieldException("There is no items to buy in the cart!");
             }
             // check if all items in cart are in stock
             foreach (var item in cart.Items)
@@ -172,4 +172,31 @@ internal class Cart : ICart
     /// <param name="productID"></param>
     /// <returns></returns>
     private BO.OrderItem? ProductInCart(BO.Cart cart, int productID) => cart.Items?.Find(oi => oi.ID == productID);
+
+    /// <summary>
+    /// Adding customer details to log in
+    /// </summary>
+    /// <param name="cart"></param>
+    /// <param name="customer"></param>
+    /// <returns></returns>
+    /// <exception cref="BO.BlFailedException"></exception>
+    public BO.Cart LogIn(BO.Cart cart, DO.Customer customer)
+    {
+        try
+        {
+            dal.Customer.Add(customer);
+            cart.CustomerID = customer.ID;
+            return cart;
+        }
+        catch(DO.DalAlreadyExistsException ex)
+        {
+            DO.Customer cust = dal.Customer.GetById(customer.ID);
+            if (cust.Name == customer.Name && cust.Address == customer.Address && cust.Email == customer.Email)
+            {
+                cart.CustomerID = customer.ID;
+                return cart;
+            }
+            throw new BO.BlFailedException("This ID is already taken!", ex);
+        }
+    }
 }

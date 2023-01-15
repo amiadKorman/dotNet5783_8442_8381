@@ -85,6 +85,31 @@ internal class BlMenuOfCart
         }
     }
 
+    private static void LogIn()
+    {
+        // receive from customer data to initialize the cart
+        Console.WriteLine("Hello! please enter your details:");
+        int customerID = SafeInput.IntegerInput("Enter your ID: ");
+        string customerName = SafeInput.StringInput("Enter your name: ");
+        string customerEmail = SafeInput.StringInput("Enter your email: ");
+        string customerAddress = SafeInput.StringInput("Enter your address: ");
+        try
+        {
+            DO.Customer customer = new DO.Customer
+            {
+                ID = customerID,
+                Name = customerName,
+                Email = customerEmail,
+                Address = customerAddress
+            };
+            MainCart = ibl.Cart.LogIn(MainCart, customer);
+            Console.WriteLine("You succesfully logged in!");
+        }
+        catch (BlFailedException ex)
+        {
+            Console.WriteLine("Failed to log in" + ex);
+        }
+    }
     #region MENU
     /// <summary>
     /// Print order item menu and calls the appropriate method
@@ -96,13 +121,17 @@ internal class BlMenuOfCart
         while (!OrderItemchoise.Equals(EnumCartMenu.GoBack))
         {
             OrderItemchoise = (EnumCartMenu)SafeInput.IntegerInput(
-               "\nTo Add prodact to cart - press 1\n" +
-               "To Update Product Amount - press 2\n" +
-               "To Buy Cart - press 3\n" +
+               "\nTo Log In - press 1\n" +
+               "To Add prodact to cart - press 2\n" +
+               "To Update Product Amount - press 3\n" +
+               "To Buy Cart - press 4\n" +
                "To Return back to the menu - press 0\n\n");
 
             switch (OrderItemchoise)
             {
+                case EnumCartMenu.LogIn:
+                    LogIn();
+                    break;
                 case EnumCartMenu.AddProductToCart:
                     AddNewProductToCart();
                     break;

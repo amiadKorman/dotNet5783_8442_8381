@@ -1,4 +1,5 @@
-﻿using BO;
+﻿using BlApi;
+using BO;
 
 namespace BlTest;
 
@@ -7,20 +8,7 @@ public class BlMain
     #region Mainaly Main
     public static void Main(string[] args)
     {
-        // receive from customer data to initialize the cart
-        Console.WriteLine("Hello! please enter your details:");
-        int customerID = SafeInput.IntegerInput("Enter your ID: ");
-        string customerName = SafeInput.StringInput("Enter your name: ");
-        string customerEmail = SafeInput.StringInput("Enter your email: ");
-        string customerAddress = SafeInput.StringInput("Enter your address: ");
-        DO.Customer customer = new()
-        {
-            ID = customerID,
-            Name = customerName,
-            Email = customerEmail,
-            Address = customerAddress
-        };
-        Cart cart = new() { CustomerID = customer.ID };
+        Cart cart = new();
         EnumsEntitysMenu MenuChoise = EnumsEntitysMenu.OrderMenu;
         while (!MenuChoise.Equals(EnumsEntitysMenu.Exit))
         {
