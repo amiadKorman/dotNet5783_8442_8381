@@ -41,14 +41,14 @@ internal sealed class DataSource
     internal static class Config
     {
         internal const int startOrderNumber = 1000000;
-        private static int orderItemID = startOrderNumber;
+        private static int orderID = startOrderNumber;
         internal static int NextOrderID { get => orderID++; }
 
         internal const int startOrderItemNumber = 5000000;
-        private static int orderID = startOrderItemNumber;
+        private static int orderItemID = startOrderItemNumber;
         internal static int NextOrderItemID { get => orderItemID++; }
     }
-
+    
     /// <summary>
     /// Initilazing all entities lists
     /// </summary>
