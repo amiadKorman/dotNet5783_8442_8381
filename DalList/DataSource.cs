@@ -243,7 +243,20 @@ internal sealed class DataSource
     /// </summary>
     private void InitializeOrderItems()
     {
-        for (int i = 0; i < 40; i++)
+        for (int i = 0; i < orders.Count; i++)
+        {
+            Product? product = products[RandomNumber.Next(products.Count)];
+            orderItems.Add(
+                new()
+                {
+                    ID = Config.NextOrderItemID,
+                    ProductID = product?.ID ?? 0,
+                    OrderID = Config.startOrderNumber + i,
+                    Price = product?.Price ?? 0,
+                    Amount = RandomNumber.Next(1, 5),
+                });
+        }
+        for (int i = 0; i < 20; i++)
         {
             Product? product = products[RandomNumber.Next(products.Count)];
             orderItems.Add(
