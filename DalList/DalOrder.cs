@@ -27,7 +27,15 @@ internal class DalOrder : IOrder
     /// <param name="id"></param>
     /// <returns> order </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public Order GetById(int id) => ds.orders.FirstOrDefault(o => o?.ID == id) ?? throw new DalDoesNotExistException("Order ID doesn't exist");
+    public Order Get(int id) => ds.orders.FirstOrDefault(o => o?.ID == id) ?? throw new DalDoesNotExistException("Order ID doesn't exist");
+
+    /// <summary>
+    /// Return order by given filter
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
+    public Order Get(Func<Order?, bool>? filter) => ds.orders.Where(filter ?? throw new NullReferenceException("Filter can not be empty!")).FirstOrDefault() ?? throw new DalDoesNotExistException("Order doesn't exist");
 
     /// <summary>
     /// Return all orders in DataSource by filter

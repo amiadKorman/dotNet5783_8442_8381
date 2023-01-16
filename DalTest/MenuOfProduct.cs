@@ -56,7 +56,7 @@ internal class MenuOfProduct
         int IDProduct = SafeInput.IntegerInput("Enter product ID to update: ");
         try
         {
-            Product product = idal.Product.GetById(IDProduct);
+            Product product = idal.Product.Get(IDProduct);
             Console.WriteLine(product);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
@@ -87,7 +87,7 @@ internal class MenuOfProduct
         int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
         try
         {
-            Product product = idal.Product.GetById(IDProduct);
+            Product product = idal.Product.Get(IDProduct);
             Console.WriteLine(product);
         }
         catch (Exception ex)
@@ -102,7 +102,7 @@ internal class MenuOfProduct
     public static void ShowListProduct()
     {
         IEnumerable<Product?> products = idal.Product.GetAll();
-        foreach (Product product in products)
+        foreach (var product in products)
         {
             Console.WriteLine(product);
         }

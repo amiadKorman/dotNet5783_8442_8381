@@ -4,7 +4,7 @@ namespace DO;
 
 
 /// <summary>
-/// Enus stract for the CategoryOfProduct
+/// Enum for the CategoryOfProduct
 /// </summary>
 public enum CategoryOfProduct
 {
@@ -21,7 +21,7 @@ public enum CategoryOfProduct
 }
 
 /// <summary>
-/// Enus stract for the Names
+/// Enum for the Names
 /// </summary>
 public enum Names
 {
@@ -49,7 +49,7 @@ public enum Names
 
 
 /// <summary>
-/// Enums stract for the cities
+/// Enum for the cities
 /// </summary>
 public enum Cities
 {
@@ -66,7 +66,7 @@ public enum Cities
 }
 
 /// <summary>
-/// Enums stract fot the steets
+/// Enum for the streets
 /// </summary>
 public enum Streets
 {
@@ -79,5 +79,3 @@ public enum Streets
     [Description("Yaffo")]
     Yaffo = 4,
 }
-
-

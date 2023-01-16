@@ -8,23 +8,34 @@ public interface ICrud<T> where T : struct
     /// <param name="item"></param>
     /// <returns> item id </returns>
     int Add(T item);
+
     /// <summary>
     /// Return item by given id
     /// </summary>
     /// <param name="id"></param>
     /// <returns> item </returns>
-    T GetById(int id);
+    T Get(int id);
+
+    /// <summary>
+    /// Return item by given filter
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
+    T Get(Func<T?, bool>? filter);
+
     /// <summary>
     /// Return all items in DataSource by filter
     /// </summary>
     /// <param name="filter"></param>
     /// <returns></returns>
     IEnumerable<T?> GetAll(Func<T?, bool>? filter = null);
+    
     /// <summary>
     /// Update an item
     /// </summary>
     /// <param name="item"></param>
     void Update(T item);
+    
     /// <summary>
     /// Delete an item
     /// </summary>

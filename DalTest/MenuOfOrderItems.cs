@@ -1,6 +1,5 @@
 ﻿using DalApi;
 using DO;
-using System.Security.AccessControl;
 
 namespace Dal;
 
@@ -50,7 +49,7 @@ internal class MenuOfOrderItems
         int IDOrderItem = SafeInput.IntegerInput("Enter order item ID to update: ");
         try
         {
-            OrderItem orderItem = idal.OrderItem.GetById(IDOrderItem);
+            OrderItem orderItem = idal.OrderItem.Get(IDOrderItem);
             Console.WriteLine(orderItem);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for order item properties
@@ -81,7 +80,7 @@ internal class MenuOfOrderItems
         int IdOrderItem = SafeInput.IntegerInput("Enter order item ID to show: ");
         try
         {
-            OrderItem orderItem = idal.OrderItem.GetById(IdOrderItem);
+            OrderItem orderItem = idal.OrderItem.Get(IdOrderItem);
             Console.WriteLine(orderItem);
         }
         catch (Exception ex)
@@ -100,7 +99,7 @@ internal class MenuOfOrderItems
         int productID = SafeInput.IntegerInput("Enter Order item's product ID: ");
         try
         {
-            OrderItem orderItem = idal.OrderItem.GetById(orderID/*, productID*/);
+            OrderItem orderItem = idal.OrderItem.Get(oi => oi?.OrderID == orderID && oi?.ProductID == productID);
             Console.WriteLine(orderItem);
         }
         catch (Exception ex)
@@ -115,7 +114,7 @@ internal class MenuOfOrderItems
     public static void ShowListOfOrderItems()
     {
         IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetAll();
-        foreach (OrderItem orderItem in orderItems)
+        foreach (var orderItem in orderItems)
         {
             Console.WriteLine(orderItem);
         }
@@ -131,7 +130,7 @@ internal class MenuOfOrderItems
         {
             
             IEnumerable<OrderItem?> orderItems = idal.OrderItem.GetAll(oi => oi?.OrderID == orderID);
-            foreach (OrderItem orderItem in orderItems)
+            foreach (var orderItem in orderItems)
             {
                 Console.WriteLine(orderItem);
             }

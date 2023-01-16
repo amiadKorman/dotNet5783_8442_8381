@@ -48,7 +48,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to update: ");
         try
         {
-            Customer customer = idal.Customer.GetById(IDCustomer);
+            Customer customer = idal.Customer.Get(IDCustomer);
             Console.WriteLine(customer);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
@@ -79,7 +79,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to show: ");
         try
         {
-            Customer customer = idal.Customer.GetById(IDCustomer);
+            Customer customer = idal.Customer.Get(IDCustomer);
             Console.WriteLine(customer);
         }
         catch (Exception ex)
@@ -94,7 +94,7 @@ internal class MenuOfCustomer
     public static void ShowListCustomer()
     {
         IEnumerable<Customer?> customers = idal.Customer.GetAll();
-        foreach (Customer customer in customers)
+        foreach (var customer in customers)
         {
             Console.WriteLine(customer);
         }

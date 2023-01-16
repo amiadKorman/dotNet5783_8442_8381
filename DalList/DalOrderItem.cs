@@ -28,15 +28,15 @@ internal class DalOrderItem : IOrderItem
     /// <param name="id"></param>
     /// <returns> order item </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public OrderItem GetById(int id) => ds.orderItems.FirstOrDefault(oi => oi?.ID == id) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
+    public OrderItem Get(int id) => ds.orderItems.FirstOrDefault(oi => oi?.ID == id) ?? throw new DalDoesNotExistException("Order item ID doesn't exist");
 
     /// <summary>
-    /// Return order item by given order and product ID
+    /// Return order item by given filter
     /// </summary>
-    /// <param name="orderID"></param>
-    /// <returns> order item </returns>
+    /// <param name="filter"></param>
+    /// <returns></returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public OrderItem GetByOrderAndProductId(int orderID, int productID) => ds.orderItems.FirstOrDefault(oi => oi?.OrderID == orderID && oi?.ProductID == productID) ?? throw new DalDoesNotExistException("Order item doesn't exist");
+    public OrderItem Get(Func<OrderItem?, bool>? filter) => ds.orderItems.Where(filter ?? throw new NullReferenceException("Filter can not be empty!")).FirstOrDefault() ?? throw new DalDoesNotExistException("Order item doesn't exist");
 
     /// <summary>
     /// Return all order items in DataSource by filter

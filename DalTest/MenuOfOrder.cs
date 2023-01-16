@@ -20,7 +20,8 @@ internal class MenuOfOrder
         Console.WriteLine("Adding a new Order...");
         Order order = new()
         {
-            CustomerID = customerID
+            CustomerID = customerID,
+            OrderDate = DateTime.Now
         };
         try
         {
@@ -43,7 +44,7 @@ internal class MenuOfOrder
         int IDOrder = SafeInput.IntegerInput("Enter order ID to update: ");
         try
         {
-            Order order = idal.Order.GetById(IDOrder);
+            Order order = idal.Order.Get(IDOrder);
             Console.WriteLine(order);
             // User input for order item properties
             string shipDate = "", deliveryDate = "";
@@ -79,7 +80,7 @@ internal class MenuOfOrder
         int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
         try
         {
-            Order order = idal.Order.GetById(IdOrder);
+            Order order = idal.Order.Get(IdOrder);
             Console.WriteLine(order);
         }
         catch (Exception ex)
@@ -94,7 +95,7 @@ internal class MenuOfOrder
     public static void ShowOrderList()
     {
         IEnumerable<Order?> orders = idal.Order.GetAll();
-        foreach (Order order in orders)
+        foreach (var order in orders)
         {
             Console.WriteLine(order);
         }

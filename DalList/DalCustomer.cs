@@ -29,7 +29,15 @@ internal class DalCustomer : ICustomer
     /// <param name="id"></param>
     /// <returns> customer </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public Customer GetById(int id) => ds.customers.FirstOrDefault(c => c?.ID == id) ?? throw new DalDoesNotExistException("Customer ID doesn't exist");
+    public Customer Get(int id) => ds.customers.FirstOrDefault(c => c?.ID == id) ?? throw new DalDoesNotExistException("Customer ID doesn't exist");
+
+    /// <summary>
+    /// Return customer by given filter
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
+    public Customer Get(Func<Customer?, bool>? filter) => ds.customers.Where(filter ?? throw new NullReferenceException("Filter can not be empty!")).FirstOrDefault() ?? throw new DalDoesNotExistException("Customer doesn't exist");
 
     /// <summary>
     /// Return all customers in DataSource by filter

@@ -30,7 +30,16 @@ internal class DalProduct : IProduct
     /// <param name="id"></param>
     /// <returns> product </returns>
     /// <exception cref="DalDoesNotExistException"></exception>
-    public Product GetById(int id) => ds.products.FirstOrDefault(p => p?.ID == id) ?? throw new DalDoesNotExistException("Product ID doesn't exist");
+    public Product Get(int id) => ds.products.FirstOrDefault(p => p?.ID == id) ?? throw new DalDoesNotExistException("Product ID doesn't exist");
+
+    /// <summary>
+    /// Return product by given filter
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <returns></returns>
+    /// <exception cref="DalDoesNotExistException"></exception>
+    public Product Get(Func<Product?, bool>? filter) => ds.products.Where(filter ?? throw new NullReferenceException("Filter can not be empty!")).FirstOrDefault() ?? throw new DalDoesNotExistException("Product doesn't exist");
+
 
     /// <summary>
     /// Return all ds.products in DataSource by filter
