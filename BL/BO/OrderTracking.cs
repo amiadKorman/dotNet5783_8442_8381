@@ -10,12 +10,12 @@ public class OrderTracking
     /// <summary>
     /// Order status
     /// </summary>
-    public OrderStatus Status { get; set; }
+    public OrderStatus? Status { get; set; }
 
     /// <summary>
     /// Pairs of order date and status
     /// </summary>
-    public List<Tuple<DateTime, string>>? Tracking { set; get; }
+    public List<Tuple<DateTime?, string?>?>? Tracking { set; get; }
 
     public override string ToString() => $@"
         Order ID: {ID}

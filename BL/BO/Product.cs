@@ -20,7 +20,7 @@ public class Product
     /// <summary>
     /// Product category
     /// </summary>
-    public Category Category { get; set; }
+    public Category? Category { get; set; }
 
     /// <summary>
     /// Amount in stock of the product

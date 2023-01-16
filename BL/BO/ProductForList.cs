@@ -20,7 +20,7 @@ public class ProductForList
     /// <summary>
     /// Product category
     /// </summary>
-    public Category Category { get; set; }
+    public Category? Category { get; set; }
 
     public override string ToString() => $@"
         Product ID: {ID}

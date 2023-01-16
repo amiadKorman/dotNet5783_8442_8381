@@ -18,7 +18,7 @@ public struct Order
     /// <summary>
     /// Order date
     /// </summary>
-    public DateTime OrderDate { get; set; }
+    public DateTime? OrderDate { get; set; }
 
     /// <summary>
     /// Ship date
@@ -29,7 +29,6 @@ public struct Order
     /// Delivery date 
     /// </summary>
     public DateTime? DeliveryDate { get; set; }
-   
 
     public override string ToString() => $@"
         Order ID: {ID}

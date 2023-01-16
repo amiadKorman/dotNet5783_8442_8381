@@ -96,16 +96,16 @@ internal class Order : IOrder
             {
                 ID = doOrder.ID,
                 Status = CalcStatus(doOrder),
-                Tracking = new() { new Tuple<DateTime, string>(doOrder.OrderDate, "Order created") }
+                Tracking = new() { new Tuple<DateTime?, string?>(doOrder.OrderDate, "Order created") }
             };
             if (track.Status == BO.OrderStatus.Shipped)
             {
-                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.ShipDate!.Value, "Order shipped"));
+                track.Tracking.Add(new Tuple<DateTime?, string?>(doOrder.ShipDate!.Value, "Order shipped"));
             }
             else if (track.Status == BO.OrderStatus.Delivered)
             {
-                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.ShipDate!.Value, "Order shipped"));
-                track.Tracking.Add(new Tuple<DateTime, string>(doOrder.DeliveryDate!.Value, "Order delivered"));
+                track.Tracking.Add(new Tuple<DateTime?, string?>(doOrder.ShipDate!.Value, "Order shipped"));
+                track.Tracking.Add(new Tuple<DateTime?, string?>(doOrder.DeliveryDate!.Value, "Order delivered"));
             }
             return track;
         }
