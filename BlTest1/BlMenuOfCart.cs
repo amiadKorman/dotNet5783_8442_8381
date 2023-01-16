@@ -102,6 +102,10 @@ internal class BlMenuOfCart
         {
             Console.WriteLine("Failed to log in" + ex);
         }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to log in" + ex);
+        }
     }
     #region MENU
     /// <summary>

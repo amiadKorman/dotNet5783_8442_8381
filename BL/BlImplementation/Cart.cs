@@ -178,8 +178,12 @@ internal class Cart : ICart
     /// Adding customer details to log in
     /// </summary>
     /// <param name="cart"></param>
-    /// <param name="customer"></param>
+    /// <param name="ID"></param>
+    /// <param name="name"></param>
+    /// <param name="email"></param>
+    /// <param name="address"></param>
     /// <returns></returns>
+    /// <exception cref="BO.BlInvalidFieldException"></exception>
     /// <exception cref="BO.BlFailedException"></exception>
     public BO.Cart LogIn(BO.Cart cart, int ID, string name, string email, string address)
     {
