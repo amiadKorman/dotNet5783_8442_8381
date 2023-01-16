@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,21 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BlApi.IBl bl = new BlImplementation.Bl();
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Move to product list window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowProductButton_Click(object sender, RoutedEventArgs e) => new ProductListWindow().Show();
     }
 }

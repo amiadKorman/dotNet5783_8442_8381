@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <Button x:Name="ProductButto" Content="Click Me!" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="80" Click="ShowProductButton_Click"/>
     </Grid>
 </Window>
