@@ -1,39 +1,35 @@
-﻿using Bl;
-using BlApi;
-
+﻿using BlApi;
+using BO;
 
 namespace BlTest;
 
-internal class BlMain
+public class BlMain
 {
     #region Mainaly Main
     public static void Main(string[] args)
     {
-        EntitysMenu MenuChoise = EntitysMenu.OrderMenu;
-        while (!MenuChoise.Equals(EntitysMenu.Exit))
+        Cart cart = new();
+        EnumsEntitysMenu MenuChoise = EnumsEntitysMenu.OrderMenu;
+        while (!MenuChoise.Equals(EnumsEntitysMenu.Exit))
         {
-            MenuChoise = (EntitysMenu)BlSafeInput.IntegerInput(
-                "For Order Menu - press 1\n" +
-                "For Order Item Menu - press 2\n" +
+            MenuChoise = (EnumsEntitysMenu)SafeInput.IntegerInput(
+                "\nFor Order Menu - press 1\n" +
+                "For Cart Menu - press 2\n" +
                 "For Product Menu - press 3\n" +
-                "For Customer Menu - press 4\n" +
                 "For Exit - press 0\n\n");
 
             switch (MenuChoise)
             {
-                case EntitysMenu.OrderMenu:
-                    BlMenuOfOrder.OrderMenu();
+                case EnumsEntitysMenu.OrderMenu:
+                    BlMenuOfOrder.OrderMenuBL();
                     break;
-                case EntitysMenu.OrderItemsMenu:
-                    BlMenuOfOrderItems.OrderItemMenu();
+                case EnumsEntitysMenu.CartMenu:
+                    BlMenuOfCart.CartMenu(cart);
                     break;
-                case EntitysMenu.ProductMenu:
-                    BlMenuOfProduct.ProductMenu();
+                case EnumsEntitysMenu.ProductMenu:
+                    BlMenuOfProduct.ProductMenu(cart);
                     break;
-                case EntitysMenu.CustomerMenu:
-                    MenuOfCustomer.CustomerMenu();
-                    break;
-                case EntitysMenu.Exit:
+                case EnumsEntitysMenu.Exit:
                     break;
                 default:
                     Console.WriteLine("Error. Try again");

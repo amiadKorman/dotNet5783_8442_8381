@@ -21,10 +21,13 @@ internal class Cart : ICart
         if (productId < 100000 || productId >= 1000000)
             throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
 
+        if (cart.Items == null)
+            cart.Items = new ();
+
         try
         {
             //check if the product exist
-            DO.Product product = dal.Product.GetById(productId);
+            DO.Product product = dal.Product.Get(productId);
             //check if the product in stock
             if (product.InStock == 0)
                 throw new BO.BlOutOfStockException($"The Product {product.Name} is out of stock!");
@@ -61,29 +64,30 @@ internal class Cart : ICart
     /// Update the total prce of the cart
     /// </summary>
     /// <param name="cart"></param>
-    private void UpdateTotalPrice(BO.Cart cart) => cart.TotalPrice = cart.Items?.Sum(c => c.Price * c.Amount) ?? 0;
+    private void UpdateTotalPrice(BO.Cart cart) => cart.TotalPrice = cart.Items?.Sum(c => c?.Price * c?.Amount) ?? 0;
 
     /// <summary>
     /// Buying all the products in the cart, for cart or complete order screens
     /// </summary>
     /// <param name="cart"></param>
     /// <exception cref="BO.BlInvalidFieldException"></exception>
+    /// <exception cref="NullReferenceException"></exception>
     /// <exception cref="BO.BlOutOfStockException"></exception>
     public void Buy(BO.Cart cart)
     {
         try
         {
-            dal.Customer.GetById(cart.CustomerID);
+            dal.Customer.Get(cart.CustomerID);
 
             if (cart.Items == null || cart.Items?.Count == 0)
             {
                 throw new BO.BlInvalidFieldException("There is no items to buy in the cart!");
             }
             // check if all items in cart are in stock
-            foreach (var item in cart.Items)
+            foreach (var item in cart.Items!)
             {
                 //check if product exist
-                DO.Product product = dal.Product.GetById(item.ProductID);
+                DO.Product product = dal.Product.Get(item?.ProductID ?? throw new NullReferenceException("null product ID"));
                 if (item.Amount <= 0)
                     throw new BO.BlInvalidFieldException("Amount of item can't be zero or negative");
                 if (item.Amount > product.InStock)
@@ -101,13 +105,13 @@ internal class Cart : ICart
             {
                 DO.OrderItem orderItem = new()
                 {
-                    ProductID = item.ProductID,
+                    ProductID = item?.ProductID ?? throw new NullReferenceException("null product ID"),
                     OrderID = orderID,
-                    Price = item.Price,
-                    Amount = item.Amount,
+                    Price = item?.Price ?? throw new NullReferenceException("null price"),
+                    Amount = item?.Amount ?? throw new NullReferenceException("null amount")
                 };
                 int orderItemID = dal.OrderItem.Add(orderItem);
-                DO.Product product = dal.Product.GetById(item.ProductID);
+                DO.Product product = dal.Product.Get(item.ProductID);
                 product.InStock -= item.Amount;
                 dal.Product.Update(product);
             }
@@ -141,7 +145,7 @@ internal class Cart : ICart
         try
         {
             //check if the product exist
-            product = dal.Product.GetById(productId);
+            product = dal.Product.Get(productId);
 
         }
         catch (DO.DalDoesNotExistException ex)
@@ -153,7 +157,7 @@ internal class Cart : ICart
         if (amount == 0)
         {
             //Delete item from the cart
-            cart.Items?.RemoveAll(oi => oi.ID == product.ID);
+            cart.Items?.RemoveAll(oi => oi?.ID == product.ID);
         }
         else if (item.Amount != amount)
         {
@@ -172,7 +176,7 @@ internal class Cart : ICart
     /// <param name="cart"></param>
     /// <param name="productID"></param>
     /// <returns></returns>
-    private BO.OrderItem? ProductInCart(BO.Cart cart, int productID) => cart.Items?.Find(oi => oi.ProductID == productID);
+    private BO.OrderItem? ProductInCart(BO.Cart cart, int productID) => cart.Items?.Find(oi => oi?.ProductID == productID);
 
     /// <summary>
     /// Adding customer details to log in
@@ -205,7 +209,7 @@ internal class Cart : ICart
         }
         catch(DO.DalAlreadyExistsException ex)
         {
-            DO.Customer cust = dal.Customer.GetById(customer.ID);
+            DO.Customer cust = dal.Customer.Get(customer.ID);
             if (cust.Name == customer.Name && cust.Address == customer.Address && cust.Email == customer.Email)
             {
                 cart.CustomerID = customer.ID;

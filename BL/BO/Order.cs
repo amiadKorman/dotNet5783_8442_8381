@@ -50,7 +50,7 @@ public class Order
         Ship Date: {ShipDate}
         Delivery Date: {DeliveryDate}
         Items: 
-                {String.Join("\n\t\t", Items)}
+                {String.Join("\n\t\t", Items ?? new List<OrderItem?>())}
         Total Price: {TotalPrice}
     ";
 }

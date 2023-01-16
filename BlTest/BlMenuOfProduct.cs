@@ -1,180 +1,252 @@
-﻿using BlApi;
-using Bl;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BO;
+using BlApi;
 
-namespace BlTest
+namespace BlTest;
+
+internal class BlMenuOfProduct
 {
-    internal class BlMenuOfProduct
+    private static IBl ibl = new BlImplementation.Bl();
+    #region ADD
+    /// <summary>
+    /// Add new product
+    /// </summary>
+    private static void AddNewProduct()
     {
-        #region ADD
-        /// <summary>
-        /// Add new product
-        /// </summary>
-        public static void AddNewProduct()
+        Console.WriteLine("To add a new product, please fill in the following data:");
+
+        int ID = SafeInput.IntegerInput("ID: ");
+        string name = SafeInput.StringInput("Name: ");
+        double price = SafeInput.DoubleInput("Price: ");
+        Console.WriteLine("Category: ");
+        var categories = Enum.GetValues(typeof(Category));
+        foreach (var category in categories)
         {
-            Console.WriteLine("To add a new product, please fill in the following data:");
-
-            int ID = BlSafeInput.IntegerInput("ID: ");
-            string name = BlSafeInput.StringInput("Name: ");
-            double price = BlSafeInput.DoubleInput("Price: ");
-            Console.WriteLine("Category: ");
-            var categories = Enum.GetValues(typeof(CategoryOfProduct));
-            foreach (var category in categories)
-            {
-                Console.WriteLine($"\tFor {category} - press {(int)category}");
-            }
-            CategoryOfProduct categorfy = (CategoryOfProduct)BlSafeInput.IntegerInput();
-            int inStock = BlSafeInput.IntegerInput("In Stock: ");
-            Console.WriteLine("Adding a new Product...");
-            Product product = new()
-            {
-                ID = ID,
-                Name = name,
-                Price = price,
-                Category = categorfy,
-                InStock = inStock
-            };
-            try
-            {
-                int productID = idal.Product.Add(product);
-                Console.WriteLine($"The new product was successfully added with ID {productID}\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
+            Console.WriteLine($"\tFor {category} - press {(int)category}");
         }
-        #endregion
-
-        #region UPDATE
-        /// <summary>
-        /// Update existing product
-        /// </summary>
-        public static void UpdateProduct()
+        Category categorfy = (Category)SafeInput.IntegerInput();
+        int inStock = SafeInput.IntegerInput("In Stock: ");
+        Console.WriteLine("Adding a new Product...");
+        Product product = new()
         {
-            int IDProduct = BlSafeInput.IntegerInput("Enter product ID to update: ");
-            try
-            {
-                Product product = idal.Product.GetById(IDProduct);
-                Console.WriteLine(product);
-                Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
-                // User input for product properties
-                double? price = BlSafeInput.NullDoubleInput("Price: ");
-                int? inStock = BlSafeInput.NullIntegerInput("In Stock: ");
-                // Checking for changes to update
-                if (price.HasValue)
-                    product.Price = price.Value;
-                if (inStock.HasValue)
-                    product.InStock = inStock.Value;
-
-                idal.Product.Update(product);
-                Console.WriteLine($"The product was successfully updated:\n" + product);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
-        }
-        #endregion
-
-        #region SHOW
-        /// <summary>
-        /// Print specific product
-        /// </summary>
-        public static void ShowProduct()
+            ID = ID,
+            Name = name,
+            Price = price,
+            Category = categorfy,
+            InStock = inStock
+        };
+        try
         {
-            int IDProduct = BlSafeInput.IntegerInput("Enter product ID to show: ");
-            try
-            {
-                Product product = idal.Product.GetById(IDProduct);
-                Console.WriteLine(product);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
+            ibl.Product.Add(product);
+            Console.WriteLine($"The new product was successfully added with ID {ID}\n");
         }
-
-        /// <summary>
-        /// Print all products
-        /// </summary>
-        public static void ShowListProduct()
+        catch (BlInvalidFieldException ex)
         {
-            IEnumerable<Product?> products = idal.Product.GetAll();
-            foreach (Product product in products)
-            {
-                Console.WriteLine(product);
-            }
+            Console.WriteLine("Failed to add product" + ex);
         }
-        #endregion
-
-        #region DELETE
-        /// <summary>
-        /// Delete product by ID
-        /// </summary>
-        public static void DeleteProduct()
+        catch (BlAlreadyExistsException ex)
         {
-            int IDProduct = BlSafeInput.IntegerInput("Enter product ID to delete: ");
-            try
-            {
-                idal.Product.Delete(IDProduct);
-                Console.WriteLine("The product was successfully deleted\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message + ", please try again\n");
-            }
+            Console.WriteLine("Failed to add product" + ex);
         }
-        #endregion
-
-        #region MENU
-        /// <summary>
-        /// Print product menu and calls the appropriate method
-        /// </summary>
-        public static void ProductMenu()
-        {
-            ProductMenu ProductChoise = BlProductMenu.AddProduct;
-            while (!ProductChoise.Equals(Dal.ProductMenu.GoBack))
-            {
-                ProductChoise = (ProductMenu)SafeInput.IntegerInput(
-                    "To Add a Product - press 1\n" +
-                    "To Update a Product - press 2\n" +
-                    "To Show a Product - press 3\n" +
-                    "To Show Products List - press 4\n" +
-                    "To Delete a Product - press 5\n" +
-                    "To Return back to the menu - press 0\n\n");
-
-                switch (ProductChoise)
-                {
-                    case Dal.ProductMenu.AddProduct:
-                        AddNewProduct();
-                        break;
-                    case Dal.ProductMenu.UpdateProduct:
-                        UpdateProduct();
-                        break;
-                    case Dal.ProductMenu.ShowProduct:
-                        ShowProduct();
-                        break;
-                    case Dal.ProductMenu.ShowListOfProduct:
-                        ShowListProduct();
-                        break;
-                    case Dal.ProductMenu.DeleteAProduct:
-                        DeleteProduct();
-                        break;
-                    case Dal.ProductMenu.GoBack:
-                        break;
-                    default:
-                        Console.WriteLine("This option doesn't exist, please try again\n");
-                        break;
-                }
-            }
-        }
-        #endregion
-
-
     }
+    #endregion
+
+    #region UPDATE
+    /// <summary>
+    /// Update existing product
+    /// </summary>
+    private static void UpdateProduct()
+    {
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to update: ");
+        try
+        {
+            Product product = ibl.Product.Get(IDProduct);
+            Console.WriteLine(product);
+            Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
+            // User input for product properties
+            double? price = SafeInput.NullDoubleInput("Price: ");
+            int? inStock = SafeInput.NullIntegerInput("In Stock: ");
+            // Checking for changes to update
+            if (price.HasValue)
+                product.Price = price.Value;
+            if (inStock.HasValue)
+                product.InStock = inStock.Value;
+
+            ibl.Product.Update(product);
+            Console.WriteLine($"The product was successfully updated:\n" + product);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to update product" + ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to update product" + ex.Message);
+        }
+    }
+    #endregion
+
+    #region SHOW
+    /// <summary>
+    /// Print specific product for buyer screen
+    /// </summary>
+    private static void ShowProductBuyer(Cart cart)
+    {
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
+        try
+        {
+            ProductItem product = ibl.Product.Get(IDProduct, cart);
+            Console.WriteLine(product);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex);
+        }
+    }
+
+    /// <summary>
+    /// Print specific product for manager screen
+    /// </summary>
+    private static void ShowProductManager()
+    {
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
+        try
+        {
+            Product product = ibl.Product.Get(IDProduct);
+            Console.WriteLine(product);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to show product" + ex);
+        }
+    }
+
+    /// <summary>
+    /// Print all products for manager screen
+    /// </summary>
+    private static void ShowListProduct()
+    {
+        try
+        {
+            IEnumerable<ProductForList?> products = ibl.Product.GetList();
+            foreach (var product in products)
+            {
+                Console.WriteLine(product);
+            }
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show products list" + ex);
+        }
+    }
+
+    /// <summary>
+    /// Print products catalog for buyer catalog screen
+    /// </summary>
+    private static void ShowCatalog()
+    {
+        try
+        {
+            IEnumerable<ProductItem?> products = ibl.Product.GetCatalog();
+            foreach (var product in products)
+            {
+                Console.WriteLine(product);
+            }
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show products catalog" + ex);
+        }
+    }
+    #endregion
+
+    #region DELETE
+    /// <summary>
+    /// Delete product by ID
+    /// </summary>
+    private static void DeleteProduct()
+    {
+        int IDProduct = SafeInput.IntegerInput("Enter product ID to delete: ");
+        try
+        {
+            ibl.Product.Delete(IDProduct);
+            Console.WriteLine("The product was successfully deleted\n");
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to delete product" + ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to delete product" + ex);
+        }
+    }
+    #endregion
+
+    #region MENU
+    /// <summary>
+    /// Print product menu and calls the appropriate method
+    /// </summary>
+    public static void ProductMenu(Cart cart)
+    {
+        EnumsProductMenu ProductChoise = EnumsProductMenu.AddProduct;
+        while (!ProductChoise.Equals(EnumsProductMenu.GoBack))
+        {
+            ProductChoise = (EnumsProductMenu)SafeInput.IntegerInput(
+                "\nTo Show Products List - press 1\n" +
+                "To Show Products Catalog - press 2\n" +
+                "To Show Product Details(manager) - press 3\n" +
+                "To Show Product Details(buyer) - press 4\n" +
+                "To Add a Product - press 5\n" +
+                "To Delete a Product - press 6\n" +
+                "To Update Product Details - press 7\n" +
+                "To Return back to the menu - press 0\n\n");
+
+            switch (ProductChoise)
+            {
+                case EnumsProductMenu.ShowListOfProducts:
+                    ShowListProduct();
+                    break;
+                case EnumsProductMenu.ShowProductCatalog:
+                    ShowCatalog();
+                    break;
+                case EnumsProductMenu.ShowProductManager:
+                    ShowProductManager();
+                    break;
+                case EnumsProductMenu.ShowProductBuyer:
+                    ShowProductBuyer(cart);
+                    break;
+                case EnumsProductMenu.AddProduct:
+                    AddNewProduct();
+                    break;
+                case EnumsProductMenu.DeleteProduct:
+                    DeleteProduct();
+                    break;
+                case EnumsProductMenu.UpdateProduct:
+                    UpdateProduct();
+                    break;
+                case EnumsProductMenu.GoBack:
+                    break;
+                default:
+                    Console.WriteLine("This option doesn't exist, please try again\n");
+                    break;
+            }
+        }
+    }
+    #endregion
 }

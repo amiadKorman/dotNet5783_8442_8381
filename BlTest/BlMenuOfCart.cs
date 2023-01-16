@@ -6,7 +6,7 @@ namespace BlTest;
 internal class BlMenuOfCart
 {
     public static IBl ibl = new BlImplementation.Bl();
-    private static Cart MainCart;
+    private static Cart MainCart = new();
 
     #region ADD
     /// <summary>
@@ -55,6 +55,10 @@ internal class BlMenuOfCart
             Console.WriteLine("Failed to buy cart" + ex);
         }
         catch (BlOutOfStockException ex)
+        {
+            Console.WriteLine("Failed to buy cart" + ex);
+        }
+        catch (NullReferenceException ex)
         {
             Console.WriteLine("Failed to buy cart" + ex);
         }

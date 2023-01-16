@@ -1,59 +1,196 @@
-﻿using Bl;
+﻿using BO;
 using BlApi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BlTest
+namespace BlTest;
+
+internal class BlMenuOfOrder
 {
-    internal class BlMenuOfOrder
+    private static IBl Ibl = new BlImplementation.Bl();
+
+    #region Update
+    /// <summary>
+    /// Update order shipping date
+    /// </summary>
+    private static void UpdateOrderShipping()
     {
-
-
-        #region MENU
-        /// <summary>
-        /// Print order menu and calls the appropriate method
-        /// </summary>
-        public static void OrderMenu()
+        int orderID = SafeInput.IntegerInput("Enter order ID to update shipping for: ");
+        try
         {
-            OrderMenu Orderchoise = Bl.OrderMenu.AddOrder;
-            while (!Orderchoise.Equals(Bl.OrderMenu.GoBack))
-            {
-                Orderchoise = (OrderMenu)BlSafeInput.IntegerInput(
-                "To Add an Order - press 1\n" +
-                "To Update an Order - press 2\n" +
-                "To Show an Order - press 3\n" +
-                "To Show Orders List - press 4\n" +
-                "To Delete an Order - press 5\n" +
-                "To Return Back To The Main Menu - press 0\n\n");
+            Ibl.Order.UpdateShipping(orderID);
+            Console.WriteLine("Order shipping date updated");
+        }
+        catch (BlAlreadyExistsException ex)
+        {
+            Console.WriteLine("Failed to update shipping date" + ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to update shipping date" + ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to update shipping date" + ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to update shipping date" + ex);
+        }
+    }
 
-                switch (Orderchoise)
-                {
-                    case Bl.OrderMenu.AddOrder:
-                        AddNewOrder();
-                        break;
-                    case Dal.OrderMenu.UpdateOrder:
-                        UpdateOrder();
-                        break;
-                    case Dal.OrderMenu.ShowOrder:
-                        ShowOrder();
-                        break;
-                    case Dal.OrderMenu.ShowListOfOrder:
-                        ShowOrderList();
-                        break;
-                    case Dal.OrderMenu.DeleteAnOrder:
-                        DeleteOrder();
-                        break;
-                    case Dal.OrderMenu.GoBack:
-                        break;
-                    default:
-                        Console.WriteLine("This option doesn't exist, please try again\n");
-                        break;
-                }
+    /// <summary>
+    /// Update order delivery date
+    /// </summary>
+    private static void UpdateOrderDelivery()
+    {
+        int orderID = SafeInput.IntegerInput("Enter order ID to update delivery for: ");
+        try
+        {
+            Ibl.Order.UpdateDelivery(orderID);
+            Console.WriteLine("Order delivery date updated");
+        }
+        catch (BlAlreadyExistsException ex)
+        {
+            Console.WriteLine("Failed to update delivery date" + ex);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to update delivery date" + ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to update delivery date" + ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to update delivery date" + ex);
+        }
+    }
+    #endregion
+
+    #region SHOW 
+    /// <summary>
+    /// Print specific order
+    /// </summary>
+    private static void ShowOrder()
+    {
+        int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
+        try
+        {
+            Order order = Ibl.Order.Get(IdOrder);
+            Console.WriteLine(order);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to get order details" + ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to get order details" + ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to get order details" + ex);
+        }
+    }
+
+    /// <summary>
+    /// Print all orders
+    /// </summary>
+    private static void ShowOrdersList()
+    {
+        try
+        {
+            IEnumerable<OrderForList?> orders = Ibl.Order.GetAll();
+            foreach (var order in orders)
+            {
+                Console.WriteLine(order);
             }
         }
-        #endregion
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to show orders" + ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to show orders" + ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to show orders" + ex);
+        }
+        catch (BlFailedException ex)
+        {
+            Console.WriteLine("Failed to show orders" + ex);
+        }
     }
+
+    /// <summary>
+    /// Print order tracking info
+    /// </summary>
+    private static void TrackOrder()
+    {
+        int orderID = SafeInput.IntegerInput("Enter order ID for tracking: ");
+        try
+        {
+            OrderTracking tracking = Ibl.Order.TrackOrder(orderID);
+            Console.WriteLine(tracking);
+        }
+        catch (BlDoesNotExistException ex)
+        {
+            Console.WriteLine("Failed to track order" + ex);
+        }
+        catch (BlInvalidFieldException ex)
+        {
+            Console.WriteLine("Failed to track order" + ex);
+        }
+        catch (NullReferenceException ex)
+        {
+            Console.WriteLine("Failed to track order" + ex);
+        }
+    }
+    #endregion
+
+    #region MENU
+    /// <summary>
+    /// Print order menu and calls the appropriate method
+    /// </summary>
+    public static void OrderMenuBL()
+    {
+        EnumsOrderMenu Orderchoise = EnumsOrderMenu.TrackOrder;
+        while (!Orderchoise.Equals(EnumsOrderMenu.GoBack))
+        {
+            Orderchoise = (EnumsOrderMenu)SafeInput.IntegerInput(
+            "\nTo Show Orders List - press 1\n" +
+            "To Show Order Details - press 2\n" +
+            "To Update Order Shipping - press 3\n" +
+            "To Update Order Delivery - press 4\n" +
+            "To Order Tracking - press 5\n" +
+            "To Return Back To The Main Menu - press 0\n\n");
+
+            switch (Orderchoise)
+            {
+                case EnumsOrderMenu.ShowListOfOrders:
+                    ShowOrdersList();
+                    break;
+                case EnumsOrderMenu.ShowOrderDetails:
+                    ShowOrder();
+                    break;
+                case EnumsOrderMenu.UpdateOrderShipping:
+                    UpdateOrderShipping();
+                    break;
+                case EnumsOrderMenu.UpdateOrderDelivery:
+                    UpdateOrderDelivery();
+                    break;
+                case EnumsOrderMenu.TrackOrder:
+                    TrackOrder();
+                    break;
+                case EnumsOrderMenu.GoBack:
+                    break;
+                default:
+                    Console.WriteLine("This option doesn't exist, please try again\n");
+                    break;
+            }
+        }
+    }
+    #endregion
 }

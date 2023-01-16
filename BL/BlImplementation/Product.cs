@@ -34,7 +34,7 @@ internal class Product : IProduct
                 ID = product.ID,
                 Name = product.Name,
                 Price = product.Price,
-                Category = (DO.CategoryOfProduct)product.Category,
+                Category = (DO.CategoryOfProduct?)product.Category,
                 InStock = product.InStock
             });
         }
@@ -71,7 +71,7 @@ internal class Product : IProduct
                 ID = product.ID,
                 Name = product.Name,
                 Price = product.Price,
-                Category = (DO.CategoryOfProduct)product.Category,
+                Category = (DO.CategoryOfProduct?)product.Category,
                 InStock = product.InStock
             });
         }
@@ -98,7 +98,7 @@ internal class Product : IProduct
 
         try
         {
-            DO.Product? product = dal.Product.GetById(ID);
+            DO.Product? product = dal.Product.Get(ID);
             return new BO.Product
             {
                 ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
@@ -130,7 +130,7 @@ internal class Product : IProduct
 
         try
         {
-            DO.Product? product = dal.Product.GetById(ID);
+            DO.Product? product = dal.Product.Get(ID);
             var PI = new BO.ProductItem
             {
                 ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
@@ -144,7 +144,7 @@ internal class Product : IProduct
             {
                 foreach (var item in cart.Items)
                 {
-                    if (item.ProductID == ID)
+                    if (item?.ProductID == ID)
                     {
                         PI.Amount = item.Amount;
                         break;
@@ -213,9 +213,9 @@ internal class Product : IProduct
         if (ID < 100000 || ID >= 1000000)
             throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
 
-        foreach (DO.OrderItem orderItem in dal.OrderItem.GetAll())
+        foreach (var orderItem in dal.OrderItem.GetAll())
         {
-            if (orderItem.ID == ID)
+            if (orderItem?.ID == ID)
                 throw new BO.BlAlreadyExistsException("Cannot delete product in existing order");
         }
 

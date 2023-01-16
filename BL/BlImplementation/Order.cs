@@ -22,7 +22,7 @@ internal class Order : IOrder
 
         try
         {
-            DO.Order doOrder = dal.Order.GetById(ID);
+            DO.Order doOrder = dal.Order.Get(ID);
             return BuildBoOrder(doOrder);
         }
         catch (DO.DalDoesNotExistException ex)
@@ -91,7 +91,7 @@ internal class Order : IOrder
         CheckID(ID);
         try
         {
-            DO.Order doOrder = dal.Order.GetById(ID);
+            DO.Order doOrder = dal.Order.Get(ID);
             BO.OrderTracking track = new()
             {
                 ID = doOrder.ID,
@@ -143,7 +143,7 @@ internal class Order : IOrder
         CheckID(ID);
         try
         {
-            DO.Order doOrder = dal.Order.GetById(ID);
+            DO.Order doOrder = dal.Order.Get(ID);
             //check if the order already shipped
             if (doOrder.ShipDate == null)
             {
@@ -179,7 +179,7 @@ internal class Order : IOrder
         CheckID(ID);
         try
         {
-            DO.Order doOrder = dal.Order.GetById(ID);
+            DO.Order doOrder = dal.Order.Get(ID);
             // check if the order does not shipped yet
             if (doOrder.ShipDate != null)
             {
@@ -223,9 +223,9 @@ internal class Order : IOrder
                 Amount = oi?.Amount ?? throw new NullReferenceException("Missing amount"),
                 ProductID = oi?.ProductID ?? throw new NullReferenceException("Missing product ID"),
                 TotalPrice = oi?.Amount * oi?.Price ?? throw new NullReferenceException("Missing amount or price"),
-                Name = dal.Product.GetById(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
+                Name = dal.Product.Get(oi?.ProductID ?? throw new NullReferenceException("Missing product ID")).Name
             });
-        boOrder.TotalPrice = boOrder.Items.Sum(oi => oi.TotalPrice);
+        boOrder.TotalPrice = boOrder.Items.Sum(oi => oi!.TotalPrice);
         return boOrder;
     }
     #endregion

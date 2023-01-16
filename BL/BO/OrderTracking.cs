@@ -21,6 +21,6 @@ public class OrderTracking
         Order ID: {ID}
         Order Status: {Status}
         Tracking: 
-                {String.Join("\n\t\t", Tracking)}
+                {String.Join("\n\t\t", Tracking ?? new List<Tuple<DateTime?, string?>?>())}
     ";
 }
