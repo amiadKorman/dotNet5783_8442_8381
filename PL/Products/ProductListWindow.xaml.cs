@@ -24,13 +24,13 @@ public partial class ProductListWindow : Window
         {
             CategorySelector.Items.Add(category);
         }
-        //CategorySelector.ItemsSource = Enum.GetValues(typeof(BO.Category));
+        
         CategorySelector.SelectedIndex = 0;
     }
 
     private void CategorySelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (CategorySelector.SelectedItem ==  CategorySelector.Items[0])
+        if (CategorySelector.SelectedItem == CategorySelector.Items[0])
         {
             ProductsListView.ItemsSource = bl.Product.GetList();
         }

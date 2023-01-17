@@ -80,20 +80,44 @@ public partial class ProductWindow : Window
     {
         Product UserProduct = new();
 
-        int userVal;
-
-        int.TryParse(IdTextBox.Text, out userVal);
-        UserProduct.ID = userVal;
+        int input;
+        if (int.TryParse(IdTextBox.Text, out input))
+        {
+            UserProduct.ID = input;
+        }
+        else
+        {
+            throw new Exception("ID must be a number");
+        }
 
         UserProduct.Category = (Category?)CategoryComboBox.SelectedItem;
 
-        UserProduct.Name = NameTextBox.Text;
+        if (NameTextBox.Text != "")
+        {
+            UserProduct.Name = NameTextBox.Text;
+        }
+        else
+        {
+            throw new Exception("Name can't be empty");
+        }
 
-        int.TryParse(PriceTextBox.Text, out userVal);
-        UserProduct.Price = userVal;
+        if (int.TryParse(PriceTextBox.Text, out input))
+        {
+            UserProduct.Price = input;
+        }
+        else
+        {
+            throw new Exception("Price must be a number");
+        }
 
-        int.TryParse(InStockTextBox.Text, out userVal);
-        UserProduct.InStock = userVal;
+        if (int.TryParse(InStockTextBox.Text, out input))
+        {
+            UserProduct.InStock = input;
+        }
+        else
+        {
+            throw new Exception("In Stock must be a number");
+        }
 
         return UserProduct;
     }

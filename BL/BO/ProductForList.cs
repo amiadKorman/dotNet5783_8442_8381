@@ -26,6 +26,5 @@ public class ProductForList
         Product ID: {ID}
         Name: {Name}
         Category: {Category}
-    	Price: {Price}
-    ";
+    	Price: {Price}";
 }
