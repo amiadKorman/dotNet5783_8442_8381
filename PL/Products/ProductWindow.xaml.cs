@@ -20,16 +20,19 @@ public partial class ProductWindow : Window
         // Hide update buttom
         AddButton.Visibility = Visibility.Visible;
         UpdateButton.Visibility = Visibility.Collapsed;
+
     }
 
     public ProductWindow(IBl bl, int ID) : this(bl)
     {
-        this.bl = bl;
         InitializeComponent();
         CategoryComboBox.ItemsSource = Enum.GetValues(typeof(BO.Category));
         // Hide add button
         UpdateButton.Visibility = Visibility.Visible;
         AddButton.Visibility = Visibility.Collapsed;
+
+        // disable the option to edit ID Text Box
+        IdTextBox.IsEnabled = false;
 
         Product product1 = bl.Product.Get(ID);
 
@@ -48,30 +51,29 @@ public partial class ProductWindow : Window
         {
             bl.Product.Add(UserProduct);
             MessageBox.Show("The product successfully added");
+            Close();
         }
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message);
         }
-
-        Close();
     }
 
     private void UpdateButton_Click(object sender, RoutedEventArgs e)
     {
 
         Product UserProduct = BuildProduct();
-        
+
         try
         {
             bl.Product.Update(UserProduct);
             MessageBox.Show("The product successfully updated");
+            Close();
         }
         catch (Exception ex)
         {
             MessageBox.Show(ex.Message);
         }
-        Close();
     }
 
     private Product BuildProduct()
