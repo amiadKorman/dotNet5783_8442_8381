@@ -8,7 +8,7 @@ public interface IProduct
     /// Returns list of all products, for manager screen
     /// </summary>
     /// <returns> List of products </returns>
-    public IEnumerable<ProductForList?> GetList();
+    public IEnumerable<ProductForList?> GetList(Func<ProductForList?, bool>? filter = null);
 
     /// <summary>
     /// Returns list of all products, for buyer catalog screen

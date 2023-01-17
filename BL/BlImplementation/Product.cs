@@ -168,9 +168,9 @@ internal class Product : IProduct
     /// </summary>
     /// <returns></returns>
     /// <exception cref="NullReferenceException"></exception>
-    public IEnumerable<BO.ProductForList> GetList()
+    public IEnumerable<BO.ProductForList> GetList(Func<BO.ProductForList?, bool>? filter = null)
     {
-        return from product in dal.Product.GetAll()
+        var list =  from product in dal.Product.GetAll()
                select new BO.ProductForList
                {
                    ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
@@ -178,6 +178,7 @@ internal class Product : IProduct
                    Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
                    Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
                };
+        return filter == null ? list : list.Where(filter);
     }
 
     /// <summary>
