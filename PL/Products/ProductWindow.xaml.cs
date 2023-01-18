@@ -45,10 +45,9 @@ public partial class ProductWindow : Window
 
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
-        Product UserProduct = BuildProduct();
-
         try
         {
+            Product UserProduct = BuildProduct();
             bl.Product.Add(UserProduct);
             MessageBox.Show("The product successfully added");
             Close();
@@ -61,11 +60,9 @@ public partial class ProductWindow : Window
 
     private void UpdateButton_Click(object sender, RoutedEventArgs e)
     {
-
-        Product UserProduct = BuildProduct();
-
         try
         {
+            Product UserProduct = BuildProduct();
             bl.Product.Update(UserProduct);
             MessageBox.Show("The product successfully updated");
             Close();
@@ -90,7 +87,14 @@ public partial class ProductWindow : Window
             throw new Exception("ID must be a number");
         }
 
-        UserProduct.Category = (Category?)CategoryComboBox.SelectedItem;
+        if (CategoryComboBox.SelectedItem != null)
+        {
+            UserProduct.Category = (BO.Category)CategoryComboBox.SelectedItem;
+        }
+        else
+        {
+            throw new Exception("Category must be selected");
+        }
 
         if (NameTextBox.Text != "")
         {
