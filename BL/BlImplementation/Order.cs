@@ -5,7 +5,7 @@ namespace BlImplementation;
 
 internal class Order : IOrder
 {
-    private DalApi.IDal dal = new Dal.DalList();
+    private DalApi.IDal? dal = DalApi.Factory.Get();
 
     #region get by ID
     /// <summary>

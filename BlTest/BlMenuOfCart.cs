@@ -1,11 +1,13 @@
 ﻿using BO;
 using BlApi;
+using DalApi;
 
 namespace BlTest;
 
 internal class BlMenuOfCart
 {
-    public static IBl ibl = new BlImplementation.Bl();
+    private static IBl? ibl = BlApi.Factory.Get();
+    
     private static Cart MainCart = new();
 
     #region ADD

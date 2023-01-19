@@ -1,5 +1,4 @@
-﻿using BlApi;
-using BO;
+﻿using BO;
 using System;
 using System.Windows;
 
@@ -10,9 +9,9 @@ namespace PL.Products;
 /// </summary>
 public partial class ProductWindow : Window
 {
-    private IBl bl;
+    private BlApi.IBl? bl;
 
-    public ProductWindow(IBl bl)
+    public ProductWindow(BlApi.IBl bl)
     {
         this.bl = bl;
         InitializeComponent();
@@ -23,7 +22,7 @@ public partial class ProductWindow : Window
 
     }
 
-    public ProductWindow(IBl bl, int ID) : this(bl)
+    public ProductWindow(BlApi.IBl bl, int ID) : this(bl)
     {
         InitializeComponent();
         CategoryComboBox.ItemsSource = Enum.GetValues(typeof(BO.Category));

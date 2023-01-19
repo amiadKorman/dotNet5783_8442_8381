@@ -2,7 +2,7 @@
 
 namespace BlImplementation;
 
-sealed public class Bl : IBl
+internal sealed class Bl : IBl
 {
     public IOrder Order { get; } = new Order();
     public IProduct Product { get; } = new Product();

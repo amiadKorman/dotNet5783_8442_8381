@@ -8,7 +8,8 @@ namespace PL;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private BlApi.IBl bl = new BlImplementation.Bl();
+    private BlApi.IBl? bl = BlApi.Factory.Get();
+
     /// <summary>
     /// Constructor
     /// </summary>

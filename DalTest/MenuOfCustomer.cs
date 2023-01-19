@@ -5,7 +5,7 @@ namespace Dal;
 
 internal class MenuOfCustomer
 {
-    private static IDal idal = new DalList();
+    private static IDal? dal = Factory.Get();
 
     #region ADD
     /// <summary>
@@ -29,7 +29,7 @@ internal class MenuOfCustomer
         };
         try
         {
-            int customerID = idal.Customer.Add(customer);
+            int customerID = dal.Customer.Add(customer);
             Console.WriteLine($"The new customer was successfully added with ID {customerID}\n");
         }
         catch (Exception ex)
@@ -48,7 +48,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to update: ");
         try
         {
-            Customer customer = idal.Customer.Get(IDCustomer);
+            Customer customer = dal.Customer.Get(IDCustomer);
             Console.WriteLine(customer);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
@@ -60,7 +60,7 @@ internal class MenuOfCustomer
             if (address != "")
                 customer.Address = address;
 
-            idal.Customer.Update(customer);
+            dal.Customer.Update(customer);
             Console.WriteLine($"The customer was successfully updated:\n" + customer);
         }
         catch (Exception ex)
@@ -79,7 +79,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to show: ");
         try
         {
-            Customer customer = idal.Customer.Get(IDCustomer);
+            Customer customer = dal.Customer.Get(IDCustomer);
             Console.WriteLine(customer);
         }
         catch (Exception ex)
@@ -93,7 +93,7 @@ internal class MenuOfCustomer
     /// </summary>
     public static void ShowListCustomer()
     {
-        IEnumerable<Customer?> customers = idal.Customer.GetAll();
+        IEnumerable<Customer?> customers = dal.Customer.GetAll();
         foreach (var customer in customers)
         {
             Console.WriteLine(customer);
@@ -110,7 +110,7 @@ internal class MenuOfCustomer
         int IDCustomer = SafeInput.IntegerInput("Enter customer ID to delete: ");
         try
         {
-            idal.Customer.Delete(IDCustomer);
+            dal.Customer.Delete(IDCustomer);
             Console.WriteLine("The customer was successfully deleted\n");
         }
         catch (Exception ex)

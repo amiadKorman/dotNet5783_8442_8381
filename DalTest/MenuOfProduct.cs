@@ -5,7 +5,7 @@ namespace Dal;
 
 internal class MenuOfProduct
 {
-    private static IDal idal = new DalList();
+    private static IDal? dal = Factory.Get();
 
     #region ADD
     /// <summary>
@@ -37,7 +37,7 @@ internal class MenuOfProduct
         };
         try
         {
-            int productID = idal.Product.Add(product);
+            int productID = dal.Product.Add(product);
             Console.WriteLine($"The new product was successfully added with ID {productID}\n");
         }
         catch (Exception ex)
@@ -56,7 +56,7 @@ internal class MenuOfProduct
         int IDProduct = SafeInput.IntegerInput("Enter product ID to update: ");
         try
         {
-            Product product = idal.Product.Get(IDProduct);
+            Product product = dal.Product.Get(IDProduct);
             Console.WriteLine(product);
             Console.WriteLine("To update, please fill in the following data(leave empty for no update):");
             // User input for product properties
@@ -68,7 +68,7 @@ internal class MenuOfProduct
             if (inStock.HasValue)
                 product.InStock = inStock.Value;
 
-            idal.Product.Update(product);
+            dal.Product.Update(product);
             Console.WriteLine($"The product was successfully updated:\n" + product);
         }
         catch (Exception ex)
@@ -87,7 +87,7 @@ internal class MenuOfProduct
         int IDProduct = SafeInput.IntegerInput("Enter product ID to show: ");
         try
         {
-            Product product = idal.Product.Get(IDProduct);
+            Product product = dal.Product.Get(IDProduct);
             Console.WriteLine(product);
         }
         catch (Exception ex)
@@ -101,7 +101,7 @@ internal class MenuOfProduct
     /// </summary>
     public static void ShowListProduct()
     {
-        IEnumerable<Product?> products = idal.Product.GetAll();
+        IEnumerable<Product?> products = dal.Product.GetAll();
         foreach (var product in products)
         {
             Console.WriteLine(product);
@@ -118,7 +118,7 @@ internal class MenuOfProduct
         int IDProduct = SafeInput.IntegerInput("Enter product ID to delete: ");
         try
         {
-            idal.Product.Delete(IDProduct);
+            dal.Product.Delete(IDProduct);
             Console.WriteLine("The product was successfully deleted\n");
         }
         catch (Exception ex)

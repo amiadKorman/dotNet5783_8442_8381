@@ -5,7 +5,7 @@ namespace BlTest;
 
 internal class BlMenuOfOrder
 {
-    private static IBl Ibl = new BlImplementation.Bl();
+    private static IBl? ibl = BlApi.Factory.Get();
 
     #region Update
     /// <summary>
@@ -16,7 +16,7 @@ internal class BlMenuOfOrder
         int orderID = SafeInput.IntegerInput("Enter order ID to update shipping for: ");
         try
         {
-            Ibl.Order.UpdateShipping(orderID);
+            ibl.Order.UpdateShipping(orderID);
             Console.WriteLine("Order shipping date updated");
         }
         catch (BlAlreadyExistsException ex)
@@ -45,7 +45,7 @@ internal class BlMenuOfOrder
         int orderID = SafeInput.IntegerInput("Enter order ID to update delivery for: ");
         try
         {
-            Ibl.Order.UpdateDelivery(orderID);
+            ibl.Order.UpdateDelivery(orderID);
             Console.WriteLine("Order delivery date updated");
         }
         catch (BlAlreadyExistsException ex)
@@ -76,7 +76,7 @@ internal class BlMenuOfOrder
         int IdOrder = SafeInput.IntegerInput("Enter order ID: ");
         try
         {
-            Order order = Ibl.Order.Get(IdOrder);
+            Order order = ibl.Order.Get(IdOrder);
             Console.WriteLine(order);
         }
         catch (BlDoesNotExistException ex)
@@ -100,7 +100,7 @@ internal class BlMenuOfOrder
     {
         try
         {
-            IEnumerable<OrderForList?> orders = Ibl.Order.GetAll();
+            IEnumerable<OrderForList?> orders = ibl.Order.GetAll();
             foreach (var order in orders)
             {
                 Console.WriteLine(order);
@@ -132,7 +132,7 @@ internal class BlMenuOfOrder
         int orderID = SafeInput.IntegerInput("Enter order ID for tracking: ");
         try
         {
-            OrderTracking tracking = Ibl.Order.TrackOrder(orderID);
+            OrderTracking tracking = ibl.Order.TrackOrder(orderID);
             Console.WriteLine(tracking);
         }
         catch (BlDoesNotExistException ex)
