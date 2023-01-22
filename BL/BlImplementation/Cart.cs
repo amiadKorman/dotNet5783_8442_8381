@@ -22,7 +22,7 @@ internal class Cart : ICart
             throw new BO.BlInvalidFieldException("Product ID must be between 100000 to 1000000");
 
         if (cart.Items == null)
-            cart.Items = new ();
+            cart.Items = new();
 
         try
         {
@@ -193,7 +193,7 @@ internal class Cart : ICart
     {
         if (email.Contains("@") == false)
             throw new BO.BlInvalidFieldException("Email is not valid");
-        
+
         DO.Customer customer = new DO.Customer
         {
             ID = ID,
@@ -207,7 +207,7 @@ internal class Cart : ICart
             cart.CustomerID = customer.ID;
             return cart;
         }
-        catch(DO.DalAlreadyExistsException ex)
+        catch (DO.DalAlreadyExistsException ex)
         {
             DO.Customer cust = dal.Customer.Get(customer.ID);
             if (cust.Name == customer.Name && cust.Address == customer.Address && cust.Email == customer.Email)

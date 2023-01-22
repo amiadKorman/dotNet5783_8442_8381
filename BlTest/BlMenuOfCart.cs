@@ -1,13 +1,12 @@
 ﻿using BO;
 using BlApi;
-using DalApi;
 
 namespace BlTest;
 
 internal class BlMenuOfCart
 {
-    private static IBl? ibl = BlApi.Factory.Get();
-    
+    private static readonly IBl ibl = BlApi.Factory.Get()!;
+
     private static Cart MainCart = new();
 
     #region ADD
@@ -65,7 +64,7 @@ internal class BlMenuOfCart
             Console.WriteLine("Failed to buy cart" + ex);
         }
     }
-    
+
     /// <summary>
     /// Update amount of item in cart
     /// </summary>

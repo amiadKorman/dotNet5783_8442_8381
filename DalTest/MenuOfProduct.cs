@@ -5,7 +5,7 @@ namespace Dal;
 
 internal class MenuOfProduct
 {
-    private static IDal? dal = Factory.Get();
+    private static readonly IDal dal = Factory.Get()!;
 
     #region ADD
     /// <summary>

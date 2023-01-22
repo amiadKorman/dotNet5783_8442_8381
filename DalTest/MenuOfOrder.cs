@@ -1,12 +1,11 @@
 ﻿using DalApi;
 using DO;
-using Dal;
 
 namespace Dal;
 
 internal class MenuOfOrder
 {
-    private static IDal? dal = Factory.Get();
+    private static readonly IDal dal = Factory.Get()!;
 
     #region Add New Order
     /// <summary>

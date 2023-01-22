@@ -170,14 +170,14 @@ internal class Product : IProduct
     /// <exception cref="NullReferenceException"></exception>
     public IEnumerable<BO.ProductForList> GetList(Func<BO.ProductForList?, bool>? filter = null)
     {
-        var list =  from product in dal.Product.GetAll()
-               select new BO.ProductForList
-               {
-                   ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
-                   Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
-                   Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
-                   Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
-               };
+        var list = from product in dal.Product.GetAll()
+                   select new BO.ProductForList
+                   {
+                       ID = product?.ID ?? throw new NullReferenceException("Missing ID"),
+                       Name = product?.Name ?? throw new NullReferenceException("Missing Name"),
+                       Price = product?.Price ?? throw new NullReferenceException("Missing Price"),
+                       Category = (BO.Category?)product?.Category ?? throw new NullReferenceException("Missing product category"),
+                   };
         return filter == null ? list : list.Where(filter);
     }
 

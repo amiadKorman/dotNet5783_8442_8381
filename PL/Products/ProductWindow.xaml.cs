@@ -9,7 +9,7 @@ namespace PL.Products;
 /// </summary>
 public partial class ProductWindow : Window
 {
-    private BlApi.IBl? bl;
+    private readonly BlApi.IBl bl;
 
     public ProductWindow(BlApi.IBl bl)
     {

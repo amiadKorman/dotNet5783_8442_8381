@@ -5,7 +5,7 @@ namespace Dal;
 
 internal class MenuOfOrderItems
 {
-    private static IDal? dal = Factory.Get();
+    private static readonly IDal dal = Factory.Get()!;
 
     #region ADD
     /// <summary>
@@ -88,7 +88,6 @@ internal class MenuOfOrderItems
             Console.WriteLine(ex.Message + ", please try again\n");
         }
     }
-   
 
     /// <summary>
     /// Print specific order item by order and product ID
@@ -128,7 +127,7 @@ internal class MenuOfOrderItems
         int orderID = SafeInput.IntegerInput("Enter Order item's order ID: ");
         try
         {
-            
+
             IEnumerable<OrderItem?> orderItems = dal.OrderItem.GetAll(oi => oi?.OrderID == orderID);
             foreach (var orderItem in orderItems)
             {

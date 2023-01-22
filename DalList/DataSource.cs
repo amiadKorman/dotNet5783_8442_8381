@@ -8,7 +8,7 @@ namespace Dal;
 internal sealed class DataSource
 {
     internal static DataSource instance { get; }
-    
+
     private DataSource() => s_Initialize();
 
     static DataSource() => instance = new DataSource();
@@ -48,7 +48,7 @@ internal sealed class DataSource
         private static int orderItemID = startOrderItemNumber;
         internal static int NextOrderItemID { get => orderItemID++; }
     }
-    
+
     /// <summary>
     /// Initilazing all entities lists
     /// </summary>

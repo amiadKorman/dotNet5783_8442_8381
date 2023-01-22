@@ -9,7 +9,7 @@ namespace PL.Products;
 /// </summary>
 public partial class ProductListWindow : Window
 {
-    private BlApi.IBl? bl = BlApi.Factory.Get();
+    private readonly BlApi.IBl bl = BlApi.Factory.Get();
 
     public ProductListWindow()
     {
@@ -22,7 +22,7 @@ public partial class ProductListWindow : Window
         {
             CategorySelector.Items.Add(category);
         }
-        
+
         CategorySelector.SelectedIndex = 0;
     }
 

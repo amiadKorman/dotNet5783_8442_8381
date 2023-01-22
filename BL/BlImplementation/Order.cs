@@ -1,5 +1,4 @@
 ﻿using BlApi;
-using System.Linq;
 
 namespace BlImplementation;
 

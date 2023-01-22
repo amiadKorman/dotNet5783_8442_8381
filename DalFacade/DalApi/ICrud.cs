@@ -29,13 +29,13 @@ public interface ICrud<T> where T : struct
     /// <param name="filter"></param>
     /// <returns></returns>
     IEnumerable<T?> GetAll(Func<T?, bool>? filter = null);
-    
+
     /// <summary>
     /// Update an item
     /// </summary>
     /// <param name="item"></param>
     void Update(T item);
-    
+
     /// <summary>
     /// Delete an item
     /// </summary>

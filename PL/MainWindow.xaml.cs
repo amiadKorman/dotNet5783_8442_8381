@@ -1,4 +1,5 @@
-﻿using PL.Products;
+﻿using BlApi;
+using PL.Products;
 using System.Windows;
 
 namespace PL;
@@ -8,8 +9,7 @@ namespace PL;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private BlApi.IBl? bl = BlApi.Factory.Get();
-
+    private static readonly BlApi.IBl bl = BlApi.Factory.Get()!;
     /// <summary>
     /// Constructor
     /// </summary>

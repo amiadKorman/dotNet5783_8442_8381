@@ -5,7 +5,7 @@ namespace BlTest;
 
 internal class BlMenuOfOrder
 {
-    private static IBl? ibl = BlApi.Factory.Get();
+    private static readonly IBl ibl = Factory.Get()!;
 
     #region Update
     /// <summary>
