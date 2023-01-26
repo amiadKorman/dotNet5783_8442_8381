@@ -19,13 +19,26 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Move to product list window
+    /// Open the window of the menager
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void ShowProductButton_Click(object sender, RoutedEventArgs e)
+    private void logIn_menager(object sender, RoutedEventArgs e)
     {
-        new ProductListWindow().Show();
+        new MenuWindowMenager().Show();
+        Close();
+    }
+
+    /// <summary>
+    /// Open the window of the Customer
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void logIn_customer(object sender, RoutedEventArgs e)
+    {
+        new MenuWindowCustomer().Show();
         Close();
     }
 }
+
+
