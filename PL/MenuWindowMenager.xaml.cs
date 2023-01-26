@@ -26,10 +26,14 @@ namespace PL
             //InitializeComponent();
         }
 
-        private void show_Product(object sender, RoutedEventArgs e)
+        private void Show_Product(object sender, RoutedEventArgs e)
         {
             new ProductListWindow().Show();
             Close();
         }
+
+
+
     }
+    
 }
