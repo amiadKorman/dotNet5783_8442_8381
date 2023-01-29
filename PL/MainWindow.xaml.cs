@@ -25,7 +25,7 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void logIn_menager(object sender, RoutedEventArgs e)
     {
-        new MenuWindowMenager().Show();
+        new Admin.MenuWindowMenager().Show();
         Close();
     }
 
