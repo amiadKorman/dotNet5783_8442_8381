@@ -23,5 +23,10 @@ namespace PL.Admin
         {
             InitializeComponent();
         }
+
+        private void show_all_cart(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="CartWindowMenager" Height="450" Width="800">
     <Grid>
-        
+        <Grid>
+            <Button Content="show all cart" HorizontalAlignment="Left" Height="61" Margin="320,284,0,0" VerticalAlignment="Top" Width="182" Click="show_all_cart"/>
+        </Grid>
+
     </Grid>
 </Window>

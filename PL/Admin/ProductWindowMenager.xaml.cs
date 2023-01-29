@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL
+namespace PL.Admin
 {
     /// <summary>
     /// Interaction logic for ProductWindowMenager.xaml
@@ -21,11 +21,23 @@ namespace PL
     {
         public ProductWindowMenager()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
 
-        
+        private void Add_product(object sender, RoutedEventArgs e)
+        {
+            new Products.ProductListWindow().Show();
+            new Products.ProductWindow().Show();
+            Close();
 
-        
+
+        }
+
+        private void Show_product(object sender, RoutedEventArgs e)
+        {
+            new Products.ProductListWindow().Show();
+            Close();
+
+        }
     }
 }
