@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MenuWindowCustomer" Height="450" Width="800">
     <Grid>
-        
+        <Button Content="sing in" HorizontalAlignment="Center" Height="33" Margin="0,301,0,0" VerticalAlignment="Top" Width="144" Click="sing_in"/>
+        <Button Content="sing up" HorizontalAlignment="Center" Height="33" Margin="0,359,0,0" VerticalAlignment="Top" Width="144" Click="sing_up"/>
+
     </Grid>
 </Window>

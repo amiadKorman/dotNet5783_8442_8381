@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Customer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,27 @@ namespace PL
     /// </summary>
     public partial class MenuWindowCustomer : Window
     {
+        private static readonly BlApi.IBl bl = BlApi.Factory.Get()!;
+
+        
         public MenuWindowCustomer()
         {
             InitializeComponent();
+        }
+
+       
+
+        private void sing_in(object sender, RoutedEventArgs e)
+        {
+            new CustomerSingInWindow().Show();
+            Close();
+
+        }
+
+        private void sing_up(object sender, RoutedEventArgs e)
+        {
+            new CustomerSingUpWindow().Show();
+            Close();
         }
     }
 }
