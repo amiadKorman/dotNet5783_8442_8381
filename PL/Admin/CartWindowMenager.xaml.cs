@@ -28,5 +28,16 @@ namespace PL.Admin
         {
 
         }
+
+        private void Button_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
+
+        private void home_page(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            Close();
+        }
     }
 }

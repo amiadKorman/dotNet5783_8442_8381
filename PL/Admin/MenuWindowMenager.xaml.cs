@@ -35,5 +35,12 @@ namespace PL.Admin
         {
 
         }
+        
+
+        private void home_page(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            Close();
+        }
     }
 }

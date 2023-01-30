@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace PL.Admin
     /// </summary>
     public partial class ProductWindowMenager : Window
     {
+        private readonly BlApi.IBl bl = BlApi.Factory.Get();
+
         public ProductWindowMenager()
         {
             InitializeComponent();
@@ -26,18 +29,26 @@ namespace PL.Admin
 
         private void Add_product(object sender, RoutedEventArgs e)
         {
-            new Products.ProductListWindow().Show();
-            new Products.ProductWindow().Show();
+            new ProductWindow(bl).Show();
             Close();
-
-
         }
+        
+        
+
+
 
         private void Show_product(object sender, RoutedEventArgs e)
         {
-            new Products.ProductListWindow().Show();
+            new ProductListWindow().Show();
             Close();
+        }
 
+        
+
+        private void home_page(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            Close();
         }
     }
 }
