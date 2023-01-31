@@ -39,8 +39,7 @@ namespace PL
 
         private void sing_up(object sender, RoutedEventArgs e)
         {
-            new CustomerSingUpWindow().Show();
-            Close();
+            
         }
     }
 }
