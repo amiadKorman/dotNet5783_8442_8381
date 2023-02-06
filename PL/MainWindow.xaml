@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="admin" Content="Admin" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Width="130" Click="logIn_menager" Margin="0,284,0,0"/>
-        <Button x:Name="customer" Content="Customer" HorizontalAlignment="Center" VerticalAlignment="Top" Height="35" Width="130" Click="logIn_customer" Margin="0,344,0,0"/>
+
+            
+               
+       
 
     </Grid>
 </Window>

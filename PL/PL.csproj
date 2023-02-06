@@ -20,4 +20,9 @@
 	  <ProjectReference Include="..\BL\BL.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Customer\CustomerSingInWindow\" />
+	  <Folder Include="Customer\UserControls\" />
+	</ItemGroup>
+
 </Project>
