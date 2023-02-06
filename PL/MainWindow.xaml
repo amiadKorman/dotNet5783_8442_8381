@@ -4,13 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+       mc:Ignorable="d" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        AllowsTransparency="True"         
+        Height="481" 
+        Width="809">
     <Grid>
 
-            
-               
-       
+        <Button Content="Admin" Click="logIn_menager" Style="{StaticResource CustomerSingInmainButton}" Margin="300,281,300,149" />
+        <Button Content="Customer" Click="logIn_customer" Style="{StaticResource CustomerSingInmainButton}" Margin="300,355,300,70" />
+
+
+
+
 
     </Grid>
 </Window>

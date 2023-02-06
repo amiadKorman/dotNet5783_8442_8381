@@ -36,7 +36,9 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void logIn_customer(object sender, RoutedEventArgs e)
     {
-        
+        new CustomerSingInWindow().Show();
+        Close();
+
     }
 }
 
