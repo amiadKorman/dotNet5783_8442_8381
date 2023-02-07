@@ -42,6 +42,10 @@ public partial class ProductWindow : Window
         InStockTextBox.Text = product1.InStock.ToString();
     }
 
+    public ProductWindow()
+    {
+    }
+
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
         try

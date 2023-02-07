@@ -22,7 +22,7 @@
             <Label x:Name="CategoryLabel" Grid.Column="0" Content="Category:" HorizontalAlignment="Right"   VerticalAlignment="Center" FontSize="22"/>
 
         </Grid>
-        <ListView x:Name="ProductsListView" Grid.Row="1" MouseDoubleClick="ProductsListView_MouseDoubleClick"></ListView>
+        <ListView x:Name="ProductsListView" Grid.Row="1" MouseDoubleClick="ProductsListView_MouseDoubleClick" SelectionChanged="ProductsListView_SelectionChanged"></ListView>
         <Button x:Name="AddButton" Content="Add Product" Grid.Row="2" HorizontalAlignment="Right" Margin="5" Padding="5" Click="AddButton_Click"/>
 
 
