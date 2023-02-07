@@ -7,10 +7,7 @@
         mc:Ignorable="d"
         Title="CartWindowMenager" Height="450" Width="800">
     <Grid>
-        <Grid>
-            <Button Content="show all cart" HorizontalAlignment="Left" Height="61" Margin="320,284,0,0" VerticalAlignment="Top" Width="182" Click="show_all_cart"/>
-            <Button Content="Button" HorizontalAlignment="Left" Height="32" Margin="754,10,0,0" VerticalAlignment="Top" Width="36" Image.ImageFailed="Button_ImageFailed" Click="home_page"/>
-        </Grid>
+       
 
     </Grid>
 </Window>

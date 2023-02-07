@@ -1,6 +1,7 @@
 ﻿using BlApi;
 using PL.Products;
 using System.Windows;
+using PL.Admin.AdminSingInWindow;
 
 namespace PL;
 
@@ -25,7 +26,7 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void logIn_menager(object sender, RoutedEventArgs e)
     {
-        new Admin.MenuWindowMenager().Show();
+        new AdminSingInWindow().Show();
         Close();
     }
 

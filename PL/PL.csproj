@@ -21,8 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Customer\CustomerSingUpWindow\" />
-	  <Folder Include="Customer\UserControls\" />
+	  <Folder Include="Admin\NewFolder\" />
 	</ItemGroup>
 
 </Project>

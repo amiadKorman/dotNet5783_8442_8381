@@ -41,4 +41,9 @@ public partial class ProductListWindow : Window
     private void AddButton_Click(object sender, RoutedEventArgs e) => new ProductWindow(bl).Show();
 
     private void ProductsListView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) => new ProductWindow(bl, ((BO.ProductForList)ProductsListView.SelectedItem).ID).Show();
+
+    private void ProductsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
 }
