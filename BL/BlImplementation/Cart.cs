@@ -4,7 +4,7 @@ namespace BlImplementation;
 
 internal class Cart : ICart
 {
-    private DalApi.IDal? dal = DalApi.Factory.Get();
+    private DalApi.IDal dal = DalApi.Factory.Get()!;
 
     /// <summary>
     /// Add product to cart, for catalog and product details screens
