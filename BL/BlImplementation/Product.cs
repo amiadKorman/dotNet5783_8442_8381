@@ -7,7 +7,7 @@ namespace BlImplementation;
 /// </summary>
 internal class Product : IProduct
 {
-    private DalApi.IDal? dal = DalApi.Factory.Get();
+    private DalApi.IDal dal = DalApi.Factory.Get()!;
 
     #region Add
     /// <summary>
