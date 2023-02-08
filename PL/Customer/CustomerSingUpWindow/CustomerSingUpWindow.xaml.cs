@@ -21,7 +21,7 @@ namespace PL.Customer.CustomerSingUpWindow
     {
         public CustomerSingUpWindow()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -42,14 +42,6 @@ namespace PL.Customer.CustomerSingUpWindow
 
         }
 
-        private void MyTextBox_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MyTextBox_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
     }
 }
