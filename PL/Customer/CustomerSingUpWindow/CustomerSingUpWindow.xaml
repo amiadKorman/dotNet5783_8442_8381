@@ -21,7 +21,7 @@
                 <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Text="Let's get you set up" Foreground="#363636"/>
                 <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Margin="0 20 0 20" Foreground="#363636" Text="it should only take a couple of minutes to pair with your watch"/>
 
-                <Button Style="{StaticResource buttonBlack}">
+                <Button Style="{StaticResource CustomerSingUpbuttonBlack}">
                     
                 </Button>
 
@@ -29,10 +29,10 @@
         </Border>
 
         <!--Input Section-->
-        <!--!<Border Grid.Column="1" Padding="20" MouseDown="Border_MouseDown" Background="#ffffff" CornerRadius="0 25 25 0">
+        <Border Grid.Column="1" Padding="20" MouseDown="Border_MouseDown" Background="#ffffff" CornerRadius="0 25 25 0">
             <Grid>
-                <Image Source="/Images/close.png" Width="25" Margin="0 4 5 0" Style="{StaticResource iconApp}"/>
-                <Image Source="/Images/minimize.png" Width="20" Margin="0 7 40 0" Style="{StaticResource iconApp}"/>
+                <Image Source="/Images/close.png" Width="25" Margin="0 4 5 0" Style="{StaticResource CustomerSingUpiconApp}"/>
+                <Image Source="/Images/minimize.png" Width="20" Margin="0 7 40 0" Style="{StaticResource CustomerSingUpiconApp}"/>
 
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="475" Width="450">
                     <Grid.ColumnDefinitions>
@@ -51,13 +51,13 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="Name" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="1" Text="Family" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="2" Text="Gender" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="3" Text="Date of Birth" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="4" Text="Email" Style="{StaticResource text}"/>
-                    <TextBlock Grid.Row="5" Text="Mobile" Style="{StaticResource text}" Height="0" Margin="0,0,10,0"/>
-                    <TextBlock Grid.Row="6" Text="Membership" Style="{StaticResource text}" Height="32"/>
+                    <TextBlock Grid.Row="0" Text="Name" Style="{StaticResource CustomerSingUptext}"/>
+                    <TextBlock Grid.Row="1" Text="Family" Style="{StaticResource CustomerSingUptext}"/>
+                    <TextBlock Grid.Row="2" Text="Gender" Style="{StaticResource CustomerSingUptext}"/>
+                    <TextBlock Grid.Row="3" Text="Date of Birth" Style="{StaticResource CustomerSingUptext}"/>
+                    <TextBlock Grid.Row="4" Text="Email" Style="{StaticResource CustomerSingUptext}"/>
+                    <TextBlock Grid.Row="5" Text="Mobile" Style="{StaticResource CustomerSingUptext}" Height="0" Margin="0,0,10,0"/>
+                    <TextBlock Grid.Row="6" Text="Membership" Style="{StaticResource CustomerSingUptext}" Height="32"/>
 
 
 
@@ -71,13 +71,13 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Style="{StaticResource buttonMain}" Margin="0,0,10,0" Content="Cancel" />
-                        <Button Grid.Column="1" Style="{StaticResource buttonMainGreen}" Margin="10 0 0 0" Content="Save"/>
+                        <Button Style="{StaticResource CustomerSingUpbuttonMain}" Margin="0,0,10,0" Content="Cancel" />
+                        <Button Grid.Column="1" Style="{StaticResource CustomerSingUpbuttonMainGreen}" Margin="10 0 0 0" Content="Save"/>
                     </Grid>
 
 
                 </Grid>
             </Grid>
-        </Border>-->
+        </Border>
     </Grid>
 </Window>

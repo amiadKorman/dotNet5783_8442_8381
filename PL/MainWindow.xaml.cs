@@ -1,5 +1,4 @@
 ﻿using BlApi;
-using PL.Products;
 using System.Windows;
 using PL.Admin.AdminSingInWindow;
 
@@ -39,6 +38,16 @@ public partial class MainWindow : Window
     {
         new CustomerSingInWindow().Show();
         Close();
+
+    }
+
+    private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+
+    }
+
+    private void Image_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
 
     }
 }

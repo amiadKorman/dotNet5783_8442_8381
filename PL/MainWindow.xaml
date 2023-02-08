@@ -12,6 +12,14 @@
         Width="809">
     <Grid>
 
+        <Image Source="/Images/close.png" Grid.Column="1" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource CustomerSingInimgClose}"/>
+
+        <Border Background="#FFFFFF" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+            <StackPanel VerticalAlignment="Center" Height="389">
+                <TextBlock Text="Welcome to K.K electrinic" Foreground="#3AB19B" Style="{StaticResource CustomerSingInTitleText}" RenderTransformOrigin="0.474,0.474" />                    
+            </StackPanel>
+        </Border>
+        
         <Button Content="Admin" Click="logIn_menager" Style="{StaticResource CustomerSingInmainButton}" Margin="300,281,300,149" />
         <Button Content="Customer" Click="logIn_customer" Style="{StaticResource CustomerSingInmainButton}" Margin="300,355,300,70" />
 

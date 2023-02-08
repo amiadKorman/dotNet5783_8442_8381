@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PL.Customer.CustomerSingUpWindow
+namespace PL.Admin.AdminOrdersView
 {
     /// <summary>
-    /// Interaction logic for CustomerSingUpWindow.xaml
+    /// Interaction logic for AdminOrdersView.xaml
     /// </summary>
-    public partial class CustomerSingUpWindow : Window
+    public partial class AdminOrdersView : Window
     {
-        public CustomerSingUpWindow()
+        public AdminOrdersView()
         {
             InitializeComponent();
-        }
-
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }

@@ -12,16 +12,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="MaterialDesignColors" Version="2.1.1" />
-	  <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\BL\BL.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Admin\NewFolder\" />
+	  <Folder Include="Products\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+	  <PackageReference Include="MaterialDesignThemes" Version="4.7.1" />
 	</ItemGroup>
 
 </Project>

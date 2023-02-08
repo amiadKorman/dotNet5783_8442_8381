@@ -15,24 +15,26 @@ using System.Windows.Shapes;
 namespace PL.Admin
 {
     /// <summary>
-    /// Interaction logic for CartWindowMenager.xaml
+    /// Interaction logic for MenuWindowMenager.xaml
     /// </summary>
-    public partial class CartWindowMenager : Window
+    public partial class MenuWindowMenager : Window
     {
-        public CartWindowMenager()
+        public MenuWindowMenager()
         {
             InitializeComponent();
         }
 
-        private void show_all_cart(object sender, RoutedEventArgs e)
+        private void Product(object sender, RoutedEventArgs e)
         {
+            
 
         }
 
-        private void Button_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        private void Cart(object sender, RoutedEventArgs e)
         {
 
         }
+        
 
         private void home_page(object sender, RoutedEventArgs e)
         {

@@ -1,5 +1,4 @@
-﻿using PL.Customer.CustomerSingUpWindow;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+
 
 namespace PL.Admin.AdminSingInWindow
 {
@@ -70,7 +71,16 @@ namespace PL.Admin.AdminSingInWindow
             txtEmail.Focus();
         }
 
-        
+        private void Sing_In(object sender, RoutedEventArgs e)
+        {
+            if(true)
+            {
+                new MenuWindowMenager().Show();
+                this.Close();
+            }
 
+
+
+        }
     }
 }
