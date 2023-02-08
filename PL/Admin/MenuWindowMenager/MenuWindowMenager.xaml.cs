@@ -41,5 +41,10 @@ namespace PL.Admin
             new MainWindow().Show();
             Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -34,15 +34,8 @@
                 </Button>
 
                 <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 50 0 30">
-                    <DockPanel>
-                        <!--Menu Logo-->
-                        <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Left" Margin="20 -30 0 0">
-                            <Ellipse>
-                                <Ellipse.Fill>
-                                    <ImageBrush ImageSource="/Images/p1.jpg"/>
-                                </Ellipse.Fill>
-                            </Ellipse>
-                        </Border>
+                    <DockPanel>              
+                       
 
                         <!--Menu Titles-->
                         <TextBlock Text="Silvers Club" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="5 25 0 10" TextAlignment="Center"/>
