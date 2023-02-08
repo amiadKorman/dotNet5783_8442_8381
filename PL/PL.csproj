@@ -18,7 +18,6 @@
 	<ItemGroup>
 	  <Folder Include="Admin\MenuWindowMenager\" />
 	  <Folder Include="Products\" />
-	  <Folder Include="UserControls\" />
 	</ItemGroup>
 
 	<ItemGroup>

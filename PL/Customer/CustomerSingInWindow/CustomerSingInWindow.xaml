@@ -85,7 +85,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Image Source="/Images/Lock.png" Height="20" />
-                        <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource CustomerSingIntextHint}" />
+                        <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Passwordvcxvssdfdsfsd" Style="{StaticResource CustomerSingIntextHint}" />
                         <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource CustomerSingIntextBox}" />
                     </Grid>
                 </Border>

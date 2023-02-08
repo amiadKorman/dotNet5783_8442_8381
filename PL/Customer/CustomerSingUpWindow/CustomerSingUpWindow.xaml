@@ -38,28 +38,36 @@
                 </Grid>
 
                 <!--#region Name-->
-                <TextBlock Text="Name" Style="{StaticResource CustomerSingUptext}" Height="21" Margin="118,104,343,0" VerticalAlignment="Top"/>
+                <TextBlock Text="Name" Style="{StaticResource CustomerSingUptext}" Height="21" Margin="103,113,358,0" VerticalAlignment="Top"/>
                 <TextBox TextWrapping="Wrap" Text="TextBox" Margin="325,96,101,0" VerticalAlignment="Top"/>
                 <!--#endregion-->
 
                 <!--#region Family Name-->
-                <TextBlock Text="Family" Style="{StaticResource CustomerSingUptext}" Margin="116,168,330,414" VerticalAlignment="Stretch"/>
-                <TextBox TextWrapping="Wrap" Text="TextBox" Margin="325,158,101,0" VerticalAlignment="Top"/>
+                <TextBlock Text="Family" Style="{StaticResource CustomerSingUptext}" Margin="96,160,350,422" VerticalAlignment="Stretch"/>
+                <TextBox TextWrapping="Wrap" Text="TextBox" Margin="325,155,101,0" VerticalAlignment="Top" RenderTransformOrigin="0.509,0.232"/>
                 <!--#endregion-->
 
+                <!--#region Password-->
+                <TextBlock Text="Password" Style="{StaticResource CustomerSingUptext}" Margin="96,219,350,363" VerticalAlignment="Stretch"/>
+                <PasswordBox  Margin="322,217,104,361" />
+                <!--#endregion-->
+
+
                 <!--#region Date of Birth-->
-                <TextBlock Text="Date of Birth" Style="{StaticResource CustomerSingUptext}" Margin="116,228,344,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="0.207,3.636"/>
-                <TextBox TextWrapping="Wrap" Text="T2Boxs" Margin="325,223,101,0" VerticalAlignment="Top"/>
+
+
+                <TextBlock Text="Date of Birth" Style="{StaticResource CustomerSingUptext}" Margin="103,277,357,0" VerticalAlignment="Top" Height="33" RenderTransformOrigin="0.207,3.636"/>
+                <TextBox TextWrapping="Wrap" Text="T2Boxs" Margin="325,272,101,0" VerticalAlignment="Top"/>
                 <!--#endregion-->
-                
+
                 <!--#region Email-->
-                <TextBlock Text="Email" Style="{StaticResource CustomerSingUptext}" Margin="116,288,344,0" Height="42" RenderTransformOrigin="0.513,2.346" VerticalAlignment="Top"/>
-                <TextBox TextWrapping="Wrap" Text="Email" Margin="325,284,101,0" VerticalAlignment="Top"/>
+                <TextBlock Text="Email" Style="{StaticResource CustomerSingUptext}" Margin="103,340,357,0" Height="36" RenderTransformOrigin="0.513,2.346" VerticalAlignment="Top"/>
+                <TextBox TextWrapping="Wrap" Text="Email" Margin="325,338,101,0" VerticalAlignment="Top"/>
                 <!--#endregion-->
-                
+
                 <!--#region Mobile-->
-                <TextBlock Text="Mobile" Style="{StaticResource CustomerSingUptext}" Height="21" Margin="118,357,343,0" VerticalAlignment="Top"/>
-                <TextBox TextWrapping="Wrap" Margin="325,349,101,0" VerticalAlignment="Top" />
+                <TextBlock Text="Mobile" Style="{StaticResource CustomerSingUptext}" Height="21" Margin="103,403,358,0" VerticalAlignment="Top"/>
+                <TextBox TextWrapping="Wrap" Margin="325,395,101,0" VerticalAlignment="Top" />
                 <!--#endregion-->
 
 
@@ -74,14 +82,15 @@
 
                     <Button Grid.Column="1" Style="{StaticResource CustomerSingUpbuttonMainGreen}" Margin="10 0 0 0" Content="Save"/>
                 </Grid>
-                
+
 
 
 
             </Grid>
 
         </Border>
-        
+
+
 
     </Grid>
 </Window>
