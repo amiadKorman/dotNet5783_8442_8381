@@ -26,6 +26,29 @@ namespace PL.Customer.CustomerSingUpWindow
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (true)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void Cencel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MyTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MyTextBox_Loaded_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }

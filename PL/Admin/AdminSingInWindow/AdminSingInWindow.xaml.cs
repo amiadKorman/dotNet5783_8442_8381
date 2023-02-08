@@ -73,11 +73,7 @@ namespace PL.Admin.AdminSingInWindow
 
         private void Sing_In(object sender, RoutedEventArgs e)
         {
-            if(true)
-            {
-                new MenuWindowMenager().Show();
-                this.Close();
-            }
+           
 
 
 
