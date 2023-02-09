@@ -542,7 +542,7 @@
         </Style>
 
 
-        <Style x:Key="ManegergridRemoveButton" TargetType="Button" BasedOn="{StaticResource ManegergridButtonIcon}">
+        <Style x:Key="ManegergridRemoveButton" TargetType="Button" BasedOn="{StaticResource ManegergridEditButton}">
             <Setter Property="Background" Value="#D32F2F" />
             <Setter Property="BorderBrush" Value="#B71C1C" />
             <Style.Triggers>

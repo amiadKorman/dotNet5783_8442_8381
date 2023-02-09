@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL.Admin.MenuWindowMenager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,10 +74,8 @@ namespace PL.Admin.AdminSingInWindow
 
         private void Sing_In(object sender, RoutedEventArgs e)
         {
-           
-
-
-
-        }
+            new ProductsWindowMenager().Show();
+            this.Close();
+        }       
     }
 }
