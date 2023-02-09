@@ -410,7 +410,7 @@
             <Setter Property="Height" Value="15" />
         </Style>
 
-        <Style x:Key="MenagerPagesSearchTextbox" TargetType="TextBox">
+        <Style x:Key="ManegerSearchTextbox" TargetType="TextBox">
             <Setter Property="Background" Value="#ffffff" />
             <Setter Property="Foreground" Value="#B0B9C6" />
             <Setter Property="BorderThickness" Value="0" />
@@ -497,14 +497,14 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
-        
-        
-        
-        
-        
 
-        <Style x:Key="filterTextBox" TargetType="TextBox" BasedOn="{StaticResource searchTextbox}">
+
+
+
+
+
+
+        <Style x:Key="ManegerfilterTextBox" TargetType="TextBox" BasedOn="{StaticResource searchTextbox}">
             <Setter Property="Padding" Value="10 7" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -527,7 +527,7 @@
         </Style>
 
 
-        <Style x:Key="pagingButton" TargetType="Button">
+        <Style x:Key="ManegerpagingButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#6C7682" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -552,14 +552,14 @@
         </Style>
 
 
-        <Style x:Key="pagingButtonIcon" TargetType="Icon:PackIconMaterial">
+        <Style x:Key="ManegerpagingButtonIcon" TargetType="Icon:PackIconMaterial">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Width" Value="10" />
             <Setter Property="Height" Value="10" />
         </Style>
 
 
-        <Style x:Key="gridEditButton" TargetType="Button">
+        <Style x:Key="ManegergridEditButton" TargetType="Button">
             <Setter Property="Background" Value="#512DA8" />
             <Setter Property="BorderBrush" Value="#4A148C" />
             <Setter Property="Foreground" Value="#ffffff" />
@@ -582,7 +582,7 @@
         </Style>
 
 
-        <Style x:Key="gridRemoveButton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
+        <Style x:Key="ManegergridRemoveButton" TargetType="Button" BasedOn="{StaticResource gridEditButton}">
             <Setter Property="Background" Value="#D32F2F" />
             <Setter Property="BorderBrush" Value="#B71C1C" />
             <Style.Triggers>
@@ -593,7 +593,7 @@
         </Style>
 
 
-        <Style x:Key="gridButtonIcon" TargetType="Icon:PackIconMaterial">
+        <Style x:Key="ManegergridButtonIcon" TargetType="Icon:PackIconMaterial">
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="Width" Value="12" />
             <Setter Property="Height" Value="12" />
