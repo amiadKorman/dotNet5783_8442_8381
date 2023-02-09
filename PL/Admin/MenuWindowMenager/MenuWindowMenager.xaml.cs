@@ -54,12 +54,26 @@ namespace PL.Admin.MenuWindowMenager
             }
         }
 
+        private void membersDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
         private void log_out(object sender, MouseButtonEventArgs e)
         {
             new MainWindow().Show();
             this.Close();
         }
+
+        private void PackIconMaterial_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 
     
 }
+
+
+
+
