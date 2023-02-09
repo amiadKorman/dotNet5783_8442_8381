@@ -53,6 +53,12 @@ namespace PL.Admin.MenuWindowMenager
                 this.DragMove();
             }
         }
+
+        private void log_out(object sender, MouseButtonEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+        }
     }
 
     
