@@ -28,8 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PL", "PL\PL.csproj", "{26A2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC3A4356-D991-42A1-9B7B-A2B67AC676B9}"
 	ProjectSection(SolutionItems) = preProject
-		xml\dal-config.xml = xml\dal-config.xml
 		Admins.xml = Admins.xml
+		xml\dal-config.xml = xml\dal-config.xml
 	EndProjectSection
 EndProject
 Global

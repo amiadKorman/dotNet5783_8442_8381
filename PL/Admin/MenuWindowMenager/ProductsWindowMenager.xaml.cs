@@ -15,6 +15,7 @@ using System.Xml.Linq;
 using PL.Admin.MenuWindowMenager;
 using PL.Products;
 
+
 namespace PL.Admin.MenuWindowMenager
 {
     /// <summary>
@@ -54,7 +55,6 @@ namespace PL.Admin.MenuWindowMenager
         {
 
         }
-
       
 
         private void CartChoise(object sender, RoutedEventArgs e)
@@ -65,6 +65,7 @@ namespace PL.Admin.MenuWindowMenager
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            new ProductWindow(bl).Show();
             
         }
     }

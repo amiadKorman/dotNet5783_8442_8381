@@ -41,7 +41,7 @@
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" >
-                            <Button Style="{StaticResource MenagerPagesmenuButton}">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="Product_button">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Devices"  Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="Protuct"/>
