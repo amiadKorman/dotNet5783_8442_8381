@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Admins>
   <Admins>
-    <ID></ID>
-    <Name></Name>
-    <Email></Email>
-    <Password></Password>
+    <ID>1</ID>
+    <Name>Amiad korman</Name>
+    <Email>Amiadk16@gmail.com</Email>
+    <Password>123456</Password>
   </Admins>
   <Admins>
     <ID></ID>

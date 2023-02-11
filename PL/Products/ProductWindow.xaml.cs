@@ -52,6 +52,7 @@ public partial class ProductWindow : Window
             bl.Product.Add(UserProduct);
             MessageBox.Show("The product successfully added");
             Close();
+
         }
         catch (Exception ex)
         {

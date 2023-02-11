@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using PL.Admin.MenuWindowMenager;
 using PL.Products;
+using PL.Admin;
 
 
 namespace PL.Admin.MenuWindowMenager
@@ -63,10 +64,21 @@ namespace PL.Admin.MenuWindowMenager
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_product(object sender, RoutedEventArgs e)
         {
             new ProductWindow(bl).Show();
-            
+            this.Show();
+
+
+
+        }
+
+        private void CustomerChoise(object sender, RoutedEventArgs e)
+        {
+            new CustomerWindowMenager().Show();
+            this.Close();
         }
     }
+
+     
 }

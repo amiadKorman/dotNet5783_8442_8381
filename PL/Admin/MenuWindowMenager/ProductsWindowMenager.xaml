@@ -54,7 +54,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource MenagerPagesmenuButton}">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="CustomerChoise">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountMultipleOutline" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="customers"/>
@@ -123,7 +123,7 @@
                 <TextBlock Text="Products" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
                 <!--Add Button-->
-                <Button Style="{StaticResource MenagerPagesaddButton}" Click="Button_Click">
+                <Button Style="{StaticResource MenagerPagesaddButton}" Click="Add_product">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
                         <TextBlock Text="Add New Product"/>
@@ -143,7 +143,7 @@
 
                     <TextBox Name="textBoxFilter" Style="{StaticResource ManegerfilterTextBox}"/>
                 </Grid>
-
+                <!--#endregion-->
                 <!--Members Data Grid-->
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" SelectionChanged="membersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
@@ -155,7 +155,7 @@
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
                         <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                        <DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn Header="Product" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -168,9 +168,10 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="*"/>                        
+                        <DataGridTextColumn Header="Category" Binding="{Binding Category}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="In Stock" Binding="{Binding Stock}" IsReadOnly="True" Width="*"/>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

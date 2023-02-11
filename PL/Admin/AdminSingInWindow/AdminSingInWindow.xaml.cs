@@ -12,7 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Xml.Linq;
+using System.Xml;
+using System.Xml.XPath;
 
 
 namespace PL.Admin.AdminSingInWindow
@@ -74,6 +75,22 @@ namespace PL.Admin.AdminSingInWindow
 
         private void Sing_In(object sender, RoutedEventArgs e)
         {
+           
+            XmlDocument xmlDoc = new XmlDocument();
+            //xmlDoc.Load("dotNet5783_8442_8381/xml/Admins.xml");
+            XmlNodeList nodes = xmlDoc.GetElementsByTagName("Admins");
+            foreach (XmlNode node in nodes)
+            {
+                XmlNode nameNode = node.SelectSingleNode("Email");
+                XmlNode passwordNode = node.SelectSingleNode("Password");
+                
+                
+
+            }
+
+
+        
+
             new ProductsWindowMenager().Show();
             this.Close();
         }       
