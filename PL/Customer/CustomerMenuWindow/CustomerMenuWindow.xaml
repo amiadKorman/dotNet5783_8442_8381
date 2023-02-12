@@ -46,7 +46,7 @@
                     <Icon:PackIconMaterial Kind="Account"/>
                 </Button>
                 <!--endregion-->
-                <!--Members Data Grid-->
+                <!--region Members Data Grid-->
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" SelectionChanged="membersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
 
@@ -83,6 +83,7 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+                <!--endregion-->
             </Grid>
         </Grid>
     </Border>
