@@ -24,10 +24,11 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!--Menu Icon-->
+                <!--region Menu Icon-->
                 <Button Style="{StaticResource MenagerPagestopButton}" HorizontalAlignment="Left" Margin="20 28 0 35">
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15" />
                 </Button>
+                <!--endregion-->
 
                 <Border Grid.Row="1" Background="#623ED0" CornerRadius="0 50 0 30">
                     <DockPanel>
