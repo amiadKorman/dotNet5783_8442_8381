@@ -78,6 +78,7 @@
                         </StackPanel>
                         <!--#endregion-->
 
+                        
                         <Button Style="{StaticResource MenagerPagesmenuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
