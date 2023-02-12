@@ -1,4 +1,5 @@
-﻿using PL.Customer.CustomerSingUpWindow;
+﻿using PL.Customer.CustomerMenuWindow;
+using PL.Customer.CustomerSingUpWindow;
 using System.Windows;
 using System.Windows.Input;
 
@@ -37,11 +38,9 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
-            {
-                MessageBox.Show("Successfully Signed In");
-                
-            }
+            
+            new CustomerMenuWindow().Show();
+            this.Close();
         }
 
         private void txtEmail_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

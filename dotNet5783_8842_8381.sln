@@ -29,6 +29,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC3A4356-D991-42A1-9B7B-A2B67AC676B9}"
 	ProjectSection(SolutionItems) = preProject
 		Admins.xml = Admins.xml
+		Customer.xml = Customer.xml
 		xml\dal-config.xml = xml\dal-config.xml
 	EndProjectSection
 EndProject

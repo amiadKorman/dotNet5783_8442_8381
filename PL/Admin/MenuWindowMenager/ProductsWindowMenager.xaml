@@ -169,10 +169,10 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource ManegergridEditButton}" MouseDoubleClick="ProductsListView_MouseDoubleClick">
+                                        <Button Style="{StaticResource ManegergridEditButton}">
                                             <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource ManegergridButtonIcon}"/>
                                         </Button>
-                                        <Button Margin="5 0 0 0" Style="{StaticResource ManegergridRemoveButton}" Click="Delete_product">
+                                        <Button Margin="5 0 0 0" Style="{StaticResource ManegergridRemoveButton}">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource ManegergridButtonIcon}"/>
                                         </Button>
                                     </StackPanel>

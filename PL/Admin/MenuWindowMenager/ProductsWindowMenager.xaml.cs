@@ -96,7 +96,6 @@ namespace PL.Admin.MenuWindowMenager
         }
 
 
-        private void ProductsListView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) => new ProductWindow(bl, ((BO.ProductForList)ProductsListView.SelectedItem).ID).Show();
 
     }
 

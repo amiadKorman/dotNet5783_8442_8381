@@ -75,24 +75,30 @@ namespace PL.Admin.AdminSingInWindow
 
         private void Sing_In(object sender, RoutedEventArgs e)
         {
-           
+            String email = textEmail.Text;
+            String password = textPassword.Text;        
+            
             XmlDocument xmlDoc = new XmlDocument();
-            //xmlDoc.Load("dotNet5783_8442_8381/xml/Admins.xml");
+            xmlDoc.Load("dotNet5783_8442_8381/xml/Admins.xml");
             XmlNodeList nodes = xmlDoc.GetElementsByTagName("Admins");
             foreach (XmlNode node in nodes)
             {
                 XmlNode nameNode = node.SelectSingleNode("Email");
                 XmlNode passwordNode = node.SelectSingleNode("Password");
-                
-                
+                if (nameNode.Equals(email) && passwordNode.Equals(password))
+                {
+                    MessageBox.Show("Successfully Signed In");
+                    
+                }   
 
             }
+            MessageBox.Show("Wrong Email or Password");
+            
 
 
-        
 
-            new ProductsWindowMenager().Show();
-            this.Close();
+
+
         }       
     }
 }
