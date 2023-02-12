@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using System.Collections;
 
 namespace BlImplementation;
 
@@ -217,5 +218,10 @@ internal class Cart : ICart
             }
             throw new BO.BlFailedException("This ID is already in use!", ex);
         }
+    }
+
+    public IEnumerable GetList()
+    {
+        throw new NotImplementedException();
     }
 }

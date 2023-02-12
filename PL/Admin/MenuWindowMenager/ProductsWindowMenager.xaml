@@ -61,7 +61,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource MenagerPagesmenuButton}">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="Button_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CashMultiple" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="Wallet"/>
@@ -147,15 +147,8 @@
                 <!--Members Data Grid-->
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" SelectionChanged="membersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto" ElementStyle="{StaticResource CheckBoxStyle1}">
-                            <DataGridCheckBoxColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <CheckBox Style="{StaticResource CheckBoxStyle1}"/>
-                                </DataTemplate>
-                            </DataGridCheckBoxColumn.HeaderTemplate>
-                        </DataGridCheckBoxColumn>
-                        <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                        <DataGridTemplateColumn Header="Product" IsReadOnly="True" Width="*">
+                                             
+                        <DataGridTemplateColumn Header="Product" IsReadOnly="True" Width="350">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -171,15 +164,15 @@
                         <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="*"/>                        
                         <DataGridTextColumn Header="Category" Binding="{Binding Category}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="In Stock" Binding="{Binding Stock}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="In Stock" Binding="{Binding InStock}" IsReadOnly="True" Width="*"/>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource ManegergridEditButton}">
+                                        <Button Style="{StaticResource ManegergridEditButton}" MouseDoubleClick="ProductsListView_MouseDoubleClick">
                                             <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource ManegergridButtonIcon}"/>
                                         </Button>
-                                        <Button Margin="5 0 0 0" Style="{StaticResource ManegergridRemoveButton}">
+                                        <Button Margin="5 0 0 0" Style="{StaticResource ManegergridRemoveButton}" Click="Delete_product">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource ManegergridButtonIcon}"/>
                                         </Button>
                                     </StackPanel>

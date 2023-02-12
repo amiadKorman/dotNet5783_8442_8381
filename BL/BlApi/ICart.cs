@@ -1,4 +1,5 @@
 ﻿using BO;
+using System.Collections;
 
 namespace BlApi;
 
@@ -37,4 +38,5 @@ public interface ICart
     /// <param name="address"></param>
     /// <returns></returns>
     public Cart LogIn(BO.Cart cart, int ID, string name, string email, string address);
+    IEnumerable GetList();
 }

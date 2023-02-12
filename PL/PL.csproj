@@ -24,4 +24,9 @@
 	  <PackageReference Include="MaterialXAMLDialogs" Version="1.0.6" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Cart\" />
+	  <Folder Include="Customer\CustomerMenuWindow\" />
+	</ItemGroup>
+
 </Project>

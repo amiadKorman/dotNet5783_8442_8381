@@ -67,7 +67,7 @@ namespace PL.Admin.MenuWindowMenager
         private void Add_product(object sender, RoutedEventArgs e)
         {
             new ProductWindow(bl).Show();
-            this.Show();
+            
 
 
 
@@ -75,10 +75,30 @@ namespace PL.Admin.MenuWindowMenager
 
         private void CustomerChoise(object sender, RoutedEventArgs e)
         {
-            new CustomerWindowMenager().Show();
-            this.Close();
+           
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Edit_product(object sender, RoutedEventArgs e)
+        {
+            new ProductWindow(bl).Show();
+            
+
+        }
+
+        private void Delete_product(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+
+        private void ProductsListView_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) => new ProductWindow(bl, ((BO.ProductForList)ProductsListView.SelectedItem).ID).Show();
+
     }
 
-     
+
 }

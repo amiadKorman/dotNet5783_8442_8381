@@ -155,7 +155,7 @@
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
                         <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                        <DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn Header="Customer ID" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -163,13 +163,13 @@
                                             <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
                                         </Border>
 
-                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding CustomerID}" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>

@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
+using PL.Admin.MenuWindowMenager;
+
 
 namespace PL.Admin.MenuWindowMenager
 {
@@ -19,9 +22,12 @@ namespace PL.Admin.MenuWindowMenager
     /// </summary>
     public partial class CartWindowMenager : Window
     {
+        private readonly BlApi.IBl bl = BlApi.Factory.Get();
+        
         public CartWindowMenager()
         {
             InitializeComponent();
+            membersDataGrid.ItemsSource = bl.Cart.GetList();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
