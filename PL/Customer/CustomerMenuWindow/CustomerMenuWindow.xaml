@@ -41,10 +41,8 @@
 
                 <Button Style="{StaticResource MenagerPagestopButton}" Margin="0 0 970 0">
                     <Icon:PackIconMaterial Kind="Cart"/>
-                </Button>
+                </Button>                
                 
-                
-
                 <Button Style="{StaticResource MenagerPagestopButton}" Margin="0 0 1000 0">
                     <Icon:PackIconMaterial Kind="Account"/>
                 </Button>
