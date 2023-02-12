@@ -190,6 +190,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
+            <!--#endregion-->
         </Grid>
     </Border>
 </Window>
