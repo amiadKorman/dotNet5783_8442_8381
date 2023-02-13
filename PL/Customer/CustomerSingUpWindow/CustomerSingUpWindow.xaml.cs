@@ -21,7 +21,7 @@ namespace PL.Customer.CustomerSingUpWindow
     {
         public CustomerSingUpWindow()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
 
         

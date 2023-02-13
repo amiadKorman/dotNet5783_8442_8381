@@ -59,7 +59,8 @@ namespace PL
 
         private void Sing_up_Botton(object sender, RoutedEventArgs e)
         {
-           
+            new CustomerSingUpWindow().Show();
+            this.Close();
 
         }
     }
