@@ -31,6 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{FC3A4356-D99
 		Admins.xml = Admins.xml
 		Customer.xml = Customer.xml
 		xml\dal-config.xml = xml\dal-config.xml
+		Product.xml = Product.xml
 	EndProjectSection
 EndProject
 Global

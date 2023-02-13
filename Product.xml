@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Products>
+  <Product>
+    <ID>100000</ID>
+    <Name>Apple iPhone 14 128GB</Name>
+    <Price>3749</Price>
+    <Category>Phones</Category>
+    <InStock>43</InStock>
+  </Product>
+  <Product>
+    <ID>100001</ID>
+    <Name>Apple iPhone 14 Pro 256GB</Name>
+    <Price>5445</Price>
+    <Category>Phones</Category>
+    <InStock>48</InStock>
+  </Product>
+  <Product>
+    <ID>100002</ID>
+    <Name>Apple iPhone 14 Pro Max 512GB</Name>
+    <Price>7499</Price>
+    <Category>Phones</Category>
+    <InStock>42</InStock>
+  </Product>
+  <Product>
+    <ID>100100</ID>
+    <Name>Apple MacBook Pro 16 2TB</Name>
+    <Price>15890</Price>
+    <Category>Laptops</Category>
+    <InStock>34</InStock>
+  </Product>
+  <Product>
+    <ID>100101</ID>
+    <Name>Apple MacBook Pro 14 512GB</Name>
+    <Price>13590</Price>
+    <Category>Laptops</Category>
+    <InStock>41</InStock>
+  </Product>
+  <Product>
+    <ID>100110</ID>
+    <Name>Dell XPS 17 1TB</Name>
+    <Price>16290</Price>
+    <Category>Laptops</Category>
+    <InStock>49</InStock>
+  </Product>
+  <Product>
+    <ID>100111</ID>
+    <Name>Dell XPS 15 1TB</Name>
+    <Price>12649</Price>
+    <Category>Laptops</Category>
+    <InStock>44</InStock>
+  </Product>
+  <Product>
+    <ID>100300</ID>
+    <Name>Samsung Odyssey 48.7'' 4K</Name>
+    <Price>11870</Price>
+    <Category>Screens</Category>
+    <InStock>41</InStock>
+  </Product>
+  <Product>
+    <ID>100310</ID>
+    <Name>ASUS ROG Strix 43'' 4K</Name>
+    <Price>7849</Price>
+    <Category>Screens</Category>
+    <InStock>42</InStock>
+  </Product>
+  <Product>
+    <ID>100400</ID>
+    <Name>Samsung 75'' Neo QLED 8K</Name>
+    <Price>29990</Price>
+    <Category>Televisions</Category>
+    <InStock>48</InStock>
+  </Product>
+  <Product>
+    <ID>100410</ID>
+    <Name>Sony Bravia OLED 77'' 4K</Name>
+    <Price>14280</Price>
+    <Category>Televisions</Category>
+    <InStock>35</InStock>
+  </Product>
+  <Product>
+    <ID>100500</ID>
+    <Name>Logitech MX Master 3S</Name>
+    <Price>469</Price>
+    <Category>Accessories</Category>
+    <InStock>35</InStock>
+  </Product>
+  <Product>
+    <ID>100510</ID>
+    <Name>Logitech MX Mechanical</Name>
+    <Price>699</Price>
+    <Category>Accessories</Category>
+    <InStock>44</InStock>
+  </Product>
+  <Product>
+    <ID>100510</ID>
+    <Name>iPhone X 64GB</Name>
+    <Price>2495</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100511</ID>
+    <Name>iPhone X 256GB</Name>
+    <Price>2995</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100512</ID>
+    <Name>Samsung Galaxy S9 64GB</Name>
+    <Price>1999</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100513</ID>
+    <Name>Google Pixel 2 64GB</Name>
+    <Price>1449</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100514</ID>
+    <Name>Google Pixel 2 128GB</Name>
+    <Price>1699</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100515</ID>
+    <Name>Samsung Galaxy Note 8 64GB</Name>
+    <Price>1799</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100516</ID>
+    <Name>Samsung Galaxy S8 Plus 64GB</Name>
+    <Price>1499</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100517</ID>
+    <Name>Google Pixel XL 128GB</Name>
+    <Price>1699</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100518</ID>
+    <Name>OnePlus 5T 64GB</Name>
+    <Price>999</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+</Products>
