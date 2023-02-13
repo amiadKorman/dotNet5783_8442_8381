@@ -2,6 +2,9 @@
 
 namespace BlImplementation;
 
+/// <summary>
+/// The class that implements the IBl interface.
+/// </summary>
 internal sealed class Bl : IBl
 {
     public IOrder Order { get; } = new Order();
