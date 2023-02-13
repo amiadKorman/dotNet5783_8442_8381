@@ -65,6 +65,7 @@ internal sealed class DataSource
     /// </summary>
     private void InitializeProducts()
     {
+        #region Initialize Products
         products.Add(
             new()
             {
@@ -182,6 +183,399 @@ internal sealed class DataSource
                 Category = CategoryOfProduct.Accessories,
                 InStock = RandomNumber.Next(50)
             });
+        products.Add(
+new()
+{
+    ID = 100510,
+    Name = "iPhone X 64GB",
+    Price = 2495,
+    Category = CategoryOfProduct.Phones,
+    InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100511,
+            Name = "iPhone X 256GB",
+            Price = 2995,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100512,
+            Name = "Samsung Galaxy S9 64GB",
+            Price = 1999,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100513,
+            Name = "Google Pixel 2 64GB",
+            Price = 1449,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100514,
+            Name = "Google Pixel 2 128GB",
+            Price = 1699,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+        products.Add(
+new()
+{
+    ID = 100515,
+    Name = "Samsung Galaxy Note 8 64GB",
+    Price = 1799,
+    Category = CategoryOfProduct.Phones,
+    InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100516,
+            Name = "Samsung Galaxy S8 Plus 64GB",
+            Price = 1499,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100517,
+            Name = "Google Pixel XL 128GB",
+            Price = 1699,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100518,
+            Name = "OnePlus 5T 64GB",
+            Price = 999,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100519,
+            Name = "OnePlus 5T 128GB",
+            Price = 1099,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+        products.Add(
+new()
+{
+    ID = 100520,
+    Name = "Nokia 9 128GB",
+    Price = 899,
+    Category = CategoryOfProduct.Phones,
+    InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100521,
+            Name = "Sony Xperia XZ2 64GB",
+            Price = 1499,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100522,
+            Name = "Huawei Mate 10 Pro 128GB",
+            Price = 1099,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100523,
+            Name = "Huawei P20 Pro 128GB",
+            Price = 1449,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100524,
+            Name = "Xiaomi Mi Mix 2S 128GB",
+            Price = 999,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100525,
+            Name = "Xiaomi Mi A2 64GB",
+            Price = 599,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100526,
+            Name = "LG G7 ThinQ 64GB",
+            Price = 1199,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100527,
+            Name = "HTC U12+ 128GB",
+            Price = 1199,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+new()
+{
+    ID = 100528,
+    Name = "Samsung Galaxy S9 Plus 64GB",
+    Price = 1449,
+    Category = CategoryOfProduct.Phones,
+    InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100529,
+            Name = "Samsung Galaxy Note 9 128GB",
+            Price = 1699,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100530,
+            Name = "Apple iPhone XR 64GB",
+            Price = 1449,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100531,
+            Name = "Apple iPhone XS Max 512GB",
+            Price = 2149,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100532,
+            Name = "Google Pixel 3 XL 128GB",
+            Price = 1449,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100533,
+            Name = "OnePlus 6T 256GB",
+            Price = 1299,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+
+        products.Add(
+new()
+{
+    ID = 100534,
+    Name = "Nokia 8 Sirocco 128GB",
+    Price = 1099,
+    Category = CategoryOfProduct.Phones,
+    InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100535,
+            Name = "Xiaomi Mi 8 Pro 256GB",
+            Price = 1199,
+            Category = CategoryOfProduct.Phones,
+            InStock = 50
+        });
+        products.Add(
+new()
+{
+ID = 100536,
+Name = "Apple MacBook Pro 15 inch 512GB",
+Price = 2799,
+Category = CategoryOfProduct.Laptops,
+InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100537,
+            Name = "Dell XPS 13 9370 256GB",
+            Price = 1449,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100538,
+            Name = "Microsoft Surface Pro 6 256GB",
+            Price = 1699,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100539,
+            Name = "Acer Swift 5 SF514-52T-76BI 512GB",
+            Price = 1299,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100540,
+            Name = "HP Spectre x360 13-ae051tu 512GB",
+            Price = 1799,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100541,
+            Name = "Lenovo Yoga 920 256GB",
+            Price = 1099,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100542,
+            Name = "Asus UX430UN-GV124T 256GB",
+            Price = 1199,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100543,
+            Name = "Razer Blade 15 512GB",
+            Price = 2799,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+new()
+{
+    ID = 100544,
+    Name = "Samsung Notebook 9 Pro NP940X5M-X01US 512GB",
+    Price = 1499,
+    Category = CategoryOfProduct.Laptops,
+    InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100545,
+            Name = "Dell Inspiron 15 7570 256GB",
+            Price = 799,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100546,
+            Name = "Microsoft Surface Book 2 512GB",
+            Price = 2199,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100547,
+            Name = "Acer Chromebook R 13 CB5-312T-K1TF 256GB",
+            Price = 499,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100548,
+            Name = "HP Pavilion 15-cs1063cl 256GB",
+            Price = 799,
+            Category = CategoryOfProduct.Laptops,
+            InStock = 50
+        });
+
+
+
+
+
+
+        #endregion
     }
 
     /// <summary>
