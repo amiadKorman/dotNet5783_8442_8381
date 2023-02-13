@@ -3,6 +3,9 @@ using DalApi;
 
 namespace Dal;
 
+/// <summary>
+/// DalProduct class
+/// </summary>
 internal class DalOrder : IOrder
 {
     DataSource ds = DataSource.instance;

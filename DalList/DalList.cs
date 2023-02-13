@@ -2,6 +2,9 @@
 
 namespace Dal;
 
+/// <summary>
+/// 
+/// </summary>
 internal sealed class DalList : IDal
 {
     private DalList() { }
