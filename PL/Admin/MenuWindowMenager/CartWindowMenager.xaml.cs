@@ -22,8 +22,12 @@ namespace PL.Admin.MenuWindowMenager
     /// </summary>
     public partial class CartWindowMenager : Window
     {
-        private readonly BlApi.IBl bl = BlApi.Factory.Get();
         
+        private readonly BlApi.IBl bl = BlApi.Factory.Get();
+
+        /// <summary>
+        /// Uppload the window
+        /// </summary>
         public CartWindowMenager()
         {
             InitializeComponent();
@@ -45,6 +49,11 @@ namespace PL.Admin.MenuWindowMenager
 
         }
 
+        /// <summary>
+        /// Uppload the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Product_button(object sender, RoutedEventArgs e)
         {
             new ProductsWindowMenager().Show();

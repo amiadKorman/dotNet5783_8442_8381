@@ -19,6 +19,9 @@ namespace PL.Admin.MenuWindowMenager
     /// </summary>
     public partial class MenuWindowMenager : Window
     {
+        /// <summary>
+        /// Uppload the window
+        /// </summary>
         public MenuWindowMenager()
         {
             InitializeComponent();
@@ -58,7 +61,11 @@ namespace PL.Admin.MenuWindowMenager
         {
 
         }
-
+        /// <summary>
+        /// logout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void log_out(object sender, MouseButtonEventArgs e)
         {
             new MainWindow().Show();

@@ -71,11 +71,15 @@ namespace PL.Admin.MenuWindowMenager
 
 
 
-        }   
+        }
 
         //private void Edite_product(object sender, RoutedEventArgs e) => new ProductWindow(bl, ((BO.ProductForList)ProductsListView.SelectedItem).ID).Show();
 
-
+        /// <summary>
+        /// Uppload the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CustomerChoise(object sender, RoutedEventArgs e)
         {
             new CustomersWindowMenager().Show();
@@ -99,6 +103,11 @@ namespace PL.Admin.MenuWindowMenager
            
         }
 
+        /// <summary>
+        /// logout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Logout(object sender, RoutedEventArgs e)
         {
             new MainWindow().Show();

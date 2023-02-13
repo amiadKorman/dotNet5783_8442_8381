@@ -20,7 +20,10 @@ namespace PL.Admin.MenuWindowMenager
     public partial class OrdersWindowMenager : Window
     {
         private readonly BlApi.IBl bl = BlApi.Factory.Get();
-        
+
+        /// <summary>
+        /// Uppload the window
+        /// </summary>
         public OrdersWindowMenager()
         {
             InitializeComponent();
@@ -77,7 +80,11 @@ namespace PL.Admin.MenuWindowMenager
 
 
 
-
+        /// <summary>
+        /// logout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Logout(object sender, RoutedEventArgs e)
         {
             new MainWindow().Show();

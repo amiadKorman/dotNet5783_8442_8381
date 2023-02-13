@@ -19,6 +19,9 @@ namespace PL.Admin.MenuWindowMenager
     /// </summary>
     public partial class CustomersWindowMenager : Window
     {
+        /// <summary>
+        /// Uppload the window
+        /// </summary>
         public CustomersWindowMenager()
         {
             InitializeComponent();
@@ -39,18 +42,33 @@ namespace PL.Admin.MenuWindowMenager
 
         }
         #region
+        /// <summary>
+        /// Change to the window of the products
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Product_Click(object sender, RoutedEventArgs e)
         {
             new ProductsWindowMenager().Show();
             this.Close();
         }
 
+        /// <summary>
+        /// Change to the window of the Order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Order_Click(object sender, RoutedEventArgs e)
         {
             new OrdersWindowMenager().Show();
             this.Close();
         }
 
+        /// <summary>
+        /// Logout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Log_Out(object sender, RoutedEventArgs e)
         {
             new MainWindow().Show();
