@@ -1,5 +1,8 @@
 ﻿namespace BO;
 
+/// <summary>
+/// Order class
+/// </summary>
 internal class SafeInput
 {
     /// <summary>

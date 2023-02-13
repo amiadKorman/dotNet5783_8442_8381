@@ -3,6 +3,9 @@ using BO;
 
 namespace BlTest;
 
+/// <summary>
+/// Main program
+/// </summary>
 public class BlMain
 {
     #region Mainaly Main

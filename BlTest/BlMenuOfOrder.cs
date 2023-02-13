@@ -3,6 +3,9 @@ using BlApi;
 
 namespace BlTest;
 
+/// <summary>
+/// Menu of Order
+/// </summary>
 internal class BlMenuOfOrder
 {
     private static readonly IBl ibl = Factory.Get()!;
