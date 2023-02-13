@@ -1,5 +1,8 @@
 ﻿namespace Dal;
 
+/// <summary>
+/// Enums for the Main program
+/// </summary>
 internal class SafeInput
 {
     /// <summary>

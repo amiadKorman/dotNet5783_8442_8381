@@ -3,6 +3,9 @@ using DO;
 
 namespace Dal;
 
+/// <summary>
+/// Menu of customer
+/// </summary>
 internal class MenuOfOrder
 {
     private static readonly IDal dal = Factory.Get()!;
