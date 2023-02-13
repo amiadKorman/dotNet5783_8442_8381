@@ -75,7 +75,8 @@ namespace PL.Admin.MenuWindowMenager
 
         private void CustomerChoise(object sender, RoutedEventArgs e)
         {
-           
+            new CustomersWindowMenager().Show();
+            this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

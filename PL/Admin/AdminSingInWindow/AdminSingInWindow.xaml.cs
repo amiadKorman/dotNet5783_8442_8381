@@ -25,14 +25,13 @@ namespace PL.Admin.AdminSingInWindow
     /// </summary>
     public partial class AdminSingInWindow : Window
     {
-        private IEnumerable<Admin> admins;
+        private readonly BlApi.IBl bl = BlApi.Factory.Get();
 
         public AdminSingInWindow()
         {
             InitializeComponent();
             
-            var converter = new BrushConverter();
-            ObservableCollection<Admin> admins = new ObservableCollection<Admin>();
+           
 
            
 
@@ -104,16 +103,7 @@ namespace PL.Admin.AdminSingInWindow
     }
 
 
-    public class Admin
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Phone { get; set; }
-        public Brush BgColor { get; set; }  
-             
-               
-    }
+   
 
 
 }

@@ -38,5 +38,12 @@ namespace PL.Admin.MenuWindowMenager
         {
 
         }
+
+        private void Product_Click(object sender, RoutedEventArgs e)
+        {
+            new ProductsWindowMenager().Show();
+            this.Close();
+        }
     }
+     
 }

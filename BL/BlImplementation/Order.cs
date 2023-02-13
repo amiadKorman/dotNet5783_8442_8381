@@ -1,10 +1,11 @@
 ﻿using BlApi;
+using System.Collections;
 
 namespace BlImplementation;
 
 internal class Order : IOrder
 {
-    private DalApi.IDal dal = DalApi.Factory.Get()!;
+    private readonly DalApi.IDal dal = DalApi.Factory.Get()!;
 
     #region get by ID
     /// <summary>
@@ -239,8 +240,12 @@ internal class Order : IOrder
         if (ID < 1000000 || ID >= 5000000)
             throw new BO.BlInvalidFieldException("Order ID must be between 1000000 to 5000000");
     }
-}
 
+    public IEnumerable GetList()
+    {
+        throw new NotImplementedException();
+    }
+}
 
 
 

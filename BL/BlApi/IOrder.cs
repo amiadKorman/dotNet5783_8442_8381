@@ -1,4 +1,5 @@
 ﻿using BO;
+using System.Collections;
 
 namespace BlApi;
 
@@ -44,4 +45,5 @@ public interface IOrder
     /// <param name="ID"></param>
     /// <returns></returns>
     public Order Update(Order order);
+    IEnumerable GetList();
 }
