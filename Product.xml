@@ -294,13 +294,79 @@
     <Category>Phones</Category>
     <InStock>50</InStock>
   </Product>
+  <Product>
+    <ID>100540</ID>
+    <Name>HP Spectre x360 13-ae051tu 512GB</Name>
+    <Price>1799</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100541</ID>
+    <Name>Lenovo Yoga 920 256GB</Name>
+    <Price>1099</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100542</ID>
+    <Name>Asus UX430UN-GV124T 256GB</Name>
+    <Price>1199</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100543</ID>
+    <Name>Razer Blade 15 512GB</Name>
+    <Price>2799</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100544</ID>
+    <Name>Samsung Notebook 9 Pro NP940X5M-X01US 512GB</Name>
+    <Price>1499</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100545</ID>
+    <Name>Dell Inspiron 15 7570 256GB</Name>
+    <Price>799</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100546</ID>
+    <Name>Microsoft Surface Book 2 512GB</Name>
+    <Price>2199</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100547</ID>
+    <Name>Acer Chromebook R 13 CB5-312T-K1TF 256GB</Name>
+    <Price>499</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100548</ID>
+    <Name>HP Pavilion 15-cs1063cl 256GB</Name>
+    <Price>799</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100540</ID>
+    <Name>Apple AirPods</Name>
+    <Price>199</Price>
+    <Category>Accessories</Category>
+    <InStock>50</InStock>
+  </Product>  
 </Products>
-<Product>
-  <ID>100539</ID>
-  <Name>Apple iPhone 8 256GB</Name>
-  <Price>999</Price>
-  <Category>Phones</Category>
-  <InStock>50</InStock>
-</Product>
+
+
+
 
 

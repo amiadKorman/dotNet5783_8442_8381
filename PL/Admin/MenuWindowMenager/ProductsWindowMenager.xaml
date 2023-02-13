@@ -164,7 +164,7 @@
                         <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="*"/>                        
                         <DataGridTextColumn Header="Category" Binding="{Binding Category}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="In Stock" Binding="{Binding InStock}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="In Stock" Binding="{Binding InStock}" IsReadOnly="True" Width="100"/>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
