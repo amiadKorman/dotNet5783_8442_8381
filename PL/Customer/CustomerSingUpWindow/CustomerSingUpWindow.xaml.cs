@@ -37,9 +37,13 @@ namespace PL.Customer.CustomerSingUpWindow
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Cencel_Click(object sender, RoutedEventArgs e) => new CustomerSingUpWindow().Show();
+        private void Cencel_Click(object sender, RoutedEventArgs e)
+        {
+            new CustomerSingInWindow().Show();
+            this.Close();
+        }
 
-        
+
         /// <summary>
         /// create a new customer
         /// </summary>
@@ -56,7 +60,11 @@ namespace PL.Customer.CustomerSingUpWindow
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SingInClick(object sender, RoutedEventArgs e) => new CustomerSingInWindow().Show();
+        private void SingInClick(object sender, RoutedEventArgs e)
+        {
+            new CustomerSingInWindow().Show();
+            this.Close();
+        }
 
 
 

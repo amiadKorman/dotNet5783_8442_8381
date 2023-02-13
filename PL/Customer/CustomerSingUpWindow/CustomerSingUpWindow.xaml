@@ -23,6 +23,7 @@
                 <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Margin="0 20 0 20" Foreground="#363636" Text="it should only take a couple of minutes to pair with your watch"/>
 
                 <Button Style="{StaticResource CustomerSingUpbuttonBlack}" Click="SingInClick"/>
+                <Image Source="/Images/Google.png" Margin="0 20 0 20" Width="200" Height="1"/>
             </StackPanel>
         </Border>
         <!--#endregion-->
@@ -81,7 +82,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Style="{StaticResource CustomerSingUpbuttonMain}" Margin="0 0 10 0" Content="Cancel"/>
+                    <Button Style="{StaticResource CustomerSingUpbuttonMain}" Margin="0 0 10 0" Content="Cancel" Click="Cencel_Click"/>
 
                     <Button Grid.Column="1" Style="{StaticResource CustomerSingUpbuttonMainGreen}" Margin="10 0 0 0" Content="Save"/>
                 </Grid>
