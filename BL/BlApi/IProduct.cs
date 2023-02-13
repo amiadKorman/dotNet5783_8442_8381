@@ -2,6 +2,9 @@
 
 namespace BlApi;
 
+/// <summary>
+/// interface for the cart
+/// </summary>
 public interface IProduct
 {
     /// <summary>

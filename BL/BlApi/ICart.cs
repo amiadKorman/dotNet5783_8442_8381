@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace BlApi;
 
+/// <summary>
+/// interface for the cart
+/// </summary>
 public interface ICart
 {
     /// <summary>
