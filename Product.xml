@@ -231,6 +231,76 @@
     <Category>Phones</Category>
     <InStock>50</InStock>
   </Product>
+  <Product>
+    <ID>100530</ID>
+    <Name>Samsung Galaxy S10+ 128GB</Name>
+    <Price>1499</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100531</ID>
+    <Name>Samsung Galaxy S10e 128GB</Name>
+    <Price>799</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100532</ID>
+    <Name>Samsung Galaxy S9+ 128GB</Name>
+    <Price>999</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100533</ID>
+    <Name>Samsung Galaxy S9 128GB</Name>
+    <Price>899</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100534</ID>
+    <Name>Apple iPhone XS Max 512GB</Name>
+    <Price>2099</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100535</ID>
+    <Name>Apple iPhone XS 512GB</Name>
+    <Price>1799</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100536</ID>
+    <Name>Apple iPhone XR 128GB</Name>
+    <Price>1499</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100537</ID>
+    <Name>Apple iPhone X 256GB</Name>
+    <Price>1499</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100538</ID>
+    <Name>Apple iPhone 8 Plus 256GB</Name>
+    <Price>1299</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
 </Products>
+<Product>
+  <ID>100539</ID>
+  <Name>Apple iPhone 8 256GB</Name>
+  <Price>999</Price>
+  <Category>Phones</Category>
+  <InStock>50</InStock>
+</Product>
 
 
