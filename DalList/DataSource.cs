@@ -569,6 +569,85 @@ new()
             Category = CategoryOfProduct.Laptops,
             InStock = 50
         });
+        products.Add(
+new()
+{
+    ID = 100540,
+    Name = "Apple AirPods",
+    Price = 199,
+    Category = CategoryOfProduct.Accessories,
+    InStock = 50
+});
+
+        products.Add(
+        new()
+        {
+            ID = 100541,
+            Name = "Belkin Boost Up Wireless Charger",
+            Price = 59,
+            Category = CategoryOfProduct.Accessories,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100542,
+            Name = "Anker PowerCore 10000 Portable Charger",
+            Price = 25,
+            Category = CategoryOfProduct.Accessories,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100543,
+            Name = "Samsung Gear VR",
+            Price = 99,
+            Category = CategoryOfProduct.Accessories,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100544,
+            Name = "Beats Solo3 Wireless On-Ear Headphones",
+            Price = 299,
+            Category = CategoryOfProduct.Accessories,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100545,
+            Name = "Logitech K810 Illuminated Bluetooth Keyboard",
+            Price = 99,
+            Category = CategoryOfProduct.Accessories,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100546,
+            Name = "Apple Pencil (2nd Generation)",
+            Price = 129,
+            Category = CategoryOfProduct.Accessories,
+            InStock = 50
+        });
+
+        products.Add(
+        new()
+        {
+            ID = 100547,
+            Name = "Razer DeathAdder Elite Gaming Mouse",
+            Price = 69,
+            Category = CategoryOfProduct.Accessories,
+            InStock = 50
+        });
 
 
 
