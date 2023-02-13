@@ -154,4 +154,81 @@
     <Category>Phones</Category>
     <InStock>50</InStock>
   </Product>
+  <Product>
+    <ID>100519</ID>
+    <Name>OnePlus 5T 128GB</Name>
+    <Price>1099</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100520</ID>
+    <Name>Nokia 9 128GB</Name>
+    <Price>899</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100521</ID>
+    <Name>Sony Xperia XZ2 64GB</Name>
+    <Price>1499</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100522</ID>
+    <Name>Huawei Mate 10 Pro 128GB</Name>
+    <Price>1099</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100523</ID>
+    <Name>Huawei P20 Pro 128GB</Name>
+    <Price>1449</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100524</ID>
+    <Name>Xiaomi Mi Mix 2S 128GB</Name>
+    <Price>999</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100525</ID>
+    <Name>Xiaomi Mi A2 64GB</Name>
+    <Price>599</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100526</ID>
+    <Name>LG G7 ThinQ 64GB</Name>
+    <Price>1199</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100527</ID>
+    <Name>HTC U12+ 128GB</Name>
+    <Price>1199</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100528</ID>
+    <Name>Samsung Galaxy S9 Plus 64GB</Name>
+    <Price>1449</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100529</ID>
+    <Name>Samsung Galaxy Note 9 128GB</Name>
+    <Price>1699</Price>
+    <Category>Phones</Category>
+    <InStock>50</InStock>
+  </Product>
 </Products>
