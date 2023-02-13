@@ -19,6 +19,9 @@ namespace PL.Customer.CustomerSingUpWindow
     /// </summary>
     public partial class CustomerSingUpWindow : Window
     {
+        /// <summary>
+        /// upload the window
+        /// </summary>
         public CustomerSingUpWindow()
         {
             InitializeComponent();
@@ -38,12 +41,20 @@ namespace PL.Customer.CustomerSingUpWindow
         {
 
         }
-
+        /// <summary>
+        /// create a new customer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            
 
         }
 
-       
+        private void SingInClick(object sender, RoutedEventArgs e) => new CustomerSingInWindow().Show();
+
+
+
     }
 }

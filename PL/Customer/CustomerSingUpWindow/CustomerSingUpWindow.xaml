@@ -22,7 +22,7 @@
                 <TextBlock TextAlignment="Center" FontWeight="SemiBold" FontSize="28" Text="Let's get you set up" Foreground="#363636"/>
                 <TextBlock TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Margin="0 20 0 20" Foreground="#363636" Text="it should only take a couple of minutes to pair with your watch"/>
 
-                <Button Style="{StaticResource CustomerSingUpbuttonBlack}"/>
+                <Button Style="{StaticResource CustomerSingUpbuttonBlack}" Click="SingInClick"/>
             </StackPanel>
         </Border>
         <!--#endregion-->
