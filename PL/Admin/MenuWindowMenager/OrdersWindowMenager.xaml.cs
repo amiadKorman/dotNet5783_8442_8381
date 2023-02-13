@@ -45,20 +45,38 @@ namespace PL.Admin.MenuWindowMenager
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+    
+
+        private void membersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
+        #region Menu left buttons
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Product_choise(object sender, RoutedEventArgs e)
+        {
+            new ProductsWindowMenager().Show();
+            this.Close();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CustomerChoise(object sender, RoutedEventArgs e)
         {
-
+            new CustomersWindowMenager().Show();
+            this.Close();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
 
-        }
+
+
 
         private void Logout(object sender, RoutedEventArgs e)
         {
@@ -66,10 +84,6 @@ namespace PL.Admin.MenuWindowMenager
             this.Close();
 
         }
-
-        private void membersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

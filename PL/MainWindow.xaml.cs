@@ -5,13 +5,19 @@ using PL.Admin.AdminSingInWindow;
 namespace PL;
 
 /// <summary>
-/// Interaction logic for MainWindow.xaml
+/// This is the MainWindow class of the project
+/// Here has two diffrent Kind of users
+/// Adnisisntrator and Customer
+/// 
+/// Administrator can see all the Products orders and the customers he can edit and delete diteles
+/// 
+/// The user can see all the products add to cart and buy diffrent products
 /// </summary>
 public partial class MainWindow : Window
 {
     private static readonly BlApi.IBl bl = BlApi.Factory.Get()!;
     /// <summary>
-    /// Constructor
+    /// Uppload the window
     /// </summary>
     public MainWindow()
     {

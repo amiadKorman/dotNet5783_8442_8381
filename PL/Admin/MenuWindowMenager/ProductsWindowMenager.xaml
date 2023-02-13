@@ -61,7 +61,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="Button_Click">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CashMultiple" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="Wallet"/>

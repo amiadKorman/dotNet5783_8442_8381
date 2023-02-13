@@ -38,12 +38,27 @@ namespace PL.Admin.MenuWindowMenager
         {
 
         }
-
+        #region
         private void Product_Click(object sender, RoutedEventArgs e)
         {
             new ProductsWindowMenager().Show();
             this.Close();
         }
+
+        private void Order_Click(object sender, RoutedEventArgs e)
+        {
+            new OrdersWindowMenager().Show();
+            this.Close();
+        }
+
+        private void Log_Out(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+
+        }
+
+        #endregion
     }
-     
+
 }

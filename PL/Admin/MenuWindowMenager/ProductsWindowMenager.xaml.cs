@@ -71,7 +71,10 @@ namespace PL.Admin.MenuWindowMenager
 
 
 
-        }
+        }   
+
+        //private void Edite_product(object sender, RoutedEventArgs e) => new ProductWindow(bl, ((BO.ProductForList)ProductsListView.SelectedItem).ID).Show();
+
 
         private void CustomerChoise(object sender, RoutedEventArgs e)
         {
@@ -100,6 +103,11 @@ namespace PL.Admin.MenuWindowMenager
         {
             new MainWindow().Show();
             this.Close();
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }

@@ -47,14 +47,14 @@
                                     <TextBlock Text="Protuct"/>
                                 </StackPanel>
                             </Button>
-                            <Button Style="{StaticResource MenagerPagesmenuButton}"  Background="#7B5CD6" Foreground="White">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="Order_Click" >
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Cart" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
-                                    <TextBlock Text="Cart"/>
+                                    <Icon:PackIconMaterial Kind="Car" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
+                                    <TextBlock Text="Order"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource MenagerPagesmenuButton}">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}"  Background="#7B5CD6" Foreground="White">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountMultipleOutline" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="customers"/>
@@ -76,7 +76,7 @@
                             </Button>
                         </StackPanel>
 
-                        <Button Style="{StaticResource MenagerPagesmenuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
+                        <Button Style="{StaticResource MenagerPagesmenuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20" Click="Log_Out">
                             <StackPanel Orientation="Horizontal">
                                 <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                 <TextBlock Text="Logout"/>

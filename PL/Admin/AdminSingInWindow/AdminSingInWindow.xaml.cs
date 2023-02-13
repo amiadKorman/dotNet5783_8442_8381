@@ -27,17 +27,16 @@ namespace PL.Admin.AdminSingInWindow
     {
         private readonly BlApi.IBl bl = BlApi.Factory.Get();
 
+
+        /// <summary>
+        /// Uppload the window
+        /// </summary>
         public AdminSingInWindow()
         {
-            InitializeComponent();
-            
-           
-
-           
-
-
+            InitializeComponent();      
         }
 
+        
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

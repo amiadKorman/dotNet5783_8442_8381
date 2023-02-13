@@ -38,9 +38,10 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+               
             new CustomerMenuWindow().Show();
             this.Close();
+            
         }
 
         private void txtEmail_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
@@ -58,8 +59,7 @@ namespace PL
 
         private void Sing_up_Botton(object sender, RoutedEventArgs e)
         {
-            new CustomerSingUpWindow().Show();
-            this.Close();
+           
 
         }
     }
