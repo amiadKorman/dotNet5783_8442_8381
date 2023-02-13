@@ -22,14 +22,9 @@ namespace PL.Customer.CustomerSingUpWindow
         /// <summary>
         /// upload the window
         /// </summary>
-        public CustomerSingUpWindow()
-        {
-            InitializeComponent();
-        }
-
-        
-
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        public CustomerSingUpWindow() => InitializeComponent();
+       
+       private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (true)
             {
@@ -37,10 +32,14 @@ namespace PL.Customer.CustomerSingUpWindow
             }
         }
 
-        private void Cencel_Click(object sender, RoutedEventArgs e)
-        {
+        /// <summary>
+        /// close the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Cencel_Click(object sender, RoutedEventArgs e) => new CustomerSingUpWindow().Show();
 
-        }
+        
         /// <summary>
         /// create a new customer
         /// </summary>
@@ -52,6 +51,11 @@ namespace PL.Customer.CustomerSingUpWindow
 
         }
 
+        /// <summary>
+        /// Sing in to the system
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SingInClick(object sender, RoutedEventArgs e) => new CustomerSingInWindow().Show();
 
 
