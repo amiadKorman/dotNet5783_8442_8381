@@ -363,7 +363,218 @@
     <Price>199</Price>
     <Category>Accessories</Category>
     <InStock>50</InStock>
-  </Product>  
+  </Product>
+  <Product>
+    <ID>100540</ID>
+    <Name>HP Spectre x360 13-ae051tu 512GB</Name>
+    <Price>1799</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+
+  <Product>
+    <ID>100541</ID>
+    <Name>Lenovo Yoga 920 256GB</Name>
+    <Price>1099</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+
+  <Product>
+    <ID>100542</ID>
+    <Name>Asus UX430UN-GV124T 256GB</Name>
+    <Price>1199</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+
+  <Product>
+    <ID>100543</ID>
+    <Name>Razer Blade 15 512GB</Name>
+    <Price>2799</Price>
+    <Category>Laptops</Category>
+    <InStock>50</InStock>
+  </Product>
+
+  <Product>
+    <ID>100540</ID>
+    <Name>Apple AirPods</Name>
+    <Price>199</Price>
+    <Category>Accessories</Category>
+    <InStock>50</InStock>
+  </Product>
+
+  <Product>
+    <ID>100541</ID>
+    <Name>Belkin Boost Up Wireless Charger</Name>
+    <Price>59</Price>
+    <Category>Accessories</Category>
+    <InStock>50</InStock>
+  </Product>
+
+  <Product>
+    <ID>100542</ID>
+    <Name>Anker PowerCore 10000 Portable Charger</Name>
+    <Price>25</Price>
+    <Category>Accessories</Category>
+    <InStock>50</InStock>
+  </Product>
+
+  <Product>
+    <ID>100543</ID>
+    <Name>Samsung Gear VR</Name>
+    <Price>99</Price>
+    <Category>Accessories</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100544</ID>
+    <Name>27-inch Dell UltraSharp U2719DX</Name>
+    <Price>399</Price>
+    <Category>Screens</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100545</ID>
+    <Name>27-inch ASUS ROG Swift PG279QZ</Name>
+    <Price>499</Price>
+    <Category>Screens</Category>
+    <InStock>30</InStock>
+  </Product>
+  <Product>
+    <ID>100546</ID>
+    <Name>32-inch Samsung CHG70 QLED Gaming Monitor</Name>
+    <Price>599</Price>
+    <Category>Screens</Category>
+    <InStock>25</InStock>
+  </Product>
+  <Product>
+    <ID>100547</ID>
+    <Name>24-inch Dell Professional P2419H</Name>
+    <Price>219</Price>
+    <Category>Screens</Category>
+    <InStock>60</InStock>
+  </Product>
+  <Product>
+    <ID>100548</ID>
+    <Name>34-inch LG 34WL85C-B UltraWide IPS Monitor</Name>
+    <Price>749</Price>
+    <Category>Screens</Category>
+    <InStock>35</InStock>
+  </Product>
+  <Product>
+    <ID>100549</ID>
+    <Name>27-inch HP Pavilion 27q LED Monitor</Name>
+    <Price>259</Price>
+    <Category>Screens</Category>
+    <InStock>45</InStock>
+  </Product>
+  <Product>
+    <ID>100550</ID>
+    <Name>23.8-inch Acer R240HY bidx</Name>
+    <Price>139</Price>
+    <Category>Screens</Category>
+    <InStock>55</InStock>
+  </Product>
+  <Product>
+    <ID>100551</ID>
+    <Name>24-inch Dell UltraSharp U2419H</Name>
+    <Price>269</Price>
+    <Category>Screens</Category>
+    <InStock>40</InStock>
+  </Product>
+  <Product>
+    <ID>100552</ID>
+    <Name>28-inch BenQ GW2870H Eye-Care LED Monitor</Name>
+    <Price>219</Price>
+    <Category>Screens</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100553</ID>
+    <Name>32-inch Samsung UJ59 UHD Monitor</Name>
+    <Price>349</Price>
+    <Category>Screens</Category>
+    <InStock>35</InStock>
+  </Product>
+  <Product>
+    <ID>100554</ID>
+    <Name>24-inch ASUS VG245H Full HD Gaming Monitor</Name>
+    <Price>169</Price>
+    <Category>Screens</Category>
+    <InStock>45</InStock>
+  </Product>
+  <Product>
+    <ID>100554</ID>
+    <Name>HP ProBook 650 G5 15.6" Laptop</Name>
+    <Price>1299</Price>
+    <Category>Screens</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100555</ID>
+    <Name>Dell XPS 13 9370 13.3" Laptop</Name>
+    <Price>1499</Price>
+    <Category>Screens</Category>
+    <InStock>30</InStock>
+  </Product>
+  <Product>
+    <ID>100556</ID>
+    <Name>Lenovo ThinkPad T480 14" Laptop</Name>
+    <Price>1399</Price>
+    <Category>Screens</Category>
+    <InStock>40</InStock>
+  </Product>
+  <Product>
+    <ID>100557</ID>
+    <Name>Acer Aspire 5 Slim Laptop</Name>
+    <Price>499</Price>
+    <Category>Screens</Category>
+    <InStock>60</InStock>
+  </Product>
+  <Product>
+    <ID>100558</ID>
+    <Name>Apple MacBook Air 13.3" Laptop</Name>
+    <Price>1499</Price>
+    <Category>Screens</Category>
+    <InStock>20</InStock>
+  </Product>
+  <Product>
+    <ID>100559</ID>
+    <Name>ASUS Chromebook Flip C434 14" Laptop</Name>
+    <Price>799</Price>
+    <Category>Screens</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100560</ID>
+    <Name>HP Pavilion 14-inch Laptop</Name>
+    <Price>599</Price>
+    <Category>Screens</Category>
+    <InStock>70</InStock>
+  </Product>
+  <Product>
+    <ID>100561</ID>
+    <Name>Microsoft Surface Laptop 2</Name>
+    <Price>1199</Price>
+    <Category>Screens</Category>
+    <InStock>40</InStock>
+  </Product>
+  <Product>
+    <ID>100562</ID>
+    <Name>Dell Inspiron 15 5000 Series Laptop</Name>
+    <Price>799</Price>
+    <Category>Screens</Category>
+    <InStock>50</InStock>
+  </Product>
+  <Product>
+    <ID>100563</ID>
+    <Name>Lenovo Yoga 720 2-in-1 Laptop</Name>
+    <Price>999</Price>
+    <Category>Screens</Category>
+    <InStock>30</InStock>
+  </Product>
+
 </Products>
 
 
