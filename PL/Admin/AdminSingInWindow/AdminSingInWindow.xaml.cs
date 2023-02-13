@@ -1,6 +1,8 @@
 ﻿using PL.Admin.MenuWindowMenager;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +25,18 @@ namespace PL.Admin.AdminSingInWindow
     /// </summary>
     public partial class AdminSingInWindow : Window
     {
+        private IEnumerable<Admin> admins;
+
         public AdminSingInWindow()
         {
             InitializeComponent();
+            
+            var converter = new BrushConverter();
+            ObservableCollection<Admin> admins = new ObservableCollection<Admin>();
+
+           
+
+
         }
 
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -73,32 +84,36 @@ namespace PL.Admin.AdminSingInWindow
             txtEmail.Focus();
         }
 
+        /// <summary>
+        /// ning in to admin mood
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Sing_In(object sender, RoutedEventArgs e)
         {
             String email = textEmail.Text;
-            String password = textPassword.Text;        
-            
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("dotNet5783_8442_8381/xml/Admins.xml");
-            XmlNodeList nodes = xmlDoc.GetElementsByTagName("Admins");
-            foreach (XmlNode node in nodes)
-            {
-                XmlNode nameNode = node.SelectSingleNode("Email");
-                XmlNode passwordNode = node.SelectSingleNode("Password");
-                if (nameNode.Equals(email) && passwordNode.Equals(password))
-                {
-                    MessageBox.Show("Successfully Signed In");
-                    
-                }   
+            String password = textPassword.Text;
 
-            }
-            MessageBox.Show("Wrong Email or Password");
-            
-
+            new ProductsWindowMenager().Show();
+            this.Close();
 
 
 
 
         }       
     }
+
+
+    public class Admin
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Phone { get; set; }
+        public Brush BgColor { get; set; }  
+             
+               
+    }
+
+
 }

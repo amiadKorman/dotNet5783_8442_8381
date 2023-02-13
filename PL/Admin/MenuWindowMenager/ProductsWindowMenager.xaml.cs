@@ -31,7 +31,7 @@ namespace PL.Admin.MenuWindowMenager
             InitializeComponent();
 
             membersDataGrid.ItemsSource = bl.Product.GetList();
-            
+
         }
 
        
@@ -58,9 +58,9 @@ namespace PL.Admin.MenuWindowMenager
         }
       
 
-        private void CartChoise(object sender, RoutedEventArgs e)
+        private void OrdersChoise(object sender, RoutedEventArgs e)
         {
-            new CartWindowMenager().Show();
+            new OrdersWindowMenager().Show();
             this.Close();
         }
 
@@ -95,8 +95,12 @@ namespace PL.Admin.MenuWindowMenager
            
         }
 
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
 
-
+        }
     }
 
 

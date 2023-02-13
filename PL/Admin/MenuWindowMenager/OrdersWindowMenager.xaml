@@ -1,5 +1,5 @@
-﻿<Window x:Class="PL.Admin.MenuWindowMenager.ProductsWindowMenager"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Class="PL.Admin.MenuWindowMenager.OrdersWindowMenager"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
@@ -10,7 +10,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Window.Resources>
 
-    <Border CornerRadius="30" Background="#EFF2F7" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown_1">
+    <Border CornerRadius="30" Background="#EFF2F7" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -41,13 +41,13 @@
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" >
-                            <Button Style="{StaticResource MenagerPagesmenuButton}"   Background="#7B5CD6" Foreground="White">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}"   Background="#7B5CD6" Foreground="White" Click="Button_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Devices"  Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="Protuct"/>
                                 </StackPanel>
                             </Button>
-                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="OrdersChoise">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="Button_Click_1">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Car" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="Orders"/>
@@ -61,7 +61,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="Button_Click">
+                            <Button Style="{StaticResource MenagerPagesmenuButton}" Click="Button_Click_3">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="CashMultiple" Style="{StaticResource MenagerPagesmenuButtonIcon}"/>
                                     <TextBlock Text="Wallet"/>
@@ -120,16 +120,9 @@
                 </Button>
 
                 <!--Page Title-->
-                <TextBlock Text="Products" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
+                <TextBlock Text="Orders" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" Foreground="#121518" HorizontalAlignment="Left"/>
 
-                <!--Add Button-->
-                <Button Style="{StaticResource MenagerPagesaddButton}" Click="Add_product">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                        <TextBlock Text="Add New Product"/>
-                    </StackPanel>
-                </Button>
-
+                
                 <!--Seprator-->
                 <Separator Height="1" Grid.Row="3" Background="#DAE2EA" Margin="0 -1 0 10"/>
 
@@ -147,7 +140,7 @@
                 <!--Members Data Grid-->
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" SelectionChanged="membersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                                             
+
                         <DataGridTemplateColumn Header="Product" IsReadOnly="True" Width="350">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -161,7 +154,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="*"/>                        
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Category" Binding="{Binding Category}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="In Stock" Binding="{Binding InStock}" IsReadOnly="True" Width="*"/>
