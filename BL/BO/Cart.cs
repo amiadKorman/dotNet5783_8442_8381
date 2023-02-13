@@ -1,5 +1,8 @@
 ﻿namespace BO;
 
+/// <summary>
+/// Cart class
+/// </summary>
 public class Cart
 {
     /// <summary>

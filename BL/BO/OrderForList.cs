@@ -1,5 +1,8 @@
 ﻿namespace BO;
 
+/// <summary>
+/// Order class for list view 
+/// </summary>
 public class OrderForList
 {
     /// <summary>

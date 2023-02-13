@@ -1,5 +1,8 @@
 ﻿namespace BO;
 
+/// <summary>
+/// Cart class for list of products in cart 
+/// </summary>
 public class ProductForList
 {
     /// <summary>

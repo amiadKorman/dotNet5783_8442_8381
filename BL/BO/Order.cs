@@ -1,5 +1,8 @@
 ﻿namespace BO;
 
+/// <summary>
+/// order class
+/// </summary>
 public class Order
 {
     /// <summary>

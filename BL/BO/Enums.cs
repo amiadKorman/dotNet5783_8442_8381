@@ -2,6 +2,9 @@
 
 namespace BO;
 
+/// <summary>
+/// Order item class
+/// </summary>
 public enum Category
 {
     [Description("Phones")]
@@ -16,6 +19,9 @@ public enum Category
     Accessories = 5,
 }
 
+/// <summary>
+/// Order item class
+/// </summary>
 public enum OrderStatus
 {
     [Description("Initiated")]
