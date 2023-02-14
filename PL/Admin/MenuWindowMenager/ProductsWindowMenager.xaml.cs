@@ -97,7 +97,11 @@ namespace PL.Admin.MenuWindowMenager
             
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Delete_product(object sender, RoutedEventArgs e)
         {
            
