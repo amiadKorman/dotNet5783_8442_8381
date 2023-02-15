@@ -61,11 +61,25 @@ namespace PL.Admin.MenuWindowMenager
             this.Close();
         }
 
-        private void Add_product(object sender, RoutedEventArgs e) => new ProductWindow(bl).Show();
+        private void Add_product(object sender, RoutedEventArgs e)
+        {
+            ProductWindow NewWindow = new ProductWindow(bl);
+            NewWindow.AddButton.Click += (s, e) =>
+            {
+                membersDataGrid.ItemsSource = bl.Product.GetList();
+            };
+            NewWindow.Show();
+
+        }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        { 
-            new ProductWindow(bl, ((BO.ProductForList)membersDataGrid.SelectedItem).ID).Show();
+        {
+            ProductWindow NewWindow = new ProductWindow(bl, ((BO.ProductForList)membersDataGrid.SelectedItem).ID);
+            NewWindow.UpdateButton.Click += (s, e) =>
+            {
+                membersDataGrid.ItemsSource = bl.Product.GetList();
+            };
+            NewWindow.Show();
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
