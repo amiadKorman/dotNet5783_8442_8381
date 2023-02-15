@@ -34,9 +34,6 @@ namespace PL.Admin.MenuWindowMenager
 
         }
 
-       
-
-
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -56,7 +53,7 @@ namespace PL.Admin.MenuWindowMenager
         {
 
         }
-      
+
 
         private void OrdersChoise(object sender, RoutedEventArgs e)
         {
@@ -64,16 +61,27 @@ namespace PL.Admin.MenuWindowMenager
             this.Close();
         }
 
-        private void Add_product(object sender, RoutedEventArgs e)
-        {
-            new ProductWindow(bl).Show();
-            
+        private void Add_product(object sender, RoutedEventArgs e) => new ProductWindow(bl).Show();
 
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        { 
+            new ProductWindow(bl, ((BO.ProductForList)membersDataGrid.SelectedItem).ID).Show();
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.Product.Delete(((BO.ProductForList)membersDataGrid.SelectedItem).ID);
+                membersDataGrid.ItemsSource = bl.Product.GetList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
 
         }
-
-        //private void Edite_product(object sender, RoutedEventArgs e) => new ProductWindow(bl, ((BO.ProductForList)ProductsListView.SelectedItem).ID).Show();
 
         /// <summary>
         /// Uppload the window
@@ -88,13 +96,13 @@ namespace PL.Admin.MenuWindowMenager
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Edit_product(object sender, RoutedEventArgs e)
         {
             new ProductWindow(bl).Show();
-            
+
 
         }
         /// <summary>
@@ -104,7 +112,7 @@ namespace PL.Admin.MenuWindowMenager
         /// <param name="e"></param>
         private void Delete_product(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         /// <summary>
