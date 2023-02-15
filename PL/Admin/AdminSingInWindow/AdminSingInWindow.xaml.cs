@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Xml;
 using System.Xml.XPath;
+using System.Security.Cryptography;
 
 
 namespace PL.Admin.AdminSingInWindow
@@ -26,6 +27,7 @@ namespace PL.Admin.AdminSingInWindow
     public partial class AdminSingInWindow : Window
     {
         private readonly BlApi.IBl bl = BlApi.Factory.Get();
+        
 
 
         /// <summary>
@@ -50,31 +52,22 @@ namespace PL.Admin.AdminSingInWindow
 
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(passwordBox.Password) && passwordBox.Password.Length > 0)
-                textPassword.Visibility = Visibility.Collapsed;
-            else
-                textPassword.Visibility = Visibility.Visible;
+            textEmail.Text = "";
+
         }
 
         private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            passwordBox.Focus();
+            txtEmail.Focus();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
-            {
-                MessageBox.Show("Successfully Signed In");
-            }
-        }
+       
 
-        private void txtEmail_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void txtEmail_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEmail.Text) && txtEmail.Text.Length > 0)
-                textEmail.Visibility = Visibility.Collapsed;
-            else
-                textEmail.Visibility = Visibility.Visible;
+            textEmail.Text = "";
+            
+
         }
 
         private void textEmail_MouseDown(object sender, MouseButtonEventArgs e)
@@ -89,16 +82,31 @@ namespace PL.Admin.AdminSingInWindow
         /// <param name="e"></param>
         private void Sing_In(object sender, RoutedEventArgs e)
         {
-            String email = textEmail.Text;
-            String password = textPassword.Text;
+            string? email = txtEmail.Text;
+            string? password = passwordBox.Password;
 
-            new ProductsWindowMenager().Show();
-            this.Close();
+            string Kemail = "Amiadk16@gmail.com";
+            string Kpassword = "12345678";
+            string Remail = "asdfghjkl";
+            string Rpassword = "RonChai318@gmail.com";
+
+
+            if ((email == Kemail && password == Kpassword) || (email == Remail && password == Rpassword))
+            {
+                new ProductsWindowMenager().Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("The email or password is incorrect");
+            }    
 
 
 
+            
+        }
 
-        }       
+       
     }
 
 

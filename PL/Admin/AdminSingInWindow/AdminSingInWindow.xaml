@@ -61,7 +61,7 @@
 
                         <Image Source="/Images/Email.png" Height="20" />
                         <TextBlock x:Name="textEmail" MouseDown="textEmail_MouseDown" Text="Email" Style="{StaticResource CustomerSingIntextHint}" />
-                        <TextBox Name="txtEmail" TextChanged="txtEmail_TextChanged" Style="{StaticResource CustomerSingIntextBox}" />
+                        <TextBox x:Name="txtEmail" TextChanged="txtEmail_TextChanged" Style="{StaticResource CustomerSingIntextBox}" />
                     </Grid>
                 </Border>
 

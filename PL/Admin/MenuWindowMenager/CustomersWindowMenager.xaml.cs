@@ -14,17 +14,20 @@ using System.Windows.Shapes;
 
 namespace PL.Admin.MenuWindowMenager
 {
+    
     /// <summary>
     /// Interaction logic for CustomersWindowMenager.xaml
     /// </summary>
     public partial class CustomersWindowMenager : Window
     {
+        private readonly BlApi.IBl bl = BlApi.Factory.Get();
         /// <summary>
         /// Uppload the window
         /// </summary>
         public CustomersWindowMenager()
         {
             InitializeComponent();
+            membersDataGrid.ItemsSource = bl.Customer.GetList();
         }
 
         private void membersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -60,12 +60,13 @@ internal sealed class DataSource
         InitializeOrderItems();
     }
 
+    #region Initialize products list
     /// <summary>
     /// Initialize products list
     /// </summary>
     private void InitializeProducts()
     {
-        #region Initialize Products
+       
         products.Add(
             new()
             {
@@ -650,12 +651,13 @@ new()
         });
 
 
+       
 
-
-
-
-        #endregion
     }
+    #endregion
+
+    
+    
 
     /// <summary>
     /// Initialize customers list

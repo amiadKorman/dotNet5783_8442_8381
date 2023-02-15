@@ -19,7 +19,7 @@
         
         <Border Background="#FFFFFF" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
             <StackPanel VerticalAlignment="Center" Height="389">
-                <TextBlock Text="Welcome to KSP electrinic" Foreground="#3AB19B" Style="{StaticResource CustomerSingInTitleText}" RenderTransformOrigin="0.474,0.474" />                    
+                <TextBlock Text="Welcome to KSP electrronic" Foreground="#3AB19B" Style="{StaticResource CustomerSingInTitleText}" RenderTransformOrigin="0.474,0.474" />                    
             </StackPanel>
         </Border>
         

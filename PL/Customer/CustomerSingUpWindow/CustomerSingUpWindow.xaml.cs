@@ -60,7 +60,7 @@ namespace PL.Customer.CustomerSingUpWindow
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SingInClick(object sender, RoutedEventArgs e)
+        private void SingInClick(object sender, RoutedEventArgs e )
         {
             new CustomerSingInWindow().Show();
             this.Close();
