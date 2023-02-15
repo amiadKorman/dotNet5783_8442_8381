@@ -145,34 +145,21 @@
                 </Grid>
                 <!--#endregion-->
                 <!--Members Data Grid-->
-                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" SelectionChanged="membersDataGrid_SelectionChanged">
+                <DataGrid x:Name="membersDataGrid" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" Style="{DynamicResource DataGridStyle1}" SelectionChanged="membersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                                             
-                        <DataGridTemplateColumn Header="Product" IsReadOnly="True" Width="350">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                            <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-                                        </Border>
-
-                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="*"/>                        
+                        <DataGridTextColumn Header="Product" Binding="{Binding Name}"  IsReadOnly="True" Width="350"/>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Category" Binding="{Binding Category}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="In Stock" Binding="{Binding InStock}" IsReadOnly="True" Width="100"/>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource ManegergridEditButton}">
+                                    <StackPanel>
+                                        <Button x:Name="UpdateButton" Style="{StaticResource ManegergridEditButton}" Click="UpdateButton_Click">
                                             <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource ManegergridButtonIcon}"/>
                                         </Button>
-                                        <Button Margin="5 0 0 0" Style="{StaticResource ManegergridRemoveButton}">
+                                        <Button x:Name="RemoveButton" Margin="5 0 0 0" Style="{StaticResource ManegergridRemoveButton}" Click="RemoveButton_Click">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource ManegergridButtonIcon}"/>
                                         </Button>
                                     </StackPanel>
